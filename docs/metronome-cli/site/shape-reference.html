@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Shape Reference</title>
+    <meta name="description" content="Generated shape catalog reference for the Metronome CLI.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome in your terminal</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Generated from metronome-cli/src/shapes/index.js</p>
+        <h1>Metronome CLI shape reference</h1>
+        <p>Each shape is a workflow surface with local maturity, required input, blocked modes, validator rules, and source links.</p>
+        <nav class="reference-jumps" aria-label="Shape reference sections">
+          <strong>Page index</strong>
+          <a href="#shape-summary"><span>Shape summary</span><small>Generated counts for workflow shapes, families, maturity levels, and local API access.</small></a>
+          <a href="#shape-catalog"><span>Shape catalog</span><small>Workflow shapes with required input, supported modes, blocked modes, validators, and sources.</small></a>
+        </nav>
+        <div id="shape-summary" class="summary-grid"><article><span>Shapes</span><strong>16</strong></article><article><span>Families</span><strong>11</strong></article><article><span>Maturity levels</span><strong>local-validated</strong></article><article><span>Live API access</span><strong>none</strong></article></div>
+      </header>
+
+      <section id="shape-catalog" class="generated-section reference-stack">
+        <article class="reference-card">
+          <h2>Customer Setup Preview</h2>
+          <p><code>customer-setup</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview Metronome customer creation with ingest aliases, optional Stripe billing-provider setup, customer custom fields, hierarchy posture, and read-back checks before any API client loads.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>companyName</code></li><li><code>externalCustomerId</code></li><li><code>primaryIngestAlias</code></li><li><code>ingestAliases[]</code></li><li><code>duplicatePrevention.ingestAliasSearchPlanned</code></li><li><code>duplicatePrevention.archivedCustomerCollisionReviewed</code></li><li><code>duplicatePrevention.existingCustomerPolicy</code></li><li><code>hierarchyMode</code></li><li><code>billingProvider.mode</code></li><li><code>verificationPlan.customerReadback</code></li><li><code>verificationPlan.ingestAliasSearchReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until customer create has inspected duplicate state, sandbox proof, audit logging, read-back verification, invoice-side-effect proof, and owner approval.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-CUST-001</code> Customer identity incomplete <span class="muted">(error)</span></li><li><code>MTR-CUST-002</code> Customer ingest alias collision review missing <span class="muted">(error)</span></li><li><code>MTR-CUST-003</code> Customer hierarchy setup is ambiguous <span class="muted">(error)</span></li><li><code>MTR-CUST-004</code> Customer custom-field approval missing <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-002</code> Billing provider delivery method missing or unsupported <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-BILL-005</code> Stripe delivery entity scope unresolved <span class="muted">(error)</span></li><li><code>MTR-IDEMP-003</code> Create workflow duplicate-prevention evidence missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/list-customers.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Pro Annual Package</h2>
+          <p><code>pro-annual</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview the input needed to create a paid annual Pro package shape before any API client loads.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>packageAlias</code></li><li><code>uniquenessKey</code></li><li><code>rateCardId</code></li><li><code>startingAt</code></li><li><code>annualPriceCents</code></li><li><code>billingFrequency</code></li><li><code>billingProvider.configured</code></li><li><code>stripeBehavior</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until package preview, sandbox proof, audit logging, and production approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-002</code> Package uniqueness key missing or unstable <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-RATE-002</code> Subscription-like rate missing matching billing frequency <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Pro Annual Self-Serve Package v2</h2>
+          <p><code>pro-annual-self-serve-v2</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and preview annual self-serve packages with explicit annual plan fee and creditGrantMode monthly-drip (1/12) or lump-sum recurring_commits.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>packageAlias</code></li><li><code>uniquenessKey</code></li><li><code>rateCardId</code></li><li><code>startingAt</code></li><li><code>annualPlanFeeCents</code></li><li><code>billingFrequency</code></li><li><code>creditGrantMode</code></li><li><code>annualCreditsTotal</code></li><li><code>fixedProductId</code></li><li><code>accessCreditTypeId</code></li><li><code>commitName</code></li><li><code>billingProvider.configured</code></li><li><code>stripeBehavior</code></li><li><code>creditSeparateFromPlanFeeReviewed</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until package preview, sandbox proof, audit logging, and production approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-002</code> Package uniqueness key missing or unstable <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-RATE-002</code> Subscription-like rate missing matching billing frequency <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li><li><code>MTR-PKG-010</code> Annual self-serve v2 credit grant mode invalid <span class="muted">(error)</span></li><li><code>MTR-PKG-011</code> Annual self-serve v2 credit grant fields invalid <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome/dry-run-dimensional-future-only.js</code></li><li><code>metronome/backend-handoff/metronome-flows.js</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Free Credit Trial Package</h2>
+          <p><code>free-credit-trial</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview the input needed to create a free-trial package with recurring credit grants, auto-expiry, and no Stripe billing before any API client loads. The shape enforces commit_duration.unit PERIODS, duration.value as a string, starting_at_offset, and proration so agents never hand-craft this payload.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>packageAlias</code></li><li><code>uniquenessKey</code></li><li><code>aliasStartingAt</code></li><li><code>creditAmount</code></li><li><code>accessCreditTypeId</code></li><li><code>trialDurationDays</code></li><li><code>rolloverFraction</code></li><li><code>noStripeConfirmed</code></li><li><code>aliasHandoffReviewed</code></li><li><code>verificationPlan.packageReadback</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until package preview, alias-handoff review, sandbox proof, audit logging, and production approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-004</code> Package alias verification missing <span class="muted">(error)</span></li><li><code>MTR-PKG-012</code> Free-credit-trial credit grant fields missing or invalid <span class="muted">(error)</span></li><li><code>MTR-PKG-013</code> Free-credit-trial Stripe-free requirement not confirmed <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-CREDIT-001</code> Access schedule credit type missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li><li><code>https://docs.metronome.com/api-reference/list-all-packages.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Complimentary Credit Grant</h2>
+          <p><code>complimentary-credit-grant</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a pure access grant or zero-dollar audit-line grant without loading Metronome clients.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>contractId</code></li><li><code>name</code></li><li><code>amount</code></li><li><code>accessCreditTypeId</code></li><li><code>startingAt</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until edit-contract preview, canary support, sandbox proof, audit logging, read-back verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-CREDIT-001</code> Access schedule credit type missing <span class="muted">(error)</span></li><li><code>MTR-CREDIT-002</code> Invoice schedule credit type must be fiat <span class="muted">(error)</span></li><li><code>MTR-CREDIT-003</code> Complimentary grant includes invoice schedule without explicit audit intent <span class="muted">(error)</span></li><li><code>MTR-CREDIT-005</code> Custom-field key approval missing <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>.cursor/skills/metronome-commits-credits/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Paid Credit Top-Up</h2>
+          <p><code>paid-credit-top-up</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a payment-gated paid credit top-up on an existing contract without loading Metronome or Stripe clients.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>contractId</code></li><li><code>productId</code></li><li><code>name</code></li><li><code>amount</code></li><li><code>accessCreditTypeId</code></li><li><code>startingAt</code></li><li><code>priority</code></li><li><code>applicableProductTags[]</code></li><li><code>invoiceSchedule.creditTypeId</code></li><li><code>invoiceSchedule.unitPriceCents</code></li><li><code>invoiceSchedule.quantity</code></li><li><code>paymentGateType</code></li><li><code>invoiceBehavior</code></li><li><code>stripeBehavior</code></li><li><code>billingProvider.verified</code></li><li><code>duplicateCommitNameChecked</code></li><li><code>verificationPlan.balanceReadback</code></li><li><code>verificationPlan.invoiceReadback</code></li><li><code>verificationPlan.billingProviderReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until paid top-up preview, duplicate-name evidence, sandbox proof, audit logging, Stripe reconciliation handling, and read-back verification exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-CREDIT-001</code> Access schedule credit type missing <span class="muted">(error)</span></li><li><code>MTR-CREDIT-002</code> Invoice schedule credit type must be fiat <span class="muted">(error)</span></li><li><code>MTR-CREDIT-004</code> Paid top-up lacks amount in cents <span class="muted">(error)</span></li><li><code>MTR-CREDIT-006</code> Paid top-up invoice and Stripe behavior missing <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-commits-credits/SKILL.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Alias Archive Handoff</h2>
+          <p><code>package-alias-archive-handoff</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview archiving an old package version only after the replacement alias is already live and verified.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>oldPackageId</code></li><li><code>packageAlias</code></li><li><code>replacementPackageId</code></li><li><code>replacementPackageAlias</code></li><li><code>replacementAliasLiveAt</code></li><li><code>aliasLiveVerified</code></li><li><code>replacementPackageReadbackVerified</code></li><li><code>contractsOnOldPackageReviewed</code></li><li><code>verificationPlan.oldPackageArchiveReadback</code></li><li><code>verificationPlan.replacementAliasReadback</code></li><li><code>verificationPlan.contractsOnOldPackageReviewed</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until package archive has inspected alias handoff state, sandbox proof, audit logging, read-back verification, rollback evidence, and owner approval.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-004</code> Package alias verification missing <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-TIME-004</code> Package alias handoff is not live <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/packages/archive-a-package.md</code></li><li><code>https://docs.metronome.com/api-reference/packages/get-a-package.md</code></li><li><code>https://docs.metronome.com/api-reference/list-all-packages.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Stripe Billing Provider Attachment</h2>
+          <p><code>stripe-billing-provider-attachment</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview the input needed to attach Stripe billing provider configuration to an existing Metronome customer.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>stripeCustomerId</code></li><li><code>stripeCollectionMethod</code></li><li><code>deliveryMethodId or deliveryMethod</code></li><li><code>deliveryMethodScope</code></li><li><code>multiEntityDelivery evidence when deliveryMethodScope is multi_entity</code></li><li><code>leaveStripeInvoicesInDraft</code></li><li><code>existingConfigPolicy</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until billing-provider attach has sandbox proof, audit logging, read-back verification, and explicit owner approval.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-002</code> Billing provider delivery method missing or unsupported <span class="muted">(error)</span></li><li><code>MTR-BILL-003</code> Existing billing provider config decision missing <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-BILL-005</code> Stripe delivery entity scope unresolved <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/set-up-account-level-billing-provider.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Plan Move Without Immediate Invoice</h2>
+          <p><code>package-plan-move-no-immediate-invoice</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a package-based contract transition that moves a customer at a future cutover without intentionally creating an immediate invoice.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>currentContractId</code></li><li><code>targetPackageAlias</code></li><li><code>contractUniquenessKey</code></li><li><code>cutoverAt</code></li><li><code>transitionType</code></li><li><code>oldContractEndBehavior</code></li><li><code>invoiceBehavior</code></li><li><code>stripeBehavior</code></li><li><code>billingProvider.verified</code></li><li><code>packageAliasVerified</code></li><li><code>currentInvoicesChecked</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until contract move sandbox proof, preflight validation, audit logging, read-back verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-003</code> Package contract payload contains unsupported fields <span class="muted">(error)</span></li><li><code>MTR-PKG-004</code> Package alias verification missing <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-TIME-002</code> Past-dated billing operation may finalize immediately <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-INV-003</code> Contract archive or invoice-impacting move lacks inventory <span class="muted">(error)</span></li><li><code>MTR-IDEMP-001</code> Create workflow missing stable uniqueness key <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/TASK_PLAYBOOKS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Plan Move With Immediate Plan Fee</h2>
+          <p><code>package-plan-move-immediate-invoice</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a package-based RENEWAL transition at current or past UTC hour that intentionally issues an immediate SCHEDULED plan fee (billing-day realignment, package version handoff).</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>currentContractId</code></li><li><code>targetPackageAlias</code></li><li><code>contractUniquenessKey</code></li><li><code>cutoverAt</code></li><li><code>transitionType</code></li><li><code>oldContractEndBehavior</code></li><li><code>invoiceBehavior</code></li><li><code>paidPeriodOverlapPolicy</code></li><li><code>paidPeriodOverlapReviewed</code></li><li><code>stripeBehavior</code></li><li><code>billingProvider.verified</code></li><li><code>packageAliasVerified</code></li><li><code>currentInvoicesChecked</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until contract move sandbox proof, preflight validation, audit logging, read-back verification, overlap policy review, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-PKG-001</code> Package alias missing <span class="muted">(error)</span></li><li><code>MTR-PKG-003</code> Package contract payload contains unsupported fields <span class="muted">(error)</span></li><li><code>MTR-PKG-004</code> Package alias verification missing <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li><li><code>MTR-INV-003</code> Contract archive or invoice-impacting move lacks inventory <span class="muted">(error)</span></li><li><code>MTR-IDEMP-001</code> Create workflow missing stable uniqueness key <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li><li><code>https://docs.metronome.com/guides/implement-metronome/core-concepts/how-invoicing-works</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Product Rate Retirement</h2>
+          <p><code>product-rate-retirement</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview closing product rate-card entries with entitled:false and price:0 before any product archive is planned.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>productId</code></li><li><code>startingAt</code></li><li><code>retireRatesFirst</code></li><li><code>archiveProductAfterRatesClose</code></li><li><code>invoiceImpactReviewed</code></li><li><code>affectedRateCards[].rateCardId</code></li><li><code>affectedRateCards[].activeRateEntitled</code></li><li><code>affectedRateCards[].closeWithEntitled</code></li><li><code>affectedRateCards[].closeWithPriceCents</code></li><li><code>verificationPlan.rateScheduleReadback</code></li><li><code>verificationPlan.productArchiveReadback</code></li><li><code>verificationPlan.invoicePreviewOrReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until product retirement has inspected current rate schedules, sandbox proof, audit logging, read-back verification, rollback evidence, and owner approval.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-RATE-001</code> Product rate missing entitlement decision <span class="muted">(error)</span></li><li><code>MTR-RATE-003</code> Product retirement skips rate closure <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>metronome/disable-sch052-on-rate-cards.js</code></li><li><code>metronome/archive-sch052.js</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/products/get-a-product.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Dimensional Rate-Card Preview</h2>
+          <p><code>dimensional-rate-card</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview one dimensional USAGE product plus per-action rate-card entries before any Metronome client loads.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>rateCardId</code></li><li><code>startingAt</code></li><li><code>usageProduct.name</code></li><li><code>usageProduct.billableMetricId</code></li><li><code>usageProduct.pricingGroupKey[]</code></li><li><code>usageProduct.presentationGroupKey[]</code></li><li><code>usageProduct.tags[]</code></li><li><code>usageProduct.existingProductCollisionReviewed</code></li><li><code>billableMetric.groupKeys[]</code></li><li><code>billableMetric.eventTypeFilterReviewed</code></li><li><code>billableMetric.requiredEventProperties[]</code></li><li><code>billableMetric.nonRetroactiveMetricReviewed</code></li><li><code>rates[].actionCode</code></li><li><code>rates[].actionDisplayName</code></li><li><code>rates[].price</code></li><li><code>rates[].creditTypeId</code></li><li><code>rates[].entitled</code></li><li><code>metricGroupKeyVerified</code></li><li><code>invoiceImpactReviewed</code></li><li><code>canaryPlan</code></li><li><code>verificationPlan.productReadback</code></li><li><code>verificationPlan.rateScheduleReadback</code></li><li><code>verificationPlan.getRatesSelectorReadback</code></li><li><code>verificationPlan.usageGroupsReadback</code></li><li><code>verificationPlan.invoicePreviewOrReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until dimensional product and rate-card evidence, sandbox canary proof, audit logging, read-back verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-RATE-001</code> Product rate missing entitlement decision <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-RATE-005</code> Dimensional rate-card evidence incomplete <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-IDEMP-003</code> Create workflow duplicate-prevention evidence missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-003</code> Bulk workflow lacks canary plan <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md</code></li><li><code>.cursor/skills/metronome-billable-metrics/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Draft Invoice Issue-Date Update</h2>
+          <p><code>invoice-issue-date-update</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview moving a DRAFT invoice issue date through the contract-scoped updateInvoiceIssueDate endpoint before any API client loads.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>contractId</code></li><li><code>invoiceId</code></li><li><code>currentInvoiceStatus</code></li><li><code>currentIssueDate</code></li><li><code>targetIssueDate</code></li><li><code>contractEndingBefore or contractHasNoEndDate</code></li><li><code>invoiceReadbackVerified</code></li><li><code>contractEndVerified</code></li><li><code>billingProvider.verified</code></li><li><code>stripeBehavior</code></li><li><code>verificationPlan.invoiceReadback</code></li><li><code>verificationPlan.billingProviderReadback</code></li><li><code>verificationPlan.stripeDeliveryReview</code></li><li><code>remediationPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until draft invoice state, contract end evidence, Stripe behavior, sandbox proof, audit logging, read-back verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-ENDPOINT-002</code> Endpoint path appears guessed <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li><li><code>MTR-INV-004</code> Invoice issue-date edit lacks expected Stripe behavior <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Direct Subscription Contract</h2>
+          <p><code>direct-subscription-contract</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a direct contract with one subscription line before any API client loads.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>rateCardId</code></li><li><code>contractUniquenessKey</code></li><li><code>startingAt</code></li><li><code>name</code></li><li><code>productId</code></li><li><code>subscriptionProductType</code></li><li><code>rateCardProductId</code></li><li><code>rateCardBillingFrequency</code></li><li><code>subscriptionBillingFrequency</code></li><li><code>rateCardSubscriptionRateVerified</code></li><li><code>quantityManagementMode</code></li><li><code>initialQuantity or seatConfig.initialSeatIds</code></li><li><code>collectionSchedule</code></li><li><code>proration.isProrated</code></li><li><code>proration.invoiceBehavior</code></li><li><code>billingProvider.verified</code></li><li><code>invoiceBehavior</code></li><li><code>stripeBehavior</code></li><li><code>verificationPlan.contractReadback</code></li><li><code>verificationPlan.rateScheduleReadback</code></li><li><code>verificationPlan.subscriptionHistoryReadback</code></li><li><code>verificationPlan.billingProviderReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until subscription rate-card evidence, sandbox proof, audit logging, read-back verification, quantity/seat history verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-SUB-001</code> Subscription config missing for subscription product <span class="muted">(error)</span></li><li><code>MTR-SUB-002</code> Subscription billing frequency mismatch <span class="muted">(error)</span></li><li><code>MTR-SUB-003</code> Subscription product identity mismatch <span class="muted">(error)</span></li><li><code>MTR-SUB-004</code> Subscription quantity or seat source missing <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-IDEMP-001</code> Create workflow missing stable uniqueness key <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-subscriptions-seats/SKILL.md</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>metronome/custom-contract-creator/payload-builders.js</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Usage Ingest Preview Plan</h2>
+          <p><code>usage-ingest-preview</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a Metronome usage event batch before any invoice preview or ingest API call can run.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>customerId</code></li><li><code>events[].customer_id</code></li><li><code>events[].event_type</code></li><li><code>events[].transaction_id</code></li><li><code>events[].timestamp</code></li><li><code>events[].properties.action_code</code></li><li><code>expectedEventType</code></li><li><code>invoicePeriodTarget.startingAt</code></li><li><code>invoicePeriodTarget.endingBefore</code></li><li><code>invoicePeriodTarget.finalizedPeriodReviewed</code></li><li><code>previewEventsRequired</code></li><li><code>canaryPlan.canaryEventCount</code></li><li><code>verificationPlan.previewEvents</code></li><li><code>verificationPlan.eventSearch</code></li><li><code>verificationPlan.usageGroups</code></li><li><code>verificationPlan.invoiceReview</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Ingest execution is blocked until preview-events proof, canary support, audit logging, read-back verification, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-USAGE-001</code> Historical usage invoice-period risk not reviewed <span class="muted">(error)</span></li><li><code>MTR-USAGE-002</code> Usage event shape incomplete <span class="muted">(error)</span></li><li><code>MTR-USAGE-003</code> Usage ingest batch lacks canary or period target <span class="muted">(error)</span></li><li><code>MTR-IDEMP-002</code> Usage ingest missing stable transaction id <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-003</code> Bulk workflow lacks canary plan <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/ingest-events.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/preview-events.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/search-events.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Enterprise Custom Contract</h2>
+          <p><code>enterprise-custom-contract</code> <span class="status-pill local">local-validated</span></p>
+          <p>Validate and locally preview a direct enterprise custom contract with explicit rate card, recurring commit, Stripe billing-provider config, optional bonus commits, and optional seat assignments without loading API clients.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Required input</h3>
+              <ul class="compact-list"><li><code>externalCustomerId</code></li><li><code>companyName</code></li><li><code>metronomeCustomerId or createMetronomeCustomer</code></li><li><code>contractType: direct</code></li><li><code>rateCardId</code></li><li><code>uniquenessKey</code></li><li><code>explicitStartingAt</code></li><li><code>endingBefore or noExpiry</code></li><li><code>billingProvider.verified</code></li><li><code>stripeCustomerId</code></li><li><code>stripeDeliveryMethodId</code></li><li><code>stripeCollectionMethod</code></li><li><code>leaveStripeInvoicesInDraft</code></li><li><code>stripeBehavior</code></li><li><code>invoiceBehavior</code></li><li><code>baseCommit.name</code></li><li><code>baseCommit.productId</code></li><li><code>baseCommit.accessAmount</code></li><li><code>baseCommit.invoiceAmountCents</code></li><li><code>baseCommit.accessCreditTypeId</code></li><li><code>baseCommit.invoiceCreditTypeId</code></li><li><code>baseCommit.cadence</code></li><li><code>baseCommit.applicableProductTags[]</code></li><li><code>seatLimitMode plus seatLimits when seat_based</code></li><li><code>verificationPlan.customerReadback</code></li><li><code>verificationPlan.contractReadback</code></li><li><code>verificationPlan.balanceReadback</code></li><li><code>verificationPlan.invoiceReadback</code></li><li><code>verificationPlan.billingProviderReadback</code></li><li><code>rollbackPlan</code></li></ul>
+            </section>
+            <section>
+              <h3>Supported modes</h3>
+              <ul class="compact-list"><li><code>explain</code></li><li><code>validate</code></li><li><code>preview</code></li></ul>
+            </section>
+            <section>
+              <h3>Blocked modes</h3>
+              <dl class="exit-code-list"><div><dt>apply</dt><dd>Apply is blocked until custom-contract preview, current-state inspection, sandbox proof, audit logging, read-back verification, rollback evidence, and owner approval exist.</dd></div></dl>
+            </section>
+            <section>
+              <h3>Validator rules</h3>
+              <ul class="compact-list"><li><code>MTR-CUSTOM-001</code> Custom contract customer identity incomplete <span class="muted">(error)</span></li><li><code>MTR-CUSTOM-002</code> Custom contract shape is unsupported or ambiguous <span class="muted">(error)</span></li><li><code>MTR-CUSTOM-003</code> Custom contract commercial terms incomplete <span class="muted">(error)</span></li><li><code>MTR-TIME-001</code> Timestamp is not on a UTC hour boundary <span class="muted">(error)</span></li><li><code>MTR-RATE-004</code> Rate-card change missing starting_at <span class="muted">(error)</span></li><li><code>MTR-BILL-001</code> Billable workflow missing billing provider <span class="muted">(error)</span></li><li><code>MTR-BILL-002</code> Billing provider delivery method missing or unsupported <span class="muted">(error)</span></li><li><code>MTR-BILL-004</code> Stripe draft behavior unspecified <span class="muted">(error)</span></li><li><code>MTR-CREDIT-001</code> Access schedule credit type missing <span class="muted">(error)</span></li><li><code>MTR-CREDIT-002</code> Invoice schedule credit type must be fiat <span class="muted">(error)</span></li><li><code>MTR-CREDIT-004</code> Paid top-up lacks amount in cents <span class="muted">(error)</span></li><li><code>MTR-IDEMP-001</code> Create workflow missing stable uniqueness key <span class="muted">(error)</span></li><li><code>MTR-IDEMP-003</code> Create workflow duplicate-prevention evidence missing <span class="muted">(error)</span></li><li><code>MTR-INV-001</code> Workflow can finalize an invoice immediately <span class="muted">(warning)</span></li><li><code>MTR-SUB-002</code> Subscription billing frequency mismatch <span class="muted">(error)</span></li><li><code>MTR-SUB-003</code> Subscription product identity mismatch <span class="muted">(error)</span></li><li><code>MTR-SUB-004</code> Subscription quantity or seat source missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-001</code> Read-back verification missing <span class="muted">(error)</span></li><li><code>MTR-VERIFY-002</code> Rollback or remediation plan missing <span class="muted">(error)</span></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/TASK_PLAYBOOKS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>metronome/custom-contract-creator/schema.js</code></li><li><code>metronome/custom-contract-creator/payload-builders.js</code></li><li><code>metronome/custom-contract-creator/tests/unit.test.js</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md</code></li></ul>
+        </article>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

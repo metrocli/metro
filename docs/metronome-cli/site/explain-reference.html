@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Docs Explain Reference</title>
+    <meta name="description" content="Generated source-linked docs explain topic index for the Metronome CLI.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome in your terminal</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Generated from metronome-cli/src/docs/explain.js, metronome-cli/src/api-catalog/export.js, metronome-cli/src/docs/api-reference.js, metronome-cli/src/api-catalog/apply-result.js, metronome-cli/src/commands/catalog.js, metronome-cli/src/docs/shape-validator-reference.js, metronome-cli/src/docs/gotcha-reference.js</p>
+        <h1>Metronome CLI docs explain reference</h1>
+        <p>This page is generated from <code>metro.docs.explain.index.v1</code>, the same local topic index used by <code>metro docs explain --list --json</code>. It keeps live execution disabled and points users to source-linked single-topic explanations.</p>
+        <nav class="reference-jumps" aria-label="Docs explain reference sections">
+          <strong>Page index</strong>
+          <a href="#explain-summary"><span>Summary</span><small>Local-only topic counts, live execution status, and next safe step.</small></a>
+          <a href="#operating-topics"><span>Operating Topics</span><small>Curated source-linked operating explanations with stable metro docs explain commands.</small></a>
+          <a href="#lookup-kinds"><span>Lookup Kinds</span><small>Typed prefixes and example topics for endpoint, command, shape, rule, gotcha, scope, policy, and fixture lookup.</small></a>
+          <a href="#source-boundary"><span>Source Boundary</span><small>Files and source IDs that prove the generated index without authorizing live API access.</small></a>
+        </nav>
+        <div id="explain-summary" class="summary-grid"><article><span>Operating topics</span><strong>16</strong></article><article><span>Lookup kinds</span><strong>8</strong></article><article><span>Generic topics</span><strong>399</strong></article><article><span>Live API access</span><strong>none</strong></article></div>
+      </header>
+
+      <section id="operating-topics" class="generated-section reference-stack">
+        <h2>Operating Topics</h2>
+        <article class="reference-card">
+          <h2>First safe preview path</h2>
+          <p><code>first-safe-preview</code> <span class="status-pill local">local-install-backed</span></p>
+          <p>Give a new authorized teammate or internal agent one terminal-native path to prove installability, command discovery, profile shape, local validation, and sandbox-labeled preview without live API access.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain first-safe-preview --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>7</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-docs-explain-first-safe-preview-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-install-test</code></li><li><code>metro-safe-preview-quickstart</code></li><li><code>metro-setup-quickstart</code></li><li><code>metro-setup-resolve-golden</code></li></ul>
+          <h3>Sources</h3>
+        </article>
+        <article class="reference-card">
+          <h2>Install troubleshooting</h2>
+          <p><code>install.troubleshooting</code> <span class="status-pill local">local-install-backed</span></p>
+          <p>Use this topic when npm packaging, global installation, or the installed metro binary fails: prove the package manifest, runtime file allowlist, executable bin, temporary-prefix install, and local-only smoke command before moving to setup profiles or safe preview work.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain install.troubleshooting --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>7</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-docs-explain-first-safe-preview-golden</code></li><li><code>metro-docs-explain-install-troubleshooting-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-install-test</code></li><li><code>metro-package-test</code></li><li><code>metro-safe-preview-quickstart</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/SAFETY.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/site/install.html</code></li><li><code>metronome-cli/package.json</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/test/install.test.js</code></li><li><code>metronome-cli/test/package.test.js</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package publish readiness</h2>
+          <p><code>package.publish-readiness</code> <span class="status-pill local">blocked-open-questions</span></p>
+          <p>Use this topic before treating the local tarball install path as an internal npm release: current proof covers npm pack contents and a temporary-prefix metro install, while registry publishing, release provenance, approval ownership, and signing or equivalent integrity evidence remain explicit blockers.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain package.publish-readiness --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>11</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-docs-explain-install-troubleshooting-golden</code></li><li><code>metro-docs-explain-package-publish-readiness-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-install-test</code></li><li><code>metro-package-test</code></li><li><code>metro-release-artifact-manifest-golden</code></li><li><code>metro-release-evidence-check-golden</code></li><li><code>metro-release-evidence-plan-golden</code></li><li><code>metro-release-readiness-golden</code></li><li><code>metro-release-retention-policy-golden</code></li><li><code>metro-safe-preview-quickstart</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/SAFETY.md</code></li><li><code>docs/SOURCE_BASELINE.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/site/install.html</code></li><li><code>metronome-cli/package.json</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/release/readiness.js</code></li><li><code>metronome-cli/test/golden/release/evidence-check.valid.json</code></li><li><code>metronome-cli/test/golden/release/retention-policy.template.json</code></li><li><code>metronome-cli/test/golden/release/retention-policy.validation.valid.json</code></li><li><code>metronome-cli/test/install.test.js</code></li><li><code>metronome-cli/test/package.test.js</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>CI local checks</h2>
+          <p><code>ci.local-checks</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use this topic when wiring metro into CI or agent automation: run package, install, unit, golden, site, syntax, and secret-scan checks that need no API keys, then parse metro JSON contracts instead of scraping prose.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain ci.local-checks --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>11</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-api-readiness-summary-golden</code></li><li><code>metro-command-catalog</code></li><li><code>metro-command-reference-golden</code></li><li><code>metro-docs-explain-ci-local-checks-golden</code></li><li><code>metro-docs-explain-output-anatomy-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-install-test</code></li><li><code>metro-package-test</code></li><li><code>metro-release-artifact-manifest-golden</code></li><li><code>metro-release-evidence-check-golden</code></li><li><code>metro-release-evidence-plan-golden</code></li><li><code>metro-release-readiness-golden</code></li><li><code>metro-release-retention-policy-golden</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/SAFETY.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/site/integration.html</code></li><li><code>docs/metronome-cli/site/verify-site.js</code></li><li><code>metronome-cli/package.json</code></li><li><code>metronome-cli/src/commands/catalog.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/release/readiness.js</code></li><li><code>metronome-cli/test/golden.test.js</code></li><li><code>metronome-cli/test/golden/release/evidence-check.valid.json</code></li><li><code>metronome-cli/test/golden/release/retention-policy.template.json</code></li><li><code>metronome-cli/test/golden/release/retention-policy.validation.valid.json</code></li><li><code>metronome-cli/test/install.test.js</code></li><li><code>metronome-cli/test/package.test.js</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Setup troubleshooting</h2>
+          <p><code>setup.troubleshooting</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use this topic when the first safe preview path, local profile doctor, or profile resolution fails: keep setup local-only, inspect schemaVersion and findings, fix the profile file or non-secret fingerprint, then rerun setup doctor and setup resolve before using profile evidence in read-gate or preflight manifests.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain setup.troubleshooting --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>6</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-docs-explain-first-safe-preview-golden</code></li><li><code>metro-docs-explain-setup-troubleshooting-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-install-test</code></li><li><code>metro-setup-fixtures</code></li><li><code>metro-setup-profiles</code></li><li><code>metro-setup-quickstart</code></li><li><code>metro-setup-resolve-golden</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/SAFETY.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/site/install.html</code></li><li><code>metronome-cli/src/commands/catalog.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/setup/profiles.js</code></li><li><code>metronome-cli/test/fixtures/setup/profiles-invalid-secret.json</code></li><li><code>metronome-cli/test/fixtures/setup/profiles-valid.json</code></li><li><code>metronome-cli/test/golden/setup/quickstart.json</code></li><li><code>metronome-cli/test/golden/setup/resolve.lev-sandbox.json</code></li><li><code>metronome-cli/test/golden/setup/template.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Input normalization contract</h2>
+          <p><code>input.normalize</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use metro input normalize to turn local JSON/YAML workflow shape inputs and reviewed expert API request envelopes into stable canonical JSON, validation findings, and deterministic hashes before preview, proof, or future apply work.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain input.normalize --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>4</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-docs-explain-input-normalize-golden</code></li><li><code>metro-input-files</code></li><li><code>metro-input-normalize</code></li><li><code>metro-input-normalize-api-golden</code></li><li><code>metro-input-normalize-shape-golden</code></li><li><code>metro-input-reference</code></li><li><code>metro-input-reference-golden</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>metronome-cli/src/api-catalog/validation.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/docs/input-reference.js</code></li><li><code>metronome-cli/src/input/files.js</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/test/golden/docs/input-reference.json</code></li><li><code>metronome-cli/test/golden/input/normalize.api-contracts-create-yaml.json</code></li><li><code>metronome-cli/test/golden/input/normalize.pro-annual-yaml.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>JSON output anatomy</h2>
+          <p><code>output.anatomy</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use this topic to read metro JSON output consistently: identify the schema version first, check live-execution flags and API access, inspect status/refusal fields, then follow generatedFrom, sourceIds, sources, payload hashes, and nextSafeStep before using the output as local evidence.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain output.anatomy --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>6</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>example:api.catalog.contracts</code></li><li><code>example:api.explain.contracts-create</code></li><li><code>example:api.preflight.contracts-create</code></li><li><code>example:api.preview.contracts-create</code></li><li><code>example:api.readiness</code></li><li><code>metro-api-preview-golden</code></li><li><code>metro-api-read-pipeline-golden</code></li><li><code>metro-command-catalog</code></li><li><code>metro-command-reference-golden</code></li><li><code>metro-docs-explain-output-anatomy-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metro-input-normalize-shape-golden</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/README.md</code></li><li><code>docs/metronome-cli/site/integration.html</code></li><li><code>metronome-cli/src/api-catalog/preview.js</code></li><li><code>metronome-cli/src/api-catalog/read-pipeline.js</code></li><li><code>metronome-cli/src/commands/catalog.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/test/golden/api/catalog.contracts.json</code></li><li><code>metronome-cli/test/golden/api/explain.contracts-create.json</code></li><li><code>metronome-cli/test/golden/api/preflight.contracts-create.template.json</code></li><li><code>metronome-cli/test/golden/api/preview.contracts-create.sandbox.json</code></li><li><code>metronome-cli/test/golden/api/read-pipeline.contracts-get.dry-run.sandbox.json</code></li><li><code>metronome-cli/test/golden/api/readiness.json</code></li><li><code>metronome-cli/test/golden/docs/command-reference.json</code></li><li><code>metronome-cli/test/golden/docs/explain.output-anatomy.json</code></li><li><code>metronome-cli/test/golden/input/normalize.pro-annual-yaml.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Refusal troubleshooting</h2>
+          <p><code>refusal.troubleshooting</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use this topic when metro refuses a live read, live apply, unsupported workflow apply, or unsafe input: keep the refusal as a safety signal, identify the schema and blocked command, then gather the local preview, preflight, gate, audit, read-back, and approval evidence named by nextSafeStep before retrying any narrower local command.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain refusal.troubleshooting --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>7</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>example:api.preflight.contracts-create</code></li><li><code>example:api.preview.contracts-create</code></li><li><code>example:api.readiness</code></li><li><code>metro-api-read-refusal-golden</code></li><li><code>metro-api-readiness-golden</code></li><li><code>metro-command-catalog</code></li><li><code>metro-command-reference-golden</code></li><li><code>metro-docs-explain-output-anatomy-golden</code></li><li><code>metro-docs-explain-refusal-troubleshooting-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>docs/API_OPERATIONS.md</code></li><li><code>docs/SAFETY.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>metronome-cli/src/api-catalog/read-refusal.js</code></li><li><code>metronome-cli/src/api-catalog/readiness.js</code></li><li><code>metronome-cli/src/commands/catalog.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/test/golden/api/preflight.contracts-create.template.json</code></li><li><code>metronome-cli/test/golden/api/preview.contracts-create.sandbox.json</code></li><li><code>metronome-cli/test/golden/api/read.refusal.contracts-get-v2.sandbox.json</code></li><li><code>metronome-cli/test/golden/api/readiness-summary.json</code></li><li><code>metronome-cli/test/golden/api/readiness.json</code></li><li><code>metronome-cli/test/golden/docs/command-reference.json</code></li><li><code>metronome-cli/test/golden/docs/explain.output-anatomy.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Billing-provider attachment workflow</h2>
+          <p><code>billing-provider.attachment</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>Use the local Stripe billing-provider attachment shape to validate delivery method scope, existing configuration policy, Stripe draft behavior, and read-back evidence before any future customer billing-provider write is considered.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain billing-provider.attachment --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>11</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>endpoint-matrix</code></li><li><code>metro-billing-provider-attach-fixture</code></li><li><code>metro-billing-provider-inspect-plan-golden</code></li><li><code>metro-billing-provider-preview-golden</code></li><li><code>metro-docs-explain-billing-provider-attachment-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metronome-stripe-delivery</code></li><li><code>official-billing-provider</code></li><li><code>official-billing-provider-get</code></li><li><code>official-customer-get</code></li><li><code>official-customer-update-config</code></li><li><code>official-invoice-list</code></li><li><code>official-list-configured-billing-providers</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/inspect/index.js</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/preview/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/shapes/index.js</code></li><li><code>metronome-cli/src/validators/index.js</code></li><li><code>metronome-cli/test/fixtures/stripe-billing-provider-valid.json</code></li><li><code>metronome-cli/test/golden/docs/explain.billing-provider-attachment.json</code></li><li><code>metronome-cli/test/golden/inspect/billing-provider.plan.production.json</code></li><li><code>metronome-cli/test/golden/stripe-billing-provider-attachment-preview.sandbox.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Stripe send_invoice customers (billing provider + delivery)</h2>
+          <p><code>send-invoice.stripe</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>Accounts that receive invoices via Stripe (send_invoice / wire-pay) need a Stripe billing-provider configuration on the Metronome customer before paid contracts, plan moves, or top-ups. Collection method must be send_invoice, delivery_method_id must be reviewed for multi-entity delivery, and billingProvider.get read-back must pass before contracts.create.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain send-invoice.stripe --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>7</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <h3>Sources</h3>
+        </article>
+        <article class="reference-card">
+          <h2>Contract transitions, trial expiry, and rebuy</h2>
+          <p><code>contract-transitions.rebuy</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>RENEWAL transitions are for active predecessor handoffs (metro contract move-plan). Expired free trials and other lapsed contracts must use fresh contracts/create without transition. Active trials are not move-plan eligible; use extend-trial or truncate-then-create.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain contract-transitions.rebuy --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>5</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <h3>Sources</h3>
+        </article>
+        <article class="reference-card">
+          <h2>Customer setup preview workflow</h2>
+          <p><code>customer.setup</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>Use the local customer-setup shape to validate customer identity, ingest alias collision review, optional Stripe billing-provider configuration, customer configuration, read-back checks, and rollback planning before any customer create workflow is considered.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain customer.setup --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>10</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>endpoint-matrix</code></li><li><code>metro-customer-setup-fixtures</code></li><li><code>metro-customer-setup-preview-golden</code></li><li><code>metro-docs-explain-customer-setup-golden</code></li><li><code>metro-docs-explain-topic-index-golden</code></li><li><code>metronome-customers-hierarchies</code></li><li><code>metronome-stripe-delivery</code></li><li><code>official-billing-provider</code></li><li><code>official-customer-create</code></li><li><code>official-customer-get</code></li><li><code>official-customer-list</code></li><li><code>official-customer-update-config</code></li><li><code>official-invoice-list</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/list-customers.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/preview/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/shapes/index.js</code></li><li><code>metronome-cli/src/validators/index.js</code></li><li><code>metronome-cli/test/fixtures/customer-setup-valid.json</code></li><li><code>metronome-cli/test/golden/customer-setup-preview.sandbox.json</code></li><li><code>metronome-cli/test/golden/docs/explain.customer-setup.json</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Dimensional rate-card workflow (action codes via addRates)</h2>
+          <p><code>rate-cards.dimensional</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>One command for new codes: metro dimensional new-code --all discovers every live dimensional rate card (sandbox + prod), dry-runs addRates, prints the exact --apply line. For bulk legacy-matrix cutover only, use metro dimensional cutover plan|apply. Do not create products or billable metrics per action code.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain rate-cards.dimensional --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>12</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>endpoint-matrix</code></li><li><code>official-product-create</code></li><li><code>official-rate-card-add-rates</code></li><li><code>official-rate-card-get-rates</code></li><li><code>official-rate-card-get-rate-schedule</code></li><li><code>official-usage-groups</code></li><li><code>pricing-catalog</code></li><li><code>billable-metrics</code></li><li><code>metro-dimensional-rate-card-shape</code></li><li><code>metro-dimensional-rate-card-runbook</code></li></ul>
+          <h3>Sources</h3>
+        </article>
+        <article class="reference-card">
+          <h2>Workspace-aware plan routing</h2>
+          <p><code>workspace.routing</code> <span class="status-pill local">local-preview-backed</span></p>
+          <p>Use metro workspace explain, metro plan &lt;intent&gt;, and metro route --goal to pick optimal shapes, refuse suboptimal API paths (e.g. products.create for a new action code), and bind sandbox/production via tenant profiles. For dimensional action codes start with metro docs explain rate-cards.dimensional --json.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain workspace.routing --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>3</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>metro-workspace-routing</code></li></ul>
+          <h3>Sources</h3>
+        </article>
+        <article class="reference-card">
+          <h2>Contract override inspection</h2>
+          <p><code>contract-overrides.inspection</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use contracts.getRateSchedule for customer-specific contract prices that must include contract-level overrides; use rateCards.getRates for rate-card source prices before customer contract overrides.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain contract-overrides.inspection --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>6</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>endpoint-matrix</code></li><li><code>local-probe-prod-all-rates</code></li><li><code>metro-api-read-mock-contracts-rate-schedule-golden</code></li><li><code>metro-api-read-mock-rate-cards-get-rates-golden</code></li><li><code>metro-api-read-pipeline-contracts-rate-schedule-golden</code></li><li><code>metro-api-read-pipeline-rate-cards-get-rates-golden</code></li><li><code>metro-api-read-plan-golden-contracts-rate-schedule</code></li><li><code>metro-api-read-plan-golden-rate-cards-get-rates</code></li><li><code>official-contract-get-rate-schedule</code></li><li><code>official-rate-card-get-rates</code></li><li><code>packages-contracts</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-rates.md</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/test/fixtures/api-contracts-rate-schedule-mock-response.json</code></li><li><code>metronome-cli/test/fixtures/api-contracts-rate-schedule-valid.json</code></li><li><code>metronome-cli/test/golden/api/read-pipeline.contracts-rate-schedule.dry-run.sandbox.json</code></li><li><code>metronome-cli/test/golden/api/read-pipeline.rate-cards-get-rates.dry-run.sandbox.json</code></li><li><code>metronome/probe-prod-all-rates.js</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Product rate retirement read-back</h2>
+          <p><code>product-rate-retirement.readback</code> <span class="status-pill local">local-proof-backed</span></p>
+          <p>Use rateCards.addRates only as a reviewed future write for closing rates; verify product retirement with rateCards.getRates, rateCards.getRateSchedule, products.get, and invoice-impact evidence before any product archive is considered.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Explain command</h3>
+              <p><code>metro docs explain product-rate-retirement.readback --json</code></p>
+            </section>
+            <section>
+              <h3>API access</h3>
+              <p>none</p>
+            </section>
+            <section>
+              <h3>Related commands</h3>
+              <p>14</p>
+            </section>
+          </div>
+          <h3>Source IDs</h3>
+          <ul class="compact-list"><li><code>danger-zone</code></li><li><code>endpoint-matrix</code></li><li><code>local-probe-prod-all-rates</code></li><li><code>metro-api-read-audit-products-get-fixture</code></li><li><code>metro-api-read-audit-products-get-golden</code></li><li><code>metro-api-read-audit-rate-cards-get-rates-fixture</code></li><li><code>metro-api-read-audit-rate-cards-get-rates-golden</code></li><li><code>metro-api-read-pipeline-products-get-golden</code></li><li><code>metro-api-read-pipeline-rate-card-schedule-golden</code></li><li><code>metro-api-read-pipeline-rate-cards-get-rates-golden</code></li><li><code>metro-api-read-plan-golden-products-get</code></li><li><code>metro-api-read-plan-golden-rate-card-schedule</code></li><li><code>metro-api-read-plan-golden-rate-cards-get-rates</code></li><li><code>metro-docs-explain-product-rate-retirement-readback-golden</code></li><li><code>metro-product-retirement-preview-golden</code></li><li><code>official-product-archive</code></li><li><code>official-product-get</code></li><li><code>official-rate-card-add-rates</code></li><li><code>official-rate-card-get-rate-schedule</code></li><li><code>official-rate-card-get-rates</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md#product-or-rate-retirement</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md#rate-card-rules</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/products/get-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-rates.md</code></li><li><code>metronome-cli/src/docs/explain.js</code></li><li><code>metronome-cli/src/shapes/index.js</code></li><li><code>metronome-cli/src/validators/index.js</code></li><li><code>metronome-cli/test/fixtures/api-read-audit-products-get-valid.jsonl</code></li><li><code>metronome-cli/test/fixtures/product-rate-retirement-valid.json</code></li><li><code>metronome-cli/test/golden/product-rate-retirement-preview.sandbox.json</code></li><li><code>metronome-cli/test/golden/proof/package-archive.package-alias-archive-handoff.sandbox-template.json</code></li><li><code>metronome/probe-prod-all-rates.js</code></li></ul>
+        </article>
+      </section>
+
+      <section id="lookup-kinds" class="generated-section">
+        <h2>Lookup Kinds</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Kind</th>
+                <th>Prefixes</th>
+                <th>Unprefixed exact match</th>
+                <th>Count</th>
+                <th>Example topics</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>api-endpoint</code></td><td><ul class="compact-list"><li><code>api:</code></li><li><code>endpoint:</code></li></ul></td><td>yes</td><td>69</td><td><ul class="compact-list"><li><code>usage.ingest</code></li><li><code>usage.groups</code></li><li><code>usage.batch</code></li><li><code>events.search</code></li></ul></td><td>Reviewed Metronome endpoint IDs from the local expert API catalog.</td></tr>
+              <tr><td><code>api-family</code></td><td><ul class="compact-list"><li><code>family:</code></li></ul></td><td>yes</td><td>14</td><td><ul class="compact-list"><li><code>billable-metrics</code></li><li><code>billing-provider</code></li><li><code>contracts</code></li><li><code>credits</code></li></ul></td><td>Endpoint-family summaries derived from the reviewed API catalog.</td></tr>
+              <tr><td><code>command</code></td><td><ul class="compact-list"><li><code>command:</code></li></ul></td><td>yes</td><td>140</td><td><ul class="compact-list"><li><code>command:input.normalize</code></li><li><code>command:docs.explain</code></li><li><code>command:api.read-plan</code></li></ul></td><td>Supported local command metadata from the command catalog.</td></tr>
+              <tr><td><code>shape</code></td><td><ul class="compact-list"><li><code>shape:</code></li></ul></td><td>yes</td><td>16</td><td><ul class="compact-list"><li><code>shape:customer-setup</code></li><li><code>shape:pro-annual</code></li><li><code>shape:pro-annual-self-serve-v2</code></li><li><code>shape:free-credit-trial</code></li></ul></td><td>Workflow shape summaries and validator links from the shape catalog.</td></tr>
+              <tr><td><code>validator-rule</code></td><td><ul class="compact-list"><li><code>rule:</code></li><li><code>validator:</code></li></ul></td><td>yes</td><td>68</td><td><ul class="compact-list"><li><code>MTR-TENANT-001</code></li><li><code>MTR-TENANT-002</code></li><li><code>MTR-TENANT-003</code></li><li><code>MTR-TENANT-004</code></li></ul></td><td>Validator rules, severities, and remediation guidance.</td></tr>
+              <tr><td><code>gotcha</code></td><td><ul class="compact-list"><li><code>gotcha:</code></li></ul></td><td>no</td><td>59</td><td><ul class="compact-list"><li><code>gotcha:tenant-selected-by-key</code></li><li><code>gotcha:env-file-not-authorization</code></li><li><code>gotcha:never-infer-production-from-key-presence</code></li><li><code>gotcha:fingerprints-not-key-values</code></li></ul></td><td>Known failure modes from the gotcha register.</td></tr>
+              <tr><td><code>permission-scope</code></td><td><ul class="compact-list"><li><code>scope:</code></li><li><code>policy:</code></li></ul></td><td>yes</td><td>25</td><td><ul class="compact-list"><li><code>metronome:billable-metrics:read</code></li><li><code>metronome:billable-metrics:write</code></li><li><code>metronome:billing-provider:read</code></li><li><code>metronome:billing-provider:write</code></li></ul></td><td>Permission scopes and owner/approval policy requirements.</td></tr>
+              <tr><td><code>example-fixture</code></td><td><ul class="compact-list"><li><code>example:</code></li></ul></td><td>no</td><td>8</td><td><ul class="compact-list"><li><code>example:api.catalog.contracts</code></li><li><code>example:api.explain.contracts-create</code></li><li><code>example:api.search.contract-create</code></li><li><code>example:api.diff.contracts-create-vs-update-end-date</code></li></ul></td><td>Checked command/output fixtures used as local proof examples.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="source-boundary" class="generated-section">
+        <h2>Source Boundary</h2>
+        <div class="reference-columns">
+          <section>
+            <h3>API access</h3>
+            <p>none</p>
+            <p>Live execution enabled: no</p>
+          </section>
+          <section>
+            <h3>Next safe step</h3>
+            <p>Run metro docs explain &lt;topic&gt; --json for a single topic, or use explicit prefixes such as command:, shape:, gotcha:, rule:, scope:, policy:, and example: to avoid ambiguous IDs. This index does not authorize live reads or writes.</p>
+          </section>
+          <section>
+            <h3>Source IDs</h3>
+          </section>
+          <section>
+            <h3>Sources</h3>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

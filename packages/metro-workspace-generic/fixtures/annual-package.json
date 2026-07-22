@@ -1,0 +1,20 @@
+{
+  "packageAlias": "pro_annual",
+  "uniquenessKey": "pkg:pro-annual:2126-07-01",
+  "rateCardId": "<sandbox-rate-card-id>",
+  "startingAt": "2126-07-01T00:00:00.000Z",
+  "annualPlanFeeCents": 120000,
+  "billingFrequency": "ANNUAL",
+  "creditGrantMode": "monthly-drip",
+  "annualCreditsTotal": 24000,
+  "fixedProductId": "<usage-product-id>",
+  "accessCreditTypeId": "<access-credit-type-id>",
+  "commitName": "Annual plan credits",
+  "billingProvider": {
+    "configured": true,
+    "deliveryMethod": "direct_to_billing_provider"
+  },
+  "stripeBehavior": "leave_draft",
+  "creditSeparateFromPlanFeeReviewed": true,
+  "packageAliasCollisionReviewed": true
+}

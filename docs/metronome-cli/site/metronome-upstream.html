@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome upstream changelog - metro</title>
+    <meta name="description" content="Every Metronome changelog entry with exact official links and metro coverage status, plus batch/large-request shortcuts.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <script>
+      (function applySavedTheme() {
+        try {
+          const saved = localStorage.getItem('metro-docs-theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      }());
+    </script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro home">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="">
+          </a>
+          <span>metro</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Upstream product</p>
+        <h1>Metronome changelog → metro coverage</h1>
+        <p>
+          Official source:
+          <a href="https://docs.metronome.com/changelog">docs.metronome.com/changelog</a>.
+          Metro does not auto-ingest OpenAPI. This inventory keeps shapes and the
+          endpoint matrix honest. Full link-by-link list:
+          <a href="../METRONOME_UPSTREAM_CHANGELOG.md">METRONOME_UPSTREAM_CHANGELOG.md</a>
+          · machine:
+          <a href="metronome-upstream.json">metronome-upstream.json</a>.
+        </p>
+      </header>
+
+      <section id="gaps" class="generated-section">
+        <h2>Open gaps</h2>
+        <ul>
+          <li>
+            <strong>GAP</strong> May 29, 2026 - Configurable rounding for prorated
+            subscriptions and recurring commits: no shape/validator yet.
+          </li>
+          <li>
+            <strong>GAP</strong> February 5, 2026 - Get net balance API: in the
+            endpoint matrix, not yet a reviewed api-catalog ID
+            (<code>POST /v1/contracts/customerBalances/getNetBalance</code>).
+          </li>
+        </ul>
+        <pre><code>npm run docs:upstream:check
+npm run docs:upstream:check -- --fetch   # live drift vs changelog.md
+node scripts/generate-metronome-upstream.js --fetch</code></pre>
+      </section>
+
+      <section id="batch" class="generated-section">
+        <h2>Batch / large requests</h2>
+        <p>Use metro shortcuts that already paginate or batch-bound - do not invent fleet loops.</p>
+        <ul>
+          <li><code>metro package list</code> - full tenant package inventory (<code>next_page</code>)</li>
+          <li><code>metro package customers</code> - contracts on a package</li>
+          <li><code>metro contract move-plan bulk-preflight|bulk-apply</code> - roster + <code>--delay-ms</code></li>
+          <li><code>metro dimensional new-code --all</code> - fleet rate-card append</li>
+          <li>Reviewed <code>usage.batch</code> / <code>usage.groups</code> - pagination in <strong>query</strong>, not body</li>
+          <li>Ingest ≤100 events/batch; <code>addRates</code> ≤100 rows; retry on 429</li>
+        </ul>
+        <p>
+          Prefer <strong>getNetBalance</strong> once catalogued instead of N+1 balance pages.
+          See TEAM-QUICKSTART § Batch and
+          <a href="https://docs.metronome.com/guides/events/high-volume-ingestion">high-volume ingestion</a>.
+        </p>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

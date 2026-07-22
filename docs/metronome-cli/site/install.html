@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Install And Setup</title>
+    <meta name="description" content="Install metro - the safe Metronome CLI for billing teams.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header" data-source="one-goal safety architecture metro-input-reference metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-topic-index-golden metro-docs-explain-install-troubleshooting-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden metro-api-catalog metro-api-catalog-golden metro-api-search metro-api-search-golden metro-api-diff metro-api-diff-golden metro-api-export metro-api-export-golden metro-docs-explain metro-docs-explain-golden metro-docs-explain-contract-overrides-golden metro-api-readiness metro-api-readiness-golden metro-api-readiness-summary-golden metro-api-read-plan metro-api-read-plan-golden metro-api-read-preflight metro-api-read-preflight-golden metro-api-read-gate metro-api-read-gate-profile-resolution-fixture metro-api-read-mock metro-api-read-mock-response-fixture metro-api-read-mock-golden metro-api-read-pipeline metro-api-read-pipeline-golden metro-api-read-result metro-api-read-audit metro-api-read-audit-fixture metro-api-approval-policies metro-api-approval-policies-golden metro-install-test metro-package-test metro-setup-profiles metro-setup-fixtures">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome CLI</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">GitHub install</p>
+        <h1>Install metro. Then look up a customer - not Metronome screens.</h1>
+        <p>
+          Metro is for billing engineers who need billing answers without learning
+          Metronome's UI or config maze. Install the standalone CLI from the
+          private GitHub repo (no full ops checkout). Prove it locally with no
+          API key. Live reads and writes stay gated: you confirm before anything
+          touches a customer.
+        </p>
+        <div class="summary-grid">
+          <article>
+            <span>Current path</span>
+            <strong>private GitHub install</strong>
+          </article>
+          <article>
+            <span>Built for</span>
+            <strong>engineers, not billing UI experts</strong>
+          </article>
+          <article>
+            <span>Secrets</span>
+            <strong>env var names only</strong>
+          </article>
+          <article>
+            <span>Live APIs</span>
+            <strong>guarded allowlist only</strong>
+          </article>
+        </div>
+        <nav class="reference-jumps" aria-label="Install guide sections">
+          <strong>Page index</strong>
+          <a href="#first-safe-preview">
+            <span>First safe preview</span>
+            <small>Prove install works before any API key - no customer risk.</small>
+          </a>
+          <a href="#current-local">
+            <span>GitHub install path</span>
+            <small>One command → global <code>metro</code> binary.</small>
+          </a>
+          <a href="agents.html">
+            <span>Agent harnessing</span>
+            <small>Use Claude / Cursor / Codex with metro safely.</small>
+          </a>
+          <a href="#guarded-live">
+            <span>Guarded live ops</span>
+            <small>When you need keys and confirmation tokens.</small>
+          </a>
+          <a href="#target-install">
+            <span>Registry status</span>
+            <small>npm publish is future - GitHub install is today.</small>
+          </a>
+          <a href="#troubleshooting">
+            <span>Troubleshooting</span>
+            <small>ENOTDIR, missing binary, profile blockers.</small>
+          </a>
+        </nav>
+      </header>
+
+      <section class="generated-section" id="first-safe-preview" data-source="one-goal safety metro-safe-preview-quickstart metro-input-files metro-input-normalize metro-input-reference metro-input-reference-html metro-setup-quickstart metro-install-test metro-setup-profiles metro-setup-fixtures metro-setup-resolve-golden metro-golden-tests">
+        <h2>First Safe Preview</h2>
+        <div class="minimum-success-path" aria-label="Minimum success path">
+          <div class="minimum-success-path-heading">
+            <span>Minimum success path</span>
+            <strong>Install from GitHub, print the quickstart, then run its local checks.</strong>
+          </div>
+          <ol>
+            <li>
+              <span>Install</span>
+              <code>npm install -g git+https://github.com/metrocli/metro.git</code>
+            </li>
+            <li>
+              <span>Guide</span>
+              <code>metro setup quickstart --shell | zsh</code>
+            </li>
+            <li>
+              <span>Discover</span>
+              <code>metro schema --json</code><br>
+              <code>metro docs input-reference --json</code>
+            </li>
+            <li>
+              <span>Template</span>
+              <code>metro setup template --json</code>
+            </li>
+            <li>
+              <span>Bind</span>
+              <code>metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile my-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json</code>
+            </li>
+            <li>
+              <span>Validate and preview</span>
+              <code>metro validate --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --json</code><br>
+              <code>metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --sandbox --json</code>
+            </li>
+          </ol>
+          <p>
+            The quickstart shell output writes sample files under
+            <code>${TMPDIR:-/tmp}/metro-quickstart</code> and runs the installed
+            <code>metro</code> commands above. Stop when the preview emits
+            <code>metro.preview.v1</code> with a sandbox tenant and payload
+            hash.
+          </p>
+        </div>
+        <div class="reference-stack">
+          <article class="reference-card">
+            <h2>Terminal guide</h2>
+            <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+metro setup quickstart --shell | zsh
+metro setup quickstart --json</code></pre>
+            <p>
+              <code>--shell</code> prints the copy/paste command block; piping
+              it to <code>zsh</code> executes the block, creates temp sample
+              files, and runs the first safe preview using the installed binary.
+              <code>--json</code> prints the same contract, expected output
+              cues, source links, and safety boundaries.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Prerequisites</h2>
+            <p>
+              Use Node.js and npm plus GitHub access to
+              <code>metrocli/metro</code>. Users do not need any parent billing-operations monorepo checkout. Do not load
+              <code>.env</code> files; the quickstart prints only secret-free
+              local evidence.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Run the installed path</h2>
+            <pre><code>metro setup quickstart --shell | zsh
+METRO_QUICKSTART_DIR="${TMPDIR:-/tmp}/metro-quickstart"
+metro schema --json
+metro docs input-reference --json
+metro setup template --json
+metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile my-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json
+metro validate --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --json
+metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --sandbox --json</code></pre>
+            <p>
+              The first command runs the complete shell block. After it
+              finishes, the sample profile and package input live in the temp
+              directory. The schema, setup, validate, and preview commands then
+              prove the first package workflow locally through the installed
+              <code>metro</code> binary.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Expected preview shape</h2>
+            <pre><code>{
+  "schemaVersion": "metro.preview.v1",
+  "workflow": "package.create",
+  "shape": "pro-annual",
+  "tenant": "sandbox",
+  "payloadHash": "sha256:...",
+  "blocked": false
+}</code></pre>
+            <p>
+              The preview is sandbox-labeled, hash-bound, and local-only. A
+              green preview is not production approval and does not authorize
+              live reads, live writes, Stripe delivery, or package apply.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Automation integration contract</h2>
+            <p>
+              Use <code>metro schema --json</code> for command discovery and
+              parse only documented JSON schemas from stdout. Validation
+              failures exit <code>1</code>. Live-read, live-write, or
+              unsupported-operation refusals exit <code>2</code> and may emit
+              <code>metro.refusal.v1</code> or endpoint-specific refusal JSON
+              on stderr.
+            </p>
+            <p>
+              Treat every <code>--json</code> payload as local evidence unless
+              the current turn explicitly authorizes the exact live operation.
+              Do not infer authorization from profile files, environment
+              variable names, key presence, fixture paths, preview hashes, or
+              passing apply-gate validation.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Next safe step</h2>
+            <p>
+              Use <code>metro docs command-reference --html</code> or
+              <code>metro api readiness --summary --json</code> to inspect
+              broader local coverage, then <code>metro api readiness --json</code>
+              for endpoint-level detail. Before any future live operation,
+              require exact current-turn authorization plus the preflight,
+              audit, sandbox proof, read-back, rollback, and approval gates
+              documented here.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="generated-section" id="current-local">
+        <h2>GitHub Install Path</h2>
+        <div class="section-grid">
+          <article class="card">
+            <h3>1. Install the standalone package</h3>
+            <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+metro setup quickstart --shell | zsh</code></pre>
+            <p>
+              Installs the CLI directly from the private GitHub repository and
+              exposes the global <code>metro</code> binary. Users do not need to
+              clone or download the full operations workspace.
+            </p>
+          </article>
+          <article class="card">
+            <h3>2. Discover the command surface</h3>
+            <pre><code>metro schema --json</code></pre>
+            <p>
+              Prints command, mode, status, API-access, schema, and exit-code
+              contracts from the same catalog used by the generated command
+              reference.
+            </p>
+          </article>
+          <article class="card">
+            <h3>3. Inspect reviewed endpoint IDs</h3>
+            <pre><code>metro api catalog --family contracts --json
+metro api search contract create --json
+metro api diff contracts.create contracts.updateEndDate --json
+metro api export --family contracts --json
+metro docs explain contracts.create --json
+metro docs explain --list --json
+metro docs explain --list --html
+metro docs explain first-safe-preview --json
+metro docs explain install.troubleshooting --json
+metro release readiness --json
+metro release artifact-manifest --json
+metro release retention-policy template --json
+metro release retention-policy validate --file policy.json --json
+metro release evidence-plan --policy policy.json --json
+metro release evidence-check --dir &lt;artifact-dir&gt; --json
+metro docs explain package.publish-readiness --json
+metro docs explain input.normalize --json
+metro docs explain output.anatomy --json
+metro docs explain contract-overrides.inspection --json
+metro docs explain product-rate-retirement.readback --json
+metro api scopes --json
+metro api approvals --json
+metro api readiness --summary --json
+metro api read-plan contracts.get.v2 --file request.json --sandbox --json
+metro api read-preflight contracts.get.v2 --file request.json --sandbox --read-gate read-gate.json --confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME --json
+metro api read-gate validate --file read-gate.json --json
+metro api read-mock contracts.get.v2 --file request.json --read-gate read-gate.json --mock-response response.json --json
+metro api read-pipeline contracts.get.v2 --file request.json --read-gate read-gate.json --mock-response response.json --out read-audit.jsonl --actor agent-local-test --dry-run --json
+metro api read-result verify --file read-result.json --json
+metro api read-audit validate --file read-audit.jsonl --json</code></pre>
+            <p>
+              Prints source-linked endpoint IDs, catalog-derived permission
+              scopes, terminal search/diff/export/docs-explain output,
+              policy gates, owner/role approval policies, read-endpoint
+              readiness, local read-plan, read-preflight blockers,
+              read-pipeline, and read-audit evidence. Guarded live reads and
+              sandbox writes require explicit gates, confirmation tokens, and
+              configured tenant keys.
+            </p>
+          </article>
+          <article class="card">
+            <h3>4. Generate a profile skeleton</h3>
+            <pre><code>metro setup template --json
+metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json</code></pre>
+            <p>
+              Produces tenant-scoped profile JSON that names environment
+              variables and resolves one secret-free tenant binding. It does
+              not read <code>.env</code> files, print key values, or authorize
+              live API access.
+            </p>
+          </article>
+          <article class="card">
+            <h3>5. Bind expert API gate evidence</h3>
+            <pre><code>metro api preflight template --preview api-preview.json --profile-resolution profile-resolution.json --approval-id approval-local-contracts-create-001 --json
+metro api preflight validate --file api-preflight.json --json
+metro api apply-gate template --preview api-preview.json --preflight api-preflight.json --sandbox-proof api-sandbox-proof.json --profile-resolution profile-resolution.json --approval-id approval-local-contracts-create-001 --owner billing-ops --key-env METRONOME_SANDBOX_KEY --key-fingerprint fp_sandbox_contracts_create_reviewed --audit-log audit-logs/api-contracts-create-sandbox.jsonl --json</code></pre>
+            <p>
+              Binds the reviewed API preview to tenant-profile resolution,
+              sandbox proof, approval, key fingerprint, audit destination,
+              read-back, rollback, and idempotency evidence. Sandbox
+              <code>contracts.create</code> is the only live apply path today;
+              production writes and workflow applies remain blocked.
+            </p>
+          </article>
+          <article class="card">
+            <h3>6. Validate local input</h3>
+            <pre><code>metro validate --shape pro-annual --file pro-annual.json --json</code></pre>
+            <p>
+              Runs executable local rules against JSON or YAML fixture input
+              before any preview plan is rendered.
+            </p>
+          </article>
+          <article class="card">
+            <h3>7. Render a sandbox preview</h3>
+            <pre><code>metro package preview --shape pro-annual --file pro-annual.json --sandbox --json</code></pre>
+            <p>
+              Emits a local payload plan, side-effect summary, verification
+              plan, and canonical hash without loading Metronome clients.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="generated-section" id="guarded-live" data-source="metro-command-catalog metro-api-catalog metro-install-test">
+        <h2>Guarded Live Operations</h2>
+        <div class="section-grid">
+          <article class="card">
+            <h3>8. Guarded live operations (optional)</h3>
+            <pre><code>export METRONOME_SANDBOX_KEY='your-sandbox-key'
+metro api read contracts.get.v2 --file request.json --sandbox \
+  --read-gate read-gate.json \
+  --confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME --json
+metro api apply contracts.create --file request.json --sandbox \
+  --apply-gate api-apply-gate.json \
+  --approval-record api-approval-record.json \
+  --confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX --json</code></pre>
+            <p>
+              See <code>TEAM-QUICKSTART.md</code> in the installed package for
+              the full team onboarding path. Live reads are limited to
+              <code>contracts.get.v2</code>,
+              <code>customers.get</code>, and
+              <code>invoices.listForCustomer</code> per
+              <a href="https://docs.metronome.com/">Metronome API docs</a>.
+              Without keys and gates, these commands refuse on stderr with exit
+              code <code>2</code>.
+            </p>
+          </article>
+          <article class="card">
+            <h3>9. Keep workflow apply blocked</h3>
+            <pre><code>metro package apply --shape pro-annual --file package.json --prod</code></pre>
+            <p>
+              Workflow apply commands remain unsupported until reviewed preview hashes,
+              preflight evidence, sandbox proof, audit logs, read-back checks,
+              rollback, and approval gates exist.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="generated-section" id="target-install">
+        <h2>Npm Registry Status And Maintainer Proof</h2>
+        <div class="minimum-success-path" aria-label="Release decision gate" data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
+          <div class="minimum-success-path-heading">
+            <span>Release decision gate</span>
+            <strong>GitHub install is current; npm registry publishing remains blocked.</strong>
+          </div>
+          <ol>
+            <li>
+              <span>Allowed now</span>
+              <code>npm install -g git+https://github.com/metrocli/metro.git</code><br>
+              <code>metro setup quickstart --shell | zsh</code><br>
+              <code>npm run test:package</code><br>
+              <code>npm run test:install</code><br>
+              <code>metro release readiness --json</code><br>
+              <code>metro release artifact-manifest --json</code><br>
+              <code>metro release retention-policy template --json</code><br>
+              <code>metro release retention-policy validate --file policy.json --json</code><br>
+              <code>metro release evidence-plan --policy policy.json --json</code><br>
+              <code>metro release evidence-check --dir &lt;artifact-dir&gt; --json</code><br>
+              <code>metro docs explain package.publish-readiness --json</code>
+            </li>
+            <li>
+              <span>Blocked now</span>
+              <code>private:true removal</code><br>
+              <code>npm publish</code><br>
+              <code>npm token handling</code>
+            </li>
+            <li>
+              <span>Required first</span>
+              <code>registry destination</code><br>
+              <code>release owner and approver</code><br>
+              <code>reviewed artifact directory and retention policy</code><br>
+              <code>versioning, provenance, and integrity evidence</code>
+            </li>
+          </ol>
+          <p>
+            GitHub install is the current distribution path for authorized
+            users. Maintainer tarball proof shows the package can install from
+            source, but it is not npm registry proof, release approval, or
+            permission to add a publish workflow.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Command</th>
+                <th>Current status</th>
+                <th>What it proves</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Install</td>
+                <td><code>npm install -g git+https://github.com/metrocli/metro.git</code></td>
+                <td><span class="status-pill local">current</span></td>
+                <td>Authorized users install the standalone private GitHub repo and receive the global <code>metro</code> binary.</td>
+              </tr>
+              <tr data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
+                <td>Publish readiness</td>
+                <td><code>metro release readiness --json</code><br><code>metro release artifact-manifest --json</code><br><code>metro release retention-policy template --json</code><br><code>metro release retention-policy validate --file policy.json --json</code><br><code>metro release evidence-plan --policy policy.json --json</code><br><code>metro release evidence-check --dir &lt;artifact-dir&gt; --json</code><br><code>metro docs explain package.publish-readiness --json</code></td>
+                <td><span class="status-pill blocked">blocked</span></td>
+                <td>Reports the local package/install proof that exists, lists and plans the local release evidence artifacts to retain, validates the reviewed artifact directory and retention policy, and documents the registry, release provenance, approval, versioning, integrity, and publish dry-run evidence still required before internal publishing can be treated as ready.</td>
+              </tr>
+              <tr>
+                <td>Discover</td>
+                <td><code>metro schema --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Automation can inspect command contracts without scraping docs.</td>
+              </tr>
+              <tr>
+                <td>Catalog</td>
+                <td><code>metro api catalog --family contracts --json</code><br><code>metro api search contract create --json</code><br><code>metro api diff contracts.create contracts.updateEndDate --json</code><br><code>metro api export --family contracts --json</code><br><code>metro docs explain contracts.create --json</code><br><code>metro docs explain --list --json</code><br><code>metro docs explain --list --html</code><br><code>metro docs explain first-safe-preview --json</code><br><code>metro docs explain input.normalize --json</code><br><code>metro docs explain output.anatomy --json</code><br><code>metro docs explain contract-overrides.inspection --json</code><br><code>metro docs explain product-rate-retirement.readback --json</code><br><code>metro api scopes --json</code><br><code>metro api approvals --json</code><br><code>metro api readiness --summary --json</code><br><code>metro api readiness --json</code><br><code>metro api read-plan contracts.get.v2 --file request.json --sandbox --json</code><br><code>metro api read-preflight contracts.get.v2 --file request.json --sandbox --read-gate read-gate.json --confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME --json</code><br><code>metro api read-gate validate --file read-gate.json --json</code><br><code>metro api read-mock contracts.get.v2 --file request.json --read-gate read-gate.json --mock-response response.json --json</code><br><code>metro api read-pipeline contracts.get.v2 --file request.json --read-gate read-gate.json --mock-response response.json --out read-audit.jsonl --actor agent --dry-run --json</code><br><code>metro api read-result verify --file read-result.json --json</code><br><code>metro api read-audit validate --file read-audit.jsonl --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Expert users can inspect reviewed endpoint IDs, search and compare endpoint docs, export source-linked bundles, explain topics, review permission-scope gates, owner/role approval policies, read-endpoint readiness, local read-plan evidence, read-preflight blockers, read-mock proof, read-pipeline audit dry-runs, and read-audit evidence while live API execution remains blocked.</td>
+              </tr>
+              <tr>
+                <td>Guide</td>
+                <td><code>metro setup quickstart --shell | zsh</code><br><code>metro setup quickstart --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Prints the first safe preview path as a shell command block or JSON contract with expected output cues and safety boundaries from the CLI.</td>
+              </tr>
+              <tr>
+                <td>Configure</td>
+                <td><code>metro setup template --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Profiles name tenant-specific environment variables only.</td>
+              </tr>
+              <tr>
+                <td>Check</td>
+                <td><code>metro setup doctor --file profiles.json --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Reports variable presence by name without reading or printing secrets.</td>
+              </tr>
+              <tr>
+                <td>Bind</td>
+                <td><code>metro setup resolve --file profiles.json --profile my-sandbox --key-fingerprint fp_sandbox_reviewed --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Emits non-secret tenant-profile binding evidence without loading API clients.</td>
+              </tr>
+              <tr>
+                <td>Gate</td>
+                <td><code>metro api preflight template --preview api-preview.json --profile-resolution profile-resolution.json --json</code><br><code>metro api apply-gate template --preview api-preview.json --preflight api-preflight.json --sandbox-proof sandbox-proof.json --profile-resolution profile-resolution.json --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Binds preview, preflight, sandbox proof, and tenant-profile resolution evidence while expert API apply remains blocked.</td>
+              </tr>
+              <tr>
+                <td>Preview</td>
+                <td><code>metro package preview --shape pro-annual --file package.json --sandbox --json</code></td>
+                <td><span class="status-pill local">local</span></td>
+                <td>Builds a local plan and hash; no API-backed preview exists yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="generated-section" id="troubleshooting" data-source="metro-package-test metro-install-test metro-docs-explain-install-troubleshooting-golden metro-docs-explain-setup-troubleshooting-golden">
+        <h2>Setup Troubleshooting</h2>
+        <div class="reference-stack">
+          <article class="reference-card">
+            <h2><code>ENOTDIR</code> during global git install</h2>
+            <p>
+              If you previously ran <code>npm link</code> from a source
+              checkout, npm leaves a symlink at
+              <code>$(npm root -g)/@metro-dev/cli</code>. A later
+              <code>npm install -g git+https://github.com/metrocli/metro.git</code>
+              cannot rename that symlink and fails with
+              <code>ENOTDIR</code>.
+            </p>
+            <pre><code>npm unlink -g @metro-dev/cli
+npm install -g git+https://github.com/metrocli/metro.git
+metro setup quickstart --shell | zsh</code></pre>
+            <p>
+              Keep <code>npm link</code> for active source-checkout work. Use
+              the git install path when you want a standalone global copy.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Installed binary is missing</h2>
+            <p>
+              Re-run
+              <code>npm install -g git+https://github.com/metrocli/metro.git</code>
+              and then run <code>metro setup quickstart --shell | zsh</code>. If
+              <code>metro</code> is still not found, inspect your npm global
+              prefix and shell <code>PATH</code>.
+            </p>
+            <p>
+              Maintainers can also run
+              <code>npm run test:package</code> and
+              <code>npm run test:install</code> from the
+              source checkout before changing package metadata or setup
+              instructions.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Profile doctor reports missing variables</h2>
+            <p>
+              Add the named variables to the shell environment for an
+              authorized run. Do not paste raw key values into profile files,
+              fixtures, docs, screenshots, or changelog notes.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>A command asks for live inspect or apply</h2>
+            <p>
+              Use local <code>--plan</code>, <code>preview</code>, or
+              <code>validate</code> forms unless the current user turn
+              explicitly authorizes the exact live operation. The current CLI
+              intentionally refuses live reads and writes.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

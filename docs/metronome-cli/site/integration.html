@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Integration Guide</title>
+    <meta name="description" content="Automation and CI integration path for the local-first Metronome CLI.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header" data-source="one-goal safety architecture metro-command-catalog metro-input-reference metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-topic-index-golden metro-api-catalog metro-api-readiness metro-api-readiness-summary-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-setup-quickstart metro-setup-profiles metro-api-approval-policies metro-api-read-gate metro-api-read-pipeline metro-api-read-audit metro-api-apply-gate metro-api-apply-result metro-install-test metro-package-test">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome CLI</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Integration</p>
+        <h1>Integrate metro by contracts, not by scraped copy.</h1>
+        <p>
+          Use the CLI as a local evidence generator for automation, CI, and
+          agent workflows. Stable JSON contracts, exit codes, source-linked
+          command references, and explicit safety refusals are the integration
+          boundary. Guarded live read and sandbox write paths exist for a small
+          allowlist; everything else refuses until current-turn authorization
+          and gate evidence are satisfied.
+        </p>
+        <div class="summary-grid">
+          <article>
+            <span>Discovery</span>
+            <strong><code>metro schema --json</code></strong>
+          </article>
+          <article>
+            <span>Readiness</span>
+            <strong><code>metro api readiness --summary --json</code></strong>
+          </article>
+          <article>
+            <span>Exit codes</span>
+            <strong><code>0</code>, <code>1</code>, <code>2</code></strong>
+          </article>
+          <article>
+            <span>API access</span>
+            <strong>none by default</strong>
+          </article>
+        </div>
+        <nav class="reference-jumps" aria-label="Integration guide sections">
+          <strong>Page index</strong>
+          <a href="#contract">
+            <span>Runtime contract</span>
+            <small>Discover commands, schemas, modes, and exit behavior.</small>
+          </a>
+          <a href="#ci">
+            <span>CI checks</span>
+            <small>Run local verification without API keys or live tenants.</small>
+          </a>
+          <a href="#evidence">
+            <span>Evidence flow</span>
+            <small>Collect previews, gates, read mocks, and audit rows.</small>
+          </a>
+          <a href="#boundaries">
+            <span>Safety boundaries</span>
+            <small>Keep authorization and live execution out of automation.</small>
+          </a>
+        </nav>
+      </header>
+
+      <section class="generated-section" id="contract" data-source="metro-command-catalog metro-api-catalog metro-setup-quickstart safety">
+        <h2>Runtime Contract</h2>
+        <div class="reference-stack">
+          <article class="reference-card">
+            <h2>Start with machine-readable discovery</h2>
+            <pre><code>metro schema --json
+metro docs command-reference --json
+metro docs explain --list --html
+metro docs input-reference --json
+metro api catalog --json
+metro api scopes --json
+metro api approvals --json</code></pre>
+            <p>
+              Treat these outputs as the integration source for command IDs,
+              modes, required flags, schema versions, supported status, API
+              access, permission scopes, and owner approval policies. Do not
+              scrape prose from the home page when the CLI can emit the same
+              contract directly.
+            </p>
+          </article>
+          <article class="reference-card" data-source="metro-input-files metro-input-normalize metro-input-reference metro-input-normalize-shape-golden metro-input-normalize-api-golden metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-output-anatomy-golden metro-docs-explain-first-safe-preview-golden metro-docs-explain-topic-index-golden metro-docs-explain-reference-html metro-docs-explain-reference-page">
+            <h2>Normalize input before evidence work</h2>
+            <pre><code>metro docs explain --list --json
+metro docs explain --list --html
+metro docs explain first-safe-preview --json
+metro docs explain input.normalize --json
+metro docs explain output.anatomy --json
+metro input normalize --shape pro-annual --file pro-annual.yaml --json
+metro input normalize --api contracts.create --file contracts-create.yaml --json</code></pre>
+            <p>
+              Inspect the local topics first, then use
+              <code>metro.input.normalize.v1</code> output as the stable JSON
+              round-trip boundary for shape inputs and reviewed expert API
+              requests. Use <code>output.anatomy</code> to parse schema
+              versions, source links, hashes, refusal output, and next safe
+              steps before a downstream agent treats any JSON as evidence.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Handle exit codes explicitly</h2>
+            <dl class="exit-code-list">
+              <div>
+                <dt><code>0</code></dt>
+                <dd>Local command completed and emitted the requested contract or evidence.</dd>
+              </div>
+              <div>
+                <dt><code>1</code></dt>
+                <dd>Input, validation, fixture, or file-shape failure.</dd>
+              </div>
+              <div>
+                <dt><code>2</code></dt>
+                <dd>Safety refusal for unsupported live reads, live writes, or apply behavior.</dd>
+              </div>
+            </dl>
+            <p>
+              Safety refusals may emit <code>metro.refusal.v1</code> or
+              endpoint-specific refusal JSON on stderr. A refusal is a useful
+              integration result, not a reason to bypass the CLI.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="generated-section" id="ci" data-source="metro-install-test metro-package-test metro-api-readiness metro-api-readiness-summary-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-ci-local-checks-golden safety">
+        <h2>CI Checks</h2>
+        <div class="minimum-success-path" aria-label="CI-safe check sequence">
+          <div class="minimum-success-path-heading">
+            <span>Local-only</span>
+            <strong>Use checks that need no API keys and no tenant access.</strong>
+          </div>
+          <ol>
+            <li>
+              <span>Install</span>
+              <code>npm run test:install</code>
+            </li>
+            <li>
+              <span>Unit</span>
+              <code>npm run test:unit</code>
+            </li>
+            <li>
+              <span>Golden</span>
+              <code>npm run test:golden</code>
+            </li>
+            <li>
+              <span>Site</span>
+              <code>node docs/metronome-cli/site/verify-site.js</code>
+            </li>
+          </ol>
+          <p>
+            Add <code>npm run check:syntax</code> and
+            <code>npm run secrets:scan</code> for repository-level checks after
+            reviewing the root package scripts. These checks are local-only in
+            this workspace, but they still protect a production operations repo.
+          </p>
+        </div>
+        <div class="reference-stack">
+          <article class="reference-card">
+            <h2>Machine-readable CI topic</h2>
+            <pre><code>metro docs explain ci.local-checks --json</code></pre>
+            <p>
+              Use this topic when automation needs the local check sequence,
+              parse rules, recommended artifacts, and blocked assumptions in a
+              stable JSON contract instead of copying guidance from this page.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Readiness gate</h2>
+            <pre><code>metro api readiness --summary --json
+metro api readiness --json
+metro release readiness --json
+metro release artifact-manifest --json
+metro release retention-policy template --json
+metro release retention-policy validate --file policy.json --json
+metro release evidence-plan --policy policy.json --json
+metro release evidence-check --dir &lt;artifact-dir&gt; --json</code></pre>
+            <p>
+              Use the compact summary for quick gap counts, the full report
+              when a family or endpoint needs fixture-level review, and the
+              release commands to retain package/install evidence, validate
+              the reviewed retention policy, plan manual artifact capture, and
+              validate an operator-owned evidence bundle. Failed
+              evidence-check output includes <code>recoveryCommands</code> for
+              the missing or invalid required artifacts. These commands are
+              local checks and keep live execution, npm registry access, and
+              token handling disabled.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="generated-section" id="evidence" data-source="metro-api-read-gate metro-api-read-pipeline metro-api-read-audit metro-api-apply-gate metro-api-apply-result metro-setup-profiles">
+        <h2>Evidence Flow</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Need</th>
+                <th>Local command family</th>
+                <th>Automation rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tenant profile binding</td>
+                <td><code>metro setup resolve --file profiles.json --profile my-sandbox --json</code></td>
+                <td>Store tenant, env-var name, and reviewed fingerprint evidence, never key values.</td>
+              </tr>
+              <tr>
+                <td>Read evidence</td>
+                <td><code>metro api read-gate validate</code><br><code>metro api read-pipeline ... --dry-run --json</code></td>
+                <td>Use mocked responses and local audit rows until a future live-read runner exists.</td>
+              </tr>
+              <tr>
+                <td>Write readiness</td>
+                <td><code>metro api preview</code><br><code>metro api preflight validate</code><br><code>metro api apply-gate validate</code></td>
+                <td>Pass preview, preflight, sandbox-proof, approval, audit, read-back, rollback, and idempotency evidence before any future runner is considered.</td>
+              </tr>
+              <tr>
+                <td>Result verification</td>
+                <td><code>metro api apply-result validate</code></td>
+                <td>Verify only local result contracts; semantic live success still requires a guarded future apply runner and read-back evidence.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          For the first safe operator path, use the focused
+          <a href="install.html#first-safe-preview">install guide</a>. For
+          endpoint details, use the generated
+          <a href="api-reference.html#write-proof-ladder">write proof ladder</a>
+          and <a href="command-reference.html">command reference</a>.
+        </p>
+      </section>
+
+      <section class="generated-section" id="boundaries" data-source="safety api-ops metro-api-readiness metro-api-approval-policies">
+        <h2>Safety Boundaries</h2>
+        <div class="reference-stack">
+          <article class="reference-card">
+            <h2>Never infer authorization</h2>
+            <p>
+              Profile files, environment variable names, key presence, fixture
+              paths, preview hashes, apply-gate validation, and passing CI are
+              not authorization for live Metronome, Stripe, HubSpot, Hyperline,
+              PostHog, Slack, Zoom, SMTP, or customer-impacting work.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Keep live verbs out of automation</h2>
+            <p>
+              The current CLI exposes local validation, previews, plans,
+              mocked read pipelines, audit evidence, generated references, and
+              proof checks. It does not expose live expert API read or apply
+              commands. Do not wire automation to direct API clients as a
+              shortcut around that boundary.
+            </p>
+          </article>
+          <article class="reference-card">
+            <h2>Use source-linked next steps</h2>
+            <p>
+              Start broad with <code>metro api readiness --summary --json</code>.
+              Move to <code>metro api readiness --json</code> only when the
+              summary shows a gap or a reviewer needs endpoint-level evidence.
+              Update the changelog when docs, fixtures, generated pages, or
+              command contracts change.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

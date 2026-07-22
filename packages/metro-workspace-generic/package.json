@@ -1,0 +1,22 @@
+{
+  "name": "@metronome/metro-workspace-generic",
+  "version": "0.1.0",
+  "description": "Generic Metronome workspace intents for public metro CLI users.",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./model": "./src/model.js",
+    "./plan": "./src/plan.js",
+    "./catalog-bindings": "./src/catalog-bindings.js",
+    "./fixtures/*": "./fixtures/*"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "src/",
+    "fixtures/"
+  ],
+  "license": "Apache-2.0"
+}

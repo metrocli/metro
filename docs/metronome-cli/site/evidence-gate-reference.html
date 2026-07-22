@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Evidence Gate Reference</title>
+    <meta name="description" content="Generated evidence gate reference for preview-only Metronome CLI write shapes.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome in your terminal</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Generated from metronome-cli/src/docs/evidence-gate-reference.js</p>
+        <h1>Metronome CLI evidence gate reference</h1>
+        <p>This page is generated from the shape registry and local preflight, audit, sandbox-proof, and apply-gate template builders. It documents evidence gates only; live reads and writes remain disabled.</p>
+        <nav class="reference-jumps" aria-label="Evidence gate reference sections">
+          <strong>Page index</strong>
+          <a href="#evidence-gate-summary"><span>Evidence gate summary</span><small>Generated counts for mapped shapes, local template paths, preflight-only gaps, and disabled apply.</small></a>
+          <a href="#evidence-gates"><span>Evidence gates</span><small>Per-shape local preflight, audit, sandbox-proof, and apply-gate template coverage while live execution remains disabled.</small></a>
+        </nav>
+        <div id="evidence-gate-summary" class="summary-grid"><article><span>Mapped shapes</span><strong>14</strong></article><article><span>Full local paths</span><strong>14</strong></article><article><span>Preflight-only</span><strong>0</strong></article><article><span>Live apply enabled</span><strong>no</strong></article></div>
+      </header>
+
+      <section id="evidence-gates" class="generated-section reference-stack">
+        <article class="reference-card">
+          <h2>Customer Setup Preview</h2>
+          <p><code>customer.setup:customer-setup</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro customer setup preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro customer setup apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow customer.setup --shape customer-setup --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow customer.setup --shape customer-setup --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow customer.setup --shape customer-setup --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow customer.setup --shape customer-setup --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>GET /v1/customers?ingest_alias={alias}&amp;only_archived=false</code></li><li><code>POST /v1/customers</code></li><li><code>POST /v1/customers/{customer_id}/updateConfig</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/list-customers.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Pro Annual Package</h2>
+          <p><code>package.apply:pro-annual</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro package preview --shape pro-annual --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro package apply --shape pro-annual --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow package.apply --shape pro-annual --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow package.apply --shape pro-annual --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow package.apply --shape pro-annual --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow package.apply --shape pro-annual --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/packages/create</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Complimentary Credit Grant</h2>
+          <p><code>credit.apply:complimentary-credit-grant</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro credit preview --shape complimentary-credit-grant --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro credit apply --shape complimentary-credit-grant --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow credit.apply --shape complimentary-credit-grant --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow credit.apply --shape complimentary-credit-grant --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow credit.apply --shape complimentary-credit-grant --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow credit.apply --shape complimentary-credit-grant --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v2/contracts/edit</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>.cursor/skills/metronome-commits-credits/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Paid Credit Top-Up</h2>
+          <p><code>credit.apply:paid-credit-top-up</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro credit preview --shape paid-credit-top-up --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro credit apply --shape paid-credit-top-up --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow credit.apply --shape paid-credit-top-up --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow credit.apply --shape paid-credit-top-up --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow credit.apply --shape paid-credit-top-up --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow credit.apply --shape paid-credit-top-up --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v2/contracts/edit</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-commits-credits/SKILL.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Alias Archive Handoff</h2>
+          <p><code>package.archive:package-alias-archive-handoff</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro package archive preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro package archive apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow package.archive --shape package-alias-archive-handoff --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow package.archive --shape package-alias-archive-handoff --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow package.archive --shape package-alias-archive-handoff --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow package.archive --shape package-alias-archive-handoff --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/packages/archive</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/packages/archive-a-package.md</code></li><li><code>https://docs.metronome.com/api-reference/packages/get-a-package.md</code></li><li><code>https://docs.metronome.com/api-reference/list-all-packages.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Stripe Billing Provider Attachment</h2>
+          <p><code>billing-provider.attach:stripe-billing-provider-attachment</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro billing-provider preview --shape stripe-billing-provider-attachment --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro billing-provider apply --shape stripe-billing-provider-attachment --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/setCustomerBillingProviderConfigurations</code></li><li><code>POST /v1/customers/{customer_id}/updateConfig</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/set-up-account-level-billing-provider.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Plan Move Without Immediate Invoice</h2>
+          <p><code>contract.move-plan.apply:package-plan-move-no-immediate-invoice</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro contract move-plan preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro contract move-plan apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow contract.move-plan.apply --shape package-plan-move-no-immediate-invoice --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow contract.move-plan.apply --shape package-plan-move-no-immediate-invoice --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow contract.move-plan.apply --shape package-plan-move-no-immediate-invoice --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow contract.move-plan.apply --shape package-plan-move-no-immediate-invoice --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contracts/updateEndDate</code></li><li><code>POST /v1/contracts/create</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/TASK_PLAYBOOKS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Package Plan Move With Immediate Plan Fee</h2>
+          <p><code>contract.move-plan.apply:package-plan-move-immediate-invoice</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro contract move-plan preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro contract move-plan apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow contract.move-plan.apply --shape package-plan-move-immediate-invoice --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow contract.move-plan.apply --shape package-plan-move-immediate-invoice --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow contract.move-plan.apply --shape package-plan-move-immediate-invoice --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow contract.move-plan.apply --shape package-plan-move-immediate-invoice --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contracts/updateEndDate</code></li><li><code>POST /v1/contracts/create</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li><li><code>https://docs.metronome.com/guides/implement-metronome/core-concepts/how-invoicing-works</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Product Rate Retirement</h2>
+          <p><code>product.rate-retirement:product-rate-retirement</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro product retire preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro product retire apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow product.rate-retirement --shape product-rate-retirement --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow product.rate-retirement --shape product-rate-retirement --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow product.rate-retirement --shape product-rate-retirement --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow product.rate-retirement --shape product-rate-retirement --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contract-pricing/rate-cards/addRates</code></li><li><code>POST /v1/contract-pricing/products/archive</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>metronome/disable-sch052-on-rate-cards.js</code></li><li><code>metronome/archive-sch052.js</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/products/get-a-product.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Dimensional Rate-Card Preview</h2>
+          <p><code>rate-card.dimensional.apply:dimensional-rate-card</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro rate-card dimensional preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro rate-card dimensional apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow rate-card.dimensional.apply --shape dimensional-rate-card --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow rate-card.dimensional.apply --shape dimensional-rate-card --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow rate-card.dimensional.apply --shape dimensional-rate-card --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow rate-card.dimensional.apply --shape dimensional-rate-card --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contract-pricing/products/create</code></li><li><code>POST /v1/contract-pricing/rate-cards/addRates</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md</code></li><li><code>.cursor/skills/metronome-billable-metrics/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Draft Invoice Issue-Date Update</h2>
+          <p><code>invoice.issue-date-update:invoice-issue-date-update</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro invoice issue-date preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro invoice issue-date apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow invoice.issue-date-update --shape invoice-issue-date-update --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow invoice.issue-date-update --shape invoice-issue-date-update --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow invoice.issue-date-update --shape invoice-issue-date-update --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow invoice.issue-date-update --shape invoice-issue-date-update --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contracts/updateInvoiceIssueDate</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Direct Subscription Contract</h2>
+          <p><code>subscription.contract.apply:direct-subscription-contract</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro subscription contract preview --shape direct-subscription-contract --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro subscription contract apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow subscription.contract.apply --shape direct-subscription-contract --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow subscription.contract.apply --shape direct-subscription-contract --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow subscription.contract.apply --shape direct-subscription-contract --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow subscription.contract.apply --shape direct-subscription-contract --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/contracts/create</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-subscriptions-seats/SKILL.md</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>metronome/custom-contract-creator/payload-builders.js</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Usage Ingest Preview Plan</h2>
+          <p><code>usage.ingest-preview:usage-ingest-preview</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro usage ingest preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro usage ingest apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow usage.ingest-preview --shape usage-ingest-preview --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/customers/{customer_id}/previewEvents</code></li><li><code>POST /v1/ingest</code></li><li><code>POST /v1/ingest</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/ingest-events.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/preview-events.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/search-events.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Enterprise Custom Contract</h2>
+          <p><code>custom-contract.create:enterprise-custom-contract</code> <span class="status-pill local">full-local-template-path</span></p>
+          <p>Local-only: yes; API access: <code>none</code>; live execution enabled: no; apply enabled: no.</p>
+          <div class="reference-columns">
+            <section>
+              <h3>Template Coverage</h3>
+              <dl class="exit-code-list"><div><dt>preview</dt><dd>yes</dd></div><div><dt>preflightTemplate</dt><dd>yes</dd></div><div><dt>auditTemplate</dt><dd>yes</dd></div><div><dt>sandboxProofTemplate</dt><dd>yes</dd></div><div><dt>applyGateTemplate</dt><dd>yes</dd></div><div><dt>applyGateValidation</dt><dd>yes</dd></div></dl>
+            </section>
+            <section>
+              <h3>Commands</h3>
+              <ul class="compact-list"><li><code>metro custom-contract preview --file &lt;input.json|yaml&gt; --prod --json</code></li><li><code>metro custom-contract apply --file &lt;input.json|yaml&gt; --prod --confirm-hash &lt;hash&gt;</code></li><li><code>metro preflight template --workflow custom-contract.create --shape enterprise-custom-contract --prod --json</code></li><li><code>metro preflight validate --file &lt;preflight.json&gt; --json</code></li><li><code>metro audit template --workflow custom-contract.create --shape enterprise-custom-contract --prod --json</code></li><li><code>metro audit validate --file &lt;audit.jsonl&gt; --json</code></li><li><code>metro proof sandbox-template --workflow custom-contract.create --shape enterprise-custom-contract --json</code></li><li><code>metro proof validate --file &lt;sandbox-proof.json&gt; --json</code></li><li><code>metro apply-gate template --workflow custom-contract.create --shape enterprise-custom-contract --prod --json</code></li><li><code>metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></li></ul>
+            </section>
+            <section>
+              <h3>Endpoints</h3>
+              <ul class="compact-list"><li><code>POST /v1/customers</code></li><li><code>POST /v1/setCustomerBillingProviderConfigurations</code></li><li><code>POST /v1/contracts/create</code></li><li><code>POST /v2/contracts/edit</code></li><li><code>POST /v2/contracts/edit</code></li></ul>
+            </section>
+            <section>
+              <h3>Unsupported Until</h3>
+              <ul class="compact-list"><li><code>apply-grade payload builder exists</code></li><li><code>sandbox proof exists for this exact shape</code></li><li><code>audit log writer exists</code></li><li><code>read-back verifier exists</code></li></ul>
+            </section>
+          </div>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/preflight/index.js</code></li><li><code>metronome-cli/src/audit/index.js</code></li><li><code>metronome-cli/src/proof/sandbox-manifest.js</code></li><li><code>metronome-cli/src/apply-gate/index.js</code></li><li><code>docs/TASK_PLAYBOOKS.md</code></li><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md</code></li><li><code>docs/metronome-cli/GOTCHAS.md</code></li><li><code>metronome/custom-contract-creator/schema.js</code></li><li><code>metronome/custom-contract-creator/payload-builders.js</code></li><li><code>metronome/custom-contract-creator/tests/unit.test.js</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md</code></li></ul>
+        </article>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

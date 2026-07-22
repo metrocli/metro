@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Input Reference</title>
+    <meta name="description" content="Generated structured input and normalization reference for the Metronome CLI.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="generated-reference">
+    <main class="generated-shell">
+      <header class="generated-header">
+        <div class="generated-brand">
+          <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
+            <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
+            <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="metro">
+          </a>
+          <span>Metronome in your terminal</span>
+        </div>
+        <a href="index.html">Back to operating manual</a>
+        <p class="eyebrow">Generated from metronome-cli/src/docs/input-reference.js</p>
+        <h1>Metronome CLI input reference</h1>
+        <p>This page is generated from the local structured input and normalization modules. It documents the JSON/YAML adapters, <code>metro.input.normalize.v1</code> output fields, round-trip guarantees, and secret-scan boundary without loading API clients.</p>
+        <nav class="reference-jumps" aria-label="Input reference sections">
+          <strong>Page index</strong>
+          <a href="#input-summary"><span>Input summary</span><small>Generated counts for supported adapters, modes, output contracts, and local API access.</small></a>
+          <a href="#supported-formats"><span>Supported formats</span><small>The structured input adapters currently accepted by local workflow and expert API commands.</small></a>
+          <a href="#normalization-contract"><span>Normalization contract</span><small>Stable fields emitted by metro.input.normalize.v1 and how automation should consume them.</small></a>
+          <a href="#secret-scan"><span>Secret scan</span><small>Local redaction behavior for secret-shaped keys and values before normalized input is echoed.</small></a>
+        </nav>
+        <div id="input-summary" class="summary-grid"><article><span>Formats</span><strong>JSON/YAML</strong></article><article><span>Extensions</span><strong>3</strong></article><article><span>Modes</span><strong>shape, api-request</strong></article><article><span>Live API access</span><strong>none</strong></article></div>
+      </header>
+
+      <section id="supported-formats" class="generated-section reference-stack">
+        <h2>Supported Formats</h2>
+        <article class="reference-card">
+          <h2>json</h2>
+          <p><span class="status-pill local">supported</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Extensions</h3>
+              <ul class="compact-list"><li><code>.json</code></li></ul>
+            </section>
+            <section>
+              <h3>Parser</h3>
+              <p><code>JSON.parse</code></p>
+            </section>
+            <section>
+              <h3>Round-trip output</h3>
+              <p><code>stable-json</code></p>
+            </section>
+          </div>
+          <h3>Notes</h3>
+          <ul class="compact-list"><li>JSON is the canonical machine output contract.</li><li>Input object keys are sorted during canonicalization before hashing.</li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>yaml</h2>
+          <p><span class="status-pill local">supported-subset</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Extensions</h3>
+              <ul class="compact-list"><li><code>.yaml</code></li><li><code>.yml</code></li></ul>
+            </section>
+            <section>
+              <h3>Parser</h3>
+              <p><code>metronome-cli/src/input/files.js parseSimpleYaml</code></p>
+            </section>
+            <section>
+              <h3>Round-trip output</h3>
+              <p><code>stable-json</code></p>
+            </section>
+          </div>
+          <h3>Notes</h3>
+          <ul class="compact-list"><li>The local YAML adapter supports the reviewed fixture subset: mappings, sequences, scalars, and JSON-style inline flow values.</li><li>Advanced YAML features such as anchors, tags, and multi-document streams are intentionally unsupported until a reviewed input contract needs them.</li></ul>
+        </article>
+      </section>
+
+      <section id="normalization-contract" class="generated-section">
+        <h2>Normalization Contract</h2>
+        <div class="reference-stack">
+          <article class="reference-card">
+          <h2>shape</h2>
+          <p><code>metro input normalize --shape &lt;shape&gt; --file &lt;input.json|yaml&gt; [--json]</code></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Target</h3>
+              <p>Workflow shape</p>
+            </section>
+            <section>
+              <h3>Validator</h3>
+              <p><code>validateShapeInput</code></p>
+            </section>
+            <section>
+              <h3>Next evidence</h3>
+              <p><code>metro validate --shape &lt;shape&gt; --file &lt;input.json|yaml&gt; --json</code></p>
+            </section>
+          </div>
+          <h3>Normalized value</h3>
+          <p>The original structured input canonicalized with sorted object keys.</p>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/src/validators/index.js</code></li></ul>
+        </article>
+          <article class="reference-card">
+          <h2>api-request</h2>
+          <p><code>metro input normalize --api &lt;endpoint-id&gt; --file &lt;input.json|yaml&gt; [--json]</code></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Target</h3>
+              <p>Reviewed expert API endpoint ID</p>
+            </section>
+            <section>
+              <h3>Validator</h3>
+              <p><code>validateApiEndpointRequest</code></p>
+            </section>
+            <section>
+              <h3>Next evidence</h3>
+              <p><code>metro api validate &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --json</code></p>
+            </section>
+          </div>
+          <h3>Normalized value</h3>
+          <p>The endpoint request envelope with body, query, path, evidence, and metadata keys canonicalized.</p>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/src/api-catalog/validation.js</code></li></ul>
+        </article>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>schemaVersion</code></td><td><code>string</code></td><td>yes</td><td>Always metro.input.normalize.v1.</td></tr>
+              <tr><td><code>mode</code></td><td><code>shape|api-request</code></td><td>yes</td><td>Selects workflow shape normalization or reviewed expert API request-envelope normalization.</td></tr>
+              <tr><td><code>apiAccess</code></td><td><code>string</code></td><td>yes</td><td>Always none for this command family.</td></tr>
+              <tr><td><code>liveExecution.enabledInCurrentCli</code></td><td><code>boolean</code></td><td>yes</td><td>Always false; normalization does not load API clients.</td></tr>
+              <tr><td><code>input.format</code></td><td><code>json|yaml|unknown</code></td><td>yes</td><td>Derived from the input file extension used by the structured input loader.</td></tr>
+              <tr><td><code>input.filePath</code></td><td><code>string|null</code></td><td>yes</td><td>Rendered relative to the command working directory for portable golden fixtures.</td></tr>
+              <tr><td><code>target</code></td><td><code>object</code></td><td>yes</td><td>Contains either shape metadata or reviewed API endpoint metadata and source IDs.</td></tr>
+              <tr><td><code>normalization.canonicalization</code></td><td><code>string</code></td><td>no</td><td>States the sorted-key JSON canonicalization rule when the target is known.</td></tr>
+              <tr><td><code>normalizedInput</code></td><td><code>object|null</code></td><td>yes</td><td>Canonical object used for stable JSON and hash generation, unless redaction suppresses it.</td></tr>
+              <tr><td><code>normalizedJson</code></td><td><code>string|null</code></td><td>yes</td><td>Stable JSON serialization that parses back to normalizedInput when redaction is false.</td></tr>
+              <tr><td><code>normalizedHash</code></td><td><code>sha256 string|null</code></td><td>yes</td><td>Deterministic hash of normalizedInput, suppressed when secret-shaped input is detected.</td></tr>
+              <tr><td><code>redaction.normalizedInputSuppressed</code></td><td><code>boolean</code></td><td>yes</td><td>True when secret-shaped input prevented canonical input and hash echoing.</td></tr>
+              <tr><td><code>validation</code></td><td><code>object|null</code></td><td>yes</td><td>Shape validator or expert endpoint request validator output for the normalized target.</td></tr>
+              <tr><td><code>secretScan</code></td><td><code>object</code></td><td>yes</td><td>Local secret-shaped key/value findings that block normalized echo output.</td></tr>
+              <tr><td><code>valid</code></td><td><code>boolean</code></td><td>yes</td><td>True only when validation passes and the secret scan is clear.</td></tr>
+              <tr><td><code>findings</code></td><td><code>array</code></td><td>yes</td><td>Combined secret-scan and validation findings for CI and agents.</td></tr>
+              <tr><td><code>nextSafeStep</code></td><td><code>string</code></td><td>yes</td><td>Human-readable local next step; it is not live-operation authorization.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="reference-card">
+          <h2>Round-trip guarantees</h2>
+          <p>When redaction.normalizedInputSuppressed is false, JSON.parse(normalizedJson) deep-equals normalizedInput.</p>
+          <p>normalizedHash is a sha256 hash of normalizedInput after sorted-key canonicalization.</p>
+          <p>When secret-shaped keys or values are detected, normalizedInput, normalizedJson, and normalizedHash are null.</p>
+        </div>
+      </section>
+
+      <section id="secret-scan" class="generated-section">
+        <h2>Secret Scan</h2>
+        <div class="reference-columns">
+          <section>
+            <h3>Rule IDs</h3>
+            <ul class="compact-list"><li><code>MTR-SECRET-001</code></li><li><code>MTR-SECRET-002</code></li></ul>
+          </section>
+          <section>
+            <h3>Suppressed fields</h3>
+            <ul class="compact-list"><li><code>normalizedInput</code></li><li><code>normalizedJson</code></li><li><code>normalizedHash</code></li></ul>
+          </section>
+          <section>
+            <h3>Allowed references</h3>
+            <ul class="compact-list"><li>Tenant profile names</li><li>Environment variable names</li><li>Reviewed non-secret key fingerprints</li><li>Opaque file hashes</li></ul>
+          </section>
+          <section>
+            <h3>Forbidden examples</h3>
+            <ul class="compact-list"><li><code>apiKey</code></li><li><code>authorization</code></li><li><code>Bearer &lt;token&gt;</code></li><li><code>sk_live_...</code></li><li><code>password</code></li></ul>
+          </section>
+        </div>
+        <h3>Proof commands</h3>
+        <ul class="compact-list"><li><code>node metronome-cli/bin/metro.js input normalize --shape pro-annual --file metronome-cli/test/fixtures/pro-annual-valid.yaml --json</code></li><li><code>node metronome-cli/bin/metro.js input normalize --api contracts.create --file metronome-cli/test/fixtures/api-contracts-create-valid.yaml --json</code></li><li><code>npm --prefix metronome-cli run test:golden</code></li><li><code>node docs/metronome-cli/site/verify-site.js</code></li></ul>
+      </section>
+    </main>
+    <script src="layout.js"></script>
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+  </body>
+</html>

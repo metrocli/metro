@@ -1,0 +1,1632 @@
+{
+  "schemaVersion": "metro.metronome-upstream.v1",
+  "source": "https://docs.metronome.com/changelog",
+  "sourceMarkdown": "https://docs.metronome.com/changelog.md",
+  "syncedAt": "2026-07-15",
+  "entryCount": 58,
+  "entries": [
+    {
+      "date": "July 7, 2026",
+      "tags": [
+        "Billing",
+        "API",
+        "UI"
+      ],
+      "title": "Daily recurring credits and commits are supported",
+      "links": [],
+      "coverageStatus": "partial",
+      "metroNotes": "Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in TEAM-QUICKSTART or shape prose. Re-curl create/edit docs before using daily.",
+      "catalogIds": [
+        "contracts.create",
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 29, 2026",
+      "tags": [
+        "Billing",
+        "API",
+        "UI"
+      ],
+      "title": "Configurable rounding for prorated subscriptions and recurring commits",
+      "links": [],
+      "coverageStatus": "gap",
+      "metroNotes": "No shape/validator/docs yet for proration rounding fields. Curl subscription + recurring commit API docs before first use.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 29, 2026",
+      "tags": [
+        "API"
+      ],
+      "title": "Richer responses from `createContract` and `editContract`",
+      "links": [
+        {
+          "label": "Create contract API docs",
+          "url": "https://docs.metronome.com/api-reference/contracts/create-a-contract#response-data"
+        },
+        {
+          "label": "Edit contract API docs",
+          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract#response-data"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Catalog sources point at create/edit docs. Metro still requires expected-vs-actual re-read after apply (richer response does not replace proof).",
+      "catalogIds": [
+        "contracts.create",
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 15, 2026",
+      "tags": [
+        "SDK"
+      ],
+      "title": "Metronome Java SDK is now available",
+      "links": [
+        {
+          "label": "javadoc.io",
+          "url": "https://javadoc.io/doc/com.metronome.api/metronome-java/latest/index.html"
+        },
+        {
+          "label": "README",
+          "url": "https://github.com/Metronome-Industries/metronome-java"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "Metro is Node CLI; Java SDK not used.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 17, 2026",
+      "tags": [
+        "Improvements",
+        "UI"
+      ],
+      "title": "Q1 usability updates: quality of life improvements",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI-only QoL; no API shape impact.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 11, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Assign RBAC roles to API tokens",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/platform-configuration/role-based-access-rbac#assign-a-role-to-an-api-token"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Token scope matters for operator mode + keys. Documented under platform RBAC link; prefer reader tokens with `metro mode set read-only`.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 11, 2026",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Package contract transitions and credit rollover improvements",
+      "links": [
+        {
+          "label": "provisioning customers with a package",
+          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview#provision-customers-with-a-package"
+        },
+        {
+          "label": "contract lifecycle transitions",
+          "url": "https://docs.metronome.com/guides/customers-billing/manage-customers/manage-customer-lifecycle"
+        },
+        {
+          "label": "credits and rollovers",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/apply-credits-and-commits/create-a-pre-paid-commit"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Package transitions and `rollover_fraction` used in preview/contract-move shapes and skills.",
+      "catalogIds": [
+        "packages.create",
+        "contracts.create",
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 11, 2026",
+      "tags": [
+        "New releases",
+        "Integrations"
+      ],
+      "title": "NetSuite integration (Public Beta)",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/integrations/invoice-integrations/netsuite"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Invoices via Stripe, not NetSuite.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "March 9, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Dark mode",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI only.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "March 2, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "SDK releases",
+      "links": [
+        {
+          "label": "Go v3.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-go/compare/v3.1.0...v3.2.0"
+        },
+        {
+          "label": "Python v4.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-python/compare/v4.1.0...v4.2.0"
+        },
+        {
+          "label": "Ruby v3.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/compare/v3.1.0...v3.2.0"
+        },
+        {
+          "label": "Node v3.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/compare/v3.1.0...v3.2.0"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "Track only when release notes imply API schema breakers (e.g. removed `priority`). Metro catalog is hand-curated.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 27, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Compound group keys in usage breakdowns",
+      "links": [
+        {
+          "label": "Get usage data with paginated groupings",
+          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "`usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/TEAM-QUICKSTART.",
+      "catalogIds": [
+        "usage.groups"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 23, 2026",
+      "tags": [
+        "New releases",
+        "API",
+        "UI"
+      ],
+      "title": "Archive packages",
+      "links": [
+        {
+          "label": "API",
+          "url": "https://docs.metronome.com/api-reference/packages/archive-a-package"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "`packages.archive` in api-catalog + validators.",
+      "catalogIds": [
+        "packages.archive"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 19, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "New Metronome UI",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI only.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 17, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Change end date on advance, prorated subscriptions",
+      "links": [],
+      "coverageStatus": "partial",
+      "metroNotes": "Subscription end-date edits exist via contract/subscription edit paths; advance-prorated edge case not a dedicated gotcha yet.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 12, 2026",
+      "tags": [
+        "New releases",
+        "API",
+        "UI"
+      ],
+      "title": "Stripe invoice PDFs available in UI and API",
+      "links": [],
+      "coverageStatus": "partial",
+      "metroNotes": "Matrix notes invoice PDF GET path in conventions; not a first-class `metro` shortcut. Prefer Stripe dashboard or guarded invoice get when needed.",
+      "catalogIds": [
+        "invoices.get"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 10, 2026",
+      "tags": [
+        "Improvements",
+        "API",
+        "Integrations"
+      ],
+      "title": "Subscription and invoice line item linking improvements",
+      "links": [],
+      "coverageStatus": "partial",
+      "metroNotes": "`subscription_id` on line items / Stripe metadata \u2014 useful for reconcile; not yet a metro proof field.",
+      "catalogIds": [
+        "invoices.get",
+        "invoices.listForCustomer"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 9, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Create contracts from packages in the UI",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "API path already covered (`packages` + `contracts.create`). UI convenience only.",
+      "catalogIds": [
+        "contracts.create"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 6, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "In-app embedded dashboards",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI reporting; use metro + exports.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 5, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "SDK releases",
+      "links": [
+        {
+          "label": "Go v3.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/compare/v3.0.0...v3.1.0"
+        },
+        {
+          "label": "Python v4.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-python/compare/v4.0.0...v4.1.0"
+        },
+        {
+          "label": "Ruby v3.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/compare/v3.0.0...v3.1.0"
+        },
+        {
+          "label": "Node v3.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/compare/v3.0.0...v3.1.0"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "Track only when release notes imply API schema breakers (e.g. removed `priority`). Metro catalog is hand-curated.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "February 5, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Get net balance API",
+      "links": [
+        {
+          "label": "Get net balance",
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer"
+        }
+      ],
+      "coverageStatus": "gap",
+      "metroNotes": "Verified in endpoint-matrix (`POST /v1/contracts/customerBalances/getNetBalance`) but **not** yet a reviewed api-catalog ID / `metro api read` shape. Prefer over paginating balances when consolidating.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "January 29, 2026",
+      "tags": [
+        "New releases",
+        "API",
+        "UI"
+      ],
+      "title": "Edit net payment terms on contracts",
+      "links": [],
+      "coverageStatus": "accounted",
+      "metroNotes": "Preview supports `net_payment_terms_days`; edit history still required for audit.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "January 16, 2026",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Major version SDK release",
+      "links": [
+        {
+          "label": "Node v3.0.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases"
+        },
+        {
+          "label": "Go v3.0.0",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases"
+        },
+        {
+          "label": "Python v4.0.0",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases"
+        },
+        {
+          "label": "Ruby v3.0.0",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Breaking: removed `use_list_prices` from Rate objects \u2014 ensure rate-card payloads/validators do not emit it.",
+      "catalogIds": [
+        "rateCards.addRates",
+        "rateCards.getRates"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "January 12, 2026",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Self-serve access to Metronome",
+      "links": [
+        {
+          "label": "Metronome website",
+          "url": "https://metronome.com"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "Onboarding UI.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "January 12, 2026",
+      "tags": [
+        "Improvements",
+        "API"
+      ],
+      "title": "Billing configuration API endpoints now return response bodies",
+      "links": [
+        {
+          "label": "set billing provider configuration",
+          "url": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer"
+        },
+        {
+          "label": "archive billing provider configuration",
+          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Billing-provider set/archive in catalog; responses expected in sandbox-proof paths.",
+      "catalogIds": [
+        "customers.setBillingProviderConfigurations",
+        "customers.archiveBillingProviderConfigurations"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "December 22, 2025",
+      "tags": [
+        "New releases",
+        "Notifications"
+      ],
+      "title": "High cardinality group key spend alerts",
+      "links": [],
+      "coverageStatus": "n/a",
+      "metroNotes": "Alerts not in metro core day-to-day.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "December 19, 2025",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "SDK releases",
+      "links": [
+        {
+          "label": "Node v2.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases"
+        },
+        {
+          "label": "Go v2.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases"
+        },
+        {
+          "label": "Python v3.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases"
+        },
+        {
+          "label": "Ruby v2.2.0",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "Track only when release notes imply API schema breakers (e.g. removed `priority`). Metro catalog is hand-curated.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "November 14, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Launch week recap: Monetization Infrastructure for AI",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/hybrid-business-models#use-case"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/subscription/subscription-overview"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/blog/monetize-ai-with-full-pricing-flexibility"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/invoices/invoice-with-metronome#invoice-with-metronome"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/blog/unify-invoicing-across-every-revenue-motion"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/preview-event-cost"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/invoices/invoice-with-metronome#metronome-billing-console"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications#manage-your-customer-lifecycle-with-metronome-notifications"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/blog/make-billing-part-of-the-product-experience"
+        },
+        {
+          "label": "metronome.com/launch-week",
+          "url": "http://metronome.com/launch-week"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "Marketing recap; follow linked product guides when relevant.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "November 3, 2025",
+      "tags": [
+        "New releases",
+        "Integrations"
+      ],
+      "title": "Invoicing with Google Cloud Marketplace",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp#invoice-with-gcp"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Uses Stripe billing.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "October 31, 2025",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "New SDK releases",
+      "links": [
+        {
+          "label": "v2.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases"
+        },
+        {
+          "label": "v2.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases"
+        },
+        {
+          "label": "v3.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases"
+        },
+        {
+          "label": "v2.1.0",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "Track only when release notes imply API schema breakers (e.g. removed `priority`). Metro catalog is hand-curated.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "October 14, 2025",
+      "tags": [
+        "Improvements",
+        "API",
+        "Notifications",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "September fixes and improvements",
+      "links": [
+        {
+          "label": "`spend_threshold_reached`",
+          "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/customer-controls#enable-custom-spend-limits-for-a-specific-dimension%E2%80%8B"
+        },
+        {
+          "label": "Add a billing configuration",
+          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract#body-add-billing-provider-configuration-update"
+        },
+        {
+          "label": "Archive a billing provider",
+          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer"
+        },
+        {
+          "label": "Edit the rate type of a recurring commit",
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit#body-rate-type"
+        },
+        {
+          "label": "Node",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases/tag/v1.0.0"
+        },
+        {
+          "label": "Go",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases/tag/v1.0.0"
+        },
+        {
+          "label": "Python",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases/tag/v1.0.0"
+        },
+        {
+          "label": "Ruby",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases/tag/v1.0.0"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Spot-check API subsection against edit/billing-provider sources when touching those shapes.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 24, 2025",
+      "tags": [
+        "New releases",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Make advanced contract overrides in the Metronome app",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/make-pricing-changes/edit-or-override-a-contract#contract-edits-and-overrides"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI for overrides; API overrides remain via `contracts.edit`.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 24, 2025",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Custom Reports",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/reporting-insights/in-app-reporting#custom-reports"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "In-app reports.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 18, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "UI"
+      ],
+      "title": "Customer Lifecycle Notifications",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Notifications not operated via metro today.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 11, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "New documentation experience",
+      "links": [],
+      "coverageStatus": "accounted",
+      "metroNotes": "Sources use docs.metronome.com `.md` URLs + llms.txt. This tracker is the metro-side sync surface.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 10, 2025",
+      "tags": [
+        "Improvements",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "August fixes and improvements",
+      "links": [
+        {
+          "label": "data exports",
+          "url": "https://docs.metronome.com/developer-resources/data-export"
+        },
+        {
+          "label": "edit a commit",
+          "url": "https://docs.metronome.com/api/#operation/editCommit-v2"
+        },
+        {
+          "label": "products",
+          "url": "https://docs.metronome.com/api/#operation/createProduct-v1"
+        },
+        {
+          "label": "create contract",
+          "url": "https://docs.metronome.com/api/#operation/createContract-v1"
+        },
+        {
+          "label": "get an invoice",
+          "url": "https://docs.metronome.com/api/#operation/getInvoice-v1"
+        },
+        {
+          "label": "list invoice breakdowns",
+          "url": "https://docs.metronome.com/api/#operation/listBreakdownInvoices-v1"
+        },
+        {
+          "label": "list invoices",
+          "url": "https://docs.metronome.com/api/#operation/listInvoices-v1"
+        },
+        {
+          "label": "Node",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases/tag/v0.1.0"
+        },
+        {
+          "label": "Go",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases"
+        },
+        {
+          "label": "Python",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases"
+        },
+        {
+          "label": "Ruby",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases"
+        },
+        {
+          "label": "edit contract",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Historical API fixes (billing config updates via edit, etc.) \u2014 reflected in danger-zone / stripe-delivery skills.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 15, 2025",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Invoice breakdowns in Data Export",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/reporting-insights/data-export#invoice-breakdowns-tables"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "`invoices.listBreakdowns` in catalog; data-export tables are separate.",
+      "catalogIds": [
+        "invoices.listBreakdowns"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 5, 2025",
+      "tags": [
+        "Improvements",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "July fixes and improvements",
+      "links": [
+        {
+          "label": "prepaid",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#prepaid-commits"
+        },
+        {
+          "label": "postpaid",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#postpaid-commits"
+        },
+        {
+          "label": "Search events",
+          "url": "https://docs.metronome.com/api/#operation/searchEvents-v1"
+        },
+        {
+          "label": "`/v1/contracts/customerCommits/create`",
+          "url": "https://docs.metronome.com/api/#operation/createCustomerCommit-v1"
+        },
+        {
+          "label": "`/v2/contracts/edit`",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        },
+        {
+          "label": "`/v1/contracts/create`",
+          "url": "https://docs.metronome.com/api/#operation/createContract-v1"
+        },
+        {
+          "label": "`v2/contracts/edit`",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        },
+        {
+          "label": "`v2/contracts/get`",
+          "url": "https://docs.metronome.com/api/#operation/getContract-v2"
+        },
+        {
+          "label": "`v1/contracts/customerCommits/list`",
+          "url": "https://docs.metronome.com/api/#operation/listCustomerCommits-v1"
+        },
+        {
+          "label": "`v2/contracts/list`",
+          "url": "https://docs.metronome.com/api/#operation/listContracts-v2"
+        },
+        {
+          "label": "Node",
+          "url": "https://github.com/Metronome-Industries/metronome-node/releases/tag/v0.1.0"
+        },
+        {
+          "label": "Go",
+          "url": "https://github.com/Metronome-Industries/metronome-go/releases"
+        },
+        {
+          "label": "Python",
+          "url": "https://github.com/Metronome-Industries/metronome-python/releases"
+        },
+        {
+          "label": "Ruby",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby/releases"
+        },
+        {
+          "label": "Send Metronome events to Slack",
+          "url": "https://docs.metronome.com/developer-resources/use-api/webhooks/#send-webhooks-to-slack"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "API notes (searchEvents, commits) \u2014 events.search / commits paths in catalog.",
+      "catalogIds": [
+        "events.search",
+        "commits.list"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 4, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "UI"
+      ],
+      "title": "Use group keys to set budgets across users, teams, and projects",
+      "links": [
+        {
+          "label": "group key values",
+          "url": "https://docs.metronome.com/connect-metronome/create-billable-metrics/#group-keys"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/launch-guides/hybrid-business/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/#enable-custom-spend-limits-for-a-specific-dimension"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Spend controls/alerts \u2014 not metro day-to-day.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 4, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Seat-based credit pools",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/#enable-custom-spend-limits-for-a-specific-dimension"
+        },
+        {
+          "label": "See docs here.",
+          "url": "https://docs.metronome.com/launch-guides/hybrid-business/"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Seat / credit pool shapes in skills; not a TEAM-QUICKSTART one-liner.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 1, 2025",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Embeddable dashboard for credit and commit balances",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/#commits-and-credits-dashboard"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "Embeddable UI; metro uses balances list / (future) getNetBalance.",
+      "catalogIds": [
+        "customerBalances.list"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 23, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Threshold billing and auto-recharge",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/manual-payment-gated-commits/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/spend-thresholds#create-a-contract-with-spend-thresholds"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/prepaid-balance-thresholds/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/launch-guides/prepaid-credits/"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/blog/choosing-the-right-plg-billing-models-for-your-business"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Spend/prepaid thresholds via contract edit \u2014 danger-zone aware; not a dedicated metro shortcut.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 15, 2025",
+      "tags": [
+        "New releases",
+        "Integrations"
+      ],
+      "title": "Set up multi-entity billing",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe/#set-the-customer-billing-configuration"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Account hierarchy / billing config \u2014 skills note hierarchy; careful with Stripe entity.",
+      "catalogIds": [
+        "customers.setBillingProviderConfigurations"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 26, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Scope credits and commits to specific pricing or presentation group values",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/target-credits-commits/"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Specifier / dimensional scoping; keep sources current.",
+      "catalogIds": [
+        "contracts.edit",
+        "rateCards.addRates"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 13, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Edit recurring commits and credits",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Recurring edit via contracts.edit / commit edit docs in skills.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 13, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Support for seat-based subscription billing",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-subscription/#update-pricing"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-subscription/"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Seat subscriptions in skills; most packages are credit+plan fee shaped.",
+      "catalogIds": [
+        "contracts.create",
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 20, 2025",
+      "tags": [
+        "Improvements",
+        "API",
+        "Integrations",
+        "UI"
+      ],
+      "title": "April fixes and improvements",
+      "links": [
+        {
+          "label": "`getCustomer`",
+          "url": "https://docs.metronome.com/api/#operation/getCustomer-v1"
+        },
+        {
+          "label": "`listCustomers`",
+          "url": "https://docs.metronome.com/api/#operation/listCustomers-v1"
+        },
+        {
+          "label": "`getInvoice`",
+          "url": "https://docs.metronome.com/api/#operation/getInvoice-v1"
+        },
+        {
+          "label": "`listInvoices`",
+          "url": "https://docs.metronome.com/api/#operation/listInvoices-v1"
+        },
+        {
+          "label": "`listBreakdownInvoices`",
+          "url": "https://docs.metronome.com/api/#operation/listBreakdownInvoices-v1"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/archiveRateCard-v1"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Historical; verify touched endpoints against current `.md` sources.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 8, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Remove overrides and archive commits and scheduled charges",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "editContract archive/remove paths documented in danger-zone.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 5, 2025",
+      "tags": [
+        "New releases",
+        "Pricing and Packaging"
+      ],
+      "title": "Support for NZD and SGD currencies",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits/"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Standard currency amounts.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 1, 2025",
+      "tags": [
+        "New releases",
+        "API"
+      ],
+      "title": "Ruby SDK",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://github.com/Metronome-Industries/metronome-ruby"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/developer-resources/sdks/"
+        }
+      ],
+      "coverageStatus": "n/a-sdk",
+      "metroNotes": "SDK only.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 29, 2025",
+      "tags": [
+        "New releases",
+        "UI"
+      ],
+      "title": "Updated UI for creating and editing contracts, customer-level commits, and customer-level credits",
+      "links": [
+        {
+          "label": "available through the API",
+          "url": "https://docs.metronome.com/api/#operation/editContract-v2"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "UI only.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 9, 2025",
+      "tags": [
+        "Improvements",
+        "UI"
+      ],
+      "title": "Edit rates in the Rate Card UI",
+      "links": [],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "API: addRates/getRates in catalog.",
+      "catalogIds": [
+        "rateCards.addRates"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 2, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications"
+      ],
+      "title": "Usage threshold alerts supported on Contracts",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#usage-alerts"
+        }
+      ],
+      "coverageStatus": "n/a",
+      "metroNotes": "Alerts out of metro day-to-day.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 2, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Contract editing",
+      "links": [
+        {
+          "label": "Read more in our docs.",
+          "url": "https://docs.metronome.com/manage-product-access/edit-contract/"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "`contracts.edit` + danger-zone editContract support matrix.",
+      "catalogIds": [
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "April 1, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Support for weekly frequencies for billing, recurring commits, and credits",
+      "links": [
+        {
+          "label": "docs",
+          "url": "https://docs.metronome.com/api/#operation/createContract-v1"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Cadence fields exist; weekly not a common shape.",
+      "catalogIds": [
+        "contracts.create",
+        "contracts.edit"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "March 26, 2025",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "In Tempo: Spring 2025 changelog",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#webhook-notifications"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#create-an-alert"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/listBreakdownInvoices"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/#display-up-to-date-spend"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/listCustomerBalances"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/createCustomerCommit"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/listRateCards"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/updateContractEndDate"
+        },
+        {
+          "label": "request body",
+          "url": "https://docs.metronome.com/api/#operation/updateContractEndDate"
+        },
+        {
+          "label": "API",
+          "url": "https://docs.metronome.com/api/#operation/createContract"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#provision-recurring-usage-credits"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/discounts/"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/blog/say-goodbye-to-overages-hello-to-commit-rates"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/launch-guides/quickstart#create-composite-products"
+        },
+        {
+          "label": "Metronome Trust Center",
+          "url": "https://trust.metronome.com/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe/#configure-optional-global-integration-settings-available"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/developer-resources/data-export/#contracts_commits"
+        },
+        {
+          "label": "we launched Metronome 2.0",
+          "url": "https://metronome.com/blog/introducing-metronome-2-0"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/invoice-customers/solutions/marketplaces/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits#supported-currencies"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/embeddableDashboard"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/talk-to-an-expert?utm_medium=web\\&utm_source=blog\\&utm_campaign=intempo_spring_2024"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "Large release note \u2014 recurring commits, uniqueness keys, invoice breakdowns, updateEndDate guard already reflected across matrix/catalog/skills.",
+      "catalogIds": [
+        "contracts.create",
+        "contracts.edit",
+        "contracts.updateEndDate",
+        "invoices.listBreakdowns",
+        "customerBalances.list"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "October 17, 2024",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "Metronome 2.0",
+      "links": [
+        {
+          "label": "managing rate cards",
+          "url": "https://docs.metronome.com/pricing-packaging/create-manage-rate-cards/"
+        },
+        {
+          "label": "customizing pricing",
+          "url": "https://docs.metronome.com/manage-product-access/provision-customer/#add-contract-discounts-and-overrides"
+        },
+        {
+          "label": "enterprise commit launch guide",
+          "url": "https://docs.metronome.com/launch-guides/enterprise-commit/"
+        },
+        {
+          "label": "dimensional pricing",
+          "url": "https://docs.metronome.com/pricing-packaging/create-manage-rate-cards/#dimensional-pricing"
+        },
+        {
+          "label": "billable metrics",
+          "url": "https://docs.metronome.com/connect-metronome/create-billable-metrics/"
+        },
+        {
+          "label": "customer and contract provisioning",
+          "url": "https://docs.metronome.com/manage-product-access/provision-customer/"
+        },
+        {
+          "label": "building customer dashboards",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/"
+        },
+        {
+          "label": "API documentation",
+          "url": "https://docs.metronome.com/api"
+        },
+        {
+          "label": "customer spend controls",
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/"
+        },
+        {
+          "label": "creating and managing alerts",
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/"
+        },
+        {
+          "label": "syncing billing data into Salesforce",
+          "url": "https://docs.metronome.com/reports-insights/sync-into-salesforce/"
+        }
+      ],
+      "coverageStatus": "accounted",
+      "metroNotes": "Metro is built on Metronome 2.0 contracts/rate-cards/packages model.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 25, 2024",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "In Tempo: Fall 2024",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/voidInvoice"
+        },
+        {
+          "label": "Go",
+          "url": "https://pkg.go.dev/github.com/Metronome-Industries/metronome-go#section-readme"
+        },
+        {
+          "label": "Python",
+          "url": "https://pypi.org/project/metronome-sdk/"
+        },
+        {
+          "label": "TypeScript",
+          "url": "https://www.npmjs.com/package/@metronome/sdk"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/connecting-metronome/alerts/#usage-threshold-reached"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/connecting-metronome/alerts#invoice-total-reached"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/invoicing/how-billing-works/set-up-seat-based-billing/#how-seat-based-billing-works"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/pricing-and-packaging/create-plans/#fixed-fee-and-tiered-usage"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/createGrant"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/developer-resources/export-metronome-data/#customer_plan"
+        },
+        {
+          "label": "here",
+          "url": "https://metronome.com/talk-to-an-expert?utm_medium=web\\&utm_source=blog\\&utm_campaign=intempo_fall_2024"
+        }
+      ],
+      "coverageStatus": "partial",
+      "metroNotes": "voidInvoice etc. in catalog; plan-era APIs are historical.",
+      "catalogIds": [
+        "invoices.void"
+      ],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 10, 2024",
+      "tags": [
+        "New releases",
+        "API",
+        "Notifications",
+        "Integrations",
+        "UI",
+        "Pricing and Packaging"
+      ],
+      "title": "In Tempo: Spring 2024",
+      "links": [
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#billable-metrics"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/createAlert"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/connecting-metronome/alerts/#forcing-alert-re-evaluation"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/resetCustomerAlerts"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/addPlanToCustomer"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/createGrant"
+        },
+        {
+          "label": "AWS Marketplace integration",
+          "url": "https://docs.metronome.com/invoicing/how-invoicing-works/invoicing-with-aws-marketplace/"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/api/#operation/getAuditLogs"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/integrations/workato-connector/"
+        }
+      ],
+      "coverageStatus": "n/a-ui",
+      "metroNotes": "Mostly pre-2.0/plan-era; do not copy paths into new workflows without matrix check.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    }
+  ]
+}

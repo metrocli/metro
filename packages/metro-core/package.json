@@ -1,0 +1,19 @@
+{
+  "name": "@metro/core",
+  "version": "0.1.0",
+  "description": "Offline-first Metronome CLI engine: API catalog, validators, harness, gates.",
+  "type": "commonjs",
+  "main": "src/cli.js",
+  "exports": {
+    ".": "./src/cli.js",
+    "./cli": "./src/cli.js",
+    "./*": "./src/*"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "src/"
+  ],
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metronome CLI Agent Harnessing</title>
+    <meta name="description" content="System prompts and task recipes for Claude, Cursor, and Codex using the metro CLI: plain-English outcomes first, then technical contracts.">
+    <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <script>
+      (function applySavedTheme() {
+        try {
+          const saved = localStorage.getItem('metro-docs-theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      }());
+    </script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="sidebar-backdrop" hidden></div>
+
+    <div class="shell">
+      <aside class="sidebar" id="site-sidebar">
+        <div class="sidebar-head">
+          <a class="brand" href="index.html" aria-label="Metronome CLI home">
+            <span class="brand-lockup" aria-hidden="true">
+              <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="">
+              <img class="brand-logo brand-logo-dark-mode" src="assets/favicon-dark.png" alt="">
+            </span>
+            <span class="brand-title">
+              <strong>metro</strong>
+              <small>Metronome in your terminal</small>
+            </span>
+          </a>
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+            <svg class="theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 15.7A8.3 8.3 0 0 1 8.3 3.8 8.9 8.9 0 1 0 20.2 15.7Z"></path></svg>
+            <svg class="theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg>
+          </button>
+        </div>
+        <label class="search" for="section-search">
+          <span>Filter manual</span>
+          <input id="section-search" type="search" placeholder="agent prompt, live read, preview, refusal…">
+        </label>
+        <nav class="side-nav" aria-label="Manual navigation"></nav>
+      </aside>
+
+      <main>
+        <section id="agent-intro" class="hero hero-prose manual-section" data-source="world-prompt safety architecture metro-command-catalog">
+          <div class="hero-copy">
+            <p class="eyebrow">Agent harnessing</p>
+            <h1>Plain English first. Technical proof second.</h1>
+            <p class="lede">
+              Most teams are not billing specialists. Give Claude, Cursor, or Codex a
+              system prompt that forces a two-layer answer: what will happen for the customer
+              in plain English, then the exact <code>metro</code> commands. Never send the agent
+              into Metronome UI or raw HTTP - metro uses reviewed IDs from
+              <a href="https://docs.metronome.com/">Metronome API docs</a>.
+            </p>
+            <div class="terminal-contract" aria-label="Agent output contract">
+              <strong>Agent contract</strong>
+              <span>Explain outcome in English → run <code>metro … --json</code> → report <code>schemaVersion</code> + hashes → stop on exit <code>2</code> and read <code>nextCommands[]</code> from stderr</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="system-prompt" class="manual-section" data-source="world-prompt safety">
+          <div class="section-heading">
+            <p class="eyebrow">System prompt</p>
+            <h2>Copy into Claude, Cursor, or Codex</h2>
+            <p>Paste this as a project rule, custom instruction, or the first message in an agent session.</p>
+          </div>
+          <article class="agent-prompt-card">
+            <div class="agent-prompt-toolbar">
+              <span>metro agent system prompt</span>
+              <button type="button" data-copy-text="" data-copy-target="metro-system-prompt">Copy prompt</button>
+            </div>
+            <pre id="metro-system-prompt"><code>You are operating Metronome through the `metro` CLI only. Never call Metronome HTTP APIs directly.
+
+For every task, respond in TWO layers:
+
+1) PLAIN ENGLISH (required first)
+- State the billing goal in one sentence.
+- Say what WILL change in Metronome (objects, fields, tenant) or explicitly say "nothing changes yet - local preview only".
+- Say what will NOT happen (e.g. no live write, no production, no Stripe side effect) unless the user explicitly authorized it this turn.
+- List the next human approval you need before any live command.
+
+2) TECHNICAL (required second)
+- Run `metro schema --json` when unsure of command names.
+- Use `metro … --json` on every command.
+- Parse SUCCESS only from stdout (check `schemaVersion` first).
+- Treat stderr as human progress or refusals; exit code 2 means safety refusal - read `summary`, `nextCommands[]`, `nextSafeStep`.
+- Always pass `--sandbox` or `--prod` explicitly; never infer tenant from env keys.
+- Live read allowlist: contracts.get.v2, customers.get, invoices.listForCustomer (requires read-gate + confirm-live-read + key).
+- Live sandbox write allowlist: contracts.create only (requires apply-gate + approval-record + confirm-live-apply).
+- Before interpreting JSON, run `metro docs explain output.anatomy --json` once per session if needed.
+
+Load `skills/metro/SKILL.md` from the installed package (or run `npm run generate:skill` in the repo) for the full command surface.
+
+Official Metronome API reference: https://docs.metronome.com/
+Upstream product changes metro tracks: docs/metronome-cli/METRONOME_UPSTREAM_CHANGELOG.md
+
+PROMOTE THE CODEBASE (required when work is thrashing):
+If a request takes many tool runs, greps, doc hops, or long chains of discovery - stop masking the pain. Say plainly: "This can be faster. I can draft a PR that adds a metro command / shape / validator / cookbook line so the next person does not repeat this." Offer to draft the PR; Sam (or the engineer) runs and merges the code. Prefer one lasting shortcut rooted in truth (catalog + sources + offline test) over another heroic session of archaeology.</code></pre>
+          </article>
+
+          <div class="section-grid">
+            <article class="card">
+              <h3>Cursor / Codex</h3>
+              <p>Add the prompt above as a <strong>project rule</strong> or drop <code>skills/metro/SKILL.md</code> into your agent skills folder after install.</p>
+              <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+# skill ships at skills/metro/SKILL.md inside the package</code></pre>
+            </article>
+            <article class="card">
+              <h3>Claude desktop / API</h3>
+              <p>Paste the system prompt into project instructions. Ask goals in English; require the two-layer response format every turn.</p>
+              <pre><code>metro docs explain refusal.troubleshooting --json
+metro docs explain output.anatomy --json</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="recipes" class="manual-section" data-source="metro-command-catalog metro-setup-quickstart">
+          <div class="section-heading">
+            <p class="eyebrow">Task recipes</p>
+            <h2>What happens · Commands · What changes · Where</h2>
+            <p>Each recipe is the shape agents should mirror when answering users.</p>
+          </div>
+
+          <article id="recipe-first-preview" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>First sandbox preview (no API key)</h3>
+              <span class="status-pill local">local only</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>Metro installs sample files, validates a pro-annual package input, and prints a <strong>sandbox-labeled preview plan</strong> with a payload hash. <strong>Nothing is created in Metronome.</strong> No API key is read or required.</p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+metro setup quickstart --shell | zsh
+metro validate --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --json
+metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --sandbox --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Stdout schema</dt><dd><code>metro.preview.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>None</dd></div>
+                  <div><dt>Local artifacts</dt><dd><code>${TMPDIR}/metro-quickstart/*</code></dd></div>
+                  <div><dt>Key fields</dt><dd><code>tenant</code>, <code>payloadHash</code>, <code>blocked</code></dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article id="recipe-read-contract" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>Read a contract (guarded live)</h3>
+              <span class="status-pill live-guarded">live-guarded</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>After you approve the read gate, metro calls Metronome <strong>Get a contract (v2)</strong> in the tenant you selected (sandbox or production). You get the current contract JSON on stdout. If the key or gate is missing, metro <strong>refuses</strong> on stderr with exit code 2 and tells you the exact next commands - it does not call the API.</p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>export METRONOME_SANDBOX_KEY='…'
+metro api read-plan contracts.get.v2 --file request.json --sandbox --json
+metro api read-gate template --read-plan read-plan.json --json &gt; read-gate.json
+metro api read-gate validate --file read-gate.json --json
+metro api read contracts.get.v2 --file request.json --sandbox \
+  --read-gate read-gate.json \
+  --confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Stdout schema</dt><dd><code>metro.api.read-result.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>Read only - <code>GET /v2/contracts/{id}</code></dd></div>
+                  <div><dt>Official doc</dt><dd><a href="https://docs.metronome.com/api-reference/contracts/get-a-contract-v2">Get a contract (v2)</a></dd></div>
+                  <div><dt>Refusal schema</dt><dd><code>metro.api.read.refusal.v1</code> on stderr</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article id="recipe-create-contract" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>Create contract (sandbox write)</h3>
+              <span class="status-pill live-guarded">sandbox only</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>Metro validates your request locally, checks apply-gate and approval-record evidence, then creates a <strong>new contract in sandbox</strong> via Metronome. Production writes are blocked. You must confirm with the live-apply token in the same turn you intend the write.</p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>metro api preview contracts.create --file request.json --sandbox --json
+metro api apply-gate validate --file apply-gate.json --json
+metro api approval-record validate --file approval-record.json --json
+metro api apply contracts.create --file request.json --sandbox \
+  --apply-gate apply-gate.json \
+  --approval-record approval-record.json \
+  --confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Stdout schema</dt><dd><code>metro.api.apply-live-result.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>New contract in <strong>sandbox</strong> tenant</dd></div>
+                  <div><dt>Official doc</dt><dd><a href="https://docs.metronome.com/api-reference/contracts/create-a-contract">Create a contract</a></dd></div>
+                  <div><dt>Evidence files</dt><dd>apply-gate.json, approval-record.json (hashes must match)</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article id="recipe-dimensional-rates" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>Dimensional rate card preview</h3>
+              <span class="status-pill local">local only</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>Metro checks your input against dimensional rate-card rules and prints an <strong>addRates plan</strong> (which rate cards get which rates at which prices). <strong>No rates are written</strong> to Metronome until a future guarded apply exists for this workflow.</p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>metro shape explain dimensional-rate-card --json
+metro validate --shape dimensional-rate-card --file input.json --json
+metro rate-card dimensional preview --file input.json --sandbox --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Stdout schema</dt><dd><code>metro.preview.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>None (preview)</dd></div>
+                  <div><dt>Plan output</dt><dd><code>addRates</code> entries, <code>payloadHash</code></dd></div>
+                  <div><dt>Apply today</dt><dd><code>metro rate-card dimensional apply</code> → blocked (exit 2)</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article id="recipe-customer-setup" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>Customer setup preview</h3>
+              <span class="status-pill local">local only</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>Metro plans customer creation: identity fields, ingest alias collision checks, optional Stripe billing-provider attachment, and read-back checks. <strong>No customer is created</strong> in Metronome.</p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>metro shape explain customer-setup --json
+metro validate --shape customer-setup --file customer.json --json
+metro customer setup preview --file customer.json --sandbox --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Stdout schema</dt><dd><code>metro.preview.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>None (preview)</dd></div>
+                  <div><dt>Related endpoint</dt><dd><code>customers.create</code> (validate via <code>metro api validate</code>)</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article id="recipe-api-discovery" class="agent-recipe">
+            <header class="agent-recipe-header">
+              <h3>Discover &amp; validate an API endpoint</h3>
+              <span class="status-pill local">local only</span>
+            </header>
+            <div class="agent-recipe-grid">
+              <div class="agent-recipe-plain">
+                <h4>What will happen (English)</h4>
+                <p>Metro looks up a <strong>reviewed endpoint ID</strong> (not a raw URL), explains required request fields and side effects, and validates your JSON request file offline. <strong>No API call.</strong></p>
+              </div>
+              <div class="agent-recipe-tech">
+                <h4>Technical</h4>
+                <pre><code>metro api catalog --family contracts --json
+metro api explain contracts.create --json
+metro api validate contracts.create --file request.json --json
+metro input normalize --api contracts.create --file request.yaml --json</code></pre>
+                <dl class="agent-recipe-meta">
+                  <div><dt>Discovery</dt><dd><code>metro.schema</code> / <code>metro.api.catalog</code></dd></div>
+                  <div><dt>Validation schema</dt><dd><code>metro.api.validation.v1</code></dd></div>
+                  <div><dt>Metronome changes</dt><dd>None</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="refusal-playbook" class="manual-section" data-source="safety metro-command-catalog">
+          <div class="section-heading">
+            <p class="eyebrow">When metro refuses</p>
+            <h2>What the agent should say</h2>
+          </div>
+          <article class="card">
+            <h3>English layer</h3>
+            <p>"Metro blocked this operation on purpose. Exit code 2 means a safety gate failed - not a bug. Here is the one-line reason, and here are up to three commands to run next. I will not retry the live command until you approve the evidence chain."</p>
+            <h3>Technical layer</h3>
+            <pre><code>metro docs explain refusal.troubleshooting --json
+# stderr payload: summary, nextCommands[], blockers[], nextSafeStep
+# schemaVersion: metro.refusal.v1 or metro.api.read.refusal.v1</code></pre>
+          </article>
+        </section>
+
+        <section id="promote-codebase" class="manual-section" data-source="world-prompt safety architecture">
+          <div class="section-heading">
+            <p class="eyebrow">Always get better</p>
+            <h2>When the session is thrashing - draft the fix</h2>
+            <p>
+              World-class harnessing stays rooted in truth: reviewed catalog IDs,
+              official <a href="https://docs.metronome.com/">docs.metronome.com</a>
+              sources, expected-vs-actual after writes, and
+              <a href="metronome-upstream.html">upstream changelog coverage</a>.
+              When discovery costs more than a lasting shortcut, promote the codebase.
+            </p>
+          </div>
+          <div class="section-grid">
+            <article class="card">
+              <h3>Trigger</h3>
+              <p>Many greps, many docs hops, repeated Live API archaeology, or “I’ll check one more place” for the same shape of ask.</p>
+            </article>
+            <article class="card">
+              <h3>What to say</h3>
+              <p><strong>“This can be faster.”</strong> I can draft a PR that adds a metro command, shape, validator, or cookbook one-liner so the next person does not repeat this. You run/merge the code.</p>
+            </article>
+            <article class="card">
+              <h3>What to ship</h3>
+              <p>Smallest durable path: catalog + sources + offline test (or TEAM-QUICKSTART / <code>metro ops</code> line). Not another one-off script outside metro.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="nav.js"></script>
+    <script src="site.js"></script>
+    <script>
+      (function wirePromptCopy() {
+        const btn = document.querySelector('[data-copy-target="metro-system-prompt"]');
+        const pre = document.getElementById('metro-system-prompt');
+        if (!btn || !pre) return;
+        const text = pre.querySelector('code').textContent;
+        btn.setAttribute('data-copy-text', text);
+      }());
+    </script>
+  </body>
+</html>

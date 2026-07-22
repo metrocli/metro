@@ -1,0 +1,36 @@
+{
+  "name": "@metro-dev/cli",
+  "version": "0.1.0",
+  "description": "Metronome in your terminal - safe shapes, gates, and proof for any Metronome tenant.",
+  "license": "Apache-2.0",
+  "private": false,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "metro": "bin/metro.js"
+  },
+  "files": [
+    "bin/",
+    "packages/metro-core/",
+    "packages/metro-workspace-generic/",
+    "packages/metro-workspace-stub/",
+    "docs/metronome-cli/",
+    "skills/metro/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samhadar/metro.git"
+  },
+  "homepage": "https://github.com/samhadar/metro#readme",
+  "bugs": {
+    "url": "https://github.com/samhadar/metro/issues"
+  },
+  "scripts": {
+    "test": "METRO_DEFAULT_WORKSPACE_PACK=generic node -e \"require(\"./packages/metro-core/src/workspace/loader\").resolvePackId({configDir:\"/tmp\"})\"",
+    "harness:onboard": "METRO_DEFAULT_WORKSPACE_PACK=generic node bin/metro.js harness run --suite onboard --execute --json"
+  }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>metro cookbook - safe Metronome workflows</title>
+    <meta name="description" content="Copy-paste metro workflows for any Metronome tenant: bind catalog, look up customers, add dimensions, preview packages.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell" style="max-width: 48rem; margin: 2rem auto; padding: 0 1.25rem;">
+      <p class="eyebrow">For any Metronome tenant</p>
+      <h1>metro cookbook</h1>
+      <p class="lede">
+        Eight workflows that stay on the evidence ladder: bind your catalog, look up a customer,
+        then validate → preview → apply-gate. Official product concepts live on
+        <a href="https://docs.metronome.com/">docs.metronome.com</a>.
+      </p>
+      <p><a href="index.html">← Operating manual</a> · <a href="../COOKBOOK.md">Markdown source</a> · <a href="install.html">Install</a></p>
+
+      <h2>0. Sticky pack</h2>
+      <pre><code>metro workspace use generic --write
+metro setup init --workspace generic --write
+metro harness run --suite onboard --execute --json</code></pre>
+
+      <h2>0b. Credits product decision (agents)</h2>
+      <pre><code>metro docs explain credits.product.decision --markdown
+metro route --goal "add a credits product" --sandbox --json</code></pre>
+
+      <h2>1. Bind catalog</h2>
+      <pre><code>metro catalog bind --sandbox --write
+metro catalog bind --show --json</code></pre>
+
+      <h2>2. Who is this customer?</h2>
+      <pre><code>metro ops who "Acme Lending" --sandbox
+metro ops who --customer-id=&lt;uuid&gt; --prod --json</code></pre>
+
+      <h2>3. Package inventory</h2>
+      <pre><code>metro package list --sandbox --json</code></pre>
+
+      <h2>4. Balances</h2>
+      <pre><code>metro customer balances --query="Acme" --sandbox --json</code></pre>
+
+      <h2>5. Add a pricing dimension</h2>
+      <pre><code>metro plan add-pricing-dimension-value --dimension-key=FEATURE_X --price=100 --sandbox --json</code></pre>
+
+      <h2>6. Roll across rate cards</h2>
+      <pre><code>metro plan rollout-dimension-across-cards --dimension-key=FEATURE_X --sandbox --json</code></pre>
+
+      <h2>7. Trial / annual package (local)</h2>
+      <pre><code>metro plan template free-trial-package --sandbox --out trial.json --json
+metro plan template annual-subscription-package --sandbox --out annual.json --json</code></pre>
+
+      <h2>8. Credits / billing provider (preview)</h2>
+      <pre><code>metro plan complimentary-credits --sandbox --json
+metro plan billing-provider-setup --sandbox --json</code></pre>
+
+      <h2>CLI cookbook</h2>
+      <pre><code>metro ops --json
+metro ops log --ask="..."
+metro ops top</code></pre>
+    </main>
+  </body>
+</html>
