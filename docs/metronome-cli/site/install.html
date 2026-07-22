@@ -479,12 +479,12 @@ metro api apply contracts.create --file request.json --sandbox \
             <p>
               If you previously ran <code>npm link</code> from a source
               checkout, npm leaves a symlink at
-              <code>$(npm root -g)/@metro-dev/cli</code>. A later
+              <code>$(npm root -g)/@metrocli/metro</code>. A later
               <code>npm install -g git+https://github.com/metrocli/metro.git</code>
               cannot rename that symlink and fails with
               <code>ENOTDIR</code>.
             </p>
-            <pre><code>npm unlink -g @metro-dev/cli
+            <pre><code>npm unlink -g @metrocli/metro
 npm install -g git+https://github.com/metrocli/metro.git
 metro setup quickstart --shell | zsh</code></pre>
             <p>

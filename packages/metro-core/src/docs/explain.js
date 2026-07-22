@@ -411,13 +411,13 @@ function installTroubleshootingTopic(topic, bundle) {
       binaryPath: packageManifest.bin?.metro || null,
       packageFilesAllowlist: clone(packageManifest.files || []),
       packageTestAssertions: [
-        'npm pack --dry-run --json returns one @metro-dev/cli package result.',
+        'npm pack --dry-run --json returns one @metrocli/metro package result.',
         'The packed package includes README.md, package.json, bin/metro.js, and runtime src/ modules.',
         'The packed package excludes test/, node_modules/, and .env paths.',
         'bin/metro.js is packed with executable mode 0755.',
       ],
       installSmokeAssertions: [
-        'npm pack --json writes a local tarball named metro-dev-cli-0.0.0.tgz.',
+        'npm pack --json writes a local tarball named metrocli-metro-0.0.0.tgz.',
         'npm install --global --prefix <tmp> --ignore-scripts installs the tarball into a temporary prefix.',
         'The installed metro binary exists under the temporary prefix.',
         'The installed binary runs metro shape list --json and emits metro.shape.list.v1.',
@@ -447,7 +447,7 @@ function installTroubleshootingTopic(topic, bundle) {
         {
           failureId: 'METRO-INSTALL-005',
           symptom: 'npm install -g git+https://github.com/metrocli/metro.git fails with ENOTDIR.',
-          nextSafeStep: 'Remove any prior npm link before a global git install: npm unlink -g @metro-dev/cli (or rm "$(npm root -g)/@metro-dev/cli" when it is a symlink), then rerun npm install -g git+https://github.com/metrocli/metro.git. Keep npm link for source-checkout dev; use the git install path when you want a standalone global copy.',
+          nextSafeStep: 'Remove any prior npm link before a global git install: npm unlink -g @metrocli/metro (or rm "$(npm root -g)/@metrocli/metro" when it is a symlink), then rerun npm install -g git+https://github.com/metrocli/metro.git. Keep npm link for source-checkout dev; use the git install path when you want a standalone global copy.',
         },
       ],
       recoveryOrder: [
@@ -607,7 +607,7 @@ function packagePublishReadinessTopic(topic, bundle) {
         {
           blockerId: 'METRO-PUBLISH-002',
           title: 'Internal registry destination is not documented',
-          evidence: 'docs/metronome-cli/site/install.html marks npm install -g @metro-dev/cli as planned because registry publishing is not configured yet.',
+          evidence: 'docs/metronome-cli/site/install.html marks npm install -g @metrocli/metro as planned because registry publishing is not configured yet.',
           nextSafeStep: 'Document the intended internal registry, package scope owner, authentication model, and publish permissions before enabling a publish workflow.',
         },
         {

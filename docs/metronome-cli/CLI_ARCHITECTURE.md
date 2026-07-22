@@ -2,19 +2,19 @@
 
 ## One sentence
 
-**`metro-core`** is the Metronome API literacy + evidence engine; **workspace packs** add billing-opinion intents; **`@metro-dev/cli`** bundles core + the generic pack.
+**`metro-core`** is the Metronome API literacy + evidence engine; **workspace packs** add billing-opinion intents; **`@metrocli/metro`** bundles core + the generic pack.
 
 ## What you install
 
 | Install | What you get | Default pack |
 |---------|--------------|--------------|
-| `npm install -g git+https://github.com/metrocli/metro.git` | `@metro-dev/cli` | **generic** |
+| `npm install -g git+https://github.com/metrocli/metro.git` | `@metrocli/metro` | **generic** |
 | Source checkout + `node bin/metro.js` | Same | **generic** unless `METRO_WORKSPACE_PACK` set |
 
 ## Package map
 
 ```
-@metro-dev/cli (root aggregator)
+@metrocli/metro (root aggregator)
 ├── bin/metro.js              → packages/metro-core/src/cli.js
 ├── packages/metro-core/      CLI engine (Apache-2.0)
 ├── packages/metro-workspace-generic/ 12 generic intents

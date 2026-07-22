@@ -1,4 +1,4 @@
-# @metro-dev/cli
+# @metrocli/metro
 
 **Metronome in your terminal** - shapes, validators, evidence gates, and proof for any Metronome tenant.
 
@@ -7,7 +7,7 @@ Apache-2.0. Generic workspace pack by default; extend with your own workspace pa
 ## Install
 
 ```bash
-npm install -g @metro-dev/cli
+npm install -g @metrocli/metro
 metro workspace use generic --write
 metro setup init --workspace generic --write
 metro harness run --suite onboard --execute --json

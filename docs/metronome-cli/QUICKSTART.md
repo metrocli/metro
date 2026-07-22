@@ -1,11 +1,11 @@
 # metro quickstart (generic)
 
-Quickstart for `@metro-dev/cli` / generic workspace pack users.
+Quickstart for `@metrocli/metro` / generic workspace pack users.
 
 ## Install
 
 ```bash
-npm install -g @metro-dev/cli   # public package when published
+npm install -g @metrocli/metro   # public package when published
 # or from this monorepo:
 metro workspace use generic --write
 ```

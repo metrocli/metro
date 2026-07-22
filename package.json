@@ -1,5 +1,5 @@
 {
-  "name": "@metro-dev/cli",
+  "name": "@metrocli/metro",
   "version": "0.1.0",
   "description": "Metronome in your terminal - safe shapes, gates, and proof for any Metronome tenant.",
   "license": "Apache-2.0",

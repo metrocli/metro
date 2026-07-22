@@ -94,7 +94,7 @@ function buildReleaseReadiness(options = {}) {
       runtimeFilesAllowlisted,
     },
     installTarget: {
-      targetCommand: 'npm install -g @metro-dev/cli',
+      targetCommand: 'npm install -g @metrocli/metro',
       targetStatus: 'planned',
       currentlyProvenPath: 'local tarball install smoke test',
       currentlyProvenCommand: 'npm --prefix metronome-cli run test:install',
@@ -174,7 +174,7 @@ function buildReleaseReadiness(options = {}) {
         blockerId: 'METRO-PUBLISH-002',
         title: 'Internal registry destination is not documented',
         status: 'blocking',
-        evidence: 'The target npm install -g @metro-dev/cli path remains planned, not proven by registry evidence.',
+        evidence: 'The target npm install -g @metrocli/metro path remains planned, not proven by registry evidence.',
         nextSafeStep: 'Document the internal registry URL or distribution channel, package scope owner, authentication model, and publish permissions.',
       },
       {

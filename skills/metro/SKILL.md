@@ -11,7 +11,7 @@ Use `metro` for Metronome billing operations: validate inputs, preview changes, 
 ## Install
 
 ```bash
-npm install -g @metro-dev/cli
+npm install -g @metrocli/metro
 metro workspace use generic --write
 metro setup init --workspace generic --write
 ```

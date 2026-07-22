@@ -2,7 +2,7 @@
 
 /**
  * Optional workspace pack docs for explain/gotcha topics.
- * Public @metro-dev/cli trees do not ship metro-workspace-lev — never hard-crash on boot.
+ * Public @metrocli/metro trees do not ship metro-workspace-lev — never hard-crash on boot.
  */
 function stubLevExplainTopics() {
   const genericDoc = 'docs/metronome-cli/COOKBOOK.md';
