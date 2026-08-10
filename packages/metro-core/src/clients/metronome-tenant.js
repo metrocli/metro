@@ -3,7 +3,6 @@
 const { loadLocalEnv } = require('./load-local-env');
 const path = require('path');
 
-const PROD_KEY_PREFIX = '14123e06';
 // clients/ → src/ → metro-core/ → packages/ → metronome-cli/
 const METRO_REPO_ROOT = path.resolve(__dirname, '../../../..');
 
@@ -31,17 +30,34 @@ function resolveTenant(argv = []) {
   return process.env.METRONOME_PROD_KEY ? 'production' : 'sandbox';
 }
 
+function envLoadHint(label, envLoad) {
+  if (envLoad && !envLoad.loaded) {
+    return ' No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).';
+  }
+  if (envLoad && envLoad.loaded) {
+    return ` Loaded ${envLoad.path} but ${label} still missing/wrong.`;
+  }
+  return '';
+}
+
+/**
+ * Production keys are opaque Metronome tokens - not Stripe-style sk_live_ prefixes.
+ * Do not fingerprint a specific token prefix; any rotated/new prod token is valid.
+ * Real rails: METRONOME_PROD_KEY must be set, and must not equal METRONOME_SANDBOX_KEY.
+ */
 function assertProdKeyShape(key, label = 'METRONOME_PROD_KEY', envLoad = null) {
-  if (!key || !String(key).startsWith(PROD_KEY_PREFIX)) {
-    const hint = envLoad && !envLoad.loaded
-      ? ` No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).`
-      : envLoad && envLoad.loaded
-        ? ` Loaded ${envLoad.path} but ${label} still missing/wrong.`
-        : '';
-    const error = new Error(
-      `${label} not set or wrong key prefix (expected ${PROD_KEY_PREFIX}…).${hint}`,
-    );
+  if (!key || !String(key).trim()) {
+    const error = new Error(`${label} not set.${envLoadHint(label, envLoad)}`);
     error.code = 'METRONOME_PROD_KEY_INVALID';
+    throw error;
+  }
+
+  const sandboxKey = process.env.METRONOME_SANDBOX_KEY;
+  if (sandboxKey && String(key) === String(sandboxKey)) {
+    const error = new Error(
+      `${label} equals METRONOME_SANDBOX_KEY - refusing production tenant.`,
+    );
+    error.code = 'METRONOME_PROD_KEY_EQUALS_SANDBOX';
     throw error;
   }
 }
@@ -81,7 +97,6 @@ function applyMetronomeApiKeyFromEnv({
 }
 
 module.exports = {
-  PROD_KEY_PREFIX,
   parseTenantFlags,
   resolveTenant,
   assertProdKeyShape,

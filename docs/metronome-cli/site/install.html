@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Metronome CLI Install And Setup</title>
-    <meta name="description" content="Install metro - the safe Metronome CLI for billing teams.">
+    <meta name="description" content="Install metro - the safe billing window for billing teams who do not live in Metronome UI.">
     <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="styles.css">
@@ -23,16 +23,16 @@
         <p class="eyebrow">GitHub install</p>
         <h1>Install metro. Then look up a customer - not Metronome screens.</h1>
         <p>
-          Metro is for billing engineers who need billing answers without learning
+          Metro is for engineers who need billing answers without learning
           Metronome's UI or config maze. Install the standalone CLI from the
-          private GitHub repo (no full ops checkout). Prove it locally with no
+          GitHub repo (no full ops checkout). Prove it locally with no
           API key. Live reads and writes stay gated: you confirm before anything
           touches a customer.
         </p>
         <div class="summary-grid">
           <article>
             <span>Current path</span>
-            <strong>private GitHub install</strong>
+            <strong>GitHub install</strong>
           </article>
           <article>
             <span>Built for</span>
@@ -71,7 +71,7 @@
           </a>
           <a href="#troubleshooting">
             <span>Troubleshooting</span>
-            <small>ENOTDIR, missing binary, profile blockers.</small>
+            <small>Do not use npm install -g git+; clone + npm link instead.</small>
           </a>
         </nav>
       </header>
@@ -85,8 +85,10 @@
           </div>
           <ol>
             <li>
-              <span>Install</span>
-              <code>npm install -g git+https://github.com/metrocli/metro.git</code>
+              <span>Install (clone once, then script)</span>
+              <code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh
+metro --help</code>
             </li>
             <li>
               <span>Guide</span>
@@ -122,15 +124,15 @@
         <div class="reference-stack">
           <article class="reference-card">
             <h2>Terminal guide</h2>
-            <pre><code>npm install -g git+https://github.com/metrocli/metro.git
-metro setup quickstart --shell | zsh
-metro setup quickstart --json</code></pre>
+            <pre><code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh
+metro doctor
+metro --help
+metro setup quickstart --shell | zsh</code></pre>
             <p>
-              <code>--shell</code> prints the copy/paste command block; piping
-              it to <code>zsh</code> executes the block, creates temp sample
-              files, and runs the first safe preview using the installed binary.
-              <code>--json</code> prints the same contract, expected output
-              cues, source links, and safety boundaries.
+              Two commands to install (or use the one-liner on the home page).
+              Re-run <code>bash ~/.metro/src/scripts/install-global.sh</code> to
+              pull updates. If anything fails, run <code>metro doctor</code>.
             </p>
           </article>
           <article class="reference-card">
@@ -214,12 +216,13 @@ metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annua
         <div class="section-grid">
           <article class="card">
             <h3>1. Install the standalone package</h3>
-            <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+            <pre><code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh
+metro --help
 metro setup quickstart --shell | zsh</code></pre>
             <p>
-              Installs the CLI directly from the private GitHub repository and
-              exposes the global <code>metro</code> binary. Users do not need to
-              clone or download the full operations workspace.
+              Two commands to install. Re-run
+              <code>bash ~/.metro/src/scripts/install-global.sh</code> to update.
             </p>
           </article>
           <article class="card">
@@ -362,7 +365,7 @@ metro api apply contracts.create --file request.json --sandbox \
           <ol>
             <li>
               <span>Allowed now</span>
-              <code>npm install -g git+https://github.com/metrocli/metro.git</code><br>
+              <code>bash scripts/install-global.sh</code> (or the clear+install+prove block in Terminal guide)<br>
               <code>metro setup quickstart --shell | zsh</code><br>
               <code>npm run test:package</code><br>
               <code>npm run test:install</code><br>
@@ -408,9 +411,9 @@ metro api apply contracts.create --file request.json --sandbox \
             <tbody>
               <tr>
                 <td>Install</td>
-                <td><code>npm install -g git+https://github.com/metrocli/metro.git</code></td>
+                <td><code>bash scripts/install-global.sh</code> or clone+npm link block in Terminal guide</td>
                 <td><span class="status-pill local">current</span></td>
-                <td>Authorized users install the standalone private GitHub repo and receive the global <code>metro</code> binary.</td>
+                <td>Users clone into <code>~/.metro/src</code>, <code>npm link</code>, prove <code>metro --help</code>, then run quickstart. Not <code>npm install -g git+</code>.</td>
               </tr>
               <tr data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
                 <td>Publish readiness</td>
@@ -475,38 +478,48 @@ metro api apply contracts.create --file request.json --sandbox \
         <h2>Setup Troubleshooting</h2>
         <div class="reference-stack">
           <article class="reference-card">
-            <h2><code>ENOTDIR</code> during global git install</h2>
+            <h2><code>ENOTDIR</code> or <code>metro: command not found</code> after global install</h2>
             <p>
-              If you previously ran <code>npm link</code> from a source
-              checkout, npm leaves a symlink at
-              <code>$(npm root -g)/@metrocli/metro</code>. A later
+              <strong>Root cause:</strong>
               <code>npm install -g git+https://github.com/metrocli/metro.git</code>
-              cannot rename that symlink and fails with
-              <code>ENOTDIR</code>.
+              is broken on current npm for this package. It leaves
+              <code>$(npm root -g)/@metrocli/metro</code> pointing at
+              <code>~/.npm/_cacache/tmp/git-clone…</code> with no
+              <code>bin/metro.js</code>.
             </p>
-            <pre><code>npm unlink -g @metrocli/metro
-npm install -g git+https://github.com/metrocli/metro.git
+            <p>
+              <strong>How it shows up:</strong>
+            </p>
+            <ul>
+              <li>
+                install says <code>added 1 package</code>, then
+                <code>zsh: command not found: metro</code>
+              </li>
+              <li>
+                or a later install fails with
+                <code>ENOTDIR: not a directory, rename '.../@metrocli/metro'</code>
+              </li>
+            </ul>
+            <p>
+              <strong>Confirm:</strong>
+            </p>
+            <pre><code>ls -la "$(npm root -g)/@metrocli/metro"
+# bad:  ... -> .../npm/_cacache/tmp/git-clone...   (no bin/metro.js)
+# good: ... -> .../.metro/src   (or your checkout) with bin/metro.js</code></pre>
+            <p>
+              <strong>Fix:</strong> stop using <code>npm install -g git+</code>.
+              Use clone + <code>npm link</code> (or
+              <code>bash ~/.metro/src/scripts/install-global.sh</code>):
+            </p>
+            <pre><code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh
+metro --help
 metro setup quickstart --shell | zsh</code></pre>
             <p>
-              Keep <code>npm link</code> for active source-checkout work. Use
-              the git install path when you want a standalone global copy.
-            </p>
-          </article>
-          <article class="reference-card">
-            <h2>Installed binary is missing</h2>
-            <p>
-              Re-run
-              <code>npm install -g git+https://github.com/metrocli/metro.git</code>
-              and then run <code>metro setup quickstart --shell | zsh</code>. If
-              <code>metro</code> is still not found, inspect your npm global
-              prefix and shell <code>PATH</code>.
-            </p>
-            <p>
-              Maintainers can also run
-              <code>npm run test:package</code> and
-              <code>npm run test:install</code> from the
-              source checkout before changing package metadata or setup
-              instructions.
+              Maintainers editing this checkout: <code>npm link</code> from the
+              repo root. Also run <code>npm run test:package</code> and
+              <code>npm run test:install</code> before changing package
+              metadata or setup instructions.
             </p>
           </article>
           <article class="reference-card">

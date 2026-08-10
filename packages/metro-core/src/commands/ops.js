@@ -11,6 +11,12 @@ const { detectPromoteOpportunity } = require('../promote-codebase');
 
 const COOKBOOK_CORE = [
   {
+    id: 'install',
+    say: 'Install metro / CLI not found / ENOTDIR after install',
+    command: 'git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true; bash ~/.metro/src/scripts/install-global.sh',
+    notes: 'Run from ~ (not inside ~/.metro/src). Then metro --help. Diagnose: metro doctor. Update: bash ~/.metro/src/scripts/install-global.sh only.',
+  },
+  {
     id: 'who',
     say: 'Who is <customer>? / what are they on right now?',
     command: 'metro ops who <name|uuid|email|url> --prod',

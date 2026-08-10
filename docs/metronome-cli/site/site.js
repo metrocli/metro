@@ -203,6 +203,14 @@
     button.addEventListener('click', () => copyText(button.getAttribute('data-copy-text'), button));
   }
 
+  for (const button of document.querySelectorAll('[data-copy-from]')) {
+    button.addEventListener('click', () => {
+      const selector = button.getAttribute('data-copy-from');
+      const source = selector ? document.querySelector(selector) : null;
+      copyText((source?.textContent || '').replace(/\n$/, ''), button);
+    });
+  }
+
   for (const pre of document.querySelectorAll('pre')) {
     const code = pre.querySelector('code');
     if (!code) continue;
