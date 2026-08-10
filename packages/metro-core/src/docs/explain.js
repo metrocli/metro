@@ -446,8 +446,13 @@ function installTroubleshootingTopic(topic, bundle) {
         },
         {
           failureId: 'METRO-INSTALL-005',
-          symptom: 'npm install -g git+https://github.com/metrocli/metro.git fails with ENOTDIR.',
-          nextSafeStep: 'Remove any prior npm link before a global git install: npm unlink -g @metrocli/metro (or rm "$(npm root -g)/@metrocli/metro" when it is a symlink), then rerun npm install -g git+https://github.com/metrocli/metro.git. Keep npm link for source-checkout dev; use the git install path when you want a standalone global copy.',
+          symptom: 'npm install -g git+https://github.com/metrocli/metro.git prints added 1 package then metro: command not found, or later fails with ENOTDIR while renaming @metrocli/metro.',
+          nextSafeStep: 'Run metro doctor --json for PATH, symlink, and checkout checks plus the canonical install one-liner. Or: git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src && bash ~/.metro/src/scripts/install-global.sh (re-run later: bash ~/.metro/src/scripts/install-global.sh). Then metro setup quickstart --shell | zsh.',
+        },
+
+        {
+          symptom: 'ls -la "$(npm root -g)/@metrocli/metro" shows a symlink into ~/.npm/_cacache/tmp/git-clone… and bin/metro.js is missing behind that link.',
+          nextSafeStep: 'Run metro doctor. Confirm the broken temp-cache symlink, then replace it with bash ~/.metro/src/scripts/install-global.sh (or the install one-liner it prints). Do not retry npm install -g git+…. Prove with metro --help before quickstart.',
         },
       ],
       recoveryOrder: [

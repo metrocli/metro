@@ -121,6 +121,7 @@ const {
   checkReleaseEvidenceDirectory,
   validateReleaseRetentionPolicy,
 } = require('./release/readiness');
+const { buildInstallDoctor } = require('./install/doctor');
 const {
   buildSetupAuthCheck,
   buildSetupInit,
@@ -1234,6 +1235,26 @@ function runStatusCommand(flags, streams) {
   }
 
   return auth?.valid === false && auth?.error === 'profile-load-failed' ? 1 : 0;
+}
+
+function runInstallDoctorCommand(flags, streams) {
+  const payload = buildInstallDoctor();
+  if (flags.json) {
+    renderJson(streams.stdout, payload);
+  } else {
+    write(streams.stdout, 'metro install doctor');
+    write(streams.stdout, `Healthy: ${payload.healthy ? 'yes' : 'no'}`);
+    for (const check of payload.checks) {
+      write(streams.stdout, `[${check.status}] ${check.title}: ${check.detail}`);
+      if (check.remediation) {
+        write(streams.stdout, `  fix: ${check.remediation}`);
+      }
+    }
+    write(streams.stdout, 'Recommended install (one line):');
+    write(streams.stdout, payload.recommendedInstall.oneLiner);
+    write(streams.stdout, `Next: ${payload.nextSafeStep}`);
+  }
+  return payload.healthy ? 0 : 1;
 }
 
 function runHarnessCommand(positional, flags, streams) {
@@ -4303,6 +4324,10 @@ function run(argv = process.argv.slice(2), streams = { stdout: process.stdout, s
 
   if (positional[0] === 'status') {
     return runStatusCommand(flags, streams);
+  }
+
+  if (positional[0] === 'doctor') {
+    return runInstallDoctorCommand(flags, streams);
   }
 
   if (positional[0] === 'harness') {

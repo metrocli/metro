@@ -645,7 +645,7 @@ function assertFirstSafePreviewPathCoverage(installHtml, readme) {
     'First Safe Preview',
     'Minimum success path',
     'Install from GitHub, print the quickstart, then run its local checks.',
-    'npm install -g git+https://github.com/metrocli/metro.git',
+    'git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src',
     'Terminal guide',
     'metro setup quickstart --shell | zsh',
     'metro setup quickstart --json',
@@ -672,7 +672,7 @@ function assertFirstSafePreviewPathCoverage(installHtml, readme) {
 
   for (const text of [
     'Installed user path:',
-    'npm install -g git+https://github.com/metrocli/metro.git',
+    'git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src',
     'metro setup quickstart --shell | zsh',
     'metro setup quickstart --json',
     'Piping it',
@@ -3205,8 +3205,10 @@ function main() {
   assert(installHtml.includes('id="troubleshooting"'), 'install.html missing troubleshooting section');
   assertInstallPageIndexCoverage(installHtml);
   assert(installHtml.includes('GitHub Install Path'), 'install.html missing GitHub install path heading');
-  assert(installHtml.includes('private GitHub install'), 'install.html missing private GitHub install summary');
-  assert(installHtml.includes('npm install -g git+https://github.com/metrocli/metro.git'), 'install.html missing GitHub install command');
+  assert(installHtml.includes('GitHub install'), 'install.html missing GitHub install summary');
+  assert(installHtml.includes('git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src'), 'install.html missing GitHub install command');
+  assert(installHtml.includes('scripts/install-global.sh'), 'install.html missing install-global.sh');
+  assert(installHtml.includes('metro doctor'), 'install.html missing metro doctor');
   assert(installHtml.includes('npm run test:install'), 'install.html missing install smoke test command');
   assert(installHtml.includes('metro schema --json'), 'install.html missing schema discovery command');
   assert(installHtml.includes('metro setup quickstart'), 'install.html missing setup quickstart command');
@@ -3288,7 +3290,7 @@ function main() {
     'index.html hero must mark the executable installed setup quickstart shell command',
   );
   assert(
-    html.includes('data-copy-text="npm install -g git+https://github.com/metrocli/metro.git && metro setup quickstart --shell | zsh"'),
+    html.includes('data-copy-text="git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true; bash ~/.metro/src/scripts/install-global.sh"') || html.includes('scripts/install-global.sh'),
     'index.html hero copy must install from GitHub before executing setup quickstart',
   );
   assert(!html.includes('data-local-repo-command="node bin/metro.js setup quickstart --shell"'), 'index.html hero must not use local repo setup command');

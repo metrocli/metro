@@ -81,8 +81,9 @@
             </div>
             <div class="install-line" aria-label="First safe preview command">
               <span class="prompt" aria-hidden="true">$</span>
-              <code data-installed-command="metro setup quickstart --shell | zsh">npm install -g git+https://github.com/metrocli/metro.git && metro setup quickstart --shell | zsh</code>
-              <button type="button" data-copy-text="npm install -g git+https://github.com/metrocli/metro.git && metro setup quickstart --shell | zsh">Copy</button>
+              <code id="hero-install-command" data-installed-command="metro setup quickstart --shell | zsh">git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true
+bash ~/.metro/src/scripts/install-global.sh</code>
+              <button type="button" data-copy-from="#hero-install-command" data-copy-text="git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true; bash ~/.metro/src/scripts/install-global.sh">Copy</button>
             </div>
             <div class="first-run-strip" aria-label="First safe preview checklist">
               <span>1. install from GitHub</span>
@@ -90,9 +91,11 @@
               <span>3. stop at <code>metro.preview.v1</code></span>
             </div>
             <p class="first-run-note">
-              The copied command installs the standalone private GitHub package
-              and runs the installed quickstart block. It does not require the
-              full operations checkout. A successful first preview is
+              Clone is skipped if <code>~/.metro/src</code> already exists - just re-run
+              the install script. Run from <code>~</code>, not from inside
+              <code>~/.metro/src</code>. No API key for install or quickstart.
+              Broken install? <code>metro doctor</code> (after install succeeds once).
+              The install does not require a full private ops checkout. A successful first preview is
               sandbox-labeled, hash-bound, and still not approval for live
               reads, writes, Stripe delivery, or apply - it only proves the tool works on your machine.
             </p>
@@ -136,7 +139,9 @@
           <div class="try-it-grid">
             <article class="card">
               <h3>1. Install and prove the binary</h3>
-              <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+              <pre><code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true
+bash ~/.metro/src/scripts/install-global.sh
+metro doctor
 metro setup quickstart --shell | zsh
 metro schema --json</code></pre>
               <p>Installs the standalone package, writes temp fixtures, validates pro-annual, and emits a sandbox preview hash. No Metronome API calls.</p>
@@ -298,13 +303,15 @@ metro api read contracts.get.v2 --file request.json --sandbox \
           <div class="section-grid">
             <article class="card">
               <h3>Current GitHub install</h3>
-              <pre><code>npm install -g git+https://github.com/metrocli/metro.git
+              <pre><code>git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true
+bash ~/.metro/src/scripts/install-global.sh
+metro doctor
 metro setup quickstart --shell | zsh
 metro setup quickstart --json
 metro schema --json</code></pre>
               <p>
                 Authorized users install the standalone package from the
-                private GitHub repository and use the installed <code>metro</code>
+                GitHub repository and use the installed <code>metro</code>
                 binary. The full operations workspace is only needed by
                 maintainers editing source, tests, or this manual.
               </p>
@@ -414,7 +421,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
                   <td><code>metro shape list</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
-                  <td>Lists Lev-approved shapes and maturity levels.</td>
+                  <td>Lists supported shapes and maturity levels.</td>
                 </tr>
                 <tr>
                   <td><code>metro shape explain &lt;shape&gt;</code></td>
@@ -962,7 +969,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           <div class="section-heading">
             <p class="eyebrow">Shape catalog</p>
             <h2>Approved business workflows, not raw endpoints</h2>
-            <p>Shapes translate known Lev billing operations into typed, source-backed workflows with maturity levels.</p>
+            <p>Shapes translate known billing operations into typed, source-backed workflows with maturity levels.</p>
           </div>
           <div class="shape-grid">
             <article class="shape-card">
