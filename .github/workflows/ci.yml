@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      METRO_DEFAULT_WORKSPACE_PACK: generic
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+      npm_config_audit: 'false'
+      npm_config_fund: 'false'
+      npm_config_update_notifier: 'false'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm test
+      - run: npm run doctor:smoke
+      - run: npm run harness:onboard
+      - run: npm pack --dry-run
