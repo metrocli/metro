@@ -6,27 +6,29 @@ Apache-2.0. Generic workspace pack by default; extend with your own workspace pa
 
 ## Install
 
-Do **not** use `npm install -g git+…` — on current npm that often leaves a broken symlink and `metro: command not found`.
+**Preferred (npm):**
 
 ```bash
-git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
-bash ~/.metro/src/scripts/install-global.sh
+npm install -g @metrocli/metro
 metro doctor
-metro --help
 metro workspace use generic --write
 metro setup init --workspace generic --write
 metro harness run --suite onboard --execute --json
 ```
 
-Later updates (from any directory except inside a nested clone):
+**From GitHub** (if you want a linked source checkout, or before a registry release):
 
 ```bash
+git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
 bash ~/.metro/src/scripts/install-global.sh
+metro doctor
 ```
 
-If anything looks wrong: `metro doctor` (or `metro doctor --json`).
+Do **not** use `npm install -g git+…` — on current npm that often leaves a broken symlink and `metro: command not found`.
 
-Registry install (`npm install -g @metrocli/metro`) is planned once publish is configured.
+Later source updates: `bash ~/.metro/src/scripts/install-global.sh`. Diagnose with `metro doctor --json`.
+
+Maintainers: see [packaging/npm/PUBLISH.md](./packaging/npm/PUBLISH.md).
 
 ## First live sandbox steps
 

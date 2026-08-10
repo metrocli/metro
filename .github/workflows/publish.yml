@@ -1,0 +1,96 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type publish to run a manual publish from this ref'
+        required: true
+        default: ''
+
+permissions:
+  contents: read
+  id-token: write # npm Trusted Publishing (OIDC)
+
+concurrency:
+  group: npm-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @metrocli/metro
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: npm
+    if: github.event_name == 'push' || inputs.confirm == 'publish'
+    env:
+      METRO_DEFAULT_WORKSPACE_PACK: generic
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+      npm_config_audit: 'false'
+      npm_config_fund: 'false'
+      npm_config_update_notifier: 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Ensure modern npm (OIDC trusted publishing)
+        run: npm install -g npm@latest
+
+      - name: Smoke tests
+        run: |
+          npm test
+          npm run doctor:smoke
+          npm run harness:onboard
+
+      - name: Verify pack contents
+        run: |
+          npm pack --dry-run --json > pack.json
+          node -e "
+            const pack = JSON.parse(require('fs').readFileSync('pack.json','utf8'))[0];
+            if (pack.name !== '@metrocli/metro') throw new Error('unexpected package name: ' + pack.name);
+            const required = [
+              'bin/metro.js',
+              'scripts/install-global.sh',
+              'packages/metro-core/src/cli.js',
+              'packages/metro-core/src/install/doctor.js',
+              'packages/metro-workspace-generic/src/plan.js',
+              'README.md',
+              'LICENSE',
+            ];
+            const paths = new Set(pack.files.map((f) => f.path));
+            for (const p of required) {
+              if (!paths.has(p)) throw new Error('pack missing ' + p);
+            }
+            const banned = [...paths].filter((p) =>
+              p.includes('metro-workspace-lev') ||
+              p.includes('ops-log') ||
+              p.includes('skills/metro-lev')
+            );
+            if (banned.length) throw new Error('pack contains private paths: ' + banned.join(', '));
+            console.log('pack ok:', pack.filename, pack.files.length, 'files');
+          "
+
+      - name: Require tag version matches package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p 'require("./package.json").version')"
+          if [ "$tag" != "$pkg" ]; then
+            echo "Tag v$tag does not match package.json version $pkg"
+            exit 1
+          fi
+
+      - name: Publish to npm (OIDC / Trusted Publishing)
+        run: npm publish --access public
