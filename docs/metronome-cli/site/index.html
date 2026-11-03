@@ -1176,7 +1176,7 @@ metro source-boundary validate --file source-boundary.json --json</code></pre>
             </article>
             <article class="card">
               <h3>Live vs local today</h3>
-              <p>Guarded live reads cover three endpoints, and sandbox <code>contracts.create</code> is the only expert-API apply. Pack operations (customer, rate card, package, contract, subscription) apply only with a typed confirmation token and read back afterwards. CI and default installs run without API keys and receive exit-code-2 refusals.</p>
+              <p>Guarded live reads cover 20 endpoints (sandbox or production), and guarded expert-API apply covers 8 sandbox-only write endpoints; see <a href="../VALIDATION_AND_GUARDRAILS.md">validation and guardrails</a>. Pack operations (customer, rate card, package, contract, subscription) apply only with a typed confirmation token and read back afterwards. CI and default installs run without API keys and receive exit-code-2 refusals.</p>
             </article>
           </div>
         </section>

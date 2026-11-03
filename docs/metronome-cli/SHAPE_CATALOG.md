@@ -8,7 +8,7 @@ List all shapes: `metro shape list --json`
 **Maturity:** local-validated (preview only; apply blocked in current CLI)
 
 **Purpose:** One action-code USAGE rate append on an existing tier dimensional rate
-card. See [DIMENSIONAL_RATE_CARD_RUNBOOK.md](./DIMENSIONAL_RATE_CARD_RUNBOOK.md).
+card. Rules: [VALIDATION_AND_GUARDRAILS.md](./VALIDATION_AND_GUARDRAILS.md).
 
 **Commands:**
 
