@@ -116,10 +116,18 @@ function formatHuman(payload) {
   }
   lines.push('');
   lines.push('What change do you want? Common next steps:');
-  lines.push(`  metro contract move-plan preflight --customer-id=${c.id} --to=<package-alias> --prod`);
-  lines.push(`  metro ledger-adjustment preflight --amount=<signed-int> --reason="..." --customer-id=${c.id} --prod`);
-  lines.push(`  metro contract extend-trial preflight --extend-by-days=<N> --customer-id=${c.id} --prod`);
+  for (const command of payload.nextCommands || nextCommandsFor(c.id, payload.tenant)) lines.push(`  ${command}`);
   return `${lines.join('\n')}\n`;
+}
+
+/** Suggested follow-ups carry the tenant flag the user ran `ops who` with. */
+function nextCommandsFor(customerId, tenant) {
+  const tenantFlag = tenant === 'production' ? '--prod' : '--sandbox';
+  return [
+    `metro contract move-plan preflight --customer-id=${customerId} --to=<package-alias> ${tenantFlag}`,
+    `metro ledger-adjustment preflight --amount=<signed-int> --reason="..." --customer-id=${customerId} ${tenantFlag}`,
+    `metro contract extend-trial preflight --extend-by-days=<N> --customer-id=${customerId} ${tenantFlag}`,
+  ];
 }
 
 async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: process.stderr }, positionalQuery = null) {
@@ -176,6 +184,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
     contracts: snap.contracts,
     balances: snap.balances,
     nextPrompt: 'What change do you want?',
+    nextCommands: nextCommandsFor(resolved.customer.id, tenant),
   };
 
   if (args.json) streams.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
@@ -190,5 +199,6 @@ module.exports = {
   guessCustomerLookup,
   parseWhoArgs,
   formatHuman,
+  nextCommandsFor,
   isActiveNow,
 };
