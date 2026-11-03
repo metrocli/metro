@@ -1093,7 +1093,7 @@ function runModeCommand(positional, flags, streams) {
   const action = positional[1] || 'show';
 
   if (action === 'help') {
-    write(streams.stderr, 'Usage: metro mode [show] | metro mode set <local-only|read-only|read-write> | metro mode reset');
+    write(streams.stderr, 'Usage: metro mode [show] | metro mode set <local-only|read-only|read-write> | metro mode <write|read|local> | metro mode reset');
     write(streams.stderr, 'Sticky ceiling for this machine. Confirmation tokens still required for every write.');
     return 1;
   }

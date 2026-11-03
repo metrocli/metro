@@ -36,3 +36,15 @@ test('metro mode set read-write raises the ceiling', () => {
   const status = runMetro(['status', '--json'], { home });
   assert.equal(JSON.parse(status.stdout).operatorMode.mode, 'read-write');
 });
+
+test('metro --help lists the mode shorthands, and write/read round-trip', () => {
+  const help = runMetro(['--help']);
+  assert.match(help.stdout, /metro mode <write\|read\|local> \[--json\]/);
+  const home = tempDir();
+  const up = runMetro(['mode', 'write', '--json'], { home });
+  assert.equal(up.code, 0, up.stderr);
+  assert.equal(JSON.parse(up.stdout).mode, 'read-write');
+  const down = runMetro(['mode', 'read', '--json'], { home });
+  assert.equal(down.code, 0, down.stderr);
+  assert.equal(JSON.parse(down.stdout).mode, 'read-only');
+});
