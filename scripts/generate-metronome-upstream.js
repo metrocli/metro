@@ -407,8 +407,16 @@ function fetchText(url) {
   });
 }
 
+// docs.metronome.com/changelog.md used to wrap entries in <Update label="..."> blocks;
+// it now renders "**Month D, YYYY**" date lines before each "## Title". Map the new
+// shape onto the old marker so one parser handles both.
+function normalizeChangelog(markdown) {
+  if (/<Update\s+label=/.test(markdown)) return markdown;
+  return markdown.replace(/^\*\*([A-Z][a-z]+ \d{1,2}, \d{4})\*\*\s*$/gm, '<Update label="$1">');
+}
+
 function parseChangelog(markdown) {
-  const parts = markdown.split(/(?=<Update\s+label=)/);
+  const parts = normalizeChangelog(markdown).split(/(?=<Update\s+label=)/);
   const entries = [];
   for (const part of parts.slice(1)) {
     const m = part.match(/^<Update\s+label="([^"]+)"(?:\s+tags=\{\[([^\]]*)\]\})?>/);
