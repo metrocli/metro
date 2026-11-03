@@ -20,10 +20,23 @@ function parseTenantFlags(argv = []) {
   return null;
 }
 
-function resolveTenant(argv = []) {
+/**
+ * Tenant for this run. Never inferred from METRONOME_PROD_KEY being present
+ * (gotcha never-infer-production-from-key-presence):
+ *   --sandbox / --prod  -> that tenant
+ *   no flag             -> sandbox when METRONOME_SANDBOX_KEY is set
+ *   otherwise           -> refuse and ask for an explicit flag
+ */
+function resolveTenant(argv = [], env = process.env) {
   const explicit = parseTenantFlags(argv);
   if (explicit) return explicit;
-  return process.env.METRONOME_PROD_KEY ? 'production' : 'sandbox';
+  if (env.METRONOME_SANDBOX_KEY && String(env.METRONOME_SANDBOX_KEY).trim()) return 'sandbox';
+  const error = new Error(
+    'No tenant selected. Pass --sandbox or --prod. metro never picks production on its own, '
+    + 'and with no sandbox key set there is no safe default. Add one with: metro init',
+  );
+  error.code = 'METRONOME_TENANT_EXPLICIT_REQUIRED';
+  throw error;
 }
 
 function envLoadHint(label, envLoad) {
@@ -76,7 +89,7 @@ function applyMetronomeApiKeyFromEnv({
     const key = process.env.METRONOME_PROD_KEY;
     assertProdKeyShape(key, 'METRONOME_PROD_KEY', envLoad);
     process.env.METRONOME_API_KEY = key;
-    return { tenant, source: explicit ? 'flag:--prod' : 'implicit:METRONOME_PROD_KEY', envLoad };
+    return { tenant, source: 'flag:--prod', envLoad };
   }
 
   const key = process.env.METRONOME_API_KEY || process.env.METRONOME_SANDBOX_KEY;
