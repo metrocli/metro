@@ -30,4 +30,5 @@ brew install metrocli
 metro init
 ```
 
-Until the tap exists, use `npm install -g @metrocli/metro` or `scripts/install-global.sh`.
+Until the tap exists, install from source with `scripts/install-global.sh` (or
+`npm install -g @metrocli/metro` once the package is published).

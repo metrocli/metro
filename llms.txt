@@ -4,7 +4,7 @@
 
 ## Set up metro (do these in order)
 
-1. Install: `npm install -g @metrocli/metro`
+1. Install: `git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src && bash ~/.metro/src/scripts/install-global.sh` (once `@metrocli/metro` is published to npm, `npm install -g @metrocli/metro` also works)
 2. Run: `metro init --agent` (creates ~/.metro/.env with mode 600, sets read-only mode, never prompts)
 3. Ask the human to create a sandbox token at https://app.metronome.com/sandbox/developer/api-tokens and paste it into ~/.metro/.env after `METRONOME_SANDBOX_KEY=` in their editor. Never ask for a key in chat.
 4. When they say "done": `metro init --check --json`. Continue only when `keys.sandbox.status` is `working`; otherwise relay `next`.
@@ -17,6 +17,7 @@
 - Ladder: preview (prints `payloadHash`) > show the human > apply with `--confirm-hash` > read back > report expected vs actual.
 - Production only with the human's explicit typed yes in chat for that specific change.
 - Never print or echo keys. Never cat ~/.metro/.env.
+- Exit codes: `0` success, `1` usage/validation/API error, `2` safety refusal, `3` read-back mismatch after a live write (the write happened; read the log, do not re-run).
 
 ## Learn the tenant first
 

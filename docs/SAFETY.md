@@ -37,7 +37,8 @@ apply gate, an approval record, and
 Guarded reads need a read gate and
 `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`.
 
-Exit codes: `0` success, `1` validation failure, `2` safety refusal.
+Exit codes: `0` success, `1` usage, validation or API error, `2` safety refusal,
+`3` read-back mismatch after a live write (the write happened; check the apply log).
 
 ## Before any production write, write down
 

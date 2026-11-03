@@ -760,7 +760,7 @@ function ciLocalChecksTopic(topic, bundle) {
       ],
       parseRules: [
         'Parse stdout by schemaVersion and command id; do not scrape generated HTML or README prose when the CLI exposes an equivalent JSON contract.',
-        'Treat exit code 0 as local evidence success, exit code 1 as input or validation failure, and exit code 2 as a useful safety refusal.',
+        'Treat exit code 0 as local evidence success, exit code 1 as input or validation failure, exit code 2 as a useful safety refusal, and exit code 3 as a read-back mismatch after a live write (the write happened).',
         'Keep stdout and stderr separate so successful evidence payloads are not conflated with refusal JSON or validation findings.',
         'Store command, exit code, schemaVersion, payload hashes, sourceIds, generatedFrom, and nextSafeStep with any CI artifact.',
       ],

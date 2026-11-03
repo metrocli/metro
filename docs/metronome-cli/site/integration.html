@@ -41,7 +41,7 @@
           </article>
           <article>
             <span>Exit codes</span>
-            <strong><code>0</code>, <code>1</code>, <code>2</code></strong>
+            <strong><code>0</code>, <code>1</code>, <code>2</code>, <code>3</code></strong>
           </article>
           <article>
             <span>API access</span>
@@ -121,6 +121,10 @@ metro input normalize --api contracts.create --file contracts-create.yaml --json
               <div>
                 <dt><code>2</code></dt>
                 <dd>Safety refusal for unsupported live reads, live writes, or apply behavior.</dd>
+              </div>
+              <div>
+                <dt><code>3</code></dt>
+                <dd>Read-back mismatch after a live write: the write happened, but expected and actual differ. Read the apply log before retrying.</dd>
               </div>
             </dl>
             <p>

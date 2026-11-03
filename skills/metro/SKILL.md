@@ -85,7 +85,8 @@ Full routing table: `skills/_metronome-shared/INDEX.md`.
 ## Install
 
 ```bash
-npm install -g @metrocli/metro
+git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh   # npm install -g @metrocli/metro once published
 metro workspace use generic --write
 metro setup init --workspace generic --write
 metro doctor
@@ -109,7 +110,8 @@ in place: `metro catalog bind --sandbox --write`, then `metro ops` /
 1. Run `metro schema --json` first for command discovery and exit codes.
 2. Prefer `--json` on every command; parse **stdout** for success payloads only.
 3. Treat **stderr** as human progress and refusals (`metro.refusal.v1`, `metro.api.read.refusal.v1`).
-4. Exit codes: `0` success, `1` validation, `2` safety refusal.
+4. Exit codes: `0` success, `1` usage, validation or API error, `2` safety refusal,
+   `3` read-back mismatch after a live write (the write happened; do not re-run).
 5. Pass `--sandbox` or `--prod` explicitly. Never infer the tenant from env keys.
 6. Live reads require `--read-gate` plus `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`.
 7. Live sandbox apply requires `--apply-gate`, `--approval-record`, and `--confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX`.
@@ -161,16 +163,16 @@ If a request takes many tool runs, greps, doc hops, or long discovery chains, sa
 
 - `metro shape list [--json]` - List supported workflow shapes and maturity levels.
 - `metro shape explain <shape> [--json]` - Explain a shape, including required input, maturity, blocked modes, rule IDs, and sources.
-- `metro validate --shape <shape> --file <input.json|yaml> [--json]` - Validate local JSON or YAML input against a supported shape before any API client loads.
+- `metro validate --shape <shape> --file <input.json|yaml> [--sandbox|--prod] [--profile <name>] [--json]` - Validate local JSON or YAML input against a supported shape before any API client loads.
 - `metro input normalize (--shape <shape>|--api <endpoint-id>) --file <input.json|yaml> [--json]` - Normalize local JSON or YAML workflow shape input or expert API request input into stable canonical JSON with validation status, secret-scan refusal, and deterministic hash output.
 - `metro workspace explain [--sandbox|--prod] [--json]` - Explain the workspace catalog model, tier rate cards, API token conventions, and plan intents for optimal shape routing.
 - `metro workspace status --file <profiles.json> --profile <name> [--check-env] [--json]` - Bind a tenant profile to the workspace model and report whether the Metronome key env var is configured (name only, never the secret).
-- `metro plan template <intent> (--sandbox|--prod) [--out <out.json>] [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--json]` - Emit a focused inputTemplate JSON payload for a workspace intent, optionally writing it to a file for validate/preview follow-on.
+- `metro plan template <intent> (--sandbox|--prod) [--out <out.json>] [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--credit-grant-mode <mode>] [--annual-credits-total <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--json]` - Emit a focused inputTemplate JSON payload for a workspace intent, optionally writing it to a file for validate/preview follow-on.
 - `metro plan list [--json]` - List workspace-aware plan intents that map billing goals to optimal shapes and rejected API paths.
-- `metro plan <intent> (--sandbox|--prod) [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--json]` - Build a workspace-aware plan for a billing intent: optimal shape, catalog mode, rejected paths, commands, verification reads, and input templates.
-- `metro route --goal "<billing goal>" [--api <endpoint-id>] (--sandbox|--prod) [--json]` - Match a billing goal or API endpoint to the optimal workspace plan intent and refuse suboptimal catalog paths.
+- `metro plan <intent> (--sandbox|--prod) [--goal "<text>"] [--token <name>] [--action-code <code>] [--display-name <text>] [--name <text>] [--aggregation <type>] [--event-type <type>] [--dimension-key <key>] [--price <n>] [--credit-grant-mode <mode>] [--annual-credits-total <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--dir <snapshot-dir>] [--json]` - Build a workspace-aware plan for a billing intent: optimal shape, catalog mode, rejected paths, commands, verification reads, and input templates.
+- `metro route --goal "<billing goal>" [--api <endpoint-id>] (--sandbox|--prod) [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--dir <snapshot-dir>] [--json]` - Match a billing goal or API endpoint to the optimal workspace plan intent and refuse suboptimal catalog paths.
 - `metro audit export classify --file <audit-export.json> [--token <name>] (--sandbox|--prod) [--json]` - Classify exported Metronome audit log rows by action histogram and map to workspace plan intents (local file only).
-- `metro audit export plan --token <name> (--sandbox|--prod) [--json]` - Build the local audit export workflow (security.getAuditLogs read plan steps + classify); does not perform live reads.
+- `metro audit export plan --token <name> (--sandbox|--prod) [--starting-on <ISO>] [--ending-before <ISO>] [--limit <n>] [--sort <order>] [--json]` - Build the local audit export workflow (security.getAuditLogs read plan steps + classify); does not perform live reads.
 - `metro package preview --shape pro-annual-self-serve-v2 --file <input.json|yaml> (--sandbox|--prod) [--json]` - Preview annual self-serve package v2 with separable plan fee and monthly-drip or lump-sum recurring_commits.
 - `metro package preview --shape free-credit-trial --file <input.json|yaml> (--sandbox|--prod) [--json]` - Validate and preview a free-trial package with recurring credit grants, auto-expiry (duration in days), and no Stripe. Enforces commit_duration.unit PERIODS, duration.value as a string, starting_at_offset, and proration - do not hand-craft this payload.
 - `metro package preview --shape pro-annual --file <input.json|yaml> (--sandbox|--prod) [--json]` - Build a local package preview payload plan, side-effect summary, verification plan, and canonical hash.
@@ -182,7 +184,7 @@ If a request takes many tool runs, greps, doc hops, or long discovery chains, sa
 - `metro contract move-plan preview --file <input.json|yaml> (--sandbox|--prod) [--shape package-plan-move-no-immediate-invoice] [--json]` - Build a local package plan-move preview using updateEndDate plus a RENEWAL successor contract, without calling Metronome.
 - `metro product retire preview --file <input.json|yaml> (--sandbox|--prod) [--shape product-rate-retirement] [--json]` - Build a local product/rate retirement plan that closes affected rate-card entries before optional product archive, without calling Metronome.
 - `metro rate-card dimensional preview --file <input.json|yaml> (--sandbox|--prod) [--shape dimensional-rate-card] [--json]` - Build a local dimensional rate-card plan for one action-code USAGE product plus per-action addRates entries, without calling Metronome.
-- `metro invoice issue-date preview --file <input.json|yaml> (--sandbox|--prod) [--shape invoice-issue-date-update] [--json]` - Build a local DRAFT invoice issue-date update plan with explicit Stripe behavior, contract-end evidence, and read-back checks, without calling Metronome.
+- `metro invoice issue-date preview --file <input.json|yaml> (--sandbox|--prod) [--shape invoice-issue-date-update] [--json]` - Preview only: build a local DRAFT invoice issue-date update plan with explicit Stripe behavior, contract-end evidence, and read-back checks, without calling Metronome. There is no apply path: invoice issue-date apply refuses, and the update endpoint is not on the sandbox write allowlist.
 - `metro subscription contract preview --file <input.json|yaml> (--sandbox|--prod) [--shape direct-subscription-contract] [--json]` - Build a local direct subscription contract plan with rate-card identity, frequency, quantity/seat source, billing-provider, and read-back checks, without calling Metronome.
 - `metro custom-contract preview --file <input.json|yaml> (--sandbox|--prod) [--shape enterprise-custom-contract] [--json]` - Build a local direct enterprise custom-contract plan with explicit customer identity, Stripe billing-provider config, recurring commit, optional bonus commits, optional seat updates, side-effect summary, read-back plan, and canonical hash.
 - `metro usage ingest preview --file <input.json|yaml> (--sandbox|--prod) [--shape usage-ingest-preview] [--json]` - Build a local usage ingest preview plan with event-shape validation, transaction-id idempotency, invoice-period risk review, canary gating, and read-back checks, without calling Metronome.

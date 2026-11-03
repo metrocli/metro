@@ -13,7 +13,9 @@ payload hash, then a read-back that compares expected and actual.
 
 - License: Apache-2.0. Node 18 or newer.
 - Package: `@metrocli/metro`. Source: https://github.com/metrocli/metro
-- Exit codes: `0` success, `1` validation failure or missing setup, `2` safety refusal.
+- Exit codes: `0` success, `1` usage, validation, missing setup, blocked plan or API
+  error, `2` safety refusal, `3` read-back mismatch after a live write (the write
+  happened; read the apply log before retrying, never re-run blindly).
 - Prefer `--json`. Success payloads go to stdout. Refusals and progress go to stderr.
 
 ## 2. Metronome in two minutes
@@ -39,7 +41,8 @@ Source of truth: https://docs.metronome.com/ . When a doc and this table disagre
 
 ## 3. Set up (agent steps)
 
-1. Install: `npm install -g @metrocli/metro` (or `git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src && bash ~/.metro/src/scripts/install-global.sh`).
+1. Install from source: `git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src && bash ~/.metro/src/scripts/install-global.sh`.
+   Once `@metrocli/metro` is published to npm, `npm install -g @metrocli/metro` also works.
 2. Run `metro init --agent`. It creates `~/.metro/.env` (mode 600) with empty
    placeholders, puts metro in read-only mode, and prints steps for the human.
 3. Ask the human to open https://app.metronome.com/sandbox/developer/api-tokens ,

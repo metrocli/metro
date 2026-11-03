@@ -32,7 +32,7 @@ Operating rules (human + agent): [`AGENTS.md`](../../../AGENTS.md)
 1. **Plain English first** - billing goal, what will/will not change, approval needed before live.
 2. **Technical second** - exact `metro … --json` (or `--markdown` for context load), `schemaVersion`, hashes, evidence files.
 3. Parse **stdout** only for success; **stderr** for refusals (`metro.refusal.v1`).
-4. Exit codes: `0` ok · `1` validation · `2` safety refusal → follow `nextCommands[]`.
+4. Exit codes: `0` ok · `1` validation/usage/API error · `2` safety refusal → follow `nextCommands[]` · `3` read-back mismatch after a live write (the write happened; read the log).
 
 ## Decision trees (load as Markdown)
 
