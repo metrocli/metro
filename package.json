@@ -19,6 +19,8 @@
     "packages/metro-workspace-stub/",
     "docs/metronome-cli/",
     "skills/metro/",
+    "AGENTS.md",
+    "llms.txt",
     "README.md",
     "LICENSE"
   ],

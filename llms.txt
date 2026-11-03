@@ -1,0 +1,46 @@
+# metro
+
+> metro is an open-source CLI for Metronome billing, for any Metronome tenant. It is read-only by default. Every write goes preview, typed confirm hash, apply, then a read-back that compares expected and actual. Canonical copy: https://metrocli.dev/llms.txt
+
+## Set up metro (do these in order)
+
+1. Install: `npm install -g @metrocli/metro`
+2. Run: `metro init --agent` (creates ~/.metro/.env with mode 600, sets read-only mode, never prompts)
+3. Ask the human to create a sandbox token at https://app.metronome.com/sandbox/developer/api-tokens and paste it into ~/.metro/.env after `METRONOME_SANDBOX_KEY=` in their editor. Never ask for a key in chat.
+4. When they say "done": `metro init --check --json`. Continue only when `keys.sandbox.status` is `working`; otherwise relay `next`.
+5. Read ~/.metro/AGENTS.md (the full operating manual) before any change.
+
+## Safety rules
+
+- Read-only by default. Writes need `metro mode write`, set by the human.
+- Sandbox first. Always pass `--sandbox` or `--prod`; metro never picks production on its own.
+- Ladder: preview (prints `payloadHash`) > show the human > apply with `--confirm-hash` > read back > report expected vs actual.
+- Production only with the human's explicit typed yes in chat for that specific change.
+- Never print or echo keys. Never cat ~/.metro/.env.
+
+## Learn the tenant first
+
+- `metro status --json`
+- `metro catalog bind --sandbox --write`
+- `metro tenant snapshot show --sandbox --markdown`
+- `metro ops who "<customer>" --sandbox`
+
+## Provisioning commands
+
+`metro customer create`, `metro ratecard create`, `metro package create`, `metro contract create`, `metro subscription add`, `metro subscription set-quantity`, plus `metro contract move-plan|extend-trial|expire`, `metro ledger-adjustment`, `metro billing-provider cutover` (each: preflight, then apply).
+
+## Metronome model
+
+Usage events > billable metrics > products + rate cards > packages (contract templates) > contracts (commits, credits, subscriptions/seats) > invoices.
+
+## Docs
+
+- [Agent manual](https://github.com/metrocli/metro/blob/main/AGENTS.md)
+- [Safety policy](https://github.com/metrocli/metro/blob/main/docs/SAFETY.md)
+- [Cookbook](https://github.com/metrocli/metro/blob/main/docs/metronome-cli/COOKBOOK.md)
+- [Agent skill](https://github.com/metrocli/metro/blob/main/skills/metro/SKILL.md)
+- [Metronome docs](https://docs.metronome.com/)
+
+## After setup
+
+Propose three concrete next actions the human can say yes to, based on what you learned about their tenant.
