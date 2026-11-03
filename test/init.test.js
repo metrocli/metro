@@ -8,12 +8,13 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const { EventEmitter } = require('events');
-const { REPO_ROOT, tempDir, runMetro } = require('./helpers');
+const { spawnSync } = require('child_process');
+const { REPO_ROOT, tempDir, runMetro, cleanEnv } = require('./helpers');
 
 const INIT = path.join(REPO_ROOT, 'packages/metro-core/src/init');
 const { runInit, isFreshMachine, COPY } = require(INIT);
 const { ENV_TEMPLATE, setKeyIfEmpty, ensureEnvFile } = require(path.join(INIT, 'env-file.js'));
-const { readHidden } = require(path.join(INIT, 'prompt.js'));
+const { readHidden, readLine } = require(path.join(INIT, 'prompt.js'));
 const { createStyle } = require(path.join(INIT, 'style.js'));
 
 const SANDBOX_KEY = 'sbx_test_7f3a9c1e5b2d4f6a8c0e';
@@ -324,4 +325,85 @@ test('style honors NO_COLOR, non-TTY output, and --plain', () => {
   assert.equal(tc.signal('x'), tc.proof('x'));
   assert.equal(tc.confirm('x'), '\x1b[1m\x1b[38;2;251;108;43mx\x1b[0m'); // confirm stays ember #FB6C2B
   assert.equal(createStyle({ stream: tty, env: { TERM: 'xterm-256color' } }).proof('✓'), '\x1b[38;5;79m✓\x1b[0m');
+});
+
+// Cursor-control CSI sequences (anything but SGR colour, which ends in "m").
+const CURSOR_CONTROL = /\x1b\[[0-9;?]*[ -/]*[@-ln-~]/;
+
+test('y/N prompt echoes plain characters with no cursor-control codes', async () => {
+  const input = new EventEmitter();
+  let raw = false;
+  Object.assign(input, {
+    isTTY: true,
+    isRaw: false,
+    setRawMode(v) { raw = v; },
+    setEncoding() {},
+    resume() {},
+    pause() {},
+  });
+  const output = sink({ isTTY: true });
+  const pending = readLine({ input, output, prompt: '(y/N) \x1b[90m›\x1b[0m ' });
+  assert.equal(raw, true);
+  input.emit('data', '\x1b[A');
+  input.emit('data', 'nx');
+  input.emit('data', '\u007f');
+  input.emit('data', '\r');
+  assert.equal(await pending, 'n');
+  assert.equal(raw, false);
+  assert.equal(output.text, '(y/N) \x1b[90m›\x1b[0m nx\b \b\n');
+  assert.doesNotMatch(output.text, CURSOR_CONTROL);
+});
+
+const PTY_DRIVER = String.raw`
+import os, pty, sys, time, select
+repo, preload, home = sys.argv[1:4]
+env = {k: v for k, v in os.environ.items() if not k.startswith(('METRO_', 'METRONOME_'))}
+env.update(HOME=home, NODE_OPTIONS='--require ' + preload, TERM='xterm-256color', COLORTERM='truecolor')
+pid, fd = pty.fork()
+if pid == 0:
+    os.chdir(home)
+    os.execvpe(sys.argv[4], [sys.argv[4], os.path.join(repo, 'bin/metro.js'), 'init'], env)
+out = b''
+def pump(seconds):
+    global out
+    end = time.time() + seconds
+    while time.time() < end:
+        r, _, _ = select.select([fd], [], [], 0.05)
+        if r:
+            try:
+                data = os.read(fd, 65536)
+            except OSError:
+                return
+            if not data:
+                return
+            out += data
+def wait_for(text):
+    end = time.time() + 15
+    while text not in out and time.time() < end:
+        pump(0.1)
+wait_for(b'Paste it here'); pump(0.2)
+os.write(fd, b'sbx_test_7f3a9c1e5b2d4f6a8c0e\r')
+wait_for(b'(y/N)'); pump(0.2)
+os.write(fd, b'n\r')
+wait_for(b'Using an agent?'); pump(0.2)
+os.waitpid(pid, 0)
+sys.stdout.buffer.write(out)
+`;
+
+test('metro init on a real pty: y/N prompt prints no stray cursor codes', { skip: spawnSync('python3', ['-c', 'import pty'], { encoding: 'utf8' }).status !== 0 || process.platform === 'win32' }, () => {
+  const home = tempDir();
+  const preload = path.join(tempDir(), 'mock-fetch.js');
+  fs.writeFileSync(preload, `globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => ({ data: [] }) });\n`);
+  const result = spawnSync('python3', ['-c', PTY_DRIVER, REPO_ROOT, preload, home, process.execPath], {
+    env: cleanEnv(home),
+    encoding: 'latin1',
+    timeout: 30000,
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const text = result.stdout;
+  const prompt = text.indexOf('Add a production key now? (y/N)');
+  assert.ok(prompt !== -1, text);
+  const answered = text.slice(prompt, text.indexOf('Skipped.', prompt));
+  assert.ok(answered.includes(' n\r\n'), JSON.stringify(answered));
+  assert.doesNotMatch(text, CURSOR_CONTROL, JSON.stringify(text.match(CURSOR_CONTROL)));
 });
