@@ -34,12 +34,20 @@
 
 Usage events > billable metrics > products + rate cards > packages (contract templates) > contracts (commits, credits, subscriptions/seats) > invoices.
 
+## Official Metronome API reference
+
+metro's docs are the safety and workflow layer, not a copy of Metronome's API reference.
+
+- Authoritative, current API details: https://docs.metronome.com/llms.txt (index). Append `.md` to any docs.metronome.com page URL for that page as markdown.
+- What metro wraps: [API coverage](https://github.com/metrocli/metro/blob/main/docs/metronome-cli/API_COVERAGE.md) ([JSON](https://github.com/metrocli/metro/blob/main/docs/metronome-cli/API_COVERAGE.json)): every documented endpoint, its Metronome page, and metro's status (`op`, `catalog-read`, `catalog-write`, `not-yet`). Checked weekly against llms-full.txt.
+
 ## Docs
 
 - [Agent manual](https://github.com/metrocli/metro/blob/main/AGENTS.md)
 - [Safety policy](https://github.com/metrocli/metro/blob/main/docs/SAFETY.md)
 - [Cookbook](https://github.com/metrocli/metro/blob/main/docs/metronome-cli/COOKBOOK.md)
 - [Agent skill](https://github.com/metrocli/metro/blob/main/skills/metro/SKILL.md)
+- [Metronome API coverage](https://github.com/metrocli/metro/blob/main/docs/metronome-cli/API_COVERAGE.md)
 - [Metronome docs](https://docs.metronome.com/)
 
 ## After setup

@@ -1,0 +1,84 @@
+name: Metronome upstream
+
+# Weekly drift check against docs.metronome.com: the documented API endpoint set
+# (llms-full.txt vs docs/metronome-cli/API_COVERAGE.json) and the changelog
+# inventory. On drift it opens, or updates, one issue titled
+# "Metronome API changed upstream". Public docs only; no secrets.
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: metronome-upstream
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.x'
+
+      - name: API endpoint set vs committed coverage
+        id: api
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/metronome-api-coverage.js --check --report api-diff.md 2>&1 | tee api-check.log
+
+      - name: Changelog inventory vs docs.metronome.com/changelog.md
+        id: changelog
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/metronome-upstream-check.js --fetch 2>&1 | tee changelog-check.log
+
+      - name: Open or update the drift issue
+        if: steps.api.outcome == 'failure' || steps.changelog.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_OUTCOME: ${{ steps.api.outcome }}
+          CHANGELOG_OUTCOME: ${{ steps.changelog.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Metronome API changed upstream"
+          {
+            echo "Weekly upstream check found drift on $(date -u +%Y-%m-%d). Run: $RUN_URL"
+            echo
+            echo "## API endpoints (llms-full.txt): $API_OUTCOME"
+            echo
+            if [ -s api-diff.md ]; then cat api-diff.md; else echo '```'; tail -n 40 api-check.log; echo '```'; fi
+            echo
+            echo "## Changelog inventory: $CHANGELOG_OUTCOME"
+            echo
+            echo '```'
+            tail -n 60 changelog-check.log
+            echo '```'
+            echo
+            echo "To resolve: \`npm run docs:api:coverage\`, \`npm run docs:upstream:generate\`, review the linked pages on docs.metronome.com, add catalog entries for new reads, \`npm run docs:site:refresh\`, commit. Close this issue when the weekly check is green."
+          } > issue.md
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number,title \
+            --jq ".[] | select(.title == \"$title\") | .number" | head -n 1)"
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --repo "$GITHUB_REPOSITORY" --body-file issue.md
+            gh issue comment "$number" --repo "$GITHUB_REPOSITORY" --body "Still drifting as of $(date -u +%Y-%m-%d): $RUN_URL"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file issue.md
+          fi
+
+      - name: Fail the run on drift
+        if: steps.api.outcome == 'failure' || steps.changelog.outcome == 'failure'
+        run: exit 1

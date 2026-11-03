@@ -39,6 +39,26 @@ rate cards, then contracts, then invoices.
 
 Source of truth: https://docs.metronome.com/ . When a doc and this table disagree, the doc wins.
 
+### Official Metronome API reference
+
+metro's docs are the safety and workflow layer (tenant selection, preview,
+confirm hash, sandbox-first apply, read-back). They are not a copy of
+Metronome's API reference, and they do not try to be.
+
+- For authoritative, current request and response details, read Metronome's
+  docs: start at https://docs.metronome.com/llms.txt (the machine-readable
+  index), then fetch the endpoint's page as markdown by appending `.md`, for
+  example https://docs.metronome.com/api-reference/contracts/create-a-contract.md .
+- For what metro wraps, read `docs/metronome-cli/API_COVERAGE.md` (or the JSON
+  twin `API_COVERAGE.json`): every documented endpoint, its Metronome page, and
+  its metro status (`op`, `catalog-read`, `catalog-write`, `not-yet`) with the
+  metro command when there is one. `metro api explain <endpoint-id>` shows a
+  cataloged endpoint's reviewed contract.
+- An endpoint marked `not-yet` has no metro wrapper. Do not hand-roll a write
+  to it; tell the human metro does not cover it and link the Metronome page.
+- Coverage is re-checked weekly against llms-full.txt
+  (`npm run docs:api:coverage:check`); drift opens a GitHub issue.
+
 ## 3. Set up (agent steps)
 
 1. Install from source: `git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src && bash ~/.metro/src/scripts/install-global.sh`.
@@ -121,6 +141,7 @@ metro, or fall back to `metro plan` and `metro api preview` for that step.
 - `metro docs explain <topic> --markdown`: focused explanations, for example `credits.product.decision`.
 - `docs/SAFETY.md`: the full safety policy.
 - `metro schema --json`: every command and exit code.
+- `docs/metronome-cli/API_COVERAGE.md`: which Metronome endpoints metro wraps, each linked to its Metronome page.
 
 ## 8. Report a doorway
 
