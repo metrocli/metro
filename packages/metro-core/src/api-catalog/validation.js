@@ -563,8 +563,14 @@ function validatePackageContractTemplate(request, findings, path) {
   if (hasValue(getPath(request, `${path}.usage_statement_schedule`)) && !isPlainObject(getPath(request, `${path}.usage_statement_schedule`))) {
     add(findings, 'MTR-APIREQ-004', `${path}.usage_statement_schedule must be an object.`, `${path}.usage_statement_schedule`, ['api-validation', 'official-package-create']);
   } else if (isPlainObject(getPath(request, `${path}.usage_statement_schedule`))) {
+    // day: CONTRACT_START gives anniversary usage windows; omitting it means
+    // Metronome's FIRST_OF_MONTH default.
+    // https://docs.metronome.com/api-reference/contracts/create-a-package
+    if (hasValue(getPath(request, `${path}.usage_statement_schedule.day`))) {
+      requireEnum(request, findings, `${path}.usage_statement_schedule.day`, ['CONTRACT_START', 'FIRST_OF_MONTH']);
+    }
     for (const key of Object.keys(getPath(request, `${path}.usage_statement_schedule`))) {
-      if (!['frequency'].includes(key)) {
+      if (!['frequency', 'day'].includes(key)) {
         add(findings, 'MTR-APIREQ-002', `${path}.usage_statement_schedule.${key} is not part of the reviewed local package contract-template evidence.`, `${path}.usage_statement_schedule.${key}`, ['api-validation', 'official-package-create']);
       }
     }
