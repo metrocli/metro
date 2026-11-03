@@ -24,16 +24,25 @@ const { resolvePackId, loadWorkspacePack } = require('./loader');
 
 const PACK_OP_NAMES = Object.freeze([
   'billing-provider-cutover',
+  'contract-create',
   'contract-expire',
   'contract-extend-trial',
   'contract-move-plan',
   'contract-repair-accidental',
   'customer-balances',
+  'customer-create',
   'dimensional',
   'dimensional-new-code',
   'ledger-adjustment',
+  'package-clone-version',
+  'package-create',
   'package-customers',
   'package-list',
+  'ratecard-add-rates',
+  'ratecard-create',
+  'subscription-add',
+  'subscription-seats',
+  'subscription-set-quantity',
 ]);
 
 function safeLoadActivePack(packId) {
