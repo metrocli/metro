@@ -3,6 +3,7 @@
 const { getShape } = require('../shapes');
 const { USD_CREDIT_TYPE_ID, validateShapeInput } = require('../validators');
 const { canonicalize, canonicalJson, sha256 } = require('../util/canonical-hash');
+const { defaultValidationOptions } = require('../workspace/loader');
 
 function resolveCustomerExternalId(input) {
   if (input.externalCustomerId !== undefined && input.externalCustomerId !== null && String(input.externalCustomerId).trim() !== '') {
@@ -1925,8 +1926,12 @@ function buildProductRateRetirementPreview(input, tenant, validation) {
   };
 }
 
-function buildPreview(shapeId, input, { tenant }) {
-  const validation = validateShapeInput(shapeId, input);
+function buildPreview(shapeId, input, { tenant, validationOptions } = {}) {
+  const validation = validateShapeInput(
+    shapeId,
+    input,
+    validationOptions || defaultValidationOptions({ tenant }),
+  );
   if (!validation.valid) {
     return {
       schemaVersion: 'metro.preview.v1',

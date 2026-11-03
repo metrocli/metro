@@ -108,6 +108,37 @@ function readProfileWorkspacePack(options = {}) {
 }
 
 /**
+ * workspaceCatalog of the selected (or default) profile in ~/.metro/profiles.json.
+ * Validators use it for tenant ids such as the access creditTypeId, so nothing
+ * tenant-specific is hardcoded in core. Returns null when absent or unreadable.
+ */
+function readProfileWorkspaceCatalog(options = {}) {
+  const dir = options.configDir ? path.resolve(String(options.configDir)) : defaultMetroConfigDir();
+  const filePath = options.profilePath
+    ? path.resolve(String(options.profilePath))
+    : profilesPath(dir);
+  try {
+    if (!fs.existsSync(filePath)) return null;
+    const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const profiles = parsed.profiles && typeof parsed.profiles === 'object' ? parsed.profiles : {};
+    let name = options.profileName || null;
+    if (!name && options.tenant) {
+      name = Object.keys(profiles).find((key) => profiles[key]?.tenant === options.tenant) || null;
+    }
+    name = name || parsed.defaultProfile || Object.keys(profiles)[0] || null;
+    const catalog = name && profiles[name] ? profiles[name].workspaceCatalog : null;
+    return catalog && typeof catalog === 'object' ? catalog : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Options for validateShapeInput built from the active profile config. */
+function defaultValidationOptions(options = {}) {
+  return { workspaceCatalog: readProfileWorkspaceCatalog(options) };
+}
+
+/**
  * Resolution order:
  * 1. options.workspace / --workspace
  * 2. METRO_WORKSPACE_PACK or METRO_WORKSPACE
@@ -247,6 +278,7 @@ function describeWorkspaceResolution(options = {}) {
 
 const api = {
   PACK_IDS,
+  DEFAULT_PACK_ID,
   resolvePackId,
   loadWorkspacePack,
   getActiveWorkspace,
@@ -257,6 +289,8 @@ const api = {
   describeWorkspaceResolution,
   defaultMetroConfigDir,
   configPath,
+  readProfileWorkspaceCatalog,
+  defaultValidationOptions,
 };
 
 Object.defineProperty(api, 'packId', {
@@ -278,7 +312,6 @@ for (const key of PACK_FUNCTION_KEYS) {
     const fn = pack[key];
     if (typeof fn !== 'function') {
       throw new Error(`Workspace pack ${resolvePackId()} does not export ${key}`);
-  DEFAULT_PACK_ID,
     }
     return fn(...args);
   };

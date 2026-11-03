@@ -3,7 +3,7 @@
 const { getShape } = require('../shapes');
 const { rule } = require('./rules');
 
-const LEV_CREDIT_TYPE_ID = '6b0b44be-8d67-4dee-ba7f-19c7e8bd5ca4';
+// Metronome's built-in USD (cents) fiat credit type. Same id on every tenant.
 const USD_CREDIT_TYPE_ID = '2714e483-4ff1-48e4-9e25-ac732e8f24f2';
 const INVOICE_ISSUE_DATE_STRIPE_BEHAVIORS = new Set([
   'defer_until_new_issue_date',
@@ -44,6 +44,37 @@ function isNumberInRange(value, min, max) {
 
 function isSafeIdentifier(value) {
   return typeof value === 'string' && /^[A-Za-z0-9_.:-]+$/.test(value);
+}
+
+/**
+ * Access (non-fiat) credit type ids this tenant uses, from config, never hardcoded.
+ * Sources, all optional: options.accessCreditTypeIds, options.creditTypeId,
+ * options.workspaceCatalog.creditTypeId (profile workspaceCatalog binding), and
+ * the METRO_ACCESS_CREDIT_TYPE_IDS env var (comma-separated). Placeholders such
+ * as "<credit-type-id>" are ignored.
+ */
+function configuredAccessCreditTypeIds(options = {}) {
+  const ids = new Set();
+  const push = (value) => {
+    if (!hasValue(value)) return;
+    const id = String(value).trim();
+    if (id.startsWith('<')) return;
+    ids.add(id);
+  };
+  const list = options.accessCreditTypeIds;
+  if (Array.isArray(list)) list.forEach(push);
+  push(options.creditTypeId);
+  push(options.workspaceCatalog?.creditTypeId);
+  if (process.env.METRO_ACCESS_CREDIT_TYPE_IDS) {
+    process.env.METRO_ACCESS_CREDIT_TYPE_IDS.split(',').forEach(push);
+  }
+  return ids;
+}
+
+function isAccessCreditType(creditTypeId, input, options) {
+  if (!hasValue(creditTypeId)) return false;
+  if (hasValue(input?.accessCreditTypeId) && creditTypeId === input.accessCreditTypeId) return true;
+  return configuredAccessCreditTypeIds(options).has(String(creditTypeId).trim());
 }
 
 function resolveCustomerExternalId(input) {
@@ -533,7 +564,7 @@ function validateFreeCreditTrial(input, findings) {
   }
 }
 
-function validateComplimentaryCreditGrant(input, findings) {
+function validateComplimentaryCreditGrant(input, findings, options = {}) {
   for (const field of ['customerId', 'contractId', 'name']) {
     if (!hasValue(input[field])) {
       add(findings, 'MTR-CREDIT-001', `${field} is required for a contract-scoped grant.`, field, ['shape-catalog']);
@@ -560,7 +591,7 @@ function validateComplimentaryCreditGrant(input, findings) {
   const schedule = input.invoiceSchedule;
   if (!hasValue(schedule.creditTypeId)) {
     add(findings, 'MTR-CREDIT-002', 'invoiceSchedule.creditTypeId is required when invoiceSchedule is present.', 'invoiceSchedule.creditTypeId', ['validation', 'conventions']);
-  } else if (schedule.creditTypeId === input.accessCreditTypeId || schedule.creditTypeId === LEV_CREDIT_TYPE_ID) {
+  } else if (isAccessCreditType(schedule.creditTypeId, input, options)) {
     add(findings, 'MTR-CREDIT-002', 'invoiceSchedule.creditTypeId must be fiat, not the access credit type.', 'invoiceSchedule.creditTypeId', ['danger-zone', 'conventions']);
   }
 
@@ -630,7 +661,7 @@ function validatePaidCreditTopUp(input, findings, options) {
   } else {
     if (!hasValue(schedule.creditTypeId)) {
       add(findings, 'MTR-CREDIT-002', 'invoiceSchedule.creditTypeId is required for paid top-ups.', 'invoiceSchedule.creditTypeId', ['conventions', 'commits-credits']);
-    } else if (schedule.creditTypeId === input.accessCreditTypeId || schedule.creditTypeId === LEV_CREDIT_TYPE_ID) {
+    } else if (isAccessCreditType(schedule.creditTypeId, input, options)) {
       add(findings, 'MTR-CREDIT-002', 'invoiceSchedule.creditTypeId must be fiat, not the access credit type.', 'invoiceSchedule.creditTypeId', ['danger-zone', 'conventions']);
     } else if (schedule.creditTypeId !== USD_CREDIT_TYPE_ID) {
       add(findings, 'MTR-CREDIT-002', 'Only USD cents is currently allowlisted by this validator for paid top-ups.', 'invoiceSchedule.creditTypeId', ['conventions']);
@@ -924,7 +955,7 @@ function validateDirectSubscriptionContract(input, findings, options) {
   }
 }
 
-function validateCustomContractCommitSpec(spec, findings, basePath, { requireCadence = false } = {}) {
+function validateCustomContractCommitSpec(spec, findings, basePath, { requireCadence = false } = {}, options = {}) {
   if (!isPlainObject(spec)) {
     add(findings, 'MTR-CUSTOM-003', `${basePath} must be an object.`, basePath, ['custom-contract-schema']);
     return;
@@ -956,7 +987,7 @@ function validateCustomContractCommitSpec(spec, findings, basePath, { requireCad
 
   if (!hasValue(spec.invoiceCreditTypeId)) {
     add(findings, 'MTR-CREDIT-002', `${basePath}.invoiceCreditTypeId is required for billable custom-contract invoice amounts.`, `${basePath}.invoiceCreditTypeId`, ['conventions', 'custom-contract-payloads']);
-  } else if (spec.invoiceCreditTypeId === spec.accessCreditTypeId || spec.invoiceCreditTypeId === LEV_CREDIT_TYPE_ID) {
+  } else if (isAccessCreditType(spec.invoiceCreditTypeId, spec, options)) {
     add(findings, 'MTR-CREDIT-002', `${basePath}.invoiceCreditTypeId must be fiat, not the access credit type.`, `${basePath}.invoiceCreditTypeId`, ['danger-zone', 'conventions']);
   } else if (spec.invoiceCreditTypeId !== USD_CREDIT_TYPE_ID) {
     add(findings, 'MTR-CREDIT-002', 'Only USD cents is currently allowlisted by this validator for custom-contract invoice amounts.', `${basePath}.invoiceCreditTypeId`, ['conventions']);
@@ -1079,7 +1110,7 @@ function validateEnterpriseCustomContract(input, findings, options) {
     add(findings, 'MTR-CUSTOM-003', 'invoiceBehavior must be custom_contract_invoice_expected.', 'invoiceBehavior', ['shape-catalog', 'custom-contract-schema']);
   }
 
-  validateCustomContractCommitSpec(input.baseCommit, findings, 'baseCommit', { requireCadence: true });
+  validateCustomContractCommitSpec(input.baseCommit, findings, 'baseCommit', { requireCadence: true }, options);
 
   if (input.netPaymentTermsDays !== undefined && !isNonNegativeInteger(input.netPaymentTermsDays)) {
     add(findings, 'MTR-CUSTOM-003', 'netPaymentTermsDays must be a non-negative integer when provided.', 'netPaymentTermsDays', ['custom-contract-schema']);
@@ -1090,7 +1121,7 @@ function validateEnterpriseCustomContract(input, findings, options) {
       add(findings, 'MTR-CUSTOM-003', 'bonusCommits must be an array when provided.', 'bonusCommits', ['custom-contract-schema']);
     } else {
       input.bonusCommits.forEach((commit, index) => {
-        validateCustomContractCommitSpec(commit, findings, `bonusCommits[${index}]`);
+        validateCustomContractCommitSpec(commit, findings, `bonusCommits[${index}]`, {}, options);
       });
       if (input.bonusCommits.length > 0 && input.duplicateCommitNameChecked !== true) {
         add(findings, 'MTR-IDEMP-003', 'duplicateCommitNameChecked must be true before planning bonus add_commits on a custom contract.', 'duplicateCommitNameChecked', ['danger-zone', 'custom-contract-payloads']);
@@ -2042,39 +2073,40 @@ function validateShapeInput(shapeId, input, options = {}) {
 
   const findings = [];
   const now = options.now || new Date().toISOString();
+  const ctx = { ...options, now };
 
   if (shapeId === 'customer-setup') {
-    validateCustomerSetup(input, findings, { now });
+    validateCustomerSetup(input, findings, ctx);
   } else if (shapeId === 'pro-annual') {
-    validateProAnnual(input, findings, { now });
+    validateProAnnual(input, findings, ctx);
   } else if (shapeId === 'pro-annual-self-serve-v2') {
-    validateProAnnualSelfServeV2(input, findings, { now });
+    validateProAnnualSelfServeV2(input, findings, ctx);
   } else if (shapeId === 'free-credit-trial') {
-    validateFreeCreditTrial(input, findings);
+    validateFreeCreditTrial(input, findings, ctx);
   } else if (shapeId === 'complimentary-credit-grant') {
-    validateComplimentaryCreditGrant(input, findings, { now });
+    validateComplimentaryCreditGrant(input, findings, ctx);
   } else if (shapeId === 'paid-credit-top-up') {
-    validatePaidCreditTopUp(input, findings, { now });
+    validatePaidCreditTopUp(input, findings, ctx);
   } else if (shapeId === 'package-alias-archive-handoff') {
-    validatePackageAliasArchiveHandoff(input, findings, { now });
+    validatePackageAliasArchiveHandoff(input, findings, ctx);
   } else if (shapeId === 'stripe-billing-provider-attachment') {
-    validateStripeBillingProviderAttachment(input, findings, { now });
+    validateStripeBillingProviderAttachment(input, findings, ctx);
   } else if (shapeId === 'package-plan-move-no-immediate-invoice') {
-    validatePackagePlanMoveNoImmediateInvoice(input, findings, { now });
+    validatePackagePlanMoveNoImmediateInvoice(input, findings, ctx);
   } else if (shapeId === 'package-plan-move-immediate-invoice') {
-    validatePackagePlanMoveImmediateInvoice(input, findings, { now });
+    validatePackagePlanMoveImmediateInvoice(input, findings, ctx);
   } else if (shapeId === 'product-rate-retirement') {
-    validateProductRateRetirement(input, findings, { now });
+    validateProductRateRetirement(input, findings, ctx);
   } else if (shapeId === 'dimensional-rate-card') {
-    validateDimensionalRateCard(input, findings, { now });
+    validateDimensionalRateCard(input, findings, ctx);
   } else if (shapeId === 'invoice-issue-date-update') {
-    validateInvoiceIssueDateUpdate(input, findings, { now });
+    validateInvoiceIssueDateUpdate(input, findings, ctx);
   } else if (shapeId === 'direct-subscription-contract') {
-    validateDirectSubscriptionContract(input, findings, { now });
+    validateDirectSubscriptionContract(input, findings, ctx);
   } else if (shapeId === 'enterprise-custom-contract') {
-    validateEnterpriseCustomContract(input, findings, { now });
+    validateEnterpriseCustomContract(input, findings, ctx);
   } else if (shapeId === 'usage-ingest-preview') {
-    validateUsageIngestPreview(input, findings, { now });
+    validateUsageIngestPreview(input, findings, ctx);
   }
 
   return {
@@ -2087,7 +2119,7 @@ function validateShapeInput(shapeId, input, options = {}) {
 }
 
 module.exports = {
-  LEV_CREDIT_TYPE_ID,
+  configuredAccessCreditTypeIds,
   USD_CREDIT_TYPE_ID,
   isHourBoundaryUTC,
   isIsoTimestampUTC,

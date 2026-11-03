@@ -175,6 +175,7 @@ const {
   listWorkspacePacks,
   describeWorkspaceResolution,
 } = require('./workspace');
+const { defaultValidationOptions } = require('./workspace/loader');
 
 function write(stream, value) {
   stream.write(`${value}\n`);
@@ -313,7 +314,10 @@ function runValidateCommand(flags, streams) {
     return 1;
   }
 
-  const result = validateShapeInput(flags.shape, input);
+  const result = validateShapeInput(flags.shape, input, defaultValidationOptions({
+    profileName: flags.profile || null,
+    tenant: flags.sandbox ? 'sandbox' : flags.prod ? 'production' : null,
+  }));
   if (flags.json) {
     renderJson(streams.stdout, result);
   } else {
