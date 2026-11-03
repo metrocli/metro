@@ -74,19 +74,34 @@
 | rateCards.getRates | rate-cards | POST | /v1/contract-pricing/rate-cards/getRates | cataloged-local-only | none |
 | rateCards.addRates | rate-cards | POST | /v1/contract-pricing/rate-cards/addRates | workflow-preview-supported | none |
 | rateCards.getRateSchedule | rate-cards | POST | /v1/contract-pricing/rate-cards/getRateSchedule | inspect-plan-supported | none |
+| billableMetrics.listForCustomer | billable-metrics | GET | /v1/customers/{customer_id}/billable-metrics | cataloged-local-only | none |
+| invoices.getForCustomer | invoices | GET | /v1/customers/{customer_id}/invoices/{invoice_id} | cataloged-local-only | none |
+| invoices.getPdf | invoices | GET | /v1/customers/{customer_id}/invoices/{invoice_id}/pdf | cataloged-local-only | none |
+| contracts.get.v1 | contracts | POST | /v1/contracts/get | cataloged-local-only | none |
+| contracts.list.v1 | contracts | POST | /v1/contracts/list | cataloged-local-only | none |
+| customerBalances.getNetBalance | credits | POST | /v1/contracts/customerBalances/getNetBalance | cataloged-local-only | none |
+| alerts.getForCustomer | alerts | POST | /v1/customer-alerts/get | cataloged-local-only | none |
+| alerts.listForCustomer | alerts | POST | /v1/customer-alerts/list | cataloged-local-only | none |
+| notifications.get | notifications | POST | /v2/notifications/get | cataloged-local-only | none |
+| notifications.listOffset | notifications | POST | /v2/notifications/offset/list | cataloged-local-only | none |
+| notifications.listSystem | notifications | POST | /v2/notifications/system/list | cataloged-local-only | none |
+| webhooks.listTriggeredNotifications | webhooks | POST | /v1/webhooks/{webhook_id}/triggered_notifications | cataloged-local-only | none |
+| webhooks.getTriggeredNotification | webhooks | GET | /v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id} | cataloged-local-only | none |
 
 
 ## families
 
 | family | endpointCount | operationTypes | supportStatuses |
 | --- | --- | --- | --- |
-| billable-metrics | 5 | {"read":2,"write":3} | {"cataloged-local-only":5} |
+| alerts | 2 | {"read":2} | {"cataloged-local-only":2} |
+| billable-metrics | 6 | {"read":3,"write":3} | {"cataloged-local-only":6} |
 | billing-provider | 3 | {"write":1,"read":2} | {"workflow-preview-supported":1,"inspect-plan-supported":1,"cataloged-local-only":1} |
-| contracts | 10 | {"write":4,"read":6} | {"workflow-preview-supported":4,"inspect-plan-supported":2,"cataloged-local-only":4} |
-| credits | 4 | {"read":4} | {"inspect-plan-supported":3,"cataloged-local-only":1} |
+| contracts | 12 | {"write":4,"read":8} | {"workflow-preview-supported":4,"inspect-plan-supported":2,"cataloged-local-only":6} |
+| credits | 5 | {"read":5} | {"inspect-plan-supported":3,"cataloged-local-only":2} |
 | custom-fields | 5 | {"write":4,"read":1} | {"cataloged-local-only":5} |
 | customers | 7 | {"read":2,"write":5} | {"inspect-plan-supported":1,"local-read-plan-supported":1,"workflow-preview-supported":2,"cataloged-local-only":3} |
-| invoices | 6 | {"preview":1,"read":3,"write":2} | {"workflow-preview-supported":1,"inspect-plan-supported":2,"cataloged-local-only":3} |
+| invoices | 8 | {"preview":1,"read":5,"write":2} | {"workflow-preview-supported":1,"inspect-plan-supported":2,"cataloged-local-only":5} |
+| notifications | 3 | {"read":3} | {"cataloged-local-only":3} |
 | packages | 5 | {"write":2,"read":3} | {"workflow-preview-supported":2,"inspect-plan-supported":2,"cataloged-local-only":1} |
 | payments | 3 | {"read":1,"write":2} | {"cataloged-local-only":3} |
 | products | 5 | {"read":2,"write":3} | {"inspect-plan-supported":1,"cataloged-local-only":1,"workflow-preview-supported":3} |
@@ -94,6 +109,7 @@
 | security | 2 | {"read":2} | {"cataloged-local-only":2} |
 | settings | 1 | {"read":1} | {"cataloged-local-only":1} |
 | usage | 4 | {"write":1,"read":3} | {"workflow-preview-supported":1,"cataloged-local-only":3} |
+| webhooks | 2 | {"read":2} | {"cataloged-local-only":2} |
 
 
 ## writeProofLadder

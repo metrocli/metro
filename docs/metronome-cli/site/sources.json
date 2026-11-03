@@ -1028,6 +1028,110 @@
       "supports": [
         "The install guide documents a compact first-safe-preview path covering prerequisites, local install smoke test, setup template, profile resolution, local validation, sandbox preview, expected output shape, and next safe step without live API access."
       ]
+    },
+    "official-billable-metric-list-for-customer": {
+      "type": "official-doc",
+      "title": "Metronome Billable Metrics For A Customer",
+      "href": "https://docs.metronome.com/api-reference/billable-metrics/get-billable-metrics-for-a-customer.md",
+      "supports": [
+        "Official endpoint reference for GET /v1/customers/{customer_id}/billable-metrics."
+      ]
+    },
+    "official-invoice-get-for-customer": {
+      "type": "official-doc",
+      "title": "Metronome Get An Invoice",
+      "href": "https://docs.metronome.com/api-reference/invoices/get-an-invoice.md",
+      "supports": [
+        "Official endpoint reference for GET /v1/customers/{customer_id}/invoices/{invoice_id}."
+      ]
+    },
+    "official-invoice-get-pdf": {
+      "type": "official-doc",
+      "title": "Metronome Get An Invoice PDF",
+      "href": "https://docs.metronome.com/api-reference/invoices/get-an-invoice-pdf.md",
+      "supports": [
+        "Official endpoint reference for GET /v1/customers/{customer_id}/invoices/{invoice_id}/pdf."
+      ]
+    },
+    "official-contract-get-v1": {
+      "type": "official-doc",
+      "title": "Metronome Get A Contract (v1)",
+      "href": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v1.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/contracts/get."
+      ]
+    },
+    "official-contract-list-v1": {
+      "type": "official-doc",
+      "title": "Metronome List Customer Contracts (v1)",
+      "href": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v1.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/contracts/list."
+      ]
+    },
+    "official-customer-net-balance": {
+      "type": "official-doc",
+      "title": "Metronome Get The Net Balance Of A Customer",
+      "href": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/contracts/customerBalances/getNetBalance."
+      ]
+    },
+    "official-customer-alert-get": {
+      "type": "official-doc",
+      "title": "Metronome Get A Threshold Notification",
+      "href": "https://docs.metronome.com/api-reference/alerts/get-a-threshold-notification.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/customer-alerts/get."
+      ]
+    },
+    "official-customer-alert-list": {
+      "type": "official-doc",
+      "title": "Metronome Get All Threshold Notifications",
+      "href": "https://docs.metronome.com/api-reference/alerts/get-all-threshold-notifications.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/customer-alerts/list."
+      ]
+    },
+    "official-notification-get": {
+      "type": "official-doc",
+      "title": "Metronome Get An Offset Notification Configuration",
+      "href": "https://docs.metronome.com/api-reference/notifications/get-an-offset-lifecycle-event-notification-configuration.md",
+      "supports": [
+        "Official endpoint reference for POST /v2/notifications/get."
+      ]
+    },
+    "official-notification-list-offset": {
+      "type": "official-doc",
+      "title": "Metronome List Offset Notification Configurations",
+      "href": "https://docs.metronome.com/api-reference/notifications/list-offset-lifecycle-event-notification-configurations.md",
+      "supports": [
+        "Official endpoint reference for POST /v2/notifications/offset/list."
+      ]
+    },
+    "official-notification-list-system": {
+      "type": "official-doc",
+      "title": "Metronome List System Notification Types",
+      "href": "https://docs.metronome.com/api-reference/notifications/list-system-notification-types.md",
+      "supports": [
+        "Official endpoint reference for POST /v2/notifications/system/list."
+      ]
+    },
+    "official-webhook-triggered-list": {
+      "type": "official-doc",
+      "title": "Metronome List Triggered Notifications By Webhook",
+      "href": "https://docs.metronome.com/api-reference/webhooks/list-triggered-notifications-by-webhook.md",
+      "supports": [
+        "Official endpoint reference for POST /v1/webhooks/{webhook_id}/triggered_notifications."
+      ]
+    },
+    "official-webhook-triggered-get": {
+      "type": "official-doc",
+      "title": "Metronome Get Triggered Notification And Delivery Attempts",
+      "href": "https://docs.metronome.com/api-reference/webhooks/get-triggered-notification-and-delivery-attempts.md",
+      "supports": [
+        "Official endpoint reference for GET /v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id}."
+      ]
     }
   }
 }

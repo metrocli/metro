@@ -1,0 +1,654 @@
+{
+  "schemaVersion": "metro.api-coverage.fixture.v1",
+  "note": "Endpoint list extracted from https://docs.metronome.com/llms-full.txt on 2026-11-03 (method, path, title, page URL only; no Metronome prose). Used by test/api-coverage.test.js to rebuild a minimal llms-full.txt offline.",
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/v1/alerts/archive",
+      "title": "Archive a threshold notification",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/archive-a-threshold-notification"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/alerts/create",
+      "title": "Create a threshold notification",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/create-a-threshold-notification"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/get",
+      "title": "Get a threshold notification",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/get-a-threshold-notification"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/list",
+      "title": "Get all threshold notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/get-all-threshold-notifications"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/reset",
+      "title": "Reset a threshold notification",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/reset-a-threshold-notification"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/billable-metrics",
+      "title": "List all billable metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/billable-metrics/{billable_metric_id}",
+      "title": "Get a billable metric",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric"
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/billable-metrics/{billable_metric_id}",
+      "title": "Update a billable metric",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/billable-metrics/archive",
+      "title": "Archive a billable metric",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/billable-metrics/create",
+      "title": "Create a billable metric",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/billable-metrics",
+      "title": "Get billable metrics for a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/get-billable-metrics-for-a-customer"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/amend",
+      "title": "Amend a contract",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/amend-a-contract"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/archive",
+      "title": "Archive a contract",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/archive-a-contract"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/create",
+      "title": "Create a contract",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-a-contract"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/createHistoricalInvoices",
+      "title": "Create historical invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-historical-invoices"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/get",
+      "title": "Get a contract (v1)",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v1"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getContractRateSchedule",
+      "title": "Get the rate schedule for a contract",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getSubscriptionQuantityHistory",
+      "title": "Get subscription quantity history",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getSubscriptionSeatsHistory",
+      "title": "Get subscription seats history",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/list",
+      "title": "List customer contracts (v1)",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v1"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/setUsageFilter",
+      "title": "Set a contract usage filter",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/set-a-contract-usage-filter"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/updateEndDate",
+      "title": "Update the contract end date",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/updateInvoiceIssueDate",
+      "title": "Update invoice issue date",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/create",
+      "title": "Create a package",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-a-package"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/listContractsOnPackage",
+      "title": "List contracts associated with a package",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/edit",
+      "title": "Edit a contract",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/edit-a-contract"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/get",
+      "title": "Get a contract (v2)",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v2"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/getEditHistory",
+      "title": "Get contract edit history",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-contract-edit-history"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/list",
+      "title": "List customer contracts (v2)",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/addManualBalanceLedgerEntry",
+      "title": "Add a manual balance entry",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/add-a-manual-balance-entry"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/commits/disableTrueup",
+      "title": "Disable trueup for commit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/disable-trueup-for-commit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/commits/threshold-billing/release",
+      "title": "Release external payment gate threshold commit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/release-external-payment-gate-threshold-commit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerBalances/getNetBalance",
+      "title": "Get the net balance of a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerBalances/list",
+      "title": "List balances",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-balances"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/create",
+      "title": "Create a commit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-commit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/list",
+      "title": "List commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-commits"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/updateEndDate",
+      "title": "Update the commit end date",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-commit-end-date"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/create",
+      "title": "Create a credit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-credit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/list",
+      "title": "List credits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-credits"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/updateEndDate",
+      "title": "Update the credit end date",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-credit-end-date"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/seatBalances/list",
+      "title": "List seat balances",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/commits/archive",
+      "title": "Archive a commit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-commit"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/commits/edit",
+      "title": "Edit a commit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/credits/archive",
+      "title": "Archive a credit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-credit"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/credits/edit",
+      "title": "Edit a credit",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-credit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/addKey",
+      "title": "Create a custom field key",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/deleteValues",
+      "title": "Delete custom fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/listKeys",
+      "title": "List custom field keys",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/removeKey",
+      "title": "Delete a custom field key",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/setValues",
+      "title": "Set custom field values",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/archiveCustomerBillingProviderConfigurations",
+      "title": "Archive billing provider configurations for a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers",
+      "title": "List customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/list-customers"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers",
+      "title": "Create a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/create-a-customer"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}",
+      "title": "Get a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/get-a-customer"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/setIngestAliases",
+      "title": "Create or update customer ingest aliases",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/setName",
+      "title": "Update a customer name",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/update-a-customer-name"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/updateConfig",
+      "title": "Update a customer configuration",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/update-a-customer-configuration"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/archive",
+      "title": "Archive a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/archive-a-customer"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/dashboards/getEmbeddableUrl",
+      "title": "Get an embeddable customer dashboard",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/get-an-embeddable-customer-dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/getCustomerBillingProviderConfigurations",
+      "title": "Fetch billing provider configurations for a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/setCustomerBillingProviderConfigurations",
+      "title": "Set billing provider configurations for a customer",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices",
+      "title": "List invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/list-invoices"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/{invoice_id}",
+      "title": "Get an invoice",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/get-an-invoice"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/{invoice_id}/pdf",
+      "title": "Get an invoice PDF",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/get-an-invoice-pdf"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/breakdowns",
+      "title": "List invoice breakdowns",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/previewEvents",
+      "title": "Preview events",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/preview-events"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/invoices/regenerate",
+      "title": "Regenerate an invoice",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/invoices/void",
+      "title": "Void an invoice",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/void-an-invoice"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/archive",
+      "title": "Archive an offset lifecycle event notification configuration",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/archive-an-offset-lifecycle-event-notification-configuration"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/create",
+      "title": "Create an offset lifecycle event notification configuration",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/create-an-offset-lifecycle-event-notification-configuration"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/edit",
+      "title": "Edit an offset or system notification",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/edit-an-offset-or-system-notification"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/get",
+      "title": "Get an offset lifecycle event notification configuration",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/get-an-offset-lifecycle-event-notification-configuration"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/offset/list",
+      "title": "List offset lifecycle event notification configurations",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/list-offset-lifecycle-event-notification-configurations"
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/system/list",
+      "title": "List system notification types",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/list-system-notification-types"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/list",
+      "title": "List all packages",
+      "docUrl": "https://docs.metronome.com/api-reference/list-all-packages"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/archive",
+      "title": "Archive a package",
+      "docUrl": "https://docs.metronome.com/api-reference/packages/archive-a-package"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/get",
+      "title": "Get a package",
+      "docUrl": "https://docs.metronome.com/api-reference/packages/get-a-package"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/archive",
+      "title": "Archive a product",
+      "docUrl": "https://docs.metronome.com/api-reference/products/archive-a-product"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/create",
+      "title": "Create a product",
+      "docUrl": "https://docs.metronome.com/api-reference/products/create-a-product"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/get",
+      "title": "Get a product",
+      "docUrl": "https://docs.metronome.com/api-reference/products/get-a-product"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/list",
+      "title": "List products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/list-products"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/update",
+      "title": "Update a product",
+      "docUrl": "https://docs.metronome.com/api-reference/products/update-a-product"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/addRate",
+      "title": "Add a rate",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/add-a-rate"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/addRates",
+      "title": "Add rates",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/add-rates"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/archive",
+      "title": "Archive a rate card",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/create",
+      "title": "Create a rate card",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/get",
+      "title": "Get a rate card",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/getRates",
+      "title": "Get rates",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-rates"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/getRateSchedule",
+      "title": "Get a rate schedule",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/list",
+      "title": "List rate cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/list-rate-cards"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/moveRateCardProducts",
+      "title": "Update the rate card products order",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/update-the-rate-card-products-order"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/setRateCardProductsOrder",
+      "title": "Set the rate card products order",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/update",
+      "title": "Update a rate card",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auditLogs",
+      "title": "Get audit logs",
+      "docUrl": "https://docs.metronome.com/api-reference/security/get-audit-logs"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/services",
+      "title": "Get services",
+      "docUrl": "https://docs.metronome.com/api-reference/security/get-services"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/credit-types/archive",
+      "title": "Archive a pricing unit",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/archive-a-pricing-unit"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/credit-types/create",
+      "title": "Create a pricing unit",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/create-a-pricing-unit"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/credit-types/list",
+      "title": "List pricing units",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/list-pricing-units"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/listConfiguredBillingProviders",
+      "title": "List account-level billing providers",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/setUpBillingProvider",
+      "title": "Set up account-level billing provider",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/set-up-account-level-billing-provider"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/upsertAnrokApiToken",
+      "title": "Upsert Anrok API token",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/upsert-anrok-api-token"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/upsertAvalaraCredentials",
+      "title": "Upsert Avalara credentials",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/upsert-avalara-credentials"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/events/search",
+      "title": "Search events",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/search-events"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/ingest",
+      "title": "Ingest events",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/ingest-events"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/usage",
+      "title": "Get batched usage data",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/get-batched-usage-data"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/usage/groups",
+      "title": "Get usage data with paginated groupings",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/webhooks/{webhook_id}/triggered_notifications",
+      "title": "List triggered notifications by webhook",
+      "docUrl": "https://docs.metronome.com/api-reference/webhooks/list-triggered-notifications-by-webhook"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id}",
+      "title": "Get Triggered Notification and Delivery Attempts",
+      "docUrl": "https://docs.metronome.com/api-reference/webhooks/get-triggered-notification-and-delivery-attempts"
+    }
+  ]
+}

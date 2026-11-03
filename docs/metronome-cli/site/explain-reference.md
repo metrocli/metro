@@ -8,7 +8,7 @@
 {
   "operatingTopicCount": 14,
   "lookupKindCount": 8,
-  "genericExplainableCount": 429,
+  "genericExplainableCount": 448,
   "liveApiAccess": "none"
 }
 ```
@@ -37,13 +37,13 @@
 
 | kind | count | description | examples |
 | --- | --- | --- | --- |
-| api-endpoint | 69 | Reviewed Metronome endpoint IDs from the local expert API catalog. | usage.ingest, usage.groups, usage.batch, events.search |
-| api-family | 14 | Endpoint-family summaries derived from the reviewed API catalog. | billable-metrics, billing-provider, contracts, credits |
+| api-endpoint | 82 | Reviewed Metronome endpoint IDs from the local expert API catalog. | usage.ingest, usage.groups, usage.batch, events.search |
+| api-family | 17 | Endpoint-family summaries derived from the reviewed API catalog. | alerts, billable-metrics, billing-provider, contracts |
 | command | 170 | Supported local command metadata from the command catalog. | command:input.normalize, command:docs.explain, command:api.read-plan |
 | shape | 16 | Workflow shape summaries and validator links from the shape catalog. | shape:customer-setup, shape:pro-annual, shape:pro-annual-self-serve-v2, shape:free-credit-trial |
 | validator-rule | 68 | Validator rules, severities, and remediation guidance. | MTR-TENANT-001, MTR-TENANT-002, MTR-TENANT-003, MTR-TENANT-004 |
 | gotcha | 59 | Known failure modes from the gotcha register. | gotcha:tenant-selected-by-key, gotcha:env-file-not-authorization, gotcha:never-infer-production-from-key-presence, gotcha:fingerprints-not-key-values |
-| permission-scope | 25 | Permission scopes and owner/approval policy requirements. | metronome:billable-metrics:read, metronome:billable-metrics:write, metronome:billing-provider:read, metronome:billing-provider:write |
+| permission-scope | 28 | Permission scopes and owner/approval policy requirements. | metronome:alerts:read, metronome:billable-metrics:read, metronome:billable-metrics:write, metronome:billing-provider:read |
 | example-fixture | 8 | Checked command/output fixtures used as local proof examples. | example:api.catalog.contracts, example:api.explain.contracts-create, example:api.search.contract-create, example:api.diff.contracts-create-vs-update-end-date |
 
 

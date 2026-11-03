@@ -39,6 +39,8 @@
     "doctor:smoke": "node bin/metro.js doctor --json",
     "docs:upstream:check": "node scripts/metronome-upstream-check.js",
     "docs:upstream:generate": "node scripts/generate-metronome-upstream.js --fetch",
+    "docs:api:coverage": "node scripts/metronome-api-coverage.js",
+    "docs:api:coverage:check": "node scripts/metronome-api-coverage.js --check",
     "pack:verify": "node scripts/verify-pack.js",
     "docs:site:refresh": "node scripts/docs-site-refresh.js",
     "docs:site:verify": "node scripts/docs-site-refresh.js --check",
