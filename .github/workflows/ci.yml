@@ -43,6 +43,8 @@ jobs:
         run: npm run docs:upstream:check
       - name: Doctor and onboarding harness
         run: |
+          # doctor checks the global install, so link this checkout first
+          npm link
           npm run doctor:smoke
           npm run harness:onboard
       - name: First-run init on a clean HOME
