@@ -1957,7 +1957,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--dir', '--write', '--force', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['TEAM-QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js'],
+    sources: ['docs/metronome-cli/QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js'],
   },
   {
     id: 'setup.template',
@@ -1999,7 +1999,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--profile', '--check-env', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['TEAM-QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js', 'packages/metro-core/src/clients/live-endpoints.js'],
+    sources: ['docs/metronome-cli/QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js', 'packages/metro-core/src/clients/live-endpoints.js'],
   },
   {
     id: 'setup.resolve',
@@ -2940,7 +2940,7 @@ const UNSUPPORTED_COMMANDS = [
     mode: 'read',
     status: 'unsupported',
     apiAccess: 'read',
-    refusal: 'Live read requires a supported endpoint, validated read gate, confirm-live-read token, and configured tenant key. See TEAM-QUICKSTART.md.',
+    refusal: 'Live read requires a supported endpoint, validated read gate, confirm-live-read token, and configured tenant key. See docs/metronome-cli/QUICKSTART.md.',
   },
   {
     id: 'api.apply.legacy-blocked',

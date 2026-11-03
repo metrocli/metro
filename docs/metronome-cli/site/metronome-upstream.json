@@ -15,7 +15,7 @@
       "title": "Daily recurring credits and commits are supported",
       "links": [],
       "coverageStatus": "partial",
-      "metroNotes": "Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in TEAM-QUICKSTART or shape prose. Re-curl create/edit docs before using daily.",
+      "metroNotes": "Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in QUICKSTART or shape prose. Re-curl create/edit docs before using daily.",
       "catalogIds": [
         "contracts.create",
         "contracts.edit"
@@ -223,7 +223,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "`usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/TEAM-QUICKSTART.",
+      "metroNotes": "`usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/QUICKSTART.",
       "catalogIds": [
         "usage.groups"
       ],
@@ -982,7 +982,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Seat / credit pool shapes in skills; not a TEAM-QUICKSTART one-liner.",
+      "metroNotes": "Seat / credit pool shapes in skills; not a QUICKSTART one-liner.",
       "catalogIds": [
         "contracts.edit"
       ],

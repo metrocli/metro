@@ -227,7 +227,7 @@ Refusals include:
 - Agent harnessing (site): docs/metronome-cli/site/agents.html
 - Promote-the-codebase rule: docs/metronome-cli/site/agents.html#promote-codebase
 - Upstream Metronome changelog coverage: docs/metronome-cli/METRONOME_UPSTREAM_CHANGELOG.md
-- Team quickstart: `TEAM-QUICKSTART.md`
+- Team quickstart: `docs/metronome-cli/QUICKSTART.md`
 - Command reference: `metro docs command-reference --json`
 - API reference: `metro docs api-reference --json`
 - Metronome official docs: https://docs.metronome.com/

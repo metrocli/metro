@@ -39,8 +39,8 @@ coverage notes in `scripts/generate-metronome-upstream.js` (or re-run it).
 
 - **GAP** May 29, 2026 - Configurable rounding for prorated subscriptions and recurring commits: No shape/validator/docs yet for proration rounding fields. Curl subscription + recurring commit API docs before first use.
 - **GAP** February 5, 2026 - Get net balance API: Verified in endpoint-matrix (`POST /v1/contracts/customerBalances/getNetBalance`) but **not** yet a reviewed api-catalog ID / `metro api read` shape. Prefer over paginating balances when consolidating.
-- **Partial** July 7, 2026 - Daily recurring credits and commits are supported: Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in TEAM-QUICKSTART or shape prose. Re-curl create/edit docs before using daily.
-- **Partial** February 27, 2026 - Compound group keys in usage breakdowns: `usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/TEAM-QUICKSTART.
+- **Partial** July 7, 2026 - Daily recurring credits and commits are supported: Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in QUICKSTART or shape prose. Re-curl create/edit docs before using daily.
+- **Partial** February 27, 2026 - Compound group keys in usage breakdowns: `usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/QUICKSTART.
 - **Partial** February 17, 2026 - Change end date on advance, prorated subscriptions: Subscription end-date edits exist via contract/subscription edit paths; advance-prorated edge case not a dedicated gotcha yet.
 - **Partial** February 12, 2026 - Stripe invoice PDFs available in UI and API: Matrix notes invoice PDF GET path in conventions; not a first-class `metro` shortcut. Prefer Stripe dashboard or guarded invoice get when needed.
 - **Partial** February 10, 2026 - Subscription and invoice line item linking improvements: `subscription_id` on line items / Stripe metadata - useful for reconcile; not yet a metro proof field.
@@ -48,7 +48,7 @@ coverage notes in `scripts/generate-metronome-upstream.js` (or re-run it).
 - **Partial** October 14, 2025 - September fixes and improvements: Spot-check API subsection against edit/billing-provider sources when touching those shapes.
 - **Partial** September 10, 2025 - August fixes and improvements: Historical API fixes (billing config updates via edit, etc.) - reflected in danger-zone / stripe-delivery skills.
 - **Partial** August 5, 2025 - July fixes and improvements: API notes (searchEvents, commits) - events.search / commits paths in catalog.
-- **Partial** August 4, 2025 - Seat-based credit pools: Seat / credit pool shapes in skills; not a TEAM-QUICKSTART one-liner.
+- **Partial** August 4, 2025 - Seat-based credit pools: Seat / credit pool shapes in skills; not a QUICKSTART one-liner.
 - **Partial** July 23, 2025 - Threshold billing and auto-recharge: Spend/prepaid thresholds via contract edit - danger-zone aware; not a dedicated metro shortcut.
 - **Partial** June 26, 2025 - Scope credits and commits to specific pricing or presentation group values: Specifier / dimensional scoping; keep sources current.
 - **Partial** June 13, 2025 - Support for seat-based subscription billing: Seat subscriptions in skills; most packages are credit+plan fee shaped.
@@ -90,7 +90,7 @@ Still prefer serial pagination + bulk `--delay-ms` over high concurrency.
 
 Tags: Billing, API, UI
 
-**Metro coverage:** `partial` - Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in TEAM-QUICKSTART or shape prose. Re-curl create/edit docs before using daily.
+**Metro coverage:** `partial` - Catalog/shapes cover recurring commits generally; daily cadence (`commit_duration` / recurrence unit daily) not yet called out in QUICKSTART or shape prose. Re-curl create/edit docs before using daily.
 
 Catalog IDs: `contracts.create`, `contracts.edit`
 
@@ -195,7 +195,7 @@ Official links:
 
 Tags: New releases, API
 
-**Metro coverage:** `partial` - `usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/TEAM-QUICKSTART.
+**Metro coverage:** `partial` - `usage.groups` is in api-catalog; compound group key constraint and page-size 100 not yet in validator prose/QUICKSTART.
 
 Catalog IDs: `usage.groups`
 
@@ -545,7 +545,7 @@ Official links:
 
 Tags: New releases, API, UI, Pricing and Packaging
 
-**Metro coverage:** `partial` - Seat / credit pool shapes in skills; not a TEAM-QUICKSTART one-liner.
+**Metro coverage:** `partial` - Seat / credit pool shapes in skills; not a QUICKSTART one-liner.
 
 Catalog IDs: `contracts.edit`
 
