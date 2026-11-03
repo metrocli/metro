@@ -59,6 +59,7 @@ const { runContractRepairAccidentalCommand } = require('./commands/contract-repa
 const { runBillingProviderCutoverCommand } = require('./commands/billing-provider-cutover');
 const { runPackageListCommand } = require('./commands/package-list');
 const { runCustomerBalancesCommand } = require('./commands/customer-balances');
+const { matchProvisionRoute, runProvisionCommand } = require('./commands/provision');
 const { runCatalogBindCommand } = require('./commands/catalog-bind');
 const { runTenantSnapshotCommand } = require('./commands/tenant-snapshot');
 const { runOpsCommand } = require('./commands/ops');
@@ -4288,6 +4289,10 @@ function run(argv = process.argv.slice(2), streams = { stdout: process.stdout, s
   const apiResult = runApiCommand(positional, flags, streams);
   if (apiResult !== null) {
     return apiResult;
+  }
+
+  if (matchProvisionRoute(positional)) {
+    return runProvisionCommand(positional, flags, streams, argv);
   }
 
   if (positional[0] === 'input') {

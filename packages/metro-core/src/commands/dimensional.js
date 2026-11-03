@@ -56,9 +56,9 @@ async function runDimensionalCommand(positional, flags, streams, argv = []) {
 
   streams.stderr.write([
     'Usage:',
-    '  metro dimensional new-code --all --code=<CODE> --credits=<N> [--display-name=<label>] [--now|--starting-at=<ISO>]',
-    '  metro dimensional new-code --sandbox|--prod|--all ...   (default: --all when tenant omitted)',
-    '  metro dimensional new-code --apply --confirm-prod-apply=I_UNDERSTAND_BILLING_SIDE_EFFECTS ...',
+    '  metro dimensional new-code preflight --product-id=<id> --rate-card-ids=<id>[,<id>] (--code=<CODE> [--display-name=<label>]|--group-values=<json>) --price=<n> --starting-at=<UTC hour> (--sandbox|--prod)',
+    '  metro dimensional new-code apply --file <plan.json> --confirm-hash <sha256:...> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    '  (the tenant is never inferred: pass --sandbox or --prod)',
     '  metro dimensional cutover plan --prod [--only-keys=payg,core,...] [--cutover=ISO]',
     '  metro dimensional cutover apply --prod --manifest=<path> [--apply] [--confirm-manifest-sha256=<sha256>]',
   ].join('\n'));

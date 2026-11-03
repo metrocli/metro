@@ -118,13 +118,13 @@ const COOKBOOK_PACK_OPS = [
     id: 'move-plan',
     say: 'Put <customer> on <plan> / move to free / legacy / PAYG (incl. active trials)',
     command: 'metro contract move-plan preflight --query="<paste>" --to=<package-alias> --cutover-mode=current-hour --prod',
-    notes: 'Works on open-ended paid AND active trials (free trials, etc.). Optional --target-credits=<n> tops up on apply. Printed Apply includes prod confirm.',
+    notes: 'Works on open-ended paid AND active trials (free trials, etc.). Start with --sandbox; the printed Apply line carries the tenant token.',
   },
   {
     id: 'move-plan-with-credits',
     say: 'Put <customer> on PAYG/plan with N free credits',
-    command: 'metro contract move-plan preflight --query="<paste>" --to=<package-alias> --cutover-mode=current-hour --target-credits=<n> --prod',
-    notes: 'One preflight + one apply: truncates trial if needed, creates successor, tops up credits to <n>.',
+    command: 'metro contract move-plan preflight --query="<paste>" --to=<package-alias> --cutover-mode=current-hour --prod  then  metro ledger-adjustment preflight --grant=credit --amount=<n> ... --prod',
+    notes: 'Two hashed plans: the move, then a credit grant on the successor (exact payloads; no balance-dependent top-up inside apply).',
   },
   {
     id: 'enterprise-rebadge',
@@ -164,9 +164,9 @@ const COOKBOOK_PACK_OPS = [
   },
   {
     id: 'dimensional-rate',
-    say: 'Add action code <CODE> at <N> credits on all dimensional rate cards (sandbox + prod)',
-    command: 'metro dimensional new-code --all --code=<CODE> --credits=<N> --now',
-    notes: 'Live ops pack only. Append --apply --confirm-prod-apply=I_UNDERSTAND_BILLING_SIDE_EFFECTS for live write.',
+    say: 'Add pricing-dimension value <CODE> at <N> on the listed rate cards',
+    command: 'metro dimensional new-code preflight --product-id=<usage-product-id> --rate-card-ids=<id>,<id> --code=<CODE> --price=<N> --starting-at=<UTC hour> --sandbox',
+    notes: 'Then apply --file <plan> --confirm-hash <hash> --sandbox; add --apply with the typed token to write. Repeat with --prod only after sandbox read-back passes.',
   },
   {
     id: 'provider-cutover',
