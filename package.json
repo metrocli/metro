@@ -31,8 +31,8 @@
     "url": "https://github.com/metrocli/metro/issues"
   },
   "scripts": {
-    "test": "METRO_DEFAULT_WORKSPACE_PACK=generic node -e \"require(\"./packages/metro-core/src/workspace/loader\").resolvePackId({configDir:\"/tmp\"})\"",
-    "harness:onboard": "METRO_DEFAULT_WORKSPACE_PACK=generic node bin/metro.js harness run --suite onboard --execute --json",
-    "doctor:smoke": "METRO_DEFAULT_WORKSPACE_PACK=generic node bin/metro.js doctor --json"
+    "test": "node --test test/*.test.js packages/metro-workspace-generic/test/*.test.js",
+    "harness:onboard": "node bin/metro.js harness run --suite onboard --execute --json",
+    "doctor:smoke": "node bin/metro.js doctor --json"
   }
 }

@@ -1,0 +1,41 @@
+{
+  "companyName": "Acme Corp",
+  "externalCustomerId": "ext_customer_setup_001",
+  "primaryIngestAlias": "ext_customer_setup_001",
+  "ingestAliases": ["ext_customer_setup_001", "crm_123456789"],
+  "duplicatePrevention": {
+    "ingestAliasSearchPlanned": true,
+    "archivedCustomerCollisionReviewed": true,
+    "existingCustomerPolicy": "fail_if_exists"
+  },
+  "hierarchyMode": "standalone",
+  "billingProvider": {
+    "mode": "stripe",
+    "stripeCustomerId": "cus_customer123",
+    "stripeCollectionMethod": "send_invoice",
+    "deliveryMethodId": "dm_customer_setup_us",
+    "deliveryMethodScope": "multi_entity",
+    "leaveStripeInvoicesInDraft": true,
+    "multiEntityDelivery": {
+      "deliveryMethodId": "dm_customer_setup_us",
+      "targetStripeAccountId": "acct_customer123",
+      "accountBillingProviderReviewed": true,
+      "endpointFieldsReviewed": true
+    }
+  },
+  "customFieldObjectType": "customer",
+  "customFieldKeysApproved": true,
+  "approvedCustomFieldKeys": ["external_customer_id", "customer_type", "billing_email"],
+  "customFields": {
+    "external_customer_id": "ext_customer_setup_001",
+    "customer_type": "standalone",
+    "billing_email": "ap@example.com"
+  },
+  "verificationPlan": {
+    "customerReadback": true,
+    "ingestAliasSearchReadback": true,
+    "billingProviderReadback": true,
+    "noInvoiceSideEffectReadback": true
+  },
+  "rollbackPlan": "If setup is wrong, stop before contracts are created; review alias release with setIngestAliases and use a separately approved remediation before any archive."
+}
