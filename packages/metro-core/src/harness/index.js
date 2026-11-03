@@ -64,7 +64,7 @@ function markSkippedSteps(steps, fixtureRoot) {
       ...entry,
       status: 'skipped-fixture-missing',
       skipExecution: true,
-      skipReason: 'Set METRO_HARNESS_FIXTURE_ROOT or run from a source checkout with test/fixtures.',
+      skipReason: 'Set METRO_HARNESS_FIXTURE_ROOT (or --fixture-root) to a directory of shape and API fixtures.',
     };
   });
 }
@@ -95,7 +95,7 @@ const HARNESS_SUITES = Object.freeze([
   {
     id: 'local',
     title: 'Local shape and preview proof',
-    description: 'Onboarding steps plus pro-annual validate/preview and API readiness summary. Requires test/fixtures (source checkout or METRO_HARNESS_FIXTURE_ROOT).',
+    description: 'Onboarding steps plus pro-annual validate/preview and API readiness summary. Requires a fixture directory (--fixture-root or METRO_HARNESS_FIXTURE_ROOT).',
     apiAccess: 'none',
     fixtureRequired: true,
     executeSupported: true,
@@ -168,9 +168,9 @@ function listHarnessSuites() {
     nextCommands: [
       'metro harness run --suite onboard --execute --json',
       'metro harness run --suite agent-literacy --execute --json',
-      'metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json',
-      'metro harness run --suite policy --fixture-root test/fixtures --execute --json',
-      'metro harness run --suite pack-ops --fixture-root test/fixtures --execute --json',
+      'metro harness run --suite api-literacy --fixture-root <fixture-dir> --execute --json',
+      'metro harness run --suite policy --fixture-root <fixture-dir> --execute --json',
+      'metro harness run --suite pack-ops --fixture-root <fixture-dir> --execute --json',
       'metro harness intent annual-self-serve-package --sandbox --json',
     ],
     nextSafeStep: 'Run metro harness run --suite onboard --execute --json after install.',
@@ -235,7 +235,7 @@ function buildLocalSteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !proAnnual,
       status: proAnnual ? 'planned' : 'skipped-fixture-missing',
-      skipReason: proAnnual ? null : 'Requires test/fixtures/pro-annual-valid.json from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
+      skipReason: proAnnual ? null : 'Requires <pro-annual-valid.json> from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
     }),
     step({
       id: 'preview-pro-annual',
@@ -247,7 +247,7 @@ function buildLocalSteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !proAnnual,
       status: proAnnual ? 'planned' : 'skipped-fixture-missing',
-      skipReason: proAnnual ? null : 'Requires test/fixtures/pro-annual-valid.json from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
+      skipReason: proAnnual ? null : 'Requires <pro-annual-valid.json> from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
     }),
     step({
       id: 'api-readiness-summary',
@@ -426,7 +426,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
     step({
       id: 'api-read-plan-contracts-get',
@@ -438,7 +438,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
     step({
       id: 'harness-read-self-check',
@@ -450,7 +450,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
   ];
   return markSkippedSteps(steps, fixtureRoot);
@@ -637,7 +637,7 @@ function buildHarnessPlan(suiteId, options = {}) {
       'metro status --json',
     ],
     nextSafeStep: summary.skippedFixtureSteps > 0
-      ? 'Export METRO_HARNESS_FIXTURE_ROOT to a checkout test/fixtures directory or run from the source repo before --suite local --execute.'
+      ? 'Export METRO_HARNESS_FIXTURE_ROOT (or pass --fixture-root) to a fixture directory before --suite local --execute.'
       : `Run metro harness run --suite ${suite.id} --execute --json to execute all planned steps locally.`,
   };
 }

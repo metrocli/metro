@@ -67,8 +67,8 @@ Generic pack covers catalog-style intents with **user-bound** `workspaceCatalog`
 | **`policy`** | Safety refusals exit **2** (not validation **1**) |
 
 ```bash
-metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json
-metro harness run --suite policy --fixture-root test/fixtures --execute --json
+metro harness run --suite api-literacy --fixture-root <fixture-dir> --execute --json
+metro harness run --suite policy --fixture-root <fixture-dir> --execute --json
 ```
 
 ## API documentation model

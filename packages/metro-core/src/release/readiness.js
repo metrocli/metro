@@ -32,19 +32,16 @@ const REQUIRED_RETENTION_POLICY_ACKNOWLEDGEMENTS = [
   'no-source-folder-artifacts',
 ];
 
+// Source folders of this repository; release artifacts must live outside them.
 const RELEASE_ARTIFACT_SOURCE_DIRS = [
-  '.cursor',
   '.github',
-  'archive',
+  'bin',
   'docs',
-  'lib',
-  'metronome',
-  'metronome-cli',
-  'migration',
+  'packages',
+  'packaging',
   'scripts',
-  'stripe-invoice-notifier',
-  'tests',
-  'tools',
+  'skills',
+  'test',
 ];
 
 function packageFilesAllowlist(manifest) {
@@ -741,7 +738,7 @@ function buildReleaseRetentionPolicyTemplate(options = {}) {
     requiredLocalChecks: [...REQUIRED_RETENTION_POLICY_CHECKS],
     blockedActionsAcknowledged: [...REQUIRED_RETENTION_POLICY_ACKNOWLEDGEMENTS],
     directoryRules: [
-      'Use an operator-reviewed artifact directory outside source folders such as docs/, metronome-cli/, metronome/, lib/, tools/, scripts/, archive/, and migration/.',
+      'Use an operator-reviewed artifact directory outside source folders such as bin/, docs/, packages/, packaging/, scripts/, skills/, and test/.',
       'Do not use a path containing .env, .git, or node_modules.',
       'Keep release artifacts out of source folders unless a checked golden fixture is intentionally part of tests.',
       'Retain the evidence-check result alongside the artifact bundle so validators can prove the retained files matched the manifest.',

@@ -114,7 +114,7 @@ in place: `metro catalog bind --sandbox --write`, then `metro ops` /
 6. Live reads require `--read-gate` plus `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`.
 7. Live sandbox apply requires `--apply-gate`, `--approval-record`, and `--confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX`.
 8. Read `metro docs explain output.anatomy --json` before interpreting output.
-9. From a checkout, `metro harness run --suite agent-literacy --execute --json` and `metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json` prove agent and API catalog literacy.
+9. From a checkout, `metro harness run --suite agent-literacy --execute --json` and `metro harness run --suite api-literacy --fixture-root <fixture-dir> --execute --json` prove agent and API catalog literacy.
 10. Prefer Markdown for context: `metro docs <ref> --markdown`, index at `docs/metronome-cli/site/agents.md`. HTML is for humans.
 11. Vague "credits product" / new metric / aggregation asks: `metro docs explain credits.product.decision --markdown` before any `products.create`.
 12. After sandbox keys: `metro catalog bind --sandbox --write` then `metro tenant snapshot show --markdown`. Prefer the snapshot `accountPattern` over guessing catalog shape.

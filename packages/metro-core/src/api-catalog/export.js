@@ -40,7 +40,7 @@ const API_EXAMPLE_FIXTURES = [
   },
   {
     id: 'api.preview.contracts-create',
-    command: 'metro api preview contracts.create --file test/fixtures/api-contracts-create-valid.json --sandbox --json',
+    command: 'metro api preview contracts.create --file <api-contracts-create-valid.json> --sandbox --json',
     covers: ['local expert API preview', 'payload hash', 'apply disabled state'],
   },
   {
