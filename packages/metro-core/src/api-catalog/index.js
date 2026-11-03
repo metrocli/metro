@@ -602,7 +602,7 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation usually requires creating a replacement metric, scheduling affected Products to use it at a reviewed hour-boundary timestamp, closing or replacing impacted rate entries when needed, and archiving the bad metric only after dependency review.',
     ],
     sources: [
-      'skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
       'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md',
     ],
@@ -1073,7 +1073,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-create', 'metronome-billable-metrics'],
     sources: [
-      'skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
       'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md',
     ],

@@ -405,7 +405,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-005'],
     commandIds: ['rate-card.dimensional.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-pricing-catalog/SKILL.md', 'skills/metronome-billable-metrics/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-pricing-catalog/SKILL.md', 'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events'],
     notes: 'The dimensional rate-card validator rejects separate action_code and action_display_name group_keys and requires usage events to expose both properties.',
   },
   {
@@ -488,7 +488,7 @@ const GOTCHA_COVERAGE = [
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      'skills/metronome-commits-credits/SKILL.md',
+      'skills/metronome-packages-contracts/SKILL.md',
       'skills/metronome-invoicing/SKILL.md',
       'skills/metronome-stripe-delivery/SKILL.md',
     ],

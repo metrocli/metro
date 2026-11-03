@@ -379,7 +379,7 @@ function buildDimensionalSandboxProofTemplate({ workflow, shape }) {
       'skills/metronome-danger-zone/SKILL.md',
       'skills/metronome-danger-zone/references/endpoint-matrix.md',
       'skills/metronome-pricing-catalog/SKILL.md',
-      'skills/metronome-billable-metrics/SKILL.md',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
     ],
   };
 }
@@ -1111,10 +1111,10 @@ function buildSandboxProofTemplate({ workflow, shape }) {
       ] : []),
       ...(isContractMove ? ['skills/metronome-packages-contracts/SKILL.md'] : []),
       ...(isComplimentaryCredit ? [
-        'skills/metronome-commits-credits/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
       ] : []),
       ...(isPaidTopUp ? [
-        'skills/metronome-commits-credits/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
         'skills/metronome-invoicing/SKILL.md',
         'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
