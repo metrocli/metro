@@ -7,13 +7,16 @@
 // Rules: colour only the label or glyph, never the value. Honor NO_COLOR, non-TTY
 // output and TERM=dumb. --plain also switches glyphs to ASCII.
 
+// signal is the brand accent (emerald) and equals proof. confirm stays ember orange as a
+// state colour only: it marks the typed confirmation, never the brand.
 const ROLES = {
+  signal: { hex: '#44D89F', x256: 79, sgr: '32' },
   read: { hex: '#67AAED', x256: 75, sgr: '34' },
-  sandbox: { hex: '#56D2DF', x256: 80, sgr: '36' },
+  sandbox: { hex: '#5CD0EA', x256: 80, sgr: '36' },
   preview: { hex: '#F4CD4B', x256: 221, sgr: '33' },
   confirm: { hex: '#FB6C2B', x256: 202, sgr: '1;33' },
   apply: { hex: '#F84B4B', x256: 203, sgr: '31' },
-  proof: { hex: '#4FD57F', x256: 78, sgr: '32' },
+  proof: { hex: '#44D89F', x256: 79, sgr: '32' },
   muted: { hex: '#707176', x256: 242, sgr: '90' },
   fg: { hex: '#F7F7F4', x256: 255, sgr: '39' },
 };

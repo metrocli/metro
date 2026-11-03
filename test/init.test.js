@@ -319,5 +319,9 @@ test('style honors NO_COLOR, non-TTY output, and --plain', () => {
   assert.equal(createStyle({ stream: { isTTY: false }, env: {} }).depth, 0);
   const plain = createStyle({ stream: tty, env: {}, plain: true });
   assert.equal(plain.ok('done'), 'ok done');
-  assert.equal(createStyle({ stream: tty, env: { COLORTERM: 'truecolor' } }).proof('✓'), '\x1b[38;2;79;213;127m✓\x1b[0m');
+  const tc = createStyle({ stream: tty, env: { COLORTERM: 'truecolor' } });
+  assert.equal(tc.proof('✓'), '\x1b[38;2;68;216;159m✓\x1b[0m'); // emerald #44D89F (= Signal)
+  assert.equal(tc.signal('x'), tc.proof('x'));
+  assert.equal(tc.confirm('x'), '\x1b[1m\x1b[38;2;251;108;43mx\x1b[0m'); // confirm stays ember #FB6C2B
+  assert.equal(createStyle({ stream: tty, env: { TERM: 'xterm-256color' } }).proof('✓'), '\x1b[38;5;79m✓\x1b[0m');
 });

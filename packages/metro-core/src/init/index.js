@@ -426,7 +426,7 @@ function isFreshMachine({ homeDir = os.homedir(), env = process.env } = {}) {
 function startHereBanner({ stream = process.stdout, env = process.env } = {}) {
   const style = createStyle({ stream, env });
   return [
-    `${style.paint('confirm', 'Start here:')} metro init`,
+    `${style.paint('signal', 'Start here:')} metro init`,
     `  ${style.muted('Creates ~/.metro/.env, adds a sandbox key, and keeps metro read-only.')}`,
     `  ${style.muted('Setting up an agent? It runs: metro init --agent')}`,
     '',
