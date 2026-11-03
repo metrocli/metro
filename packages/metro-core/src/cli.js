@@ -135,6 +135,7 @@ const {
 const {
   loadOperatorMode,
   setOperatorMode,
+  normalizeMode: normalizeOperatorMode,
   resetOperatorMode,
   MODES: OPERATOR_MODES,
   MODE_HELP,
@@ -229,6 +230,8 @@ function renderQuickstartShellScript(quickstart) {
 function printHelp(stdout) {
   write(stdout, [
     ...helpHeaderLines(),
+    '',
+    'First run: metro init (or metro init --agent) · status: metro init --check [--json]',
     '',
     'Offline commands:',
     ...offlineHelpLines(),
@@ -1082,6 +1085,10 @@ function runWorkspaceCommand(positional, flags, streams) {
 }
 
 function runModeCommand(positional, flags, streams) {
+  // Shorthand: `metro mode write`, `metro mode read-only`, ... behave like `metro mode set <mode>`.
+  if (positional[1] && !['show', 'get', 'status', 'set', 'reset', 'help'].includes(positional[1]) && normalizeOperatorMode(positional[1])) {
+    return runModeCommand(['mode', 'set', positional[1]], flags, streams);
+  }
   const action = positional[1] || 'show';
 
   if (action === 'help') {
