@@ -546,7 +546,7 @@ function validatePackageDuration(request, findings, path) {
   }
 }
 
-function validatePackageContractTemplate(request, findings, path) {
+function validatePackageContractTemplate(request, findings, path, { topLevel = false } = {}) {
   const contract = getPath(request, path);
   if (!hasValue(contract)) {
     add(findings, 'MTR-APIREQ-001', `${path} is required as local reviewed contract-template evidence for package creation.`, path, ['api-validation', 'official-package-create']);
@@ -575,6 +575,7 @@ function validatePackageContractTemplate(request, findings, path) {
       }
     }
   }
+  if (topLevel) return;
   for (const key of Object.keys(contract)) {
     if (!['usage_statement_schedule', 'scheduled_charges_on_usage_invoices'].includes(key)) {
       add(findings, 'MTR-APIREQ-002', `${path}.${key} is not part of the reviewed local package contract-template evidence.`, `${path}.${key}`, ['api-validation', 'official-package-create']);
@@ -1068,7 +1069,13 @@ const VALIDATION_DEFINITIONS = {
       requireSafeIdentifier(request, findings, 'body.rate_card_id');
       validatePackageAliases(request, findings, 'body.aliases');
       validatePackageDuration(request, findings, 'body.duration');
-      validatePackageContractTemplate(request, findings, 'body.contract');
+      // usage_statement_schedule and scheduled_charges_on_usage_invoices are top-level
+      // package fields; there is no `contract` wrapper.
+      // https://docs.metronome.com/api-reference/contracts/create-a-package
+      if (hasValue(getPath(request, 'body.contract'))) {
+        add(findings, 'MTR-APIREQ-002', 'body.contract is not a Metronome package field. Move usage_statement_schedule and scheduled_charges_on_usage_invoices to the top level of the body.', 'body.contract', ['api-validation', 'official-package-create']);
+      }
+      validatePackageContractTemplate(request, findings, 'body', { topLevel: true });
       requirePath(request, findings, 'body.uniqueness_key');
       requireSafeIdentifier(request, findings, 'body.uniqueness_key');
       requireMaxLength(request, findings, 'body.uniqueness_key', 128);

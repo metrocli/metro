@@ -30,6 +30,18 @@ const LOCAL_ONLY_LIVE_EXECUTION = Object.freeze({
 });
 const QUICKSTART_DIR_VAR = '$METRO_QUICKSTART_DIR';
 
+// Workspace packs return { valid, warnings }; older packs returned a findings array.
+function catalogShapeFindings(result, profileName) {
+  if (Array.isArray(result)) return result;
+  const warnings = Array.isArray(result?.warnings) ? result.warnings : [];
+  return warnings.map((w) => finding(
+    w.id || 'MTR-WORKSPACE-000',
+    result?.valid === false ? 'error' : 'warning',
+    `Profile "${profileName}": ${w.message}`,
+    w.remediation || 'Run metro catalog bind --sandbox --write to bind catalog IDs.',
+  ));
+}
+
 function buildFirstSafePreviewCommands(packId = 'generic') {
   const pack = getQuickstartPackConfig(packId);
   const profileName = pack.profiles.defaultProfile;
@@ -413,7 +425,7 @@ function validateProfileConfig(config, options = {}) {
   if (isObject(config.profiles)) {
     for (const [name, profile] of Object.entries(config.profiles)) {
       if (isObject(profile?.workspaceCatalog)) {
-        findings.push(...validateWorkspaceCatalogShape(profile.workspaceCatalog, name));
+        findings.push(...catalogShapeFindings(validateWorkspaceCatalogShape(profile.workspaceCatalog, name), name));
       }
     }
   }

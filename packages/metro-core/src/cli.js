@@ -1223,7 +1223,7 @@ function runStatusCommand(flags, streams) {
         ? 'Run metro ops who <customer> --prod, or metro mode set read-write before apply.'
         : auth?.valid === false && auth?.error === 'profile-load-failed'
           ? 'Run metro setup init --write to create ~/.metro/profiles.json.'
-          : 'Run metro setup init --write, export METRONOME_SANDBOX_KEY, then metro status --check-env --json.',
+          : 'Run metro init to add your sandbox key, then metro status --check-env --json.',
   };
 
   if (flags.json) {
