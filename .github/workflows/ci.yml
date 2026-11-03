@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['18.x', '20.x', '22.x']
+    env:
+      METRO_DEFAULT_WORKSPACE_PACK: generic
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+      npm_config_audit: 'false'
+      npm_config_fund: 'false'
+      npm_config_update_notifier: 'false'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Runtime versions
+        run: |
+          node --version
+          npm --version
+      - name: Offline test suite (no live network)
+        run: npm test
+      - name: Tenant leak test
+        run: node --test test/no-tenant-leaks.test.js
+      - name: Upstream changelog inventory (offline)
+        run: npm run docs:upstream:check
+      - name: Doctor and onboarding harness
+        run: |
+          npm run doctor:smoke
+          npm run harness:onboard
+      - name: First-run init on a clean HOME
+        run: |
+          home="$(mktemp -d)"
+          HOME="$home" node bin/metro.js init --agent
+          test "$(stat -c %a "$home/.metro/.env")" = "600"
+          if HOME="$home" node bin/metro.js init --check; then
+            echo "init --check must exit non-zero without a sandbox key" >&2
+            exit 1
+          fi
+      - name: Pack contents
+        run: npm run pack:verify
+
+  installed:
+    name: Installed package smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.x'
+      - name: Install the packed tarball globally and run it
+        run: |
+          tmpdir="$(mktemp -d)"
+          npm pack --json --pack-destination "$tmpdir" > "$tmpdir/pack.json"
+          tarball="$tmpdir/$(node -p 'require(process.argv[1])[0].filename' "$tmpdir/pack.json")"
+          npm install --global --prefix "$tmpdir/prefix" --ignore-scripts --no-audit --no-fund "$tarball"
+          metro="$tmpdir/prefix/bin/metro"
+          HOME="$tmpdir/home" "$metro" --help | head -5
+          HOME="$tmpdir/home" "$metro" init --agent
+          test -f "$tmpdir/home/.metro/AGENTS.md"

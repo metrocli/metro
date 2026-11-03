@@ -1,0 +1,75 @@
+name: Publish
+
+# npm Trusted Publishing: GitHub Actions OIDC, no NPM_TOKEN secret.
+# Provenance is attached automatically. Setup: packaging/npm/PUBLISH.md
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type publish to run a manual publish from this ref'
+        required: true
+        default: ''
+
+permissions:
+  contents: read
+  id-token: write # npm Trusted Publishing (OIDC)
+
+concurrency:
+  group: npm-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @metrocli/metro
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: npm
+    if: github.event_name == 'push' || inputs.confirm == 'publish'
+    env:
+      METRO_DEFAULT_WORKSPACE_PACK: generic
+      METRONOME_API_KEY: ''
+      METRONOME_PROD_KEY: ''
+      METRONOME_SANDBOX_KEY: ''
+      npm_config_audit: 'false'
+      npm_config_fund: 'false'
+      npm_config_update_notifier: 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Ensure npm with OIDC trusted publishing (11.5.1 or newer)
+        run: npm install -g npm@latest
+
+      - name: Tests
+        run: |
+          npm test
+          npm run docs:upstream:check
+          npm run doctor:smoke
+          npm run harness:onboard
+
+      - name: Verify pack contents
+        run: npm run pack:verify
+
+      - name: Require tag version matches package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p 'require("./package.json").version')"
+          if [ "$tag" != "$pkg" ]; then
+            echo "Tag v$tag does not match package.json version $pkg"
+            exit 1
+          fi
+
+      - name: Publish to npm (OIDC, provenance)
+        run: npm publish --provenance --access public
