@@ -1,7 +1,6 @@
 'use strict';
 
 const { resolvePackId } = require('../workspace/loader');
-const { SANDBOX_REFERENCE_CATALOG: LEV_SANDBOX_CATALOG } = require('../workspace/catalog-bindings');
 
 function loadGenericCatalog() {
   try {
@@ -15,21 +14,6 @@ function loadGenericCatalog() {
 const GENERIC_SANDBOX_CATALOG = loadGenericCatalog();
 
 const PACK_PROFILES = Object.freeze({
-  lev: Object.freeze({
-    schemaVersion: 'metro.profiles.v1',
-    defaultProfile: 'lev-sandbox',
-    profiles: {
-      'lev-sandbox': {
-        tenant: 'sandbox',
-        metronomeKeyEnv: 'METRONOME_SANDBOX_KEY',
-        workspaceCatalog: LEV_SANDBOX_CATALOG,
-      },
-      'lev-production': {
-        tenant: 'production',
-        metronomeKeyEnv: 'METRONOME_PROD_KEY',
-      },
-    },
-  }),
   generic: Object.freeze({
     schemaVersion: 'metro.profiles.v1',
     defaultProfile: 'metro-sandbox',
@@ -58,24 +42,6 @@ const PACK_PROFILES = Object.freeze({
 });
 
 const PACK_ANNUAL_INPUT = Object.freeze({
-  lev: Object.freeze({
-    filename: 'pro-annual.json',
-    shape: 'pro-annual',
-    previewCommand: 'metro package preview --shape pro-annual',
-    input: {
-      packageAlias: 'pro_annual',
-      uniquenessKey: 'pkg:lev-pro-annual:2126-07-01',
-      rateCardId: 'rate-card-test',
-      startingAt: '2126-07-01T00:00:00.000Z',
-      annualPriceCents: 120000,
-      billingFrequency: 'ANNUAL',
-      billingProvider: {
-        configured: true,
-        deliveryMethod: 'direct_to_billing_provider',
-      },
-      stripeBehavior: 'leave_draft',
-    },
-  }),
   generic: Object.freeze({
     filename: 'annual-package.json',
     shape: 'pro-annual-self-serve-v2',
@@ -119,25 +85,19 @@ function resolveQuickstartPackId(options = {}) {
   if (requested && PACK_PROFILES[requested]) return requested;
   const envPack = resolvePackId();
   if (PACK_PROFILES[envPack]) return envPack;
-  return 'lev';
+  return 'generic';
 }
 
-function getQuickstartPackConfig(packId = 'lev') {
-  const id = PACK_PROFILES[packId] ? packId : 'lev';
+function getQuickstartPackConfig(packId = 'generic') {
+  const id = PACK_PROFILES[packId] ? packId : 'generic';
   return {
     packId: id,
     profiles: PACK_PROFILES[id],
-    annual: PACK_ANNUAL_INPUT[id] || PACK_ANNUAL_INPUT.lev,
-    workspaceOrientationNote: id === 'lev'
-      ? 'Catalog pattern, tier cards, and workspace intents'
-      : 'Generic workspace intents and user-bound workspaceCatalog placeholders',
-    planTemplateIntent: id === 'lev' ? 'annual-self-serve-package' : 'annual-subscription-package',
-    quickstartDoc: id === 'lev'
-      ? 'packages/metro-workspace-lev/docs/TEAM-QUICKSTART-LEV.md'
-      : 'docs/metronome-cli/QUICKSTART.md',
-    oneGoalDoc: id === 'lev'
-      ? 'packages/metro-workspace-lev/docs/one-goal-lev.md'
-      : 'docs/metronome-cli/one-goal.md',
+    annual: PACK_ANNUAL_INPUT[id] || PACK_ANNUAL_INPUT.generic,
+    workspaceOrientationNote: 'Generic workspace intents and user-bound workspaceCatalog placeholders',
+    planTemplateIntent: 'annual-subscription-package',
+    quickstartDoc: 'docs/metronome-cli/QUICKSTART.md',
+    oneGoalDoc: 'docs/metronome-cli/one-goal.md',
   };
 }
 

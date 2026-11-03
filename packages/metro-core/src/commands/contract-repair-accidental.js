@@ -1,40 +1,19 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 
-function loadLevContractRepairAccidentalOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'contract-repair-accidental.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadContractRepairAccidentalOps() {
+  return loadPackOp('contract-repair-accidental');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro contract repair-accidental preflight --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'contract-repair-accidental', purpose: reason });
 }
 
 function runContractRepairAccidentalCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevContractRepairAccidentalOps();
+  const ops = loadContractRepairAccidentalOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for contract repair-accidental preflight/apply.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for contract repair-accidental preflight/apply');
   }
 
   const flagObj = { ...flags, argv };
@@ -59,7 +38,7 @@ function runContractRepairAccidentalCommand(positional, flags, streams, argv = [
 
     streams.stderr.write([
       'Usage:',
-      '  metro contract repair-accidental preflight --archive-contract-id=<id> --keep-contract-id=<id> --reason="<why accidental>" (--customer-id=|--lev-id=|--ingest-alias=|--name=) [--restore-ending-before=<ISO>] (--sandbox|--prod)',
+      '  metro contract repair-accidental preflight --archive-contract-id=<id> --keep-contract-id=<id> --reason="<why accidental>" (--customer-id=|--external-id=|--ingest-alias=|--name=) [--restore-ending-before=<ISO>] (--sandbox|--prod)',
       '  metro contract repair-accidental apply --file <repair.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
     ].join('\n'));
     return flags.help ? 0 : 1;

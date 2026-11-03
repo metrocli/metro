@@ -956,7 +956,7 @@ function runWorkspaceCommand(positional, flags, streams) {
     } else {
       write(streams.stdout, `Workspace pack: ${payload.packId} (${payload.packName})`);
       write(streams.stdout, `Source priority: --workspace > METRO_WORKSPACE_PACK > session > profiles > config > default (${payload.sources.builtInDefault})`);
-      write(streams.stdout, `Next: metro workspace use ${payload.packId === 'generic' ? 'lev' : 'generic'} --write`);
+      write(streams.stdout, 'Next: metro workspace list, then metro workspace use <pack> --write');
     }
     return 0;
   }

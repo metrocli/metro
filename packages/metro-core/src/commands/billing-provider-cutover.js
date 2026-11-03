@@ -1,40 +1,19 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 
-function loadLevBillingProviderCutoverOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'billing-provider-cutover.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadBillingProviderCutoverOps() {
+  return loadPackOp('billing-provider-cutover');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro billing-provider cutover preflight --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'billing-provider-cutover', purpose: reason });
 }
 
 function runBillingProviderCutoverCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevBillingProviderCutoverOps();
+  const ops = loadBillingProviderCutoverOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for billing-provider cutover preflight/apply.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for billing-provider cutover preflight/apply');
   }
 
   const flagObj = { ...flags, argv };
@@ -59,7 +38,7 @@ function runBillingProviderCutoverCommand(positional, flags, streams, argv = [])
 
     streams.stderr.write([
       'Usage:',
-      '  metro billing-provider cutover preflight --collection-method=send_invoice|charge_automatically --reason="<why>" (--customer-id=|--lev-id=|--ingest-alias=|--name=) (--sandbox|--prod)',
+      '  metro billing-provider cutover preflight --collection-method=send_invoice|charge_automatically --reason="<why>" (--customer-id=|--external-id=|--ingest-alias=|--name=) (--sandbox|--prod)',
       '  metro billing-provider cutover apply --file <cutover.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
     ].join('\n'));
     return flags.help ? 0 : 1;

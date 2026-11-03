@@ -147,9 +147,9 @@ const HARNESS_SUITES = Object.freeze([
     estimatedMinutes: 1,
   },
   {
-    id: 'lev-pack',
+    id: 'pack-ops',
     title: 'Workspace pack native ops (offline)',
-    description: 'Package plan move dry-run apply, route scoring, and production apply refusal without API keys.',
+    description: 'For packs that export ops: package plan move dry-run apply, route scoring, and production apply refusal without API keys.',
     apiAccess: 'none',
     fixtureRequired: true,
     executeSupported: true,
@@ -170,7 +170,7 @@ function listHarnessSuites() {
       'metro harness run --suite agent-literacy --execute --json',
       'metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json',
       'metro harness run --suite policy --fixture-root test/fixtures --execute --json',
-      'metro harness run --suite lev-pack --fixture-root test/fixtures --execute --json',
+      'metro harness run --suite pack-ops --fixture-root test/fixtures --execute --json',
       'metro harness intent annual-self-serve-package --sandbox --json',
     ],
     nextSafeStep: 'Run metro harness run --suite onboard --execute --json after install.',
@@ -530,20 +530,20 @@ function buildPolicySteps(fixtureRoot) {
   return markSkippedSteps(steps, fixtureRoot);
 }
 
-function buildLevPackSteps(fixtureRoot) {
+function buildPackOpsSteps(fixtureRoot) {
   const movePlan = fixtureRoot ? path.join(fixtureRoot, 'contract-move-plan-valid.json') : null;
   const confirmHash = 'sha256:95c1f5fc6f73824d3bc1095b23a317a3a3ea7f4fad682445029b2dc03bfec3f6';
 
   const steps = [
     step({
-      id: 'lev-route-downgrade',
+      id: 'pack-ops-route-downgrade',
       order: 1,
       command: 'metro route --goal "downgrade customer from Pro to Core at end of term" --prod --json',
       proves: 'Natural-language downgrade goals route to package-plan-move intent.',
       expectedExitCode: 0,
     }),
     step({
-      id: 'lev-move-plan-apply-dry-run',
+      id: 'pack-ops-move-plan-apply-dry-run',
       order: 2,
       command: movePlan
         ? `metro contract move-plan apply --file ${movePlan} --prod --confirm-hash ${confirmHash} --json`
@@ -555,7 +555,7 @@ function buildLevPackSteps(fixtureRoot) {
       expectedExitCode: 0,
     }),
     step({
-      id: 'lev-move-plan-apply-prod-refusal',
+      id: 'pack-ops-move-plan-apply-prod-refusal',
       order: 3,
       command: movePlan
         ? `metro contract move-plan apply --file ${movePlan} --prod --confirm-hash ${confirmHash} --apply --json`
@@ -567,11 +567,11 @@ function buildLevPackSteps(fixtureRoot) {
       expectedExitCode: 1,
     }),
     step({
-      id: 'lev-move-plan-pack-missing',
+      id: 'pack-ops-move-plan-pack-missing',
       order: 4,
       command: movePlan
-        ? `METRO_WORKSPACE_PACK=stub metro contract move-plan preflight --to=lev_core --customer-id=test --prod --json`
-        : 'metro contract move-plan preflight --to=lev_core --prod --json',
+        ? `METRO_WORKSPACE_PACK=stub metro contract move-plan preflight --to=core --customer-id=test --prod --json`
+        : 'metro contract move-plan preflight --to=core --prod --json',
       proves: 'Contract move-plan preflight refuses when workspace pack is not loaded.',
       fixtureRequired: false,
       expectedExitCode: 2,
@@ -610,8 +610,8 @@ function buildHarnessPlan(suiteId, options = {}) {
     steps = buildAgentLiteracySteps();
   } else if (suiteId === 'policy') {
     steps = buildPolicySteps(fixtureRoot);
-  } else if (suiteId === 'lev-pack') {
-    steps = buildLevPackSteps(fixtureRoot);
+  } else if (suiteId === 'pack-ops') {
+    steps = buildPackOpsSteps(fixtureRoot);
   } else {
     steps = [];
   }

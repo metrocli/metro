@@ -2,7 +2,7 @@
   "name": "@metro/workspace-stub",
   "version": "0.1.0",
   "private": true,
-  "description": "Zero-intent workspace stub for metro-core CI without Lev opinions.",
+  "description": "Zero-intent workspace stub for metro-core CI without tenant-specific opinions.",
   "type": "commonjs",
   "main": "src/index.js",
   "engines": {

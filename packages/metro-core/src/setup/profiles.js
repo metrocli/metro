@@ -30,7 +30,7 @@ const LOCAL_ONLY_LIVE_EXECUTION = Object.freeze({
 });
 const QUICKSTART_DIR_VAR = '$METRO_QUICKSTART_DIR';
 
-function buildFirstSafePreviewCommands(packId = 'lev') {
+function buildFirstSafePreviewCommands(packId = 'generic') {
   const pack = getQuickstartPackConfig(packId);
   const profileName = pack.profiles.defaultProfile;
   const profileConfig = {
@@ -117,7 +117,7 @@ function buildFirstSafePreviewCommands(packId = 'lev') {
   ];
 }
 
-function buildQuickstartShellCommandBlock(packId = 'lev') {
+function buildQuickstartShellCommandBlock(packId = 'generic') {
   return buildFirstSafePreviewCommands(packId).map((step) => step.command).join('\n');
 }
 
@@ -165,19 +165,12 @@ function buildSetupTemplate(options = {}) {
     schemaVersion: pack.profiles.schemaVersion,
     defaultProfile: pack.profiles.defaultProfile,
     profiles: stampWorkspacePackOnProfiles(pack.profiles.profiles, packId),
-    notes: packId === 'lev'
-      ? [
-        'Store environment variable names only; never paste raw API keys into this file.',
-        'Optional workspaceCatalog binds tier rateCardIds and dimensional product ids for metro plan and rollout commands.',
-        'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
-        'Local preview and validation commands do not require API keys.',
-      ]
-      : [
-        'Store environment variable names only; never paste raw API keys into this file.',
-        'Bind workspaceCatalog.rateCardIds and product ids for your tenant before rollout plans.',
-        'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
-        'Local preview and validation commands do not require API keys.',
-      ],
+    notes: [
+      'Store environment variable names only; never paste raw API keys into this file.',
+      'Bind workspaceCatalog.rateCardIds and product ids for your tenant before rollout plans.',
+      'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
+      'Local preview and validation commands do not require API keys.',
+    ],
   });
 }
 
@@ -230,28 +223,18 @@ function buildSetupQuickstart(options = {}) {
       sandboxApply: listLiveApplySandboxEndpointIds(),
       note: 'Live operations still require read-gate or apply-gate evidence and explicit current-turn confirmation tokens.',
     },
-    nextStepsAfterQuickstart: packId === 'lev'
-      ? [
-        'metro setup init --write',
-        'metro status --check-env --json',
-        `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
-        'metro plan list --json',
-        'metro plan template annual-self-serve-package --sandbox --out annual-input.json --json',
-        'metro api readiness --summary --json',
-        'See TEAM-QUICKSTART.md for first live sandbox read and write paths.',
-      ]
-      : [
-        'metro setup init --workspace generic --write',
-        'metro status --check-env --json',
-        `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
-        'metro plan list --json',
-        `metro plan template ${pack.planTemplateIntent} --sandbox --out annual-input.json --json`,
-        'metro api readiness --summary --json',
-        'See docs/metronome-cli/QUICKSTART.md for first live sandbox read and write paths.',
-      ],
+    nextStepsAfterQuickstart: [
+      'metro setup init --workspace generic --write',
+      'metro status --check-env --json',
+      `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
+      'metro plan list --json',
+      `metro plan template ${pack.planTemplateIntent} --sandbox --out annual-input.json --json`,
+      'metro api readiness --summary --json',
+      'See docs/metronome-cli/QUICKSTART.md for first live sandbox read and write paths.',
+    ],
     safetyBoundaries: [
       'This quickstart does not read .env files.',
-      'This quickstart does not call Metronome, Stripe, HubSpot, Hyperline, PostHog, Slack, Zoom, SMTP, or any other live system.',
+      'This quickstart does not call Metronome, Stripe, a CRM, analytics, chat, email, or any other live system.',
       'A green preview is not production approval and does not authorize live reads, live writes, Stripe delivery, sandbox apply, or production apply.',
       'Future live operations require exact current-turn authorization, tenant proof, preflight, audit, sandbox proof where applicable, read-back verification, rollback or remediation, and approval evidence.',
     ],
@@ -369,7 +352,7 @@ function validateProfileConfig(config, options = {}) {
           'MTR-SETUP-003',
           'error',
           `Profile name "${name}" must use lowercase letters, numbers, dots, underscores, or dashes and be 2-64 characters.`,
-          'Rename the profile to a stable CLI-safe identifier such as lev-sandbox.',
+          'Rename the profile to a stable CLI-safe identifier such as acme-sandbox.',
         ));
       }
 
@@ -478,7 +461,7 @@ function resolveTenantProfile(config, options = {}) {
       'MTR-SETUP-003',
       'error',
       'Resolved profile name must use lowercase letters, numbers, dots, underscores, or dashes and be 2-64 characters.',
-      'Pass a stable CLI-safe profile name such as lev-sandbox.',
+      'Pass a stable CLI-safe profile name such as acme-sandbox.',
     ));
   } else {
     selectedProfile = validation.profiles.find((profile) => profile.name === profileName) || null;

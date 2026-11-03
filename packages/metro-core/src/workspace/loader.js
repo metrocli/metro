@@ -4,16 +4,15 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const PACK_IDS = Object.freeze(['lev', 'generic', 'stub']);
+const PACK_IDS = Object.freeze(['generic', 'stub']);
+const DEFAULT_PACK_ID = 'generic';
 
 const LOCAL_PACK_ROOTS = Object.freeze({
-  lev: path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src'),
   generic: path.join(__dirname, '..', '..', '..', 'metro-workspace-generic', 'src'),
   stub: path.join(__dirname, '..', '..', '..', 'metro-workspace-stub', 'src'),
 });
 
 const NPM_PACK_NAMES = Object.freeze({
-  lev: '@metro-dev/metro-workspace',
   generic: '@metronome/metro-workspace-generic',
 });
 
@@ -48,7 +47,6 @@ const PACK_VALUE_KEYS = Object.freeze([
   'PRODUCTION_REFERENCE_CATALOG',
   'INTENTS',
   'GENERIC_WORKSPACE',
-  'LEV_WORKSPACE',
   'STUB_WORKSPACE',
 ]);
 
@@ -71,7 +69,7 @@ function normalizePackId(raw, fallback = null) {
 }
 
 function builtInDefaultPackId() {
-  return normalizePackId(process.env.METRO_DEFAULT_WORKSPACE_PACK, 'lev');
+  return normalizePackId(process.env.METRO_DEFAULT_WORKSPACE_PACK, DEFAULT_PACK_ID);
 }
 
 function readConfigDefaultPack(options = {}) {
@@ -116,7 +114,7 @@ function readProfileWorkspacePack(options = {}) {
  * 3. session override (metro workspace use)
  * 4. profiles.<name>.workspacePack
  * 5. ~/.metro/config.json defaultWorkspacePack
- * 6. METRO_DEFAULT_WORKSPACE_PACK or 'lev'
+ * 6. METRO_DEFAULT_WORKSPACE_PACK or 'generic'
  */
 function resolvePackId(options = {}) {
   if (options.workspace) {
@@ -280,6 +278,7 @@ for (const key of PACK_FUNCTION_KEYS) {
     const fn = pack[key];
     if (typeof fn !== 'function') {
       throw new Error(`Workspace pack ${resolvePackId()} does not export ${key}`);
+  DEFAULT_PACK_ID,
     }
     return fn(...args);
   };

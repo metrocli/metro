@@ -5,6 +5,7 @@ const os = require('os');
 const path = require('path');
 const { resolvePackId } = require('../workspace/loader');
 const { loadWhoOps } = require('../ops-live/load');
+const { listPackOps } = require('../workspace/pack-ops');
 const { readSnapshot, defaultMetroConfigDir } = require('../tenant-snapshot');
 const { classifyAccount } = require('../account-classifier');
 const { detectPromoteOpportunity } = require('../promote-codebase');
@@ -111,7 +112,8 @@ const COOKBOOK_GENERIC = [
   },
 ];
 
-const COOKBOOK_LEV = [
+/** One-liners that need a workspace pack exporting live write ops (see workspace/pack-ops.js). */
+const COOKBOOK_PACK_OPS = [
   {
     id: 'move-plan',
     say: 'Put <customer> on <plan> / move to free / legacy / PAYG (incl. active trials)',
@@ -175,7 +177,7 @@ const COOKBOOK_LEV = [
 ];
 
 /** @deprecated Prefer cookbookForPack - retained for tests that import COOKBOOK. */
-const COOKBOOK = [...COOKBOOK_CORE, ...COOKBOOK_LEV];
+const COOKBOOK = [...COOKBOOK_CORE, ...COOKBOOK_PACK_OPS];
 
 const LOG_HEADER = [
   '# Ops log - sales one-offs and recurring asks',
@@ -189,9 +191,10 @@ const LOG_HEADER = [
 ].join('\n');
 
 function cookbookForPack(packId = resolvePackId()) {
-  if (packId === 'lev') return [...COOKBOOK_CORE, ...COOKBOOK_LEV];
-  if (packId === 'generic') return [...COOKBOOK_CORE, ...COOKBOOK_GENERIC];
-  return [...COOKBOOK_CORE];
+  const withOps = listPackOps({ packId }).length > 0 ? COOKBOOK_PACK_OPS : [];
+  if (packId === 'generic') return [...COOKBOOK_CORE, ...COOKBOOK_GENERIC, ...withOps];
+  if (packId === 'stub') return [...COOKBOOK_CORE];
+  return [...COOKBOOK_CORE, ...withOps];
 }
 
 /** Prefer pattern-relevant one-liners first; keep the rest after. */
@@ -303,7 +306,7 @@ function runOpsList(flags, streams) {
   }
   streams.stdout.write('Log every ask:   metro ops log --ask="<what was asked>" [--source=slack] [--minutes=5]\n');
   streams.stdout.write('Rank the queue:  metro ops top\n');
-  streams.stdout.write(`Switch pack:     metro workspace use ${packId === 'generic' ? 'lev' : 'generic'} --write\n`);
+  streams.stdout.write('Switch pack:     metro workspace use <pack> --write   (metro workspace list)\n');
   return 0;
 }
 
@@ -394,14 +397,14 @@ function runOpsWho(positional, flags, streams, argv = []) {
   const query = flags.query && flags.query !== true
     ? String(flags.query)
     : positional.slice(2).join(' ').trim() || null;
-  if (!query && !flags['customer-id'] && !flags['lev-id'] && !flags['external-id'] && !flags['ingest-alias'] && !flags.name) {
-    streams.stderr.write('Usage: metro ops who <name|uuid|email|external-id|url> (--sandbox|--prod) [--json]\n');
+  if (!query && !flags['customer-id'] && !flags['external-id'] && !flags['ingest-alias'] && !flags.name) {
+    streams.stderr.write('Usage: metro ops who <name|uuid|email|external-id> (--sandbox|--prod) [--json]\n');
     return 1;
   }
   const flagObj = {
     ...flags,
     argv,
-    'lev-id': flags['lev-id'] || flags['external-id'] || null,
+    'external-id': flags['external-id'] || null,
   };
   return who.runWho(flagObj, streams, query).then((r) => r.exitCode);
 }
@@ -432,5 +435,5 @@ module.exports = {
   COOKBOOK,
   COOKBOOK_CORE,
   COOKBOOK_GENERIC,
-  COOKBOOK_LEV,
+  COOKBOOK_PACK_OPS,
 };
