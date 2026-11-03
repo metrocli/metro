@@ -38,8 +38,12 @@ function runLedgerAdjustmentCommand(positional, flags, streams, argv = []) {
 
     streams.stderr.write([
       'Usage:',
-      '  metro ledger-adjustment preflight --amount=<signed-int> --reason="<reason>" (--customer-id=|--external-id=|--ingest-alias=|--name=) [--contract-id=] [--balance-id=] (--sandbox|--prod)',
-      '  metro ledger-adjustment apply --file <ledger.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
+      '  metro ledger-adjustment preflight --amount=<signed-int> [--balance-id=] --reason="<reason>" <customer> [--contract-id=] (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '  metro ledger-adjustment preflight --archive-balance-id=<balance-id> --reason="<reason>" <customer> (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '  metro ledger-adjustment preflight --grant=credit|commit --amount=<n> --product-id=<id> --starting-at=<UTC hour> --ending-before=<UTC hour> [--credit-type-id=<id>] [--grant-name=<name>] [--priority=<n>] [--contract-id=] --reason="<reason>" <customer> (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '    <customer> = --customer-id= | --external-id= | --ingest-alias= | --name= | --query=',
+      '    additions that exceed a net-vs-bucket divergence also need --acknowledge-net-divergence=<token>',
+      '  metro ledger-adjustment apply --file <ledger.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     ].join('\n'));
     return flags.help ? 0 : 1;
   } catch (err) {

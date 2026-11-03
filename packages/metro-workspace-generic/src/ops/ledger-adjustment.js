@@ -77,8 +77,8 @@ const ledgerAdjustment = rt.defineOp({
         'Usage (pick one mode; --reason is always required):',
         '  metro ledger-adjustment preflight --amount=<signed-int> --reason="..." (--balance-id=|--contract-id=) <customer> (--sandbox|--prod)',
         '  metro ledger-adjustment preflight --archive-balance-id=<id> --reason="..." <customer> (--sandbox|--prod)',
-        '  metro ledger-adjustment preflight --grant=credit|commit --amount=<n> --product-id=<id> --starting-at=<ISO> --ending-before=<ISO> [--credit-type-id=] [--contract-id=] [--name=] [--priority=] --reason="..." <customer> (--sandbox|--prod)',
-        '  <customer> = --customer-id= | --external-id= | --ingest-alias= | --name=',
+        '  metro ledger-adjustment preflight --grant=credit|commit --amount=<n> --product-id=<id> --starting-at=<ISO> --ending-before=<ISO> [--credit-type-id=] [--contract-id=] [--grant-name=] [--priority=] --reason="..." <customer> (--sandbox|--prod)',
+        '  <customer> = --customer-id= | --external-id= | --ingest-alias= | --name= | --query=',
       ].join('\n'));
     }
     const mode = modes[0];

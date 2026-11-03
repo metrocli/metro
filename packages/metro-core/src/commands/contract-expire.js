@@ -38,8 +38,8 @@ function runContractExpireCommand(positional, flags, streams, argv = []) {
 
     streams.stderr.write([
       'Usage:',
-      '  metro contract expire preflight (--customer-id=|--external-id=|--ingest-alias=|--name=) [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] (--sandbox|--prod)',
-      '  metro contract expire apply --file <expire.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
+      '  metro contract expire preflight (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] [--allow-ending-before-finalized-invoice] (--sandbox|--prod) [--out=expire.json] [--json]',
+      '  metro contract expire apply --file <expire.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     ].join('\n'));
     return flags.help ? 0 : 1;
   } catch (err) {
