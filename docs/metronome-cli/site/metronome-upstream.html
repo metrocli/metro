@@ -7,17 +7,6 @@
     <meta name="description" content="Every Metronome changelog entry with exact official links and metro coverage status, plus batch/large-request shortcuts.">
     <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
-    <script>
-      (function applySavedTheme() {
-        try {
-          const saved = localStorage.getItem('metro-docs-theme');
-          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
-        } catch (error) {
-          document.documentElement.dataset.theme = 'light';
-        }
-      }());
-    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="generated-reference">
@@ -35,33 +24,23 @@
         <h1>Metronome changelog → metro coverage</h1>
         <p>
           Official source:
-          <a href="https://docs.metronome.com/changelog">docs.metronome.com/changelog</a>.
-          Metro does not auto-ingest OpenAPI. This inventory keeps shapes and the
-          endpoint matrix honest. Full link-by-link list:
+          <a href="https://docs.metronome.com/changelog">https://docs.metronome.com/changelog</a>.
+          Synced <strong>2026-11-03</strong>
+          (90 entries). Full list:
           <a href="../METRONOME_UPSTREAM_CHANGELOG.md">METRONOME_UPSTREAM_CHANGELOG.md</a>
-          · machine:
-          <a href="metronome-upstream.json">metronome-upstream.json</a>.
+          · <a href="metronome-upstream.json">metronome-upstream.json</a>.
         </p>
       </header>
-
       <section id="gaps" class="generated-section">
         <h2>Open gaps</h2>
         <ul>
-          <li>
-            <strong>GAP</strong> May 29, 2026 - Configurable rounding for prorated
-            subscriptions and recurring commits: no shape/validator yet.
-          </li>
-          <li>
-            <strong>GAP</strong> February 5, 2026 - Get net balance API: in the
-            endpoint matrix, not yet a reviewed api-catalog ID
-            (<code>POST /v1/contracts/customerBalances/getNetBalance</code>).
-          </li>
+          <li><strong>GAP</strong> May 29, 2026 - Configurable rounding for prorated subscriptions and recurring commits: No shape/validator/docs yet for proration rounding fields. Curl subscription + recurring commit API docs before first use.</li>
+          <li><strong>GAP</strong> February 5, 2026 - Get net balance API: Verified in endpoint-matrix (`POST /v1/contracts/customerBalances/getNetBalance`) but **not** yet a reviewed api-catalog ID / `metro api read` shape. Prefer over paginating balances when consolidating.</li>
         </ul>
         <pre><code>npm run docs:upstream:check
-npm run docs:upstream:check -- --fetch   # live drift vs changelog.md
+npm run docs:upstream:check -- --fetch
 node scripts/generate-metronome-upstream.js --fetch</code></pre>
       </section>
-
       <section id="batch" class="generated-section">
         <h2>Batch / large requests</h2>
         <p>Use metro shortcuts that already paginate or batch-bound - do not invent fleet loops.</p>
@@ -73,11 +52,6 @@ node scripts/generate-metronome-upstream.js --fetch</code></pre>
           <li>Reviewed <code>usage.batch</code> / <code>usage.groups</code> - pagination in <strong>query</strong>, not body</li>
           <li>Ingest ≤100 events/batch; <code>addRates</code> ≤100 rows; retry on 429</li>
         </ul>
-        <p>
-          Prefer <strong>getNetBalance</strong> once catalogued instead of N+1 balance pages.
-          See QUICKSTART § Batch and
-          <a href="https://docs.metronome.com/guides/events/high-volume-ingestion">high-volume ingestion</a>.
-        </p>
       </section>
     </main>
     <script src="layout.js"></script>

@@ -2,16 +2,348 @@
   "schemaVersion": "metro.metronome-upstream.v1",
   "source": "https://docs.metronome.com/changelog",
   "sourceMarkdown": "https://docs.metronome.com/changelog.md",
-  "syncedAt": "2026-07-15",
-  "entryCount": 58,
+  "syncedAt": "2026-11-03",
+  "entryCount": 90,
   "entries": [
     {
-      "date": "July 7, 2026",
-      "tags": [
-        "Billing",
-        "API",
-        "UI"
+      "date": "October 13, 2026",
+      "tags": [],
+      "title": "Get notified when subscriptions are created, start, or end",
+      "links": [
+        {
+          "label": "system notifications",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/system-notifications.md"
+        },
+        {
+          "label": "offset notifications",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/offset-notifications.md"
+        }
       ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "October 8, 2026",
+      "tags": [],
+      "title": "Create more contracts per customer",
+      "links": [
+        {
+          "label": "list customer contracts",
+          "url": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md"
+        },
+        {
+          "label": "platform limits",
+          "url": "https://docs.metronome.com/api-reference/rate-limits.md#platform-limits"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 29, 2026",
+      "tags": [],
+      "title": "Alert on the combined remaining percentage of commits and credits",
+      "links": [
+        {
+          "label": "threshold notifications",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/threshold-notifications.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 28, 2026",
+      "tags": [],
+      "title": "Sell commits and credits denominated in quantity",
+      "links": [
+        {
+          "label": "create credits and commits",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/apply-credits-and-commits/create-a-pre-paid-commit.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 24, 2026",
+      "tags": [],
+      "title": "Filter events by event type in the dashboard",
+      "links": [
+        {
+          "label": "send usage events",
+          "url": "https://docs.metronome.com/guides/events/send-usage-events.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 23, 2026",
+      "tags": [],
+      "title": "Get notified when rate cards change",
+      "links": [
+        {
+          "label": "system notifications",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/system-notifications.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 22, 2026",
+      "tags": [],
+      "title": "Bill for provisioned throughput",
+      "links": [
+        {
+          "label": "provisioned throughput",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/provisioned-throughput.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 14, 2026",
+      "tags": [],
+      "title": "Set your account's support contact",
+      "links": [
+        {
+          "label": "manage your support contact",
+          "url": "https://docs.metronome.com/guides/platform-configuration/manage-support-contact.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 3, 2026",
+      "tags": [],
+      "title": "Billing for LLM Tokens is available in public preview.",
+      "links": [
+        {
+          "label": "billing for LLM tokens",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/token-billing.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 3, 2026",
+      "tags": [],
+      "title": "Create and archive pricing units through the API",
+      "links": [
+        {
+          "label": "Create a pricing unit",
+          "url": "https://docs.metronome.com/api-reference/settings/create-a-pricing-unit.md"
+        },
+        {
+          "label": "Archive a pricing unit",
+          "url": "https://docs.metronome.com/api-reference/settings/archive-a-pricing-unit.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "September 2, 2026",
+      "tags": [],
+      "title": "Mark contract invoices as unbillable",
+      "links": [
+        {
+          "label": "how invoicing works",
+          "url": "https://docs.metronome.com/guides/implement-metronome/core-concepts/how-invoicing-works.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 26, 2026",
+      "tags": [],
+      "title": "Danish krone and Chinese yuan currency support",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 24, 2026",
+      "tags": [],
+      "title": "Redesigned dashboard navigation with global search",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 20, 2026",
+      "tags": [],
+      "title": "Billing for LLM tokens is available in private preview",
+      "links": [
+        {
+          "label": "billing for LLM tokens",
+          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/token-billing.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 18, 2026",
+      "tags": [],
+      "title": "Idempotency on manual balance entries and product custom fields on contract subscriptions",
+      "links": [
+        {
+          "label": "add a manual balance entry",
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/add-a-manual-balance-entry.md#body-uniqueness-key"
+        },
+        {
+          "label": "list customer contracts",
+          "url": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md#response-data-items-subscriptions-items-product-custom-fields"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 14, 2026",
+      "tags": [],
+      "title": "Redesigned Stripe integration settings page",
+      "links": [
+        {
+          "label": "Stripe integration guide",
+          "url": "https://docs.metronome.com/integrations/invoice-integrations/stripe.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 10, 2026",
+      "tags": [],
+      "title": "Interactive customer billing experience demo in the docs",
+      "links": [
+        {
+          "label": "docs.metronome.com/guides/customers-billing/demo-dashboard/app",
+          "url": "https://docs.metronome.com/guides/customers-billing/demo-dashboard/app"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 10, 2026",
+      "tags": [],
+      "title": "Configure duration, rollover, and rate type on prepaid balance threshold commits",
+      "links": [
+        {
+          "label": "prepaid balance thresholds",
+          "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/prepaid-balance-thresholds.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 10, 2026",
+      "tags": [],
+      "title": "Faster Commits & Credits pages for customers with many commits",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "August 6, 2026",
+      "tags": [],
+      "title": "Salesforce integration reauth and skipped records download",
+      "links": [
+        {
+          "label": "Sync into Salesforce",
+          "url": "https://docs.metronome.com/integrations/platform-integrations/sfdc-integration.md"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 31, 2026",
+      "tags": [],
+      "title": "More accurate rated events for backdated usage and mid-period pricing changes",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 14, 2026",
+      "tags": [],
+      "title": "Add credit type conversions to existing rate cards",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 10, 2026",
+      "tags": [],
+      "title": "Metronome is live in Stripe Onboarding",
+      "links": [
+        {
+          "label": "self-checkout launch",
+          "url": "https://docs.metronome.com/changelog#metronome-self-checkout"
+        }
+      ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 7, 2026",
+      "tags": [],
       "title": "Daily recurring credits and commits are supported",
       "links": [],
       "coverageStatus": "partial",
@@ -23,12 +355,103 @@
       "changelogAnchor": "https://docs.metronome.com/changelog"
     },
     {
-      "date": "May 29, 2026",
-      "tags": [
-        "Billing",
-        "API",
-        "UI"
+      "date": "July 2, 2026",
+      "tags": [],
+      "title": "Billing provider configuration scheduling",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "July 2, 2026",
+      "tags": [],
+      "title": "Q2 usability updates: design-led improvements",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 30, 2026",
+      "tags": [],
+      "title": "Native decimal quantities on Stripe invoices",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 29, 2026",
+      "tags": [],
+      "title": "RBI e-mandate support for Indian credit cards",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 23, 2026",
+      "tags": [],
+      "title": "Enhanced balance alert and threshold billing controls",
+      "links": [
+        {
+          "label": "how alert specifiers work",
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-alert-specifiers.md#how-alert-specifiers-work"
+        }
       ],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 15, 2026",
+      "tags": [],
+      "title": "Metronome self-checkout",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 15, 2026",
+      "tags": [],
+      "title": "Commit-specific overrides support all balance types",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 10, 2026",
+      "tags": [],
+      "title": "Stripe Projects CLI integration",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "June 3, 2026",
+      "tags": [],
+      "title": "Subscription billing cycle configuration",
+      "links": [],
+      "coverageStatus": "unknown",
+      "metroNotes": "Not yet classified - curl linked docs and update COVERAGE in this script.",
+      "catalogIds": [],
+      "changelogAnchor": "https://docs.metronome.com/changelog"
+    },
+    {
+      "date": "May 29, 2026",
+      "tags": [],
       "title": "Configurable rounding for prorated subscriptions and recurring commits",
       "links": [],
       "coverageStatus": "gap",
@@ -38,18 +461,16 @@
     },
     {
       "date": "May 29, 2026",
-      "tags": [
-        "API"
-      ],
+      "tags": [],
       "title": "Richer responses from `createContract` and `editContract`",
       "links": [
         {
           "label": "Create contract API docs",
-          "url": "https://docs.metronome.com/api-reference/contracts/create-a-contract#response-data"
+          "url": "https://docs.metronome.com/api-reference/contracts/create-a-contract.md#response-data"
         },
         {
           "label": "Edit contract API docs",
-          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract#response-data"
+          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract.md#response-data"
         }
       ],
       "coverageStatus": "accounted",
@@ -62,9 +483,7 @@
     },
     {
       "date": "May 15, 2026",
-      "tags": [
-        "SDK"
-      ],
+      "tags": [],
       "title": "Metronome Java SDK is now available",
       "links": [
         {
@@ -83,12 +502,34 @@
     },
     {
       "date": "April 17, 2026",
-      "tags": [
-        "Improvements",
-        "UI"
-      ],
+      "tags": [],
       "title": "Q1 usability updates: quality of life improvements",
-      "links": [],
+      "links": [
+        {
+          "label": "Onboarding and setup flow improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/onboarding-and-setup-flow-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=b4c2a016592ffa752e92636afe1d2bac"
+        },
+        {
+          "label": "Contracts, commits, credits, and subscription workflow improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/contracts-commits-credits-and-subscription-workflow-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=7c49af34c397d951255cffe36176a1b2"
+        },
+        {
+          "label": "Pricing, rate cards, billable metrics, and product configuration improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/pricing-rate-cards-billable-metrics-and-product-configuration-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=1891d10a4c37a185cf406bd090502eeb"
+        },
+        {
+          "label": "Invoices, tables, filters, and reporting improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/invoices-tables-filters-and-reporting-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=0b6190ed4c3b7b8949871e7be4fee793"
+        },
+        {
+          "label": "Connections, integrations, exports, and system settings improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/connections-integrations-exports-and-system-settings-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=7cb27b2409986008f3c1769c6d70bb97"
+        },
+        {
+          "label": "Design system, DSv3 migration, dark mode, and visual consistency improvements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/design-system-dsv3-migration-dark-mode-and-visual-consistency-improvements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=9856e9e9b78e073cdee0cc72665ab9f5"
+        }
+      ],
       "coverageStatus": "n/a-ui",
       "metroNotes": "UI-only QoL; no API shape impact.",
       "catalogIds": [],
@@ -96,15 +537,12 @@
     },
     {
       "date": "April 11, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Assign RBAC roles to API tokens",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/platform-configuration/role-based-access-rbac#assign-a-role-to-an-api-token"
+          "url": "https://docs.metronome.com/guides/platform-configuration/role-based-access-rbac.md#assign-a-role-to-an-api-token"
         }
       ],
       "coverageStatus": "accounted",
@@ -114,25 +552,20 @@
     },
     {
       "date": "April 11, 2026",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Package contract transitions and credit rollover improvements",
       "links": [
         {
           "label": "provisioning customers with a package",
-          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview#provision-customers-with-a-package"
+          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview.md#provision-customers-with-a-package"
         },
         {
           "label": "contract lifecycle transitions",
-          "url": "https://docs.metronome.com/guides/customers-billing/manage-customers/manage-customer-lifecycle"
+          "url": "https://docs.metronome.com/guides/customers-billing/manage-customers/manage-customer-lifecycle.md"
         },
         {
           "label": "credits and rollovers",
-          "url": "https://docs.metronome.com/guides/pricing-packaging/apply-credits-and-commits/create-a-pre-paid-commit"
+          "url": "https://docs.metronome.com/guides/pricing-packaging/apply-credits-and-commits/create-a-pre-paid-commit.md"
         }
       ],
       "coverageStatus": "accounted",
@@ -146,15 +579,12 @@
     },
     {
       "date": "April 11, 2026",
-      "tags": [
-        "New releases",
-        "Integrations"
-      ],
+      "tags": [],
       "title": "NetSuite integration (Public Beta)",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/integrations/invoice-integrations/netsuite"
+          "url": "https://docs.metronome.com/integrations/invoice-integrations/netsuite.md"
         }
       ],
       "coverageStatus": "n/a",
@@ -164,12 +594,14 @@
     },
     {
       "date": "March 9, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Dark mode",
-      "links": [],
+      "links": [
+        {
+          "label": "Darkmode",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/darkmode.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=b5b55a549b25585c209daca748e74f46"
+        }
+      ],
       "coverageStatus": "n/a-ui",
       "metroNotes": "UI only.",
       "catalogIds": [],
@@ -177,10 +609,7 @@
     },
     {
       "date": "March 2, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "SDK releases",
       "links": [
         {
@@ -207,19 +636,16 @@
     },
     {
       "date": "February 27, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Compound group keys in usage breakdowns",
       "links": [
         {
           "label": "Get usage data with paginated groupings",
-          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings"
+          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings"
+          "url": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md"
         }
       ],
       "coverageStatus": "partial",
@@ -231,16 +657,12 @@
     },
     {
       "date": "February 23, 2026",
-      "tags": [
-        "New releases",
-        "API",
-        "UI"
-      ],
+      "tags": [],
       "title": "Archive packages",
       "links": [
         {
           "label": "API",
-          "url": "https://docs.metronome.com/api-reference/packages/archive-a-package"
+          "url": "https://docs.metronome.com/api-reference/packages/archive-a-package.md"
         }
       ],
       "coverageStatus": "accounted",
@@ -252,10 +674,7 @@
     },
     {
       "date": "February 19, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "New Metronome UI",
       "links": [],
       "coverageStatus": "n/a-ui",
@@ -265,10 +684,7 @@
     },
     {
       "date": "February 17, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Change end date on advance, prorated subscriptions",
       "links": [],
       "coverageStatus": "partial",
@@ -280,13 +696,14 @@
     },
     {
       "date": "February 12, 2026",
-      "tags": [
-        "New releases",
-        "API",
-        "UI"
-      ],
+      "tags": [],
       "title": "Stripe invoice PDFs available in UI and API",
-      "links": [],
+      "links": [
+        {
+          "label": "Downloadpdf",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/downloadpdf.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=04526b77fc2533179a7ed92f8acf16b9"
+        }
+      ],
       "coverageStatus": "partial",
       "metroNotes": "Matrix notes invoice PDF GET path in conventions; not a first-class `metro` shortcut. Prefer Stripe dashboard or guarded invoice get when needed.",
       "catalogIds": [
@@ -296,15 +713,11 @@
     },
     {
       "date": "February 10, 2026",
-      "tags": [
-        "Improvements",
-        "API",
-        "Integrations"
-      ],
+      "tags": [],
       "title": "Subscription and invoice line item linking improvements",
       "links": [],
       "coverageStatus": "partial",
-      "metroNotes": "`subscription_id` on line items / Stripe metadata \u2014 useful for reconcile; not yet a metro proof field.",
+      "metroNotes": "`subscription_id` on line items / Stripe metadata — useful for reconcile; not yet a metro proof field.",
       "catalogIds": [
         "invoices.get",
         "invoices.listForCustomer"
@@ -313,10 +726,7 @@
     },
     {
       "date": "February 9, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Create contracts from packages in the UI",
       "links": [],
       "coverageStatus": "n/a-ui",
@@ -328,10 +738,7 @@
     },
     {
       "date": "February 6, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "In-app embedded dashboards",
       "links": [],
       "coverageStatus": "n/a-ui",
@@ -341,10 +748,7 @@
     },
     {
       "date": "February 5, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "SDK releases",
       "links": [
         {
@@ -371,19 +775,16 @@
     },
     {
       "date": "February 5, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Get net balance API",
       "links": [
         {
           "label": "Get net balance",
-          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer"
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer"
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer.md"
         }
       ],
       "coverageStatus": "gap",
@@ -393,13 +794,14 @@
     },
     {
       "date": "January 29, 2026",
-      "tags": [
-        "New releases",
-        "API",
-        "UI"
-      ],
+      "tags": [],
       "title": "Edit net payment terms on contracts",
-      "links": [],
+      "links": [
+        {
+          "label": "Net payment terms",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/netpaymentterms.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=2a90b6571eb8eba0f6b0bb1bf437f71c"
+        }
+      ],
       "coverageStatus": "accounted",
       "metroNotes": "Preview supports `net_payment_terms_days`; edit history still required for audit.",
       "catalogIds": [
@@ -409,10 +811,7 @@
     },
     {
       "date": "January 16, 2026",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Major version SDK release",
       "links": [
         {
@@ -433,7 +832,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Breaking: removed `use_list_prices` from Rate objects \u2014 ensure rate-card payloads/validators do not emit it.",
+      "metroNotes": "Breaking: removed `use_list_prices` from Rate objects — ensure rate-card payloads/validators do not emit it.",
       "catalogIds": [
         "rateCards.addRates",
         "rateCards.getRates"
@@ -442,10 +841,7 @@
     },
     {
       "date": "January 12, 2026",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Self-serve access to Metronome",
       "links": [
         {
@@ -460,19 +856,16 @@
     },
     {
       "date": "January 12, 2026",
-      "tags": [
-        "Improvements",
-        "API"
-      ],
+      "tags": [],
       "title": "Billing configuration API endpoints now return response bodies",
       "links": [
         {
           "label": "set billing provider configuration",
-          "url": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer"
+          "url": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md"
         },
         {
           "label": "archive billing provider configuration",
-          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer"
+          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer.md"
         }
       ],
       "coverageStatus": "accounted",
@@ -485,10 +878,7 @@
     },
     {
       "date": "December 22, 2025",
-      "tags": [
-        "New releases",
-        "Notifications"
-      ],
+      "tags": [],
       "title": "High cardinality group key spend alerts",
       "links": [],
       "coverageStatus": "n/a",
@@ -498,10 +888,7 @@
     },
     {
       "date": "December 19, 2025",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "SDK releases",
       "links": [
         {
@@ -528,27 +915,24 @@
     },
     {
       "date": "November 14, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Launch week recap: Monetization Infrastructure for AI",
       "links": [
         {
-          "label": "here",
-          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/hybrid-business-models#use-case"
+          "label": "Launch Week Recap: Monetization Infrastructure for AI",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/recap.jpg?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=2f39ef7067f9938e3e702b8433acb1cd"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/pricing-packaging/subscription/subscription-overview"
+          "url": "https://docs.metronome.com/guides/pricing-packaging/billing-model-guides/hybrid-business-models.md#use-case"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview"
+          "url": "https://docs.metronome.com/guides/pricing-packaging/subscription/subscription-overview.md"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/guides/get-started/core-concepts/packages-overview.md"
         },
         {
           "label": "here",
@@ -556,11 +940,7 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/invoices/invoice-with-metronome#invoice-with-metronome"
-        },
-        {
-          "label": "here",
-          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp"
+          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp.md"
         },
         {
           "label": "here",
@@ -568,15 +948,11 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/preview-event-cost"
+          "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/preview-event-cost.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/invoices/invoice-with-metronome#metronome-billing-console"
-        },
-        {
-          "label": "here",
-          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications#manage-your-customer-lifecycle-with-metronome-notifications"
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications.md#manage-your-customer-lifecycle-with-metronome-notifications"
         },
         {
           "label": "here",
@@ -594,15 +970,12 @@
     },
     {
       "date": "November 3, 2025",
-      "tags": [
-        "New releases",
-        "Integrations"
-      ],
+      "tags": [],
       "title": "Invoicing with Google Cloud Marketplace",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp#invoice-with-gcp"
+          "url": "https://docs.metronome.com/integrations/marketplace-integrations/gcp.md#invoice-with-gcp"
         }
       ],
       "coverageStatus": "n/a",
@@ -612,10 +985,7 @@
     },
     {
       "date": "October 31, 2025",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "New SDK releases",
       "links": [
         {
@@ -642,30 +1012,36 @@
     },
     {
       "date": "October 14, 2025",
-      "tags": [
-        "Improvements",
-        "API",
-        "Notifications",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "September fixes and improvements",
       "links": [
+        {
+          "label": "Audit Log",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/audit-log.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=3066c8fd61e55bc258453f79b61d8b5e"
+        },
+        {
+          "label": "Rate Card Table Disabled Entitlements",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/rate-card-table-disabled-entitlements.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=244c1e839e30c4d76a6126a40ccc6959"
+        },
+        {
+          "label": "Billable Metric on Hover",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/bm-on-hover.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=7d4a75c1118ed9bca623d1f914d06ae4"
+        },
         {
           "label": "`spend_threshold_reached`",
           "url": "https://docs.metronome.com/guides/customers-billing/optimize-customer-experience/customer-controls#enable-custom-spend-limits-for-a-specific-dimension%E2%80%8B"
         },
         {
           "label": "Add a billing configuration",
-          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract#body-add-billing-provider-configuration-update"
+          "url": "https://docs.metronome.com/api-reference/contracts/edit-a-contract.md#body-add-billing-provider-configuration-update"
         },
         {
           "label": "Archive a billing provider",
-          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer"
+          "url": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer.md"
         },
         {
           "label": "Edit the rate type of a recurring commit",
-          "url": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit#body-rate-type"
+          "url": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit.md#body-rate-type"
         },
         {
           "label": "Node",
@@ -693,16 +1069,16 @@
     },
     {
       "date": "September 24, 2025",
-      "tags": [
-        "New releases",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Make advanced contract overrides in the Metronome app",
       "links": [
         {
+          "label": "Advanced Contract Overrides",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/advanced-contract-overrides.gif?s=df389710871700978b4d10b9b0df96e5"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/pricing-packaging/make-pricing-changes/edit-or-override-a-contract#contract-edits-and-overrides"
+          "url": "https://docs.metronome.com/guides/pricing-packaging/make-pricing-changes/edit-or-override-a-contract.md#contract-edits-and-overrides"
         }
       ],
       "coverageStatus": "n/a-ui",
@@ -714,15 +1090,12 @@
     },
     {
       "date": "September 24, 2025",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Custom Reports",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/reporting-insights/in-app-reporting#custom-reports"
+          "url": "https://docs.metronome.com/guides/reporting-insights/in-app-reporting.md#custom-reports"
         }
       ],
       "coverageStatus": "n/a-ui",
@@ -732,17 +1105,12 @@
     },
     {
       "date": "September 18, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "UI"
-      ],
+      "tags": [],
       "title": "Customer Lifecycle Notifications",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications"
+          "url": "https://docs.metronome.com/guides/customers-billing/set-up-notifications/create-and-manage-notifications.md"
         }
       ],
       "coverageStatus": "n/a",
@@ -752,14 +1120,7 @@
     },
     {
       "date": "September 11, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "New documentation experience",
       "links": [],
       "coverageStatus": "accounted",
@@ -769,17 +1130,28 @@
     },
     {
       "date": "September 10, 2025",
-      "tags": [
-        "Improvements",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "August fixes and improvements",
       "links": [
         {
           "label": "data exports",
           "url": "https://docs.metronome.com/developer-resources/data-export"
+        },
+        {
+          "label": "Contract Data",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/contract-data.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=24b43278a5419378ddcc69fbe09cf9fe"
+        },
+        {
+          "label": "Create Contract",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/create-contract.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=a00d1cc938140d8bc6d8c1ca1cc1d9c3"
+        },
+        {
+          "label": "Quick Actions Customer Page",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/quick-actions-customer-page.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=018161c2aad966fb9c002f410d383f20"
+        },
+        {
+          "label": "Billable Metric Descriptions",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/bm-description.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=6a6688b05b11f0be035a247857bac33f"
         },
         {
           "label": "edit a commit",
@@ -827,7 +1199,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Historical API fixes (billing config updates via edit, etc.) \u2014 reflected in danger-zone / stripe-delivery skills.",
+      "metroNotes": "Historical API fixes (billing config updates via edit, etc.) — reflected in danger-zone / stripe-delivery skills.",
       "catalogIds": [
         "contracts.edit"
       ],
@@ -835,15 +1207,12 @@
     },
     {
       "date": "August 15, 2025",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Invoice breakdowns in Data Export",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/guides/reporting-insights/data-export#invoice-breakdowns-tables"
+          "url": "https://docs.metronome.com/guides/reporting-insights/data-export.md#invoice-breakdowns-tables"
         }
       ],
       "coverageStatus": "partial",
@@ -855,23 +1224,36 @@
     },
     {
       "date": "August 5, 2025",
-      "tags": [
-        "Improvements",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "July fixes and improvements",
       "links": [
         {
           "label": "prepaid",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#prepaid-commits"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits.md#prepaid-commits"
         },
         {
           "label": "postpaid",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#postpaid-commits"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits.md#postpaid-commits"
+        },
+        {
+          "label": "Prepaid Postpaid Commit",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/prepaid-postpaid-commit.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=b9fb084777b29094c4412c03cea1c8e5"
+        },
+        {
+          "label": "Filter Preferences Contracts Plans Table",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/filter-preferences-contracts-plans-table.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=94747310733be21b2a9fc1c055640af1"
+        },
+        {
+          "label": "Billable Metric History",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/bm-history.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=a26e5415c8646634e3681c9a82712673"
+        },
+        {
+          "label": "Billable Metric Product Creation",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/bm-product-creation.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=5b9b8af12b133eb1a517d7fce2579ed1"
+        },
+        {
+          "label": "Commit Metadata",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/commit-metadata.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=890b6725cc79e4a60bc3c5a67766dd4a"
         },
         {
           "label": "Search events",
@@ -923,11 +1305,11 @@
         },
         {
           "label": "Send Metronome events to Slack",
-          "url": "https://docs.metronome.com/developer-resources/use-api/webhooks/#send-webhooks-to-slack"
+          "url": "https://docs.metronome.com/guides/platform-configuration/webhooks/best-practices.md#send-webhooks-to-slack"
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "API notes (searchEvents, commits) \u2014 events.search / commits paths in catalog.",
+      "metroNotes": "API notes (searchEvents, commits) — events.search / commits paths in catalog.",
       "catalogIds": [
         "events.search",
         "commits.list"
@@ -936,12 +1318,7 @@
     },
     {
       "date": "August 4, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "UI"
-      ],
+      "tags": [],
       "title": "Use group keys to set budgets across users, teams, and projects",
       "links": [
         {
@@ -950,35 +1327,34 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/launch-guides/hybrid-business/"
+          "url": "https://docs.metronome.com/launch-guides/hybrid-business.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/#enable-custom-spend-limits-for-a-specific-dimension"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls.md#enable-custom-spend-limits-for-a-specific-dimension"
         }
       ],
       "coverageStatus": "n/a",
-      "metroNotes": "Spend controls/alerts \u2014 not metro day-to-day.",
+      "metroNotes": "Spend controls/alerts — not metro day-to-day.",
       "catalogIds": [],
       "changelogAnchor": "https://docs.metronome.com/changelog"
     },
     {
       "date": "August 4, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Seat-based credit pools",
       "links": [
         {
+          "label": "Seat-based Credit Pools Demo",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/seats-credit-demo.gif?s=1b3e1a3dbf252ada82c99a365b914ae8"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/#enable-custom-spend-limits-for-a-specific-dimension"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls.md#enable-custom-spend-limits-for-a-specific-dimension"
         },
         {
           "label": "See docs here.",
-          "url": "https://docs.metronome.com/launch-guides/hybrid-business/"
+          "url": "https://docs.metronome.com/launch-guides/hybrid-business.md"
         }
       ],
       "coverageStatus": "partial",
@@ -990,15 +1366,16 @@
     },
     {
       "date": "August 1, 2025",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Embeddable dashboard for credit and commit balances",
       "links": [
         {
+          "label": "Embeddable Dashboard Credits Commits",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/embeddable-dashboard-credits-commits.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=beb74d24490619f444031264447805af"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/#commits-and-credits-dashboard"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards.md#commits-and-credits-dashboard"
         }
       ],
       "coverageStatus": "n/a-ui",
@@ -1010,29 +1387,24 @@
     },
     {
       "date": "July 23, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Threshold billing and auto-recharge",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/manual-payment-gated-commits/"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/manual-payment-gated-commits.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/manage-product-access/spend-thresholds#create-a-contract-with-spend-thresholds"
+          "url": "https://docs.metronome.com/manage-product-access/spend-thresholds.md#create-a-contract-with-spend-thresholds"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/manage-product-access/prepaid-balance-thresholds/"
+          "url": "https://docs.metronome.com/manage-product-access/prepaid-balance-thresholds.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/launch-guides/prepaid-credits/"
+          "url": "https://docs.metronome.com/launch-guides/prepaid-credits.md"
         },
         {
           "label": "here",
@@ -1040,7 +1412,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Spend/prepaid thresholds via contract edit \u2014 danger-zone aware; not a dedicated metro shortcut.",
+      "metroNotes": "Spend/prepaid thresholds via contract edit — danger-zone aware; not a dedicated metro shortcut.",
       "catalogIds": [
         "contracts.edit"
       ],
@@ -1048,19 +1420,16 @@
     },
     {
       "date": "July 15, 2025",
-      "tags": [
-        "New releases",
-        "Integrations"
-      ],
+      "tags": [],
       "title": "Set up multi-entity billing",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe/#set-the-customer-billing-configuration"
+          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe.md#set-the-customer-billing-configuration"
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Account hierarchy / billing config \u2014 skills note hierarchy; careful with Stripe entity.",
+      "metroNotes": "Account hierarchy / billing config — skills note hierarchy; careful with Stripe entity.",
       "catalogIds": [
         "customers.setBillingProviderConfigurations"
       ],
@@ -1068,17 +1437,16 @@
     },
     {
       "date": "June 26, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Scope credits and commits to specific pricing or presentation group values",
       "links": [
         {
+          "label": "Scope Credits Commits",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/scope-credits-commits.gif?s=a4d141162cb56c45d554950f249d20c3"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/target-credits-commits/"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/target-credits-commits.md"
         }
       ],
       "coverageStatus": "partial",
@@ -1091,14 +1459,13 @@
     },
     {
       "date": "June 13, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Edit recurring commits and credits",
       "links": [
+        {
+          "label": "Edit recurring commits and credits",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/edit-recurring-commits-credits.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=ad4ca6446a0557fe076c003db1164332"
+        },
         {
           "label": "here",
           "url": "https://docs.metronome.com/api/#operation/editContract-v2"
@@ -1113,14 +1480,13 @@
     },
     {
       "date": "June 13, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Support for seat-based subscription billing",
       "links": [
+        {
+          "label": "Seat-based Subscription Billing Models",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/seat-based-subscription-billing-models.gif?s=75cdc35f3b1b8970565e1463af3874b6"
+        },
         {
           "label": "here",
           "url": "https://docs.metronome.com/manage-product-access/create-subscription/#update-pricing"
@@ -1140,14 +1506,13 @@
     },
     {
       "date": "May 20, 2025",
-      "tags": [
-        "Improvements",
-        "API",
-        "Integrations",
-        "UI"
-      ],
+      "tags": [],
       "title": "April fixes and improvements",
       "links": [
+        {
+          "label": "Create Dropdown",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/create-dropdown.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=19880a6d254dd97d59e6e7f09f84e621"
+        },
         {
           "label": "`getCustomer`",
           "url": "https://docs.metronome.com/api/#operation/getCustomer-v1"
@@ -1180,14 +1545,13 @@
     },
     {
       "date": "May 8, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Remove overrides and archive commits and scheduled charges",
       "links": [
+        {
+          "label": "Archive Commit",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/archive-commit.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=4c339b6da1ff288d5f41b54c9d59e45e"
+        },
         {
           "label": "here",
           "url": "https://docs.metronome.com/api/#operation/editContract-v2"
@@ -1202,15 +1566,16 @@
     },
     {
       "date": "May 5, 2025",
-      "tags": [
-        "New releases",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Support for NZD and SGD currencies",
       "links": [
         {
+          "label": "NZD and SGD Dollars",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/nz-sgd-dollars.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=1bab506e2474138e36c505761036ef67"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits/"
+          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits.md"
         }
       ],
       "coverageStatus": "n/a",
@@ -1220,10 +1585,7 @@
     },
     {
       "date": "May 1, 2025",
-      "tags": [
-        "New releases",
-        "API"
-      ],
+      "tags": [],
       "title": "Ruby SDK",
       "links": [
         {
@@ -1232,7 +1594,7 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/developer-resources/sdks/"
+          "url": "https://docs.metronome.com/developer-resources/sdks.md"
         }
       ],
       "coverageStatus": "n/a-sdk",
@@ -1242,12 +1604,13 @@
     },
     {
       "date": "April 29, 2025",
-      "tags": [
-        "New releases",
-        "UI"
-      ],
+      "tags": [],
       "title": "Updated UI for creating and editing contracts, customer-level commits, and customer-level credits",
       "links": [
+        {
+          "label": "Add a Commit",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/add-a-commit.gif?s=38625763b01e504ea01cd13dffc6722c"
+        },
         {
           "label": "available through the API",
           "url": "https://docs.metronome.com/api/#operation/editContract-v2"
@@ -1260,10 +1623,7 @@
     },
     {
       "date": "April 9, 2025",
-      "tags": [
-        "Improvements",
-        "UI"
-      ],
+      "tags": [],
       "title": "Edit rates in the Rate Card UI",
       "links": [],
       "coverageStatus": "n/a-ui",
@@ -1275,16 +1635,12 @@
     },
     {
       "date": "April 2, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications"
-      ],
+      "tags": [],
       "title": "Usage threshold alerts supported on Contracts",
       "links": [
         {
           "label": "here",
-          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#usage-alerts"
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts.md#usage-alerts"
         }
       ],
       "coverageStatus": "n/a",
@@ -1294,17 +1650,12 @@
     },
     {
       "date": "April 2, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Contract editing",
       "links": [
         {
           "label": "Read more in our docs.",
-          "url": "https://docs.metronome.com/manage-product-access/edit-contract/"
+          "url": "https://docs.metronome.com/manage-product-access/edit-contract.md"
         }
       ],
       "coverageStatus": "accounted",
@@ -1316,12 +1667,7 @@
     },
     {
       "date": "April 1, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Support for weekly frequencies for billing, recurring commits, and credits",
       "links": [
         {
@@ -1339,23 +1685,20 @@
     },
     {
       "date": "March 26, 2025",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "In Tempo: Spring 2025 changelog",
       "links": [
         {
-          "label": "here",
-          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#webhook-notifications"
+          "label": "In Tempo: Spring 2025 changelog",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/in-tempo.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=b07c0a7cddeae56e3ff518988d24bf80"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/#create-an-alert"
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts.md#webhook-notifications"
+        },
+        {
+          "label": "here",
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts.md#create-an-alert"
         },
         {
           "label": "here",
@@ -1363,7 +1706,7 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/#display-up-to-date-spend"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards.md#display-up-to-date-spend"
         },
         {
           "label": "here",
@@ -1391,11 +1734,11 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/#provision-recurring-usage-credits"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits.md#provision-recurring-usage-credits"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/discounts/"
+          "url": "https://docs.metronome.com/pricing-packaging/apply-credits-commits/discounts.md"
         },
         {
           "label": "here",
@@ -1403,7 +1746,15 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/launch-guides/quickstart#create-composite-products"
+          "url": "https://docs.metronome.com/launch-guides/quickstart.md#create-composite-products"
+        },
+        {
+          "label": "Total Lifetime Billing Customer",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/total-lifetime-billing-customer.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=83203517224e728cf4c058af93b914b0"
+        },
+        {
+          "label": "Badges Commits",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/badges-commits.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=6b8453ee8f24cfdc218253286516f4bc"
         },
         {
           "label": "Metronome Trust Center",
@@ -1411,7 +1762,7 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe/#configure-optional-global-integration-settings-available"
+          "url": "https://docs.metronome.com/invoice-customers/solutions/invoice-with-stripe.md#configure-optional-global-integration-settings-available"
         },
         {
           "label": "here",
@@ -1423,11 +1774,11 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/invoice-customers/solutions/marketplaces/"
+          "url": "https://docs.metronome.com/invoice-customers/solutions/marketplaces.md"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits#supported-currencies"
+          "url": "https://docs.metronome.com/pricing-packaging/use-currency-custompricingunits.md#supported-currencies"
         },
         {
           "label": "here",
@@ -1439,7 +1790,7 @@
         }
       ],
       "coverageStatus": "partial",
-      "metroNotes": "Large release note \u2014 recurring commits, uniqueness keys, invoice breakdowns, updateEndDate guard already reflected across matrix/catalog/skills.",
+      "metroNotes": "Large release note — recurring commits, uniqueness keys, invoice breakdowns, updateEndDate guard already reflected across matrix/catalog/skills.",
       "catalogIds": [
         "contracts.create",
         "contracts.edit",
@@ -1451,14 +1802,7 @@
     },
     {
       "date": "October 17, 2024",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "Metronome 2.0",
       "links": [
         {
@@ -1467,11 +1811,11 @@
         },
         {
           "label": "customizing pricing",
-          "url": "https://docs.metronome.com/manage-product-access/provision-customer/#add-contract-discounts-and-overrides"
+          "url": "https://docs.metronome.com/manage-product-access/provision-customer.md#add-contract-discounts-and-overrides"
         },
         {
           "label": "enterprise commit launch guide",
-          "url": "https://docs.metronome.com/launch-guides/enterprise-commit/"
+          "url": "https://docs.metronome.com/launch-guides/enterprise-commit.md"
         },
         {
           "label": "dimensional pricing",
@@ -1483,11 +1827,11 @@
         },
         {
           "label": "customer and contract provisioning",
-          "url": "https://docs.metronome.com/manage-product-access/provision-customer/"
+          "url": "https://docs.metronome.com/manage-product-access/provision-customer.md"
         },
         {
           "label": "building customer dashboards",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards/"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-dashboards.md"
         },
         {
           "label": "API documentation",
@@ -1495,15 +1839,15 @@
         },
         {
           "label": "customer spend controls",
-          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls/"
+          "url": "https://docs.metronome.com/enhance-customer-experience/customer-controls.md"
         },
         {
           "label": "creating and managing alerts",
-          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts/"
+          "url": "https://docs.metronome.com/manage-product-access/create-manage-alerts.md"
         },
         {
           "label": "syncing billing data into Salesforce",
-          "url": "https://docs.metronome.com/reports-insights/sync-into-salesforce/"
+          "url": "https://docs.metronome.com/reports-insights/sync-into-salesforce.md"
         }
       ],
       "coverageStatus": "accounted",
@@ -1513,13 +1857,7 @@
     },
     {
       "date": "September 25, 2024",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "In Tempo: Fall 2024",
       "links": [
         {
@@ -1540,27 +1878,39 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/connecting-metronome/alerts/#usage-threshold-reached"
+          "url": "https://docs.metronome.com/connecting-metronome/alerts.md#usage-threshold-reached"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/connecting-metronome/alerts#invoice-total-reached"
+          "url": "https://docs.metronome.com/connecting-metronome/alerts.md#invoice-total-reached"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/invoicing/how-billing-works/set-up-seat-based-billing/#how-seat-based-billing-works"
+          "url": "https://docs.metronome.com/invoicing/how-billing-works/set-up-seat-based-billing.md#how-seat-based-billing-works"
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/pricing-and-packaging/create-plans/#fixed-fee-and-tiered-usage"
+          "url": "https://docs.metronome.com/pricing-and-packaging/create-plans.md#fixed-fee-and-tiered-usage"
+        },
+        {
+          "label": "Cross-invoice Tiering Step 1",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/cross-invoice-tiering-1.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=e61362c23f4ea6ced6451ca738943d92"
+        },
+        {
+          "label": "Cross-invoice Tiering Step 2",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/cross-invoice-tiering-2.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=1d3d0aced052d3a204323e7e2e07125f"
         },
         {
           "label": "here",
           "url": "https://docs.metronome.com/api/#operation/createGrant"
         },
         {
+          "label": "Alert Status UI",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/alert-status-ui.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=a8803c61c0791bcbfd6e93148d31cd8a"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/developer-resources/export-metronome-data/#customer_plan"
+          "url": "https://docs.metronome.com/developer-resources/export-metronome-data.md#customer_plan"
         },
         {
           "label": "here",
@@ -1576,14 +1926,7 @@
     },
     {
       "date": "June 10, 2024",
-      "tags": [
-        "New releases",
-        "API",
-        "Notifications",
-        "Integrations",
-        "UI",
-        "Pricing and Packaging"
-      ],
+      "tags": [],
       "title": "In Tempo: Spring 2024",
       "links": [
         {
@@ -1595,8 +1938,12 @@
           "url": "https://docs.metronome.com/api/#operation/createAlert"
         },
         {
+          "label": "Alert Policy",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/alert-policy.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=483aec38508717a8dd8d7873c6fad650"
+        },
+        {
           "label": "here",
-          "url": "https://docs.metronome.com/connecting-metronome/alerts/#forcing-alert-re-evaluation"
+          "url": "https://docs.metronome.com/connecting-metronome/alerts.md#forcing-alert-re-evaluation"
         },
         {
           "label": "here",
@@ -1612,7 +1959,7 @@
         },
         {
           "label": "AWS Marketplace integration",
-          "url": "https://docs.metronome.com/invoicing/how-invoicing-works/invoicing-with-aws-marketplace/"
+          "url": "https://docs.metronome.com/invoicing/how-invoicing-works/invoicing-with-aws-marketplace.md"
         },
         {
           "label": "here",
@@ -1620,7 +1967,15 @@
         },
         {
           "label": "here",
-          "url": "https://docs.metronome.com/integrations/workato-connector/"
+          "url": "https://docs.metronome.com/integrations/workato-connector.md"
+        },
+        {
+          "label": "Data Export UI",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/data-export-ui.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=d183709b77e9876ae173a1b93a13f2a1"
+        },
+        {
+          "label": "Audit Logs UI",
+          "url": "https://mintcdn.com/metronome-b35a6a36/NC2X19GLS2AcinHt/images/changelog/audit-logs-ui.png?fit=max\\&auto=format\\&n=NC2X19GLS2AcinHt\\&q=85\\&s=2b80ebcea304db9e6a7cab8ef9e1d330"
         }
       ],
       "coverageStatus": "n/a-ui",
