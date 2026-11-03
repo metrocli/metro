@@ -21,8 +21,15 @@ const upper = (v) => (v == null ? v : String(v).toUpperCase());
 
 async function resolveContract(ctx) {
   const { customer } = await mx.resolveOneCustomer(ctx.client, ctx.flags);
-  const contracts = await mx.listContracts(ctx.client, customer.id);
-  const picked = mx.selectSingleActiveContract(contracts, { contractId: rt.readString(ctx.flags, 'contract-id'), now: ctx.now, customerId: customer.id });
+  // Current or not-yet-started contracts both take subscription edits.
+  const all = await mx.listContracts(ctx.client, customer.id);
+  const contractId = rt.readString(ctx.flags, 'contract-id');
+  const open = all.filter((c) => !c.archived_at && (!c.ending_before || Date.parse(c.ending_before) > ctx.now.getTime())
+    && (!contractId || c.id === contractId));
+  if (open.length !== 1) {
+    throw rt.usageError(`Expected exactly one current or upcoming contract for customer ${customer.id}${contractId ? ` matching ${contractId}` : ''}, found ${open.length}${open.length ? ` (${open.map((c) => c.id).join(', ')}); pass --contract-id=` : ''}.`);
+  }
+  const picked = open[0];
   const contract = await mx.getContract(ctx.client, customer.id, picked.id);
   return { customer, contract };
 }
