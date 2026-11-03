@@ -1,61 +1,78 @@
-# @metrocli/metro
+# metro
 
-**Metronome in your terminal** - shapes, validators, evidence gates, and proof for any Metronome tenant.
+**Metronome in your terminal.** An open-source CLI for Metronome billing, for any
+Metronome tenant.
 
-Apache-2.0. Generic workspace pack by default; extend with your own workspace pack for billing-opinion intents.
+metro reads your billing setup, previews every change as a local file, checks it
+against known Metronome traps, and applies it only after a typed confirmation.
+Then it reads the object back and shows you expected vs actual. It is read-only
+until you say otherwise, and it works on sandbox before production.
 
-## Install
+Built for people and for their agents.
 
-Do **not** use `npm install -g git+…`. On current npm that often leaves a broken symlink and `metro: command not found`.
+## Give this to your agent
+
+```text
+set up metro - https://metrocli.dev/llms.txt
+```
+
+Your agent installs metro, runs `metro init --agent`, and asks you to paste your
+sandbox key into `~/.metro/.env` yourself. Keys never go through chat. The agent's
+full manual ships as [AGENTS.md](./AGENTS.md) and is copied to `~/.metro/AGENTS.md`.
+
+## Install it yourself
 
 ```bash
 git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
 bash ~/.metro/src/scripts/install-global.sh
-metro doctor
-metro --help
-metro workspace use generic --write
-metro setup init --workspace generic --write
-metro harness run --suite onboard --execute --json
+metro init
 ```
 
-Later updates (from any directory except inside a nested clone):
+`metro init` creates `~/.metro/.env` (private, mode 600), asks for your sandbox key
+with hidden input, checks it with one read-only call, and leaves metro read-only.
+Check your keys any time with `metro init --check`.
+
+Once the npm release is out, `npm install -g @metrocli/metro` replaces the first two
+lines. Do not use `npm install -g git+...`: on current npm it often leaves a broken
+`metro` symlink. If anything looks wrong, run `metro doctor`.
+
+## The safety ladder
+
+Every change climbs the same six steps. metro enforces them in code.
+
+1. **Read-only by default.** After `metro init`, metro can look, preview and
+   validate. Writes need `metro mode write`.
+2. **Sandbox first.** You name the tenant with `--sandbox` or `--prod` on every
+   live command. metro never picks production on its own.
+3. **Preview.** The change is written to a local file with a `sha256:` payload hash.
+   Nothing has been sent.
+4. **Confirm.** You apply with `--confirm-hash <hash>`. Production also needs a
+   typed confirmation token.
+5. **Apply.** One write, to the tenant you named.
+6. **Read back.** metro re-reads the object and fails loudly if expected and actual
+   differ.
+
+A green preview is not authorization. Read the full policy in
+[docs/SAFETY.md](./docs/SAFETY.md).
+
+## First commands
 
 ```bash
-bash ~/.metro/src/scripts/install-global.sh
+metro status                        # what metro can see
+metro catalog bind --sandbox        # learn your products and rate cards
+metro ops who "Acme" --sandbox      # find a customer
 ```
-
-If anything looks wrong: `metro doctor` (or `metro doctor --json`).
-
-Registry install (`npm install -g @metrocli/metro`) is planned once publish is configured.
-
-## First live sandbox steps
-
-```bash
-export METRONOME_SANDBOX_KEY=...
-metro catalog bind --sandbox --write
-metro ops who "Customer Name" --sandbox
-metro plan add-pricing-dimension-value --dimension-key=FEATURE_X --price=100 --sandbox --json
-```
-
-## Configuration
-
-- **Operator mode** defaults to `read-only`: live lookups work, live writes are refused. Opt in per machine with `metro mode set read-write`, and drop back with `metro mode set read-only` (or `metro mode reset`).
-- **API keys** come from the environment, or from the first of `METRO_ENV_FILE`, `./.env`, `~/.metro/.env`.
-- **Tenant ids** (access credit type, products, rate cards) live in `~/.metro/profiles.json` under `profiles.<name>.workspaceCatalog`, written by `metro catalog bind --write`. Nothing tenant-specific is hardcoded.
-- **External customer ids**: `--external-id=<id>` matches an ingest alias, the customer `external_id`, or the `external_id` custom field. Set `METRO_EXTERNAL_ID_FIELDS=crm_id,...` to match other custom field keys.
-- **Workspace packs** may export an `ops` map (`ops["contract-expire"]`, ...) to provide live write operations. The generic pack ships none yet, so those commands refuse with a clear message.
 
 ## Docs
 
-- [Quickstart](./docs/metronome-cli/QUICKSTART.md)
-- [Cookbook](./docs/metronome-cli/COOKBOOK.md)
-- [Install site](./docs/metronome-cli/site/install.html)
-- Official Metronome: https://docs.metronome.com/
-
-## Safety
-
-Live reads and writes require typed confirm tokens, sandbox vs production gates, and expected-vs-actual proof after writes. A green preview is not authorization. Production keys are opaque Metronome tokens: any non-empty `METRONOME_PROD_KEY` is accepted, and it must not equal `METRONOME_SANDBOX_KEY`.
+- [AGENTS.md](./AGENTS.md): the operating manual for agents
+- [llms.txt](./llms.txt): the same essentials, compact
+- [Safety policy](./docs/SAFETY.md)
+- [Quickstart](./docs/metronome-cli/QUICKSTART.md) and [Cookbook](./docs/metronome-cli/COOKBOOK.md)
+- [Metronome gotchas](./docs/metronome-cli/GOTCHAS.md)
+- [Publishing](./packaging/npm/PUBLISH.md)
+- Metronome's own docs: https://docs.metronome.com/
 
 ## License
 
-Apache-2.0
+Apache-2.0. See [LICENSE](./LICENSE).
