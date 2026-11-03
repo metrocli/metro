@@ -109,7 +109,7 @@ function buildShapeInputNormalization(shapeId, input, options = {}) {
 
   return {
     schemaVersion: INPUT_NORMALIZE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/input/normalize.js',
+    generatedFrom: 'packages/metro-core/src/input/normalize.js',
     mode: 'shape',
     apiAccess: 'none',
     liveExecution: { ...LOCAL_ONLY_LIVE_EXECUTION },
@@ -157,7 +157,7 @@ function buildApiInputNormalization(endpointId, input, options = {}) {
   if (!endpoint) {
     return {
       schemaVersion: INPUT_NORMALIZE_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/input/normalize.js',
+      generatedFrom: 'packages/metro-core/src/input/normalize.js',
       mode: 'api-request',
       apiAccess: 'none',
       liveExecution: { ...LOCAL_ONLY_LIVE_EXECUTION },
@@ -201,7 +201,7 @@ function buildApiInputNormalization(endpointId, input, options = {}) {
 
   return {
     schemaVersion: INPUT_NORMALIZE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/input/normalize.js',
+    generatedFrom: 'packages/metro-core/src/input/normalize.js',
     mode: 'api-request',
     apiAccess: 'none',
     liveExecution: { ...LOCAL_ONLY_LIVE_EXECUTION },

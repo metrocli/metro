@@ -1,40 +1,19 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 
-function loadLevPackageCustomersOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'package-customers.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadPackageCustomersOps() {
+  return loadPackOp('package-customers');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro package customers --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'package-customers', purpose: reason });
 }
 
 function runPackageCustomersCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevPackageCustomersOps();
+  const ops = loadPackageCustomersOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for package customers lookup.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for package customers lookup');
   }
 
   const flagObj = { ...flags, argv };

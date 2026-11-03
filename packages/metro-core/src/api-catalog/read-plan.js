@@ -55,7 +55,7 @@ function buildApiEndpointReadPlan(endpointId, input, options = {}) {
   if (endpoint.operationType !== 'read') {
     return {
       schemaVersion: API_READ_PLAN_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-plan.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-plan.js',
       apiAccess: 'none',
       liveExecution: clone(endpoint.liveExecution),
       tenant: options.tenant || null,
@@ -86,7 +86,7 @@ function buildApiEndpointReadPlan(endpointId, input, options = {}) {
   if (!validation.valid) {
     return {
       schemaVersion: API_READ_PLAN_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-plan.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-plan.js',
       apiAccess: 'none',
       liveExecution: clone(endpoint.liveExecution),
       tenant: options.tenant || null,
@@ -123,7 +123,7 @@ function buildApiEndpointReadPlan(endpointId, input, options = {}) {
 
   return {
     schemaVersion: API_READ_PLAN_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-plan.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-plan.js',
     apiAccess: 'none',
     liveExecution: clone(endpoint.liveExecution),
     tenant: options.tenant || null,

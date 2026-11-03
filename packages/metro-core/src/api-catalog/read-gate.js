@@ -273,7 +273,7 @@ function buildApiReadGateTemplate(options = {}) {
 
   return {
     schemaVersion: API_READ_GATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-gate.js',
     apiAccess: 'none',
     liveExecution: liveExecutionForReadGate(endpoint.id),
     readEnabledInCurrentCli: liveEnabled,
@@ -611,7 +611,7 @@ function validateApiReadGate(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_READ_GATE_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-gate.js',
     apiAccess: 'none',
     liveExecution: liveExecutionForReadGate(endpoint?.id),
     readEnabledInCurrentCli: liveEnabled,

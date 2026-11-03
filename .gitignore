@@ -1,0 +1,26 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+.env
+.env.*
+!.env.example
+coverage/
+*.tgz
+pack.json
+audit-logs/
+release-evidence/
+
+# Live apply logs written under packages/*/logs/ stay local. package.json "files"
+# also excludes them ("!packages/**/logs") so they never reach the npm package.
+packages/**/logs/
+
+# Default scratch payload/plan files that preflight commands write to cwd when
+# --out is omitted. Always pass --out on purpose; these stop accidental commits.
+/ledger-adjustment-*.json
+/move-plan-*.json
+/bulk-move-plan-*/
+/extend-trial-*.json
+/contract-expire-*.json
+/contract-repair-accidental-*.json
+/billing-provider-cutover-*.json
+/ledger-*.json

@@ -8,7 +8,7 @@ List all shapes: `metro shape list --json`
 **Maturity:** local-validated (preview only; apply blocked in current CLI)
 
 **Purpose:** One action-code USAGE rate append on an existing tier dimensional rate
-card. See [DIMENSIONAL_RATE_CARD_RUNBOOK.md](./DIMENSIONAL_RATE_CARD_RUNBOOK.md).
+card. Rules: [VALIDATION_AND_GUARDRAILS.md](./VALIDATION_AND_GUARDRAILS.md).
 
 **Commands:**
 
@@ -26,8 +26,6 @@ metro rate-card dimensional preview --file <input.json> (--sandbox|--prod) --jso
 - `rates[]`: per-action FLAT credit prices with `entitled: true`
 - `catalogMode`: `add-rates-only`
 - Evidence flags: `metricGroupKeyVerified`, `invoiceImpactReviewed`, `canaryPlan`, `verificationPlan`, `rollbackPlan`
-
-**Fixture:** `test/fixtures/dimensional-rate-card-valid.json`
 
 ## product-rate-retirement
 

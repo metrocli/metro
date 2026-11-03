@@ -329,7 +329,7 @@ const RULES = {
   'MTR-REPO-001': {
     severity: 'error',
     title: 'One-off script promoted into CLI workflow',
-    remediation: 'Extract reusable logic into tested metronome-cli modules and leave old one-off or quarantined scripts as evidence only.',
+    remediation: 'Extract reusable logic into tested packages/metro-core modules and leave old one-off or quarantined scripts as evidence only.',
   },
   'MTR-REPO-002': {
     severity: 'error',
@@ -338,8 +338,8 @@ const RULES = {
   },
   'MTR-REPO-003': {
     severity: 'error',
-    title: 'Hyperline evidence used as current integration',
-    remediation: 'Keep Hyperline evidence historical unless the user explicitly asks for legacy migration work.',
+    title: 'Previous billing system evidence used as current integration',
+    remediation: 'Keep evidence from a previous (external) billing system historical unless the user explicitly asks for legacy migration work.',
   },
 };
 

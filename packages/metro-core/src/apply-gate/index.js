@@ -192,7 +192,7 @@ function buildApplyGateTemplate({ workflow, shape, tenant = '<sandbox|production
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md',
     ],
   };
 }

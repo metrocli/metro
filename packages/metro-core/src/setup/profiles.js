@@ -30,7 +30,19 @@ const LOCAL_ONLY_LIVE_EXECUTION = Object.freeze({
 });
 const QUICKSTART_DIR_VAR = '$METRO_QUICKSTART_DIR';
 
-function buildFirstSafePreviewCommands(packId = 'lev') {
+// Workspace packs return { valid, warnings }; older packs returned a findings array.
+function catalogShapeFindings(result, profileName) {
+  if (Array.isArray(result)) return result;
+  const warnings = Array.isArray(result?.warnings) ? result.warnings : [];
+  return warnings.map((w) => finding(
+    w.id || 'MTR-WORKSPACE-000',
+    result?.valid === false ? 'error' : 'warning',
+    `Profile "${profileName}": ${w.message}`,
+    w.remediation || 'Run metro catalog bind --sandbox --write to bind catalog IDs.',
+  ));
+}
+
+function buildFirstSafePreviewCommands(packId = 'generic') {
   const pack = getQuickstartPackConfig(packId);
   const profileName = pack.profiles.defaultProfile;
   const profileConfig = {
@@ -117,7 +129,7 @@ function buildFirstSafePreviewCommands(packId = 'lev') {
   ];
 }
 
-function buildQuickstartShellCommandBlock(packId = 'lev') {
+function buildQuickstartShellCommandBlock(packId = 'generic') {
   return buildFirstSafePreviewCommands(packId).map((step) => step.command).join('\n');
 }
 
@@ -165,19 +177,12 @@ function buildSetupTemplate(options = {}) {
     schemaVersion: pack.profiles.schemaVersion,
     defaultProfile: pack.profiles.defaultProfile,
     profiles: stampWorkspacePackOnProfiles(pack.profiles.profiles, packId),
-    notes: packId === 'lev'
-      ? [
-        'Store environment variable names only; never paste raw API keys into this file.',
-        'Optional workspaceCatalog binds tier rateCardIds and dimensional product ids for metro plan and rollout commands.',
-        'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
-        'Local preview and validation commands do not require API keys.',
-      ]
-      : [
-        'Store environment variable names only; never paste raw API keys into this file.',
-        'Bind workspaceCatalog.rateCardIds and product ids for your tenant before rollout plans.',
-        'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
-        'Local preview and validation commands do not require API keys.',
-      ],
+    notes: [
+      'Store environment variable names only; never paste raw API keys into this file.',
+      'Bind workspaceCatalog.rateCardIds and product ids for your tenant before rollout plans.',
+      'A profile resolves to one tenant. Key presence is not authorization for live API reads or writes.',
+      'Local preview and validation commands do not require API keys.',
+    ],
   });
 }
 
@@ -189,7 +194,7 @@ function buildSetupQuickstart(options = {}) {
   const profileName = pack.profiles.defaultProfile;
   return clone({
     schemaVersion: 'metro.setup.quickstart.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     workspacePack: packId,
     apiAccess: 'none',
     localOnly: true,
@@ -230,28 +235,18 @@ function buildSetupQuickstart(options = {}) {
       sandboxApply: listLiveApplySandboxEndpointIds(),
       note: 'Live operations still require read-gate or apply-gate evidence and explicit current-turn confirmation tokens.',
     },
-    nextStepsAfterQuickstart: packId === 'lev'
-      ? [
-        'metro setup init --write',
-        'metro status --check-env --json',
-        `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
-        'metro plan list --json',
-        'metro plan template annual-self-serve-package --sandbox --out annual-input.json --json',
-        'metro api readiness --summary --json',
-        'See TEAM-QUICKSTART.md for first live sandbox read and write paths.',
-      ]
-      : [
-        'metro setup init --workspace generic --write',
-        'metro status --check-env --json',
-        `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
-        'metro plan list --json',
-        `metro plan template ${pack.planTemplateIntent} --sandbox --out annual-input.json --json`,
-        'metro api readiness --summary --json',
-        'See docs/metronome-cli/QUICKSTART.md for first live sandbox read and write paths.',
-      ],
+    nextStepsAfterQuickstart: [
+      'metro setup init --workspace generic --write',
+      'metro status --check-env --json',
+      `metro setup auth --file ~/.metro/profiles.json --profile ${profileName} --check-env --json`,
+      'metro plan list --json',
+      `metro plan template ${pack.planTemplateIntent} --sandbox --out annual-input.json --json`,
+      'metro api readiness --summary --json',
+      'See docs/metronome-cli/QUICKSTART.md for first live sandbox read and write paths.',
+    ],
     safetyBoundaries: [
       'This quickstart does not read .env files.',
-      'This quickstart does not call Metronome, Stripe, HubSpot, Hyperline, PostHog, Slack, Zoom, SMTP, or any other live system.',
+      'This quickstart does not call Metronome, Stripe, a CRM, analytics, chat, email, or any other live system.',
       'A green preview is not production approval and does not authorize live reads, live writes, Stripe delivery, sandbox apply, or production apply.',
       'Future live operations require exact current-turn authorization, tenant proof, preflight, audit, sandbox proof where applicable, read-back verification, rollback or remediation, and approval evidence.',
     ],
@@ -259,8 +254,8 @@ function buildSetupQuickstart(options = {}) {
       pack.oneGoalDoc,
       pack.quickstartDoc,
       'docs/SAFETY.md',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/setup/profiles.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/setup/profiles.js',
     ],
   });
 }
@@ -369,7 +364,7 @@ function validateProfileConfig(config, options = {}) {
           'MTR-SETUP-003',
           'error',
           `Profile name "${name}" must use lowercase letters, numbers, dots, underscores, or dashes and be 2-64 characters.`,
-          'Rename the profile to a stable CLI-safe identifier such as lev-sandbox.',
+          'Rename the profile to a stable CLI-safe identifier such as acme-sandbox.',
         ));
       }
 
@@ -430,7 +425,7 @@ function validateProfileConfig(config, options = {}) {
   if (isObject(config.profiles)) {
     for (const [name, profile] of Object.entries(config.profiles)) {
       if (isObject(profile?.workspaceCatalog)) {
-        findings.push(...validateWorkspaceCatalogShape(profile.workspaceCatalog, name));
+        findings.push(...catalogShapeFindings(validateWorkspaceCatalogShape(profile.workspaceCatalog, name), name));
       }
     }
   }
@@ -478,7 +473,7 @@ function resolveTenantProfile(config, options = {}) {
       'MTR-SETUP-003',
       'error',
       'Resolved profile name must use lowercase letters, numbers, dots, underscores, or dashes and be 2-64 characters.',
-      'Pass a stable CLI-safe profile name such as lev-sandbox.',
+      'Pass a stable CLI-safe profile name such as acme-sandbox.',
     ));
   } else {
     selectedProfile = validation.profiles.find((profile) => profile.name === profileName) || null;
@@ -547,7 +542,7 @@ function resolveTenantProfile(config, options = {}) {
 
   return {
     schemaVersion: PROFILE_RESOLUTION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     apiAccess: 'none',
     localOnly: true,
     valid,
@@ -597,7 +592,7 @@ function buildSetupAuthCheck(config, options = {}) {
 
   return {
     schemaVersion: 'metro.setup.auth.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     apiAccess: 'none',
     localOnly: true,
     checkEnv,
@@ -645,7 +640,7 @@ function buildSetupInit(options = {}) {
 
   return {
     schemaVersion: 'metro.setup.init.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     workspacePack: packId,
     apiAccess: 'none',
     localOnly: true,

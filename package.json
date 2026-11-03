@@ -17,8 +17,11 @@
     "packages/metro-core/",
     "packages/metro-workspace-generic/",
     "packages/metro-workspace-stub/",
+    "!packages/**/logs",
     "docs/metronome-cli/",
-    "skills/metro/",
+    "skills/",
+    "AGENTS.md",
+    "llms.txt",
     "README.md",
     "LICENSE"
   ],
@@ -31,8 +34,28 @@
     "url": "https://github.com/metrocli/metro/issues"
   },
   "scripts": {
-    "test": "METRO_DEFAULT_WORKSPACE_PACK=generic node -e \"require(\"./packages/metro-core/src/workspace/loader\").resolvePackId({configDir:\"/tmp\"})\"",
-    "harness:onboard": "METRO_DEFAULT_WORKSPACE_PACK=generic node bin/metro.js harness run --suite onboard --execute --json",
-    "doctor:smoke": "METRO_DEFAULT_WORKSPACE_PACK=generic node bin/metro.js doctor --json"
-  }
+    "test": "node --test test/*.test.js packages/metro-workspace-generic/test/*.test.js",
+    "harness:onboard": "node bin/metro.js harness run --suite onboard --execute --json",
+    "doctor:smoke": "node bin/metro.js doctor --json",
+    "docs:upstream:check": "node scripts/metronome-upstream-check.js",
+    "docs:upstream:generate": "node scripts/generate-metronome-upstream.js --fetch",
+    "pack:verify": "node scripts/verify-pack.js",
+    "docs:site:refresh": "node scripts/docs-site-refresh.js",
+    "docs:site:verify": "node scripts/docs-site-refresh.js --check",
+    "prepublishOnly": "node -e \"const p=require('./package.json'); if(!String((p.repository||{}).url||'').includes('metrocli/metro')){console.error('repository.url must point at metrocli/metro'); process.exit(1)}\""
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
+  },
+  "keywords": [
+    "metronome",
+    "billing",
+    "cli",
+    "usage-based",
+    "contracts",
+    "rate-cards",
+    "agents"
+  ]
 }

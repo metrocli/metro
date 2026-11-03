@@ -5,8 +5,9 @@ Quickstart for `@metrocli/metro` / generic workspace pack users.
 ## Install
 
 ```bash
-npm install -g @metrocli/metro   # public package when published
-# or from this monorepo:
+git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src
+bash ~/.metro/src/scripts/install-global.sh
+# npm install -g @metrocli/metro also works once the package is published
 metro workspace use generic --write
 ```
 

@@ -1,6 +1,6 @@
 # metro cookbook (anyone)
 
-Eight copy-paste workflows for the **generic** workspace pack. Bind your catalog once, then stay on validate → preview → evidence → apply.
+Copy-paste workflows for the **generic** workspace pack. Bind your catalog once. Local work stays on validate → preview. Live writes follow preflight → dry run → apply → read-back. Every command below runs on a clean install. Live steps also need a sandbox key.
 
 Official product docs stay on [docs.metronome.com](https://docs.metronome.com/). This page is “how to do it safely in the terminal.”
 
@@ -8,8 +8,9 @@ Official product docs stay on [docs.metronome.com](https://docs.metronome.com/).
 
 ```bash
 metro workspace use generic --write
-metro setup init --workspace generic --write
 metro harness run --suite onboard --execute --json
+metro mode show                    # default ceiling is read-only; writes need: metro mode set read-write
+export METRONOME_SANDBOX_KEY=...    # live steps below; or put it in ~/.metro/.env
 ```
 
 ## 0a. Learn their Metronome account (snapshot)
@@ -52,16 +53,16 @@ Writes `workspaceCatalog` (rate cards, usage product, credit type, billable metr
 ## 2. Who is this customer?
 
 ```bash
-metro ops who "Acme Lending" --sandbox
+metro ops who "Acme Corp" --sandbox
 # or
-metro ops who --customer-id=<uuid> --prod --json
+metro ops who --customer-id=<uuid> --sandbox --json
 ```
 
 ## 3. List packages
 
 ```bash
 metro package list --sandbox --json
-metro package list --search=annual --prod
+metro package customers --alias=<package-alias> --sandbox --json
 ```
 
 ## 4. Balances / credits
@@ -69,6 +70,8 @@ metro package list --search=annual --prod
 ```bash
 metro customer balances --query="Acme" --sandbox --json
 ```
+
+The output includes `spendableNet`, which compares `getNetBalance` with the sum of the balance list for each credit type. A `MTR-CREDIT-NET-001` warning means the two disagree. When they do, trust the net, and don't add credits based on the list.
 
 ## 5. Add a pricing dimension
 
@@ -88,10 +91,26 @@ Requires non-empty `workspaceCatalog.rateCardIds` from catalog bind.
 ## 7. Trial / annual package (local first)
 
 ```bash
-metro plan template free-trial-package --sandbox --out trial.json --json
-metro validate --shape free-trial --file trial.json --json
-metro plan template annual-subscription-package --sandbox --out annual.json --json
+cat > trial.json <<'JSON'
+{
+  "packageAlias": "acme_trial",
+  "uniquenessKey": "acme-trial-v1",
+  "aliasStartingAt": "2030-01-01T00:00:00.000Z",
+  "creditAmount": 100,
+  "accessCreditTypeId": "<your-credit-type-id>",
+  "trialDurationDays": 14,
+  "rolloverFraction": 0,
+  "noStripeConfirmed": true,
+  "aliasHandoffReviewed": true,
+  "verificationPlan": { "packageReadback": true }
+}
+JSON
+metro validate --shape free-credit-trial --file trial.json --json
+metro plan template annual-subscription-package --sandbox --out annual.json --json   # fill the <placeholders>, then:
+metro validate --shape pro-annual-self-serve-v2 --file annual.json --json
 ```
+
+To create a real package, write a `packages/create` spec and run `metro package create preflight --file=<spec> --sandbox` (see [PROVISIONING.md](PROVISIONING.md)).
 
 ## 8. Credits and billing provider (preview)
 
@@ -99,6 +118,20 @@ metro plan template annual-subscription-package --sandbox --out annual.json --js
 metro plan complimentary-credits --sandbox --json
 metro plan billing-provider-setup --sandbox --json
 ```
+
+## 9. Provision end to end (live, sandbox first)
+
+```bash
+metro mode set read-write
+metro customer create preflight --name="Acme Corp" --ingest-alias=acme-corp --sandbox
+metro ratecard create preflight --file=ratecard.yaml --sandbox
+metro package create preflight --file=package.yaml --sandbox
+metro contract create preflight --ingest-alias=acme-corp --package-alias=growth --starting-at=<UTC hour> --sandbox
+metro subscription add preflight --ingest-alias=acme-corp --product-id=<id> --billing-frequency=MONTHLY --quantity=10 --sandbox
+metro subscription set-quantity preflight --ingest-alias=acme-corp --subscription-id=<id> --quantity=12 --starting-at=<UTC hour> --sandbox
+```
+
+Each preflight prints a dry-run line and an apply line, with the payload hash and the sandbox token. Read-back exits `3` on any mismatch. The full walkthrough is in [PROVISIONING.md](PROVISIONING.md).
 
 ## Ops cookbook in the CLI
 

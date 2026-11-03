@@ -3,11 +3,11 @@
 const path = require('path');
 const { resolvePackId } = require('../workspace/loader');
 
-const LEV_OPS_ROOT = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops');
 const LOCAL_ROOT = path.join(__dirname);
 
+/** Every real pack may run guarded live reads; the stub pack is offline-only. */
 function allowsLiveReadOps(packId = resolvePackId()) {
-  return packId === 'lev' || packId === 'generic';
+  return Boolean(packId) && packId !== 'stub';
 }
 
 function tryRequire(candidates) {
@@ -23,34 +23,22 @@ function tryRequire(candidates) {
 
 function loadWhoOps() {
   if (!allowsLiveReadOps()) return null;
-  return tryRequire([
-    path.join(LOCAL_ROOT, 'who.js'),
-    path.join(LEV_OPS_ROOT, 'customer-snapshot', 'lib', 'who.js'),
-  ]);
+  return tryRequire([path.join(LOCAL_ROOT, 'who.js')]);
 }
 
 function loadCustomerResolve() {
   if (!allowsLiveReadOps()) return null;
-  return tryRequire([
-    path.join(LOCAL_ROOT, 'customer-resolve.js'),
-    path.join(LEV_OPS_ROOT, 'contract-move-plan', 'lib', 'customer-resolve.js'),
-  ]);
+  return tryRequire([path.join(LOCAL_ROOT, 'customer-resolve.js')]);
 }
 
 function loadPackageListOps() {
   if (!allowsLiveReadOps()) return null;
-  return tryRequire([
-    path.join(LOCAL_ROOT, 'package-list.js'),
-    path.join(LEV_OPS_ROOT, 'package-list.js'),
-  ]);
+  return tryRequire([path.join(LOCAL_ROOT, 'package-list.js')]);
 }
 
 function loadCustomerBalancesOps() {
   if (!allowsLiveReadOps()) return null;
-  return tryRequire([
-    path.join(LOCAL_ROOT, 'customer-balances.js'),
-    path.join(LEV_OPS_ROOT, 'customer-balances.js'),
-  ]);
+  return tryRequire([path.join(LOCAL_ROOT, 'customer-balances.js')]);
 }
 
 module.exports = {

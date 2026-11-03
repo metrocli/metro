@@ -217,7 +217,7 @@ function buildApiReadRefusal(options = {}) {
 
   const payload = {
     schemaVersion: API_READ_REFUSAL_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-refusal.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-refusal.js',
     command,
     apiAccess: 'none',
     liveExecution: allowlistedLiveRead ? clone(LIVE_EXECUTION_ENABLED) : clone(LOCAL_ONLY_LIVE_EXECUTION),

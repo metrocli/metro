@@ -39,7 +39,7 @@
 | MTR-SUB-002 | error | Make subscription_rate.billing_frequency match the verified rate-card subscription rate frequency. |
 | MTR-SUB-003 | error | Use the same SubscriptionProductListItem product_id in the rate-card evidence, subscription_rate, and override specifiers. |
 | MTR-SUB-004 | error | For QUANTITY_ONLY provide initialQuantity. For SEAT_BASED direct contracts provide seatConfig.seatGroupKey and seatConfig.initialSeatIds. |
-| MTR-CUSTOM-001 | error | Provide an existing metronomeCustomerId or explicitly request createMetronomeCustomer with externalCustomerId (externalId accepted as a customer lookup key) before preview. |
+| MTR-CUSTOM-001 | error | Provide an existing metronomeCustomerId or explicitly request createMetronomeCustomer with externalCustomerId before preview. |
 | MTR-CUSTOM-002 | error | Use the local direct enterprise custom-contract shape with contractType direct, explicitStartingAt, and no package fields. |
 | MTR-CUSTOM-003 | error | Provide explicit rate card, recurring commit, invoice, seat-limit, verification, and remediation terms before preview. |
 | MTR-CUST-001 | error | Provide companyName, externalCustomerId, primaryIngestAlias, and the full ingestAliases list before planning customer setup. |
@@ -69,14 +69,14 @@
 | MTR-CREDIT-004 | error | For paid credit workflows, provide a positive fiat amount in cents. Complimentary grants must use 0 when an audit line is intended. |
 | MTR-CREDIT-005 | error | Approve every custom field key for the target Metronome object type before including custom_fields in a preview payload. |
 | MTR-CREDIT-006 | error | State paid_topup_invoice_expected, paymentGateType STRIPE, explicit stripeBehavior, duplicate-name review, read-back checks, and rollback/remediation before preview. |
-| MTR-REPO-001 | error | Extract reusable logic into tested metronome-cli modules and leave old one-off or quarantined scripts as evidence only. |
+| MTR-REPO-001 | error | Extract reusable logic into tested packages/metro-core modules and leave old one-off or quarantined scripts as evidence only. |
 | MTR-REPO-002 | error | Use generated artifacts only as evidence with a boundary document; cite current source files for workflow behavior. |
-| MTR-REPO-003 | error | Keep Hyperline evidence historical unless the user explicitly asks for legacy migration work. |
+| MTR-REPO-003 | error | Keep evidence from a previous (external) billing system historical unless the user explicitly asks for legacy migration work. |
 
 
 ## Agent notes
 
 - Prefer `--json` when scripting parsers; use `--markdown` when loading context into an agent.
-- Never treat HTML as the source of truth — regenerate from `metro docs <ref> --markdown`.
+- Never treat HTML as the source of truth, regenerate from `metro docs <ref> --markdown`.
 - Live reads/writes still require tenant flags + confirmation tokens.
 

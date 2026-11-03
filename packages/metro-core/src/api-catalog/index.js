@@ -65,8 +65,8 @@ const SIDE_EFFECT_PROFILES = {
       'Bad ingest has no simple delete path; remediation must explain reversal, credit, invoice correction, or support escalation before apply.',
     ],
     sources: [
-      '.cursor/skills/metronome-ingestion-events/SKILL.md#past-dated-ingest--retroactive-invoice-inflation',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#14-past-dated-usage-ingest-can-change-finalized-period-economics',
+      'skills/metronome-ingestion-events/SKILL.md#past-dated-ingest--retroactive-invoice-inflation',
+      'skills/metronome-danger-zone/SKILL.md#14-past-dated-usage-ingest-can-change-finalized-period-economics',
     ],
   },
   'packages.create': {
@@ -88,8 +88,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation usually requires a corrected package version and alias handoff; do not archive the old package until replacement alias read-back is verified.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#packages--contracts-mental-model',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-packages-contracts/SKILL.md#packages--contracts-mental-model',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
     ],
   },
   'packages.archive': {
@@ -111,8 +111,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback may require creating or activating a replacement package version; archive is not treated as a reversible normal workflow.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#package-archive-vs-rate-card-archive-field-names',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-packages-contracts/SKILL.md#package-archive-vs-rate-card-archive-field-names',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
     ],
   },
   'contracts.create': {
@@ -137,9 +137,9 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback may require end-dating, successor contract creation, credit adjustments, invoice void/regenerate review, or Stripe reconciliation; archive/void is not a default rollback.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#transitions-renewal-supersede--package-based-plan-changes',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md#working-payloads',
+      'skills/metronome-packages-contracts/SKILL.md#transitions-renewal-supersede--package-based-plan-changes',
+      'skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate',
+      'skills/metronome-stripe-delivery/SKILL.md#working-payloads',
     ],
   },
   'contracts.updateEndDate': {
@@ -161,8 +161,8 @@ const SIDE_EFFECT_PROFILES = {
       'If successor creation fails after end-date mutation, retry only the successor with a corrected stable idempotency key or execute the preplanned remediation; do not move the predecessor repeatedly.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#updateenddate--shorten-or-extend-a-contract-cleanly',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate',
+      'skills/metronome-packages-contracts/SKILL.md#updateenddate--shorten-or-extend-a-contract-cleanly',
+      'skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate',
     ],
   },
   'contracts.edit.v2': {
@@ -184,9 +184,9 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation depends on the edit type and can require follow-up contract edits, balance corrections, invoice void/regenerate review, or Stripe reconciliation.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#editcontract-vs-a-dedicated-endpoint',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#past-dated-add_scheduled_charges-finalize-immediately',
-      '.cursor/skills/metronome-invoicing/SKILL.md#mental-model',
+      'skills/metronome-packages-contracts/SKILL.md#editcontract-vs-a-dedicated-endpoint',
+      'skills/metronome-packages-contracts/SKILL.md#past-dated-add_scheduled_charges-finalize-immediately',
+      'skills/metronome-invoicing/SKILL.md#mental-model',
     ],
   },
   'contracts.updateInvoiceIssueDate': {
@@ -208,8 +208,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation must explain how to move the DRAFT invoice again or handle invoice/Stripe mismatch if the invoice state changes before apply.',
     ],
     sources: [
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#updateinvoiceissuedate--push-a-draft-invoice-forward',
-      '.cursor/skills/metronome-invoicing/SKILL.md#mental-model',
+      'skills/metronome-packages-contracts/SKILL.md#updateinvoiceissuedate--push-a-draft-invoice-forward',
+      'skills/metronome-invoicing/SKILL.md#mental-model',
     ],
   },
   'invoices.preview': {
@@ -230,8 +230,8 @@ const SIDE_EFFECT_PROFILES = {
       'No write rollback is expected for preview, but bad preview evidence must block downstream ingest apply.',
     ],
     sources: [
-      '.cursor/skills/metronome-ingestion-events/SKILL.md#did-the-event-land',
-      '.cursor/skills/metronome-invoicing/SKILL.md#mental-model',
+      'skills/metronome-ingestion-events/SKILL.md#did-the-event-land',
+      'skills/metronome-invoicing/SKILL.md#mental-model',
     ],
   },
   'invoices.void': {
@@ -255,8 +255,8 @@ const SIDE_EFFECT_PROFILES = {
       'Void is not treated as a reversible normal workflow; remediation can require invoice regeneration, replacement invoice delivery, Stripe refund or collection adjustment, or finance reconciliation.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
       'https://docs.metronome.com/api-reference/invoices/void-an-invoice.md',
     ],
   },
@@ -281,8 +281,8 @@ const SIDE_EFFECT_PROFILES = {
       'If regeneration produces the wrong amount or delivery state, stop further billing actions and use a separately reviewed void/regenerate, Stripe reconciliation, or customer communication plan.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
       'https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md',
     ],
   },
@@ -307,7 +307,7 @@ const SIDE_EFFECT_PROFILES = {
       'Payment collection cannot be undone by Metronome alone; remediation may require Stripe refund, invoice void/regenerate, customer communication, or finance reconciliation.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
       'https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md',
     ],
   },
@@ -331,7 +331,7 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation is a separately reviewed payment retry, invoice correction, or customer/finance follow-up after payment-state read-back.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
       'https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md',
     ],
   },
@@ -357,9 +357,9 @@ const SIDE_EFFECT_PROFILES = {
       'If a customer is created incorrectly, stop before contracts exist; remediation must separately review alias release, rename/config updates, or archive side effects.',
     ],
     sources: [
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
     ],
   },
   'customers.archive': {
@@ -383,9 +383,9 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback is not treated as normal operation; remediation requires a separately approved replacement customer, contract, invoice, alias, and Stripe reconciliation plan.',
     ],
     sources: [
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
     ],
   },
   'customers.updateConfig': {
@@ -406,9 +406,9 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback must be another reviewed config update plus read-back verification; invoice delivery that already happened may require separate Stripe remediation.',
     ],
     sources: [
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
     ],
   },
   'customers.updateName': {
@@ -429,8 +429,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback is a reviewed rename back to the prior value plus customer get read-back verification.',
     ],
     sources: [
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
     ],
   },
   'customers.setIngestAliases': {
@@ -452,9 +452,9 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback requires another reviewed alias update and explicit usage remediation for any events routed during the bad window.',
     ],
     sources: [
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-ingestion-events/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-ingestion-events/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
     ],
   },
   'billingProvider.setCustomerConfigurations': {
@@ -477,8 +477,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback requires setting a corrected billing-provider configuration and reconciling any invoices delivered while the wrong config was active.',
     ],
     sources: [
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md#working-payloads',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
+      'skills/metronome-stripe-delivery/SKILL.md#working-payloads',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
     ],
   },
   'customFields.addKey': {
@@ -501,8 +501,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation may require removeKey only after reviewing downstream setValues usage; do not assume allowlist removal is a harmless rollback.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
       'https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md',
     ],
   },
@@ -526,8 +526,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation may require addKey plus a separate value restoration plan; do not assume removed existing values become accessible again automatically.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
       'https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md',
     ],
   },
@@ -551,8 +551,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback requires a follow-up setValues or deleteValues write after reviewing whether downstream systems already consumed the previous metadata.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
       'https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md',
     ],
   },
@@ -576,8 +576,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback requires a follow-up setValues write with reviewed source values; deleted metadata should be treated as lost unless preserved in pre-delete evidence.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
       'https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md',
     ],
   },
@@ -602,8 +602,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation usually requires creating a replacement metric, scheduling affected Products to use it at a reviewed hour-boundary timestamp, closing or replacing impacted rate entries when needed, and archiving the bad metric only after dependency review.',
     ],
     sources: [
-      '.cursor/skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md',
     ],
   },
@@ -626,7 +626,7 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation is a follow-up rename to the reviewed prior or corrected name; configuration mistakes require replacement metric and product schedule remediation, not this endpoint.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md',
     ],
   },
@@ -649,7 +649,7 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation usually requires creating or selecting a replacement billable metric and scheduling affected Products to use it; archive is not treated as a harmless toggle.',
     ],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md',
     ],
   },
@@ -673,9 +673,9 @@ const SIDE_EFFECT_PROFILES = {
       'If no rates reference the bad product, remediation can archive it after product get/list proof. If rates were added, first close affected rate-card entries with addRates entitled:false and price:0, then archive or replace the product and review invoice impact.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product',
+      'skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/create-a-product.md',
     ],
   },
@@ -699,9 +699,9 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation is a follow-up scheduled product update with the corrected fields when type remains valid. Product type mistakes require replacement product creation, rate-card remediation, and invoice-impact review; do not treat products.update as an in-place type conversion.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change',
+      'skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/update-a-product.md',
     ],
   },
@@ -728,8 +728,8 @@ const SIDE_EFFECT_PROFILES = {
       'Do not assume archive can be reversed. Remediation usually requires a replacement product/rate schedule and invoice-impact review; product archive is not treated as the only retirement step.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#retiring-a-product--archive--remove-from-rate-card',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#19-product-archive-does-not-remove-rate-entries-from-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#retiring-a-product--archive--remove-from-rate-card',
+      'skills/metronome-danger-zone/SKILL.md#19-product-archive-does-not-remove-rate-entries-from-rate-cards',
       'https://docs.metronome.com/api-reference/products/archive-a-product.md',
     ],
   },
@@ -753,8 +753,8 @@ const SIDE_EFFECT_PROFILES = {
       'If no packages, contracts, aliases, or rates depend on the bad rate card, remediation can archive it after get/list proof. Otherwise create a corrected rate card, move or close dependent aliases/rates through reviewed workflows, and document package/contract impact.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md',
     ],
   },
@@ -777,8 +777,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation is a follow-up metadata or alias update after reviewing future contract creation impact; existing contracts need separate contract/package workflows if they were attached to the wrong rate card.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md',
     ],
   },
@@ -803,8 +803,8 @@ const SIDE_EFFECT_PROFILES = {
       'Do not assume archive is a reversible toggle. Remediation usually requires a reviewed replacement rate card, package or alias update, contract workflow correction, and get/list plus package/contract dependency read-back.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md',
     ],
   },
@@ -828,8 +828,8 @@ const SIDE_EFFECT_PROFILES = {
       'Remediation is a follow-up setProductOrder request with the corrected product order after rate-card and product read-back; pricing mistakes require separate rate-card or contract workflows.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md',
     ],
   },
@@ -852,8 +852,8 @@ const SIDE_EFFECT_PROFILES = {
       'Rollback usually requires another scheduled addRates correction and invoice-impact review for any period already affected.',
     ],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#add-rates-always-plural',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes',
+      'skills/metronome-pricing-catalog/SKILL.md#add-rates-always-plural',
+      'skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes',
     ],
   },
 };
@@ -885,8 +885,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-usage-ingest', 'metronome-ingestion-events'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
-      '.cursor/skills/metronome-ingestion-events/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
+      'skills/metronome-ingestion-events/SKILL.md',
       'https://docs.metronome.com/api-reference/usage/ingest-events.md',
     ],
   },
@@ -917,7 +917,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-usage-groups'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
       'https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md',
     ],
   },
@@ -948,7 +948,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-usage-batch'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
       'https://docs.metronome.com/api-reference/usage/get-batched-usage-data.md',
     ],
   },
@@ -978,7 +978,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-event-search'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest',
       'https://docs.metronome.com/api-reference/usage/search-events.md',
     ],
   },
@@ -1008,7 +1008,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric.md',
     ],
   },
@@ -1039,7 +1039,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics.md',
     ],
   },
@@ -1073,8 +1073,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-create', 'metronome-billable-metrics'],
     sources: [
-      '.cursor/skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md',
     ],
   },
@@ -1107,7 +1107,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-update'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md',
     ],
   },
@@ -1140,7 +1140,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-billable-metric-archive'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics',
       'https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md',
     ],
   },
@@ -1170,7 +1170,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-package-create'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
       'https://docs.metronome.com/api-reference/contracts/create-a-package.md',
     ],
   },
@@ -1200,7 +1200,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-package-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
       'https://docs.metronome.com/api-reference/packages/get-a-package.md',
     ],
   },
@@ -1230,7 +1230,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-package-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
       'https://docs.metronome.com/api-reference/list-all-packages.md',
     ],
   },
@@ -1274,8 +1274,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-package-contracts-list', 'packages-contracts'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#endpoint-inventory',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-packages-contracts/SKILL.md#endpoint-inventory',
       'https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md',
     ],
   },
@@ -1305,7 +1305,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-package-archive'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages',
       'https://docs.metronome.com/api-reference/packages/archive-a-package.md',
     ],
   },
@@ -1338,8 +1338,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-create', 'packages-contracts'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-packages-contracts/SKILL.md',
       'https://docs.metronome.com/api-reference/contracts/create-a-contract.md',
     ],
   },
@@ -1369,8 +1369,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-update-end-date', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md',
     ],
   },
@@ -1400,7 +1400,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-get-v2'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md',
     ],
   },
@@ -1430,7 +1430,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-list-v2'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md',
     ],
   },
@@ -1461,8 +1461,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-get-rate-schedule', 'packages-contracts'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-packages-contracts/SKILL.md',
       'https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract.md',
     ],
   },
@@ -1501,8 +1501,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-edit-history', 'packages-contracts'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md#endpoint-inventory',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-packages-contracts/SKILL.md#endpoint-inventory',
       'https://docs.metronome.com/api-reference/contracts/get-contract-edit-history.md',
     ],
   },
@@ -1542,8 +1542,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-subscription-quantity-history', 'metronome-subscriptions-seats'],
     sources: [
-      '.cursor/skills/metronome-subscriptions-seats/SKILL.md#read-quantity-history-any-mode',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-subscriptions-seats/SKILL.md#read-quantity-history-any-mode',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md',
     ],
   },
@@ -1589,8 +1589,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-subscription-seats-history', 'metronome-subscriptions-seats'],
     sources: [
-      '.cursor/skills/metronome-subscriptions-seats/SKILL.md#read-seat-assignment-history-seat_based-only',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-subscriptions-seats/SKILL.md#read-seat-assignment-history-seat_based-only',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md',
     ],
   },
@@ -1620,8 +1620,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-contract-edit', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
       'https://docs.metronome.com/api-reference/contracts/edit-a-contract.md',
     ],
   },
@@ -1651,8 +1651,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-issue-date', 'metronome-invoicing'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts',
+      'skills/metronome-invoicing/SKILL.md',
       'https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date',
     ],
   },
@@ -1682,8 +1682,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-commits-list', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
+      'skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
       'https://docs.metronome.com/api-reference/credits-and-commits/list-commits',
     ],
   },
@@ -1713,8 +1713,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-credits-list', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
+      'skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
       'https://docs.metronome.com/api-reference/credits-and-commits/list-credits',
     ],
   },
@@ -1744,8 +1744,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-balances-list', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#8-customer-lookup--what-actually-works',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
+      'skills/metronome-danger-zone/SKILL.md#8-customer-lookup--what-actually-works',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
       'https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md',
     ],
   },
@@ -1797,8 +1797,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-seat-balances-list', 'metronome-subscriptions-seats'],
     sources: [
-      '.cursor/skills/metronome-subscriptions-seats/SKILL.md#list-seat-balances',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
+      'skills/metronome-subscriptions-seats/SKILL.md#list-seat-balances',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits',
       'https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances.md',
     ],
   },
@@ -1828,8 +1828,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-preview-events', 'metronome-invoicing'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-invoicing/SKILL.md',
       'https://docs.metronome.com/api-reference/invoices/preview-events.md',
     ],
   },
@@ -1859,7 +1859,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
       'https://docs.metronome.com/api-reference/customers/get-a-customer.md',
     ],
   },
@@ -1889,7 +1889,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
       'https://docs.metronome.com/api-reference/customers/list-customers.md',
     ],
   },
@@ -1920,9 +1920,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-create', 'customers-hierarchies', 'metronome-stripe-delivery'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/create-a-customer.md',
     ],
   },
@@ -1952,9 +1952,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-archive', 'customers-hierarchies', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-customers-hierarchies/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/archive-a-customer.md',
     ],
   },
@@ -1985,9 +1985,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-update-config', 'customers-hierarchies', 'metronome-stripe-delivery'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md',
     ],
   },
@@ -2017,8 +2017,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-update-name', 'customers-hierarchies'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/update-a-customer-name.md',
     ],
   },
@@ -2048,9 +2048,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-customer-set-ingest-aliases', 'customers-hierarchies', 'metronome-ingestion-events'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-ingestion-events/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-ingestion-events/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases.md',
     ],
   },
@@ -2080,7 +2080,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
       'https://docs.metronome.com/api-reference/invoices/list-invoices.md',
     ],
   },
@@ -2112,8 +2112,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-breakdowns', 'metronome-invoicing'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
-      '.cursor/skills/metronome-invoicing/SKILL.md#endpoint-inventory',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-invoicing/SKILL.md#endpoint-inventory',
       'https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns.md',
     ],
   },
@@ -2143,7 +2143,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
       'https://docs.metronome.com/api-reference/invoices/get-an-invoice.md',
     ],
   },
@@ -2173,9 +2173,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-void', 'danger-zone', 'metronome-invoicing'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-invoicing/SKILL.md',
       'https://docs.metronome.com/api-reference/invoices/void-an-invoice.md',
     ],
   },
@@ -2205,9 +2205,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-invoice-regenerate', 'danger-zone', 'metronome-invoicing'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices',
+      'skills/metronome-invoicing/SKILL.md',
       'https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md',
     ],
   },
@@ -2237,7 +2237,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
     ],
   },
   {
@@ -2266,7 +2266,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-payment-attempt', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
       'https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md',
     ],
   },
@@ -2296,7 +2296,7 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-payment-cancel', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments',
       'https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md',
     ],
   },
@@ -2326,8 +2326,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-billing-provider', 'metronome-stripe-delivery'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md',
     ],
   },
@@ -2357,8 +2357,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-billing-provider-get', 'metronome-stripe-delivery'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md',
     ],
   },
@@ -2388,8 +2388,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-list-configured-billing-providers', 'metronome-stripe-delivery'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md',
     ],
   },
@@ -2422,8 +2422,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-custom-fields-add-key', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
       'https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md',
     ],
   },
@@ -2456,8 +2456,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-custom-fields-remove-key', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
       'https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md',
     ],
   },
@@ -2490,8 +2490,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-custom-fields-set-values', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
       'https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md',
     ],
   },
@@ -2524,8 +2524,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-custom-fields-delete-values', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
       'https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md',
     ],
   },
@@ -2555,8 +2555,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-custom-fields-list-keys', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
-      '.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields',
+      'skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits',
       'https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys.md',
     ],
   },
@@ -2587,8 +2587,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-pricing-units-list', 'conventions'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
-      '.cursor/skills/_metronome-shared/conventions.md#method-gotcha',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
+      'skills/_metronome-shared/conventions.md#method-gotcha',
       'https://docs.metronome.com/api-reference/settings/list-pricing-units.md',
     ],
   },
@@ -2617,8 +2617,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-security-services', 'conventions'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
-      '.cursor/skills/_metronome-shared/conventions.md#method-gotcha',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
+      'skills/_metronome-shared/conventions.md#method-gotcha',
       'https://docs.metronome.com/api-reference/security/get-services.md',
     ],
   },
@@ -2648,8 +2648,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-security-audit-logs', 'conventions'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
-      '.cursor/skills/_metronome-shared/conventions.md#method-gotcha',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security',
+      'skills/_metronome-shared/conventions.md#method-gotcha',
       'https://docs.metronome.com/api-reference/security/get-audit-logs.md',
     ],
   },
@@ -2679,7 +2679,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-product-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/get-a-product.md',
     ],
   },
@@ -2710,7 +2710,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-product-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/list-products.md',
     ],
   },
@@ -2744,8 +2744,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-product-create', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/create-a-product.md',
     ],
   },
@@ -2779,9 +2779,9 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-product-update', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change',
+      'skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/update-a-product.md',
     ],
   },
@@ -2815,8 +2815,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-product-archive', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#3-products',
       'https://docs.metronome.com/api-reference/products/archive-a-product.md',
     ],
   },
@@ -2850,8 +2850,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-create', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md',
     ],
   },
@@ -2885,8 +2885,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-update', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md',
     ],
   },
@@ -2920,8 +2920,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-archive', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md',
     ],
   },
@@ -2955,8 +2955,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-products-order', 'metronome-pricing-catalog'],
     sources: [
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-pricing-catalog/SKILL.md#rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md',
     ],
   },
@@ -2986,7 +2986,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-get'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card.md',
     ],
   },
@@ -3017,7 +3017,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-list'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/list-rate-cards.md',
     ],
   },
@@ -3048,9 +3048,8 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-get-rates', 'local-probe-prod-all-rates'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/get-rates.md',
-      'metronome/probe-prod-all-rates.js',
     ],
   },
   {
@@ -3079,8 +3078,8 @@ const ENDPOINTS = [
     policyGates: WRITE_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-add-rates', 'danger-zone'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/add-rates.md',
     ],
   },
@@ -3110,7 +3109,7 @@ const ENDPOINTS = [
     policyGates: READ_GATES,
     sourceIds: ['endpoint-matrix', 'official-rate-card-get-rate-schedule'],
     sources: [
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards',
       'https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md',
     ],
   },
@@ -3166,11 +3165,10 @@ function permissionPolicy(accessClass) {
 
 const APPROVAL_POLICY_SOURCES = [
   'docs/SAFETY.md',
-  'docs/API_OPERATIONS.md',
   'docs/metronome-cli/one-goal.md',
   'docs/metronome-cli/CLI_ARCHITECTURE.md',
   'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-  '.cursor/skills/metronome-danger-zone/SKILL.md',
+  'skills/metronome-danger-zone/SKILL.md',
 ];
 
 const READ_APPROVAL_FIELDS = [
@@ -3379,7 +3377,7 @@ function permissionScopeReference(options = {}) {
 
   return {
     schemaVersion: PERMISSION_SCOPE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     filters: { family },
@@ -3419,7 +3417,7 @@ function approvalPolicyReference(options = {}) {
 
   return {
     schemaVersion: APPROVAL_POLICY_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     filters: { family: options.family || null },
@@ -3452,7 +3450,7 @@ function apiCatalog(options = {}) {
   const endpoints = listApiEndpoints({ family });
   return {
     schemaVersion: CATALOG_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     filters: { family },
@@ -3467,7 +3465,7 @@ function apiEndpointDetail(id) {
   if (!endpoint) return null;
   return {
     schemaVersion: ENDPOINT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     endpoint,
@@ -3570,7 +3568,7 @@ function apiEndpointSearch(options = {}) {
 
   return {
     schemaVersion: API_SEARCH_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     filters: {
@@ -3663,7 +3661,7 @@ function apiEndpointDiff(leftId, rightId) {
 
   return {
     schemaVersion: API_DIFF_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/index.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     endpoints: {

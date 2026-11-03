@@ -131,4 +131,5 @@ module.exports = {
   buildAuditExportPlan,
   classifyAuditExportSummary,
   extractWorkspaceCatalogFromConfig,
+  ops: Object.freeze({}),
 };

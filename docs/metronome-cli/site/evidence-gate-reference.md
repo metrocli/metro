@@ -14,11 +14,11 @@
 
 ## sourceModules
 
-- `metronome-cli/src/shapes/index.js`
-- `metronome-cli/src/preflight/index.js`
-- `metronome-cli/src/audit/index.js`
-- `metronome-cli/src/proof/sandbox-manifest.js`
-- `metronome-cli/src/apply-gate/index.js`
+- `packages/metro-core/src/shapes/index.js`
+- `packages/metro-core/src/preflight/index.js`
+- `packages/metro-core/src/audit/index.js`
+- `packages/metro-core/src/proof/sandbox-manifest.js`
+- `packages/metro-core/src/apply-gate/index.js`
 
 
 ## gates
@@ -44,6 +44,6 @@
 ## Agent notes
 
 - Prefer `--json` when scripting parsers; use `--markdown` when loading context into an agent.
-- Never treat HTML as the source of truth — regenerate from `metro docs <ref> --markdown`.
+- Never treat HTML as the source of truth, regenerate from `metro docs <ref> --markdown`.
 - Live reads/writes still require tenant flags + confirmation tokens.
 

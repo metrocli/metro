@@ -339,7 +339,7 @@ function filled(value) {
 function auditWriteBase({ mode, auditPath, outPath, findings = [] }) {
   return {
     schemaVersion: AUDIT_WRITE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/audit/index.js',
+    generatedFrom: 'packages/metro-core/src/audit/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,

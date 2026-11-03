@@ -24,13 +24,13 @@ async function runCustomerResolve(flags = {}, streams = { stdout: process.stdout
     argv,
     json: argv.includes('--json') || flags.json === true,
     customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || null,
-    levId: parseArg('--lev-id=', argv) || parseArg('--external-id=', argv) || flags['lev-id'] || flags['external-id'] || null,
+    externalId: parseArg('--external-id=', argv) || flags['external-id'] || null,
     ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || null,
     name: parseArg('--name=', argv) || flags.name || null,
     query: parseArg('--query=', argv) || flags.query || null,
   };
 
-  if (!args.customerId && !args.levId && !args.ingestAlias && !args.name && !args.query) {
+  if (!args.customerId && !args.externalId && !args.ingestAlias && !args.name && !args.query) {
     streams.stderr.write('Usage: metro customer resolve (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) (--sandbox|--prod) [--json]\n');
     return { exitCode: 1 };
   }
@@ -43,7 +43,7 @@ async function runCustomerResolve(flags = {}, streams = { stdout: process.stdout
   const client = buildMetronomeRetryClient(process.env.METRONOME_API_KEY);
   const resolved = await resolveMod.resolveCustomer(client, {
     customerId: args.customerId,
-    levId: args.levId,
+    externalId: args.externalId,
     ingestAlias: args.ingestAlias,
     name: args.name,
     query: args.query,
@@ -63,7 +63,7 @@ async function runCustomerResolve(flags = {}, streams = { stdout: process.stdout
   else if (resolved.customer) {
     streams.stdout.write(`${resolved.customer.name}\n`);
     streams.stdout.write(`  id: ${resolved.customer.id}\n`);
-    streams.stdout.write(`  external_id: ${resolved.customer.custom_fields?.lev_id ?? '-'}\n`);
+    streams.stdout.write(`  external_id: ${resolveMod.customerExternalId ? (resolveMod.customerExternalId(resolved.customer) ?? '-') : '-'}\n`);
     streams.stdout.write(`  ingest_aliases: ${JSON.stringify(resolved.customer.ingest_aliases || [])}\n`);
   } else {
     streams.stderr.write(`${resolved.error}\n`);

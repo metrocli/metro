@@ -1,40 +1,21 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
+const { loadPackageListOps: loadCorePackageListOps } = require('../ops-live/load');
 
-function loadLevPackageListOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'package-list.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadPackageListOps() {
+  // Pack-provided op first, then the generic read-only implementation in core.
+  return loadPackOp('package-list') || loadCorePackageListOps();
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro package list --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'package-list', purpose: reason });
 }
 
 function runPackageListCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevPackageListOps();
+  const ops = loadPackageListOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for package inventory listing.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for package inventory listing');
   }
 
   const flagObj = { ...flags, argv };

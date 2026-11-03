@@ -376,10 +376,10 @@ function buildDimensionalSandboxProofTemplate({ workflow, shape }) {
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md',
-      '.cursor/skills/metronome-billable-metrics/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-pricing-catalog/SKILL.md',
+      'skills/metronome-ingestion-events/SKILL.md#billable-metrics-the-consumer-of-events',
     ],
   };
 }
@@ -504,7 +504,7 @@ function buildSandboxProofTemplate({ workflow, shape }) {
       endpoints: endpointPlan(workflow, shape),
       targetIds: isCustomerSetup
         ? [
-          { system: 'lev', role: 'account_id', id: '<sandbox-lev-account-id>' },
+          { system: 'external', role: 'external_customer_id', id: '<sandbox-external-customer-id>' },
           { system: 'metronome', role: 'primary_ingest_alias', id: '<sandbox-primary-ingest-alias>' },
           { system: 'metronome', role: 'ingest_alias_set_hash', id: '<sha256-of-reviewed-ingest-aliases>' },
           { system: 'metronome', role: 'customer_id_after_readback', id: '<sandbox-created-or-reused-customer-id>' },
@@ -542,7 +542,7 @@ function buildSandboxProofTemplate({ workflow, shape }) {
             ]
             : isCustomContract
               ? [
-                { system: 'lev', role: 'account_id', id: '<sandbox-lev-account-id>' },
+                { system: 'external', role: 'external_customer_id', id: '<sandbox-external-customer-id>' },
                 { system: 'metronome', role: 'customer_id', id: '<sandbox-existing-or-created-customer-id>' },
                 { system: 'metronome', role: 'rate_card_id', id: '<sandbox-rate-card-id>' },
                 { system: 'metronome', role: 'contract_uniqueness_key', id: '<sandbox-custom-contract-uniqueness-key>' },
@@ -1103,49 +1103,47 @@ function buildSandboxProofTemplate({ workflow, shape }) {
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
       ...(isCustomerSetup ? [
-        '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+        'skills/metronome-customers-hierarchies/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
-      ...(isContractMove ? ['.cursor/skills/metronome-packages-contracts/SKILL.md'] : []),
+      ...(isContractMove ? ['skills/metronome-packages-contracts/SKILL.md'] : []),
       ...(isComplimentaryCredit ? [
-        '.cursor/skills/metronome-commits-credits/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
       ] : []),
       ...(isPaidTopUp ? [
-        '.cursor/skills/metronome-commits-credits/SKILL.md',
-        '.cursor/skills/metronome-invoicing/SKILL.md',
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
+        'skills/metronome-invoicing/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
       ...(isDirectSubscription ? [
-        '.cursor/skills/metronome-subscriptions-seats/SKILL.md',
-        '.cursor/skills/metronome-pricing-catalog/SKILL.md',
-        '.cursor/skills/metronome-packages-contracts/SKILL.md',
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+        'skills/metronome-subscriptions-seats/SKILL.md',
+        'skills/metronome-pricing-catalog/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
       ...(isCustomContract ? [
-        '.cursor/skills/metronome-subscriptions-seats/SKILL.md',
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-        'metronome/custom-contract-creator/payload-builders.js',
-        'metronome/custom-contract-creator/schema.js',
+        'skills/metronome-subscriptions-seats/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
       ...(isBillingProvider ? [
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
       ...(isInvoiceIssueDate ? [
-        '.cursor/skills/metronome-invoicing/SKILL.md',
-        '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+        'skills/metronome-invoicing/SKILL.md',
+        'skills/metronome-stripe-delivery/SKILL.md',
       ] : []),
       ...(isProductRetirement ? [
-        '.cursor/skills/metronome-danger-zone/SKILL.md',
+        'skills/metronome-danger-zone/SKILL.md',
       ] : []),
       ...(isPackageArchive ? [
-        '.cursor/skills/metronome-packages-contracts/SKILL.md',
+        'skills/metronome-packages-contracts/SKILL.md',
       ] : []),
       ...(isUsageIngest ? [
-        '.cursor/skills/metronome-ingestion-events/SKILL.md',
-        '.cursor/skills/metronome-invoicing/SKILL.md',
+        'skills/metronome-ingestion-events/SKILL.md',
+        'skills/metronome-invoicing/SKILL.md',
       ] : []),
     ],
   };

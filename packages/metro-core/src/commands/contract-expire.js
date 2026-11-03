@@ -1,40 +1,19 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 
-function loadLevContractExpireOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'contract-expire.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadContractExpireOps() {
+  return loadPackOp('contract-expire');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro contract expire preflight --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'contract-expire', purpose: reason });
 }
 
 function runContractExpireCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevContractExpireOps();
+  const ops = loadContractExpireOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for contract expire preflight/apply.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for contract expire preflight/apply');
   }
 
   const flagObj = { ...flags, argv };
@@ -59,8 +38,8 @@ function runContractExpireCommand(positional, flags, streams, argv = []) {
 
     streams.stderr.write([
       'Usage:',
-      '  metro contract expire preflight (--customer-id=|--lev-id=|--ingest-alias=|--name=) [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] (--sandbox|--prod)',
-      '  metro contract expire apply --file <expire.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
+      '  metro contract expire preflight (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] [--allow-ending-before-finalized-invoice] (--sandbox|--prod) [--out=expire.json] [--json]',
+      '  metro contract expire apply --file <expire.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     ].join('\n'));
     return flags.help ? 0 : 1;
   } catch (err) {

@@ -67,15 +67,15 @@ Generic pack covers catalog-style intents with **user-bound** `workspaceCatalog`
 | **`policy`** | Safety refusals exit **2** (not validation **1**) |
 
 ```bash
-metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json
-metro harness run --suite policy --fixture-root test/fixtures --execute --json
+metro harness run --suite api-literacy --fixture-root <fixture-dir> --execute --json
+metro harness run --suite policy --fixture-root <fixture-dir> --execute --json
 ```
 
 ## API documentation model
 
 - **No OpenAPI ingest** - 69 hand-curated endpoints in `packages/metro-core/src/api-catalog/index.js`
 - Official `docs.metronome.com` links are manual `sources[]` on each endpoint
-- Goldens lock CLI JSON output (`test/golden/api/*`, `test/golden/docs/*`)
+- Tests lock CLI JSON output shapes (`test/*.test.js`, `packages/metro-workspace-generic/test/*.test.js`)
 - Endpoint matrix skills, safe-run refusal tests, and manifest-hash gates verify catalog coverage
 
 ## Start here

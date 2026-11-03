@@ -1,40 +1,19 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 
-function loadLevLedgerAdjustmentOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'ledger-adjustment.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadLedgerAdjustmentOps() {
+  return loadPackOp('ledger-adjustment');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'METRO_WORKSPACE_PACK=lev metro ledger-adjustment preflight --help',
-      'metro workspace explain --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'ledger-adjustment', purpose: reason });
 }
 
 function runLedgerAdjustmentCommand(positional, flags, streams, argv = []) {
-  const ops = loadLevLedgerAdjustmentOps();
+  const ops = loadLedgerAdjustmentOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for ledger-adjustment preflight/apply.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for ledger-adjustment preflight/apply');
   }
 
   const flagObj = { ...flags, argv };
@@ -59,8 +38,12 @@ function runLedgerAdjustmentCommand(positional, flags, streams, argv = []) {
 
     streams.stderr.write([
       'Usage:',
-      '  metro ledger-adjustment preflight --amount=<signed-int> --reason="<reason>" (--customer-id=|--lev-id=|--ingest-alias=|--name=) [--contract-id=] [--balance-id=] (--sandbox|--prod)',
-      '  metro ledger-adjustment apply --file <ledger.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply]',
+      '  metro ledger-adjustment preflight --amount=<signed-int> [--balance-id=] --reason="<reason>" <customer> [--contract-id=] (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '  metro ledger-adjustment preflight --archive-balance-id=<balance-id> --reason="<reason>" <customer> (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '  metro ledger-adjustment preflight --grant=credit|commit --amount=<n> --product-id=<id> --starting-at=<UTC hour> --ending-before=<UTC hour> [--credit-type-id=<id>] [--grant-name=<name>] [--priority=<n>] [--contract-id=] --reason="<reason>" <customer> (--sandbox|--prod) [--out=ledger.json] [--json]',
+      '    <customer> = --customer-id= | --external-id= | --ingest-alias= | --name= | --query=',
+      '    additions that exceed a net-vs-bucket divergence also need --acknowledge-net-divergence=<token>',
+      '  metro ledger-adjustment apply --file <ledger.json> --confirm-hash <sha256:…> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     ].join('\n'));
     return flags.help ? 0 : 1;
   } catch (err) {

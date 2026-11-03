@@ -53,7 +53,7 @@ function baseResult(options = {}) {
   const { mode, endpoint, tenant, readMock, readAuditWrite, blocked } = options;
   return {
     schemaVersion: API_READ_PIPELINE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-pipeline.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-pipeline.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,

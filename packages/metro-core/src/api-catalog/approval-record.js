@@ -227,7 +227,7 @@ function buildApiApprovalRecordTemplate(options = {}) {
 
   return {
     schemaVersion: API_APPROVAL_RECORD_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/approval-record.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/approval-record.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -588,7 +588,7 @@ function validateApiApprovalRecord(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_APPROVAL_RECORD_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/approval-record.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/approval-record.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,

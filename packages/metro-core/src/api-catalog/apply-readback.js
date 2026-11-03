@@ -372,7 +372,7 @@ function verifyApiApplyReadback(options = {}) {
 
   return {
     schemaVersion: API_APPLY_READBACK_VERIFY_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-readback.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-readback.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -456,8 +456,8 @@ function verifyApiApplyReadback(options = {}) {
     sources: [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/apply-audit.js',
-      'metronome-cli/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
       ...list(selectedRow?.endpoint?.sourceIds),
       ...list(readResult?.sources),
     ],

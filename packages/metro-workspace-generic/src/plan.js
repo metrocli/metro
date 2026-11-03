@@ -217,7 +217,7 @@ function buildInputTemplate(intent, options = {}) {
   if (intent.id === 'package-version-handoff') {
     return {
       packageAlias: options.packageAlias || 'pro_annual',
-      uniquenessKey: options.uniquenessKey || 'pkg:lev-pro-annual-v2:<UTC-date>',
+      uniquenessKey: options.uniquenessKey || 'pkg:pro-annual-v2:<UTC-date>',
       rateCardId: options.catalogResolution?.tiers?.find((entry) => entry.tier === 'pro')?.effectiveRateCardId || '<pro-dimensional-rate-card-id>',
       startingAt: '<UTC-hour-boundary>',
       annualPriceCents: options.annualPriceCents != null ? Number(options.annualPriceCents) : 120000,
@@ -682,9 +682,9 @@ function buildWorkspacePlan(intentId, options = {}) {
 
 
   plan.sources = [
-    'metronome-cli/src/workspace/model.js',
-    'metronome-cli/src/workspace/plan.js',
-    '.cursor/skills/metronome-pricing-catalog/SKILL.md',
+    'packages/metro-core/src/workspace/model.js',
+    'packages/metro-core/src/workspace/plan.js',
+    'skills/metronome-pricing-catalog/SKILL.md',
     'docs/metronome-cli/one-goal.md',
   ];
 
@@ -767,7 +767,7 @@ function buildRouteRefusal(intent, rejected, endpointId, tenant) {
       `metro plan ${intent.id} ${tenant === 'sandbox' ? '--sandbox' : tenant === 'production' ? '--prod' : ''} --json`.trim(),
       'metro workspace explain --json',
     ],
-    sources: ['metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js'],
   };
 }
 

@@ -166,7 +166,7 @@ function verifyAuditLog(text, options = {}) {
   return {
     schemaVersion: VERIFY_AUDIT_LOG_SCHEMA_VERSION,
     inspectedSchemaVersion: 'metro.audit.v1',
-    generatedFrom: 'metronome-cli/src/verify/audit-log.js',
+    generatedFrom: 'packages/metro-core/src/verify/audit-log.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     valid: !findings.some((item) => item.severity === 'error'),
@@ -184,8 +184,8 @@ function verifyAuditLog(text, options = {}) {
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/SAFETY.md',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/verify/audit-log.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/verify/audit-log.js',
     ],
   };
 }

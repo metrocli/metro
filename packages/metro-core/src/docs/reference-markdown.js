@@ -2,7 +2,7 @@
 
 /**
  * Generic Markdown renderer for metro docs * payload objects.
- * Agents prefer this over HTML. Keep one walker — do not twin the HTML shells.
+ * Agents prefer this over HTML. Keep one walker, do not twin the HTML shells.
  */
 
 function exclusiveFormatError(flags = {}) {
@@ -231,7 +231,7 @@ function renderReferenceMarkdown(payload, options = {}) {
     'Agent notes',
     [
       'Prefer `--json` when scripting parsers; use `--markdown` when loading context into an agent.',
-      'Never treat HTML as the source of truth — regenerate from `metro docs <ref> --markdown`.',
+      'Never treat HTML as the source of truth, regenerate from `metro docs <ref> --markdown`.',
       'Live reads/writes still require tenant flags + confirmation tokens.',
     ].map((line) => `- ${line}`).join('\n'),
   ));

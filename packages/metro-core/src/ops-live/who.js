@@ -60,7 +60,7 @@ function parseWhoArgs(argv = [], flags = {}, positionalQuery = null) {
     json: argv.includes('--json') || flags.json === true,
     query,
     customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || null,
-    levId: parseArg('--lev-id=', argv) || flags['lev-id'] || null,
+    externalId: parseArg('--external-id=', argv) || flags['external-id'] || null,
     ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || null,
     name: parseArg('--name=', argv) || flags.name || null,
   };
@@ -89,7 +89,7 @@ function formatHuman(payload) {
   const c = payload.customer;
   lines.push(c.name);
   lines.push(`  id: ${c.id}`);
-  lines.push(`  lev_id: ${c.lev_id ?? '-'}`);
+  lines.push(`  external_id: ${c.external_id ?? '-'}`);
   lines.push(`  ingest_aliases: ${JSON.stringify(c.ingest_aliases || [])}`);
   if (payload.lookup?.method) lines.push(`  lookup: ${payload.lookup.method}`);
   lines.push('');
@@ -116,16 +116,24 @@ function formatHuman(payload) {
   }
   lines.push('');
   lines.push('What change do you want? Common next steps:');
-  lines.push(`  metro contract move-plan preflight --customer-id=${c.id} --to=<package-alias> --prod`);
-  lines.push(`  metro ledger-adjustment preflight --amount=<signed-int> --reason="..." --customer-id=${c.id} --prod`);
-  lines.push(`  metro contract extend-trial preflight --extend-by-days=<N> --customer-id=${c.id} --prod`);
+  for (const command of payload.nextCommands || nextCommandsFor(c.id, payload.tenant)) lines.push(`  ${command}`);
   return `${lines.join('\n')}\n`;
+}
+
+/** Suggested follow-ups carry the tenant flag the user ran `ops who` with. */
+function nextCommandsFor(customerId, tenant) {
+  const tenantFlag = tenant === 'production' ? '--prod' : '--sandbox';
+  return [
+    `metro contract move-plan preflight --customer-id=${customerId} --to=<package-alias> ${tenantFlag}`,
+    `metro ledger-adjustment preflight --amount=<signed-int> --reason="..." --customer-id=${customerId} ${tenantFlag}`,
+    `metro contract extend-trial preflight --extend-by-days=<N> --customer-id=${customerId} ${tenantFlag}`,
+  ];
 }
 
 async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: process.stderr }, positionalQuery = null) {
   const args = parseWhoArgs(flags.argv || [], flags, positionalQuery);
-  if (!args.query && !args.customerId && !args.levId && !args.ingestAlias && !args.name) {
-    streams.stderr.write('Usage: metro ops who <name|uuid|lev-id|url> (--sandbox|--prod) [--json]\n');
+  if (!args.query && !args.customerId && !args.externalId && !args.ingestAlias && !args.name) {
+    streams.stderr.write('Usage: metro ops who <name|uuid|external-id|email> (--sandbox|--prod) [--json]\n');
     return { exitCode: 1 };
   }
 
@@ -135,7 +143,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
   const resolved = await resolveCustomer(client, {
     query: args.query,
     customerId: args.customerId,
-    levId: args.levId,
+    externalId: args.externalId,
     ingestAlias: args.ingestAlias,
     name: args.name,
   });
@@ -156,7 +164,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
       streams.stderr.write(`${payload.error}\n`);
       if (payload.candidates?.length) {
         for (const cand of payload.candidates) {
-          streams.stderr.write(`  ${cand.name}  id=${cand.id}  lev_id=${cand.lev_id ?? '-'}\n`);
+          streams.stderr.write(`  ${cand.name}  id=${cand.id}  external_id=${cand.external_id ?? '-'}\n`);
         }
       }
     }
@@ -176,6 +184,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
     contracts: snap.contracts,
     balances: snap.balances,
     nextPrompt: 'What change do you want?',
+    nextCommands: nextCommandsFor(resolved.customer.id, tenant),
   };
 
   if (args.json) streams.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
@@ -190,5 +199,6 @@ module.exports = {
   guessCustomerLookup,
   parseWhoArgs,
   formatHuman,
+  nextCommandsFor,
   isActiveNow,
 };

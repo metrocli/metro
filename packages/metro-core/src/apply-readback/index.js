@@ -1098,7 +1098,7 @@ function verifyWorkflowApplyReadback(options = {}) {
 
   return {
     schemaVersion: WORKFLOW_APPLY_READBACK_VERIFY_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/apply-readback/index.js',
+    generatedFrom: 'packages/metro-core/src/apply-readback/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -1196,9 +1196,9 @@ function verifyWorkflowApplyReadback(options = {}) {
     sources: [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/verify/inspect-output.js',
-      'metronome-cli/src/apply-readback/index.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/verify/inspect-output.js',
+      'packages/metro-core/src/apply-readback/index.js',
     ],
   };
 }

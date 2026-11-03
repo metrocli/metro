@@ -1,54 +1,32 @@
 'use strict';
 
-const path = require('path');
-const { resolvePackId } = require('../workspace/loader');
+const { loadPackOp, refusePackOpUnavailable } = require('../workspace/pack-ops');
 const { allowsLiveReadOps } = require('../ops-live/load');
 const { runCustomerResolve } = require('../ops-live/run-customer-resolve');
 
-function loadLevContractMovePlanOps() {
-  if (resolvePackId() !== 'lev') {
-    return null;
-  }
-  try {
-    const packRoot = path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src', 'ops', 'contract-move-plan.js');
-    return require(packRoot);
-  } catch (err) {
-    if (err.code !== 'MODULE_NOT_FOUND') throw err;
-    return null;
-  }
+function loadContractMovePlanOps() {
+  return loadPackOp('contract-move-plan');
 }
 
 function refuseUnavailable(streams, command, reason) {
-  const payload = {
-    schemaVersion: 'metro.refusal.v1',
-    refused: true,
-    command,
-    reason,
-    nextCommands: [
-      'metro workspace use generic --write',
-      'metro ops who <paste> --prod',
-      'metro plan package-plan-move --sandbox --json',
-    ],
-  };
-  streams.stderr.write(`${JSON.stringify(payload, null, 2)}\n`);
-  return 2;
+  return refusePackOpUnavailable(streams, { command, op: 'contract-move-plan', purpose: reason });
 }
 
 function runContractMovePlanCommand(positional, flags, streams, argv = []) {
   if (positional[0] === 'customer' && positional[1] === 'resolve') {
     if (!allowsLiveReadOps()) {
-      return refuseUnavailable(streams, positional.join(' '), 'A workspace pack with live ops is required for customer resolve.');
+      return refuseUnavailable(streams, positional.join(' '), 'customer resolve needs live reads; the stub pack is offline-only');
     }
-    const flagObj = { ...flags, argv, 'lev-id': flags['lev-id'] || flags['external-id'] || null };
+    const flagObj = { ...flags, argv };
     return runCustomerResolve(flagObj, streams).then((r) => r.exitCode, (err) => {
       streams.stderr.write(`\nFATAL: ${err.message}\n`);
       return 1;
     });
   }
 
-  const ops = loadLevContractMovePlanOps();
+  const ops = loadContractMovePlanOps();
   if (!ops) {
-    return refuseUnavailable(streams, positional.join(' '), 'Workspace pack with live ops required for contract move-plan preflight/apply. On generic: metro plan package-plan-move + validate/preview.');
+    return refuseUnavailable(streams, positional.join(' '), 'needed for contract move-plan preflight/apply; on generic use metro plan package-plan-move plus validate/preview');
   }
 
   const flagObj = { ...flags, argv };

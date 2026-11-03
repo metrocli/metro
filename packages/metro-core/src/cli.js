@@ -59,6 +59,7 @@ const { runContractRepairAccidentalCommand } = require('./commands/contract-repa
 const { runBillingProviderCutoverCommand } = require('./commands/billing-provider-cutover');
 const { runPackageListCommand } = require('./commands/package-list');
 const { runCustomerBalancesCommand } = require('./commands/customer-balances');
+const { matchProvisionRoute, runProvisionCommand } = require('./commands/provision');
 const { runCatalogBindCommand } = require('./commands/catalog-bind');
 const { runTenantSnapshotCommand } = require('./commands/tenant-snapshot');
 const { runOpsCommand } = require('./commands/ops');
@@ -93,7 +94,8 @@ const {
   buildWorkflowApprovalRecordTemplate,
   validateWorkflowApprovalRecord,
 } = require('./approval-record');
-const { commandReference, offlineHelpLines } = require('./commands/catalog');
+const { commandReference, offlineHelpLines, UNSUPPORTED_COMMANDS } = require('./commands/catalog');
+const { helpFooterLines } = require('./commands/help-footer');
 const { apiReference } = require('./docs/api-reference');
 const { renderApiReferenceHtml } = require('./docs/api-reference-html');
 const { docsExplainTopicIndex, explainDocsTopic } = require('./docs/explain');
@@ -135,6 +137,7 @@ const {
 const {
   loadOperatorMode,
   setOperatorMode,
+  normalizeMode: normalizeOperatorMode,
   resetOperatorMode,
   MODES: OPERATOR_MODES,
   MODE_HELP,
@@ -175,6 +178,7 @@ const {
   listWorkspacePacks,
   describeWorkspaceResolution,
 } = require('./workspace');
+const { defaultValidationOptions } = require('./workspace/loader');
 
 function write(stream, value) {
   stream.write(`${value}\n`);
@@ -229,12 +233,16 @@ function printHelp(stdout) {
   write(stdout, [
     ...helpHeaderLines(),
     '',
+    'First run: metro init (or metro init --agent) · status: metro init --check [--json]',
+    '',
     'Offline commands:',
     ...offlineHelpLines(),
     '',
     'Live reads and sandbox writes require read-gate/apply-gate evidence and current-turn confirmation.',
     'Use metro status --json for workspace, auth, and endpoint allowlist summary.',
     'Use metro harness run --suite onboard --execute --json for the full local onboarding harness.',
+    '',
+    ...helpFooterLines({ unsupportedCommands: UNSUPPORTED_COMMANDS }),
   ].join('\n'));
 }
 
@@ -313,7 +321,10 @@ function runValidateCommand(flags, streams) {
     return 1;
   }
 
-  const result = validateShapeInput(flags.shape, input);
+  const result = validateShapeInput(flags.shape, input, defaultValidationOptions({
+    profileName: flags.profile || null,
+    tenant: flags.sandbox ? 'sandbox' : flags.prod ? 'production' : null,
+  }));
   if (flags.json) {
     renderJson(streams.stdout, result);
   } else {
@@ -331,7 +342,7 @@ function runInputCommand(positional, flags, streams) {
   }
 
   const shape = flags.shape || null;
-  const endpointId = flags.api || flags.endpoint || positional[2] || null;
+  const endpointId = flags.api || positional[2] || null;
   if (Boolean(shape) === Boolean(endpointId)) {
     write(streams.stderr, 'input normalize requires exactly one target: --shape <shape> or --api <endpoint-id>');
     return 1;
@@ -956,13 +967,13 @@ function runWorkspaceCommand(positional, flags, streams) {
     } else {
       write(streams.stdout, `Workspace pack: ${payload.packId} (${payload.packName})`);
       write(streams.stdout, `Source priority: --workspace > METRO_WORKSPACE_PACK > session > profiles > config > default (${payload.sources.builtInDefault})`);
-      write(streams.stdout, `Next: metro workspace use ${payload.packId === 'generic' ? 'lev' : 'generic'} --write`);
+      write(streams.stdout, 'Next: metro workspace list, then metro workspace use <pack> --write');
     }
     return 0;
   }
 
   if (action === 'use') {
-    const packId = positional[2] || flags.pack || flags.workspace || null;
+    const packId = positional[2] || flags.workspace || null;
     if (!packId || packId === true) {
       write(streams.stderr, 'Usage: metro workspace use <generic|stub> [--write] [--json]');
       return 1;
@@ -1078,10 +1089,14 @@ function runWorkspaceCommand(positional, flags, streams) {
 }
 
 function runModeCommand(positional, flags, streams) {
+  // Shorthand: `metro mode write`, `metro mode read-only`, ... behave like `metro mode set <mode>`.
+  if (positional[1] && !['show', 'get', 'status', 'set', 'reset', 'help'].includes(positional[1]) && normalizeOperatorMode(positional[1])) {
+    return runModeCommand(['mode', 'set', positional[1]], flags, streams);
+  }
   const action = positional[1] || 'show';
 
   if (action === 'help') {
-    write(streams.stderr, 'Usage: metro mode [show] | metro mode set <local-only|read-only|read-write> | metro mode reset');
+    write(streams.stderr, 'Usage: metro mode [show] | metro mode set <local-only|read-only|read-write> | metro mode <write|read|local> | metro mode reset');
     write(streams.stderr, 'Sticky ceiling for this machine. Confirmation tokens still required for every write.');
     return 1;
   }
@@ -1100,7 +1115,7 @@ function runModeCommand(positional, flags, streams) {
   }
 
   if (action === 'set') {
-    const modeArg = positional[2] || flags.mode || null;
+    const modeArg = positional[2] || null;
     if (!modeArg) {
       write(streams.stderr, `Usage: metro mode set <${OPERATOR_MODES.join('|')}>`);
       return 1;
@@ -1170,7 +1185,7 @@ function runStatusCommand(flags, streams) {
   const keysReady = auth?.summary?.allKeysConfigured === true;
   const payload = {
     schemaVersion: 'metro.status.v1',
-    generatedFrom: 'metronome-cli/src/cli.js',
+    generatedFrom: 'packages/metro-core/src/cli.js',
     apiAccess: 'none',
     localOnly: true,
     operatorMode: {
@@ -1201,8 +1216,8 @@ function runStatusCommand(flags, streams) {
     },
     connected: keysReady,
     nextCommands: [
-      'metro mode set read-only',
       'metro ops who <customer> --prod',
+      'metro mode set read-write',
       'metro setup quickstart --shell | zsh',
     ],
     nextSafeStep: !operatorMode.allows.liveRead
@@ -1211,7 +1226,7 @@ function runStatusCommand(flags, streams) {
         ? 'Run metro ops who <customer> --prod, or metro mode set read-write before apply.'
         : auth?.valid === false && auth?.error === 'profile-load-failed'
           ? 'Run metro setup init --write to create ~/.metro/profiles.json.'
-          : 'Run metro setup init --write, export METRONOME_SANDBOX_KEY, then metro status --check-env --json.',
+          : 'Run metro init to add your sandbox key, then metro status --check-env --json.',
   };
 
   if (flags.json) {
@@ -1267,7 +1282,7 @@ function runHarnessCommand(positional, flags, streams) {
   }
 
   const harnessOptions = {
-    fixtureRoot: flags['fixture-root'] || flags.fixtureRoot || null,
+    fixtureRoot: flags['fixture-root'] || null,
     tenant: flags.sandbox ? 'sandbox' : flags.prod ? 'production' : 'sandbox',
   };
 
@@ -1286,7 +1301,7 @@ function runHarnessCommand(positional, flags, streams) {
   }
 
   if (action === 'run') {
-    const suiteId = flags.suite || flags['suite-id'] || 'onboard';
+    const suiteId = flags.suite || 'onboard';
     let plan = buildHarnessPlan(suiteId, harnessOptions);
     if (!plan.valid) {
       if (flags.json) renderJson(streams.stderr, plan);
@@ -1330,7 +1345,7 @@ function runHarnessCommand(positional, flags, streams) {
     const tenant = resolveTenant(flags, streams, 'Harness intent');
     if (!tenant) return 2;
 
-    const outDir = flags.out || flags.dir || null;
+    const outDir = flags.out || null;
     if (outDir) fs.mkdirSync(path.resolve(String(outDir)), { recursive: true });
 
     let plan = buildIntentHarnessPlan(intentId, {
@@ -1482,16 +1497,16 @@ function runPlanCommand(positional, flags, streams) {
     const templatePayload = buildPlanInputTemplate(templateIntentId, {
       tenant,
       token: flags.token,
-      actionCode: flags['action-code'] || flags.actionCode,
-      displayName: flags['display-name'] || flags.displayName,
+      actionCode: flags['action-code'],
+      displayName: flags['display-name'],
       price: flags.price,
-      creditGrantMode: flags['credit-grant-mode'] || flags.creditGrantMode,
-      annualCreditsTotal: flags['annual-credits-total'] || flags.annualCreditsTotal,
+      creditGrantMode: flags['credit-grant-mode'],
+      annualCreditsTotal: flags['annual-credits-total'],
       profileResolution: profileBinding,
       workspaceCatalog: profileBinding?.workspaceCatalog || null,
     });
 
-    const outPath = flags.out || flags['output-file'] || null;
+    const outPath = flags.out || null;
     if (outPath) {
       if (!templatePayload.valid) {
         if (flags.json) renderJson(streams.stderr, templatePayload);
@@ -1544,17 +1559,17 @@ function runPlanCommand(positional, flags, streams) {
 
   const plan = buildWorkspacePlan(intentId, {
     tenant,
-    goal: flags.goal || flags.query,
+    goal: flags.goal,
     token: flags.token,
-    actionCode: flags['action-code'] || flags.actionCode,
-    displayName: flags['display-name'] || flags.displayName,
+    actionCode: flags['action-code'],
+    displayName: flags['display-name'],
     name: flags.name && flags.name !== true ? String(flags.name) : null,
     aggregation: flags.aggregation && flags.aggregation !== true ? String(flags.aggregation) : null,
-    eventType: flags['event-type'] || flags.eventType || null,
-    dimensionKey: flags['dimension-key'] || flags.dimensionKey || null,
+    eventType: flags['event-type'] || null,
+    dimensionKey: flags['dimension-key'] || null,
     price: flags.price,
-    creditGrantMode: flags['credit-grant-mode'] || flags.creditGrantMode,
-    annualCreditsTotal: flags['annual-credits-total'] || flags.annualCreditsTotal,
+    creditGrantMode: flags['credit-grant-mode'],
+    annualCreditsTotal: flags['annual-credits-total'],
     profileResolution: profileBinding,
     workspaceCatalog: profileBinding?.workspaceCatalog || null,
     accountPattern: planClassification?.pattern || null,
@@ -1595,8 +1610,8 @@ function runPlanCommand(positional, flags, streams) {
 }
 
 function runRouteCommand(flags, streams) {
-  const goal = flags.goal || flags.query;
-  const endpointId = flags.api || flags.endpoint;
+  const goal = flags.goal;
+  const endpointId = flags.api;
 
   if (!goal && !endpointId) {
     write(streams.stderr, 'route requires --goal "<billing goal>" and/or --api <endpoint-id>');
@@ -1625,8 +1640,8 @@ function runRouteCommand(flags, streams) {
     tenant,
     goal,
     endpointId,
-    actionCode: flags['action-code'] || flags.actionCode,
-    displayName: flags['display-name'] || flags.displayName,
+    actionCode: flags['action-code'],
+    displayName: flags['display-name'],
     price: flags.price,
     token: flags.token,
     workspaceCatalog,
@@ -1722,6 +1737,9 @@ function runSourceBoundaryCommand(positional, flags, streams) {
     }
 
     const result = validateSourceBoundary(input);
+    for (const warning of result.warnings || []) {
+      write(streams.stderr, `warning: ${warning.message}`);
+    }
     if (flags.json) {
       renderJson(streams.stdout, result);
     } else if (result.valid) {
@@ -3617,8 +3635,8 @@ function runAuditCommand(positional, flags, streams) {
       const payload = buildAuditExportPlan({
         tenant,
         token: flags.token,
-        startingOn: flags['starting-on'] || flags.startingOn,
-        endingBefore: flags['ending-before'] || flags.endingBefore,
+        startingOn: flags['starting-on'],
+        endingBefore: flags['ending-before'],
         limit: flags.limit,
         sort: flags.sort,
       });
@@ -4284,6 +4302,10 @@ function run(argv = process.argv.slice(2), streams = { stdout: process.stdout, s
   const apiResult = runApiCommand(positional, flags, streams);
   if (apiResult !== null) {
     return apiResult;
+  }
+
+  if (matchProvisionRoute(positional)) {
+    return runProvisionCommand(positional, flags, streams, argv);
   }
 
   if (positional[0] === 'input') {

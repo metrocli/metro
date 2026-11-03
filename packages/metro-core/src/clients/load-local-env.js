@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 /**
@@ -10,17 +11,17 @@ const path = require('path');
  * Candidate paths (first existing wins):
  *   1. METRO_ENV_FILE
  *   2. <cwd>/.env
- *   3. <cwd>/metronome/.env
- *   4. <metronome-cli>/../metronome/.env  (sibling of this repo)
+ *   3. ~/.metro/.env
  */
-function candidateEnvPaths({ cwd = process.cwd(), repoRoot = null, env = process.env } = {}) {
+function candidateEnvPaths({ cwd = process.cwd(), env = process.env, homeDir = os.homedir() } = {}) {
   const paths = [];
   if (env.METRO_ENV_FILE) paths.push(path.resolve(String(env.METRO_ENV_FILE)));
   paths.push(path.resolve(cwd, '.env'));
-  paths.push(path.resolve(cwd, 'metronome', '.env'));
-  if (repoRoot) paths.push(path.resolve(repoRoot, '..', 'metronome', '.env'));
+  if (homeDir) paths.push(path.resolve(homeDir, '.metro', '.env'));
   return paths;
 }
+
+const ENV_SEARCH_HINT = 'METRO_ENV_FILE, ./.env, ~/.metro/.env';
 
 function parseEnvFile(contents) {
   const out = {};
@@ -45,12 +46,12 @@ function parseEnvFile(contents) {
 
 function loadLocalEnv({
   cwd = process.cwd(),
-  repoRoot = null,
   env = process.env,
+  homeDir = os.homedir(),
   readFileSync = fs.readFileSync,
   existsSync = fs.existsSync,
 } = {}) {
-  const tried = candidateEnvPaths({ cwd, repoRoot, env });
+  const tried = candidateEnvPaths({ cwd, env, homeDir });
   for (const filePath of tried) {
     if (!existsSync(filePath)) continue;
     const parsed = parseEnvFile(readFileSync(filePath, 'utf8'));
@@ -67,6 +68,7 @@ function loadLocalEnv({
 }
 
 module.exports = {
+  ENV_SEARCH_HINT,
   candidateEnvPaths,
   parseEnvFile,
   loadLocalEnv,

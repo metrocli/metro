@@ -4,16 +4,15 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const PACK_IDS = Object.freeze(['lev', 'generic', 'stub']);
+const PACK_IDS = Object.freeze(['generic', 'stub']);
+const DEFAULT_PACK_ID = 'generic';
 
 const LOCAL_PACK_ROOTS = Object.freeze({
-  lev: path.join(__dirname, '..', '..', '..', 'metro-workspace-lev', 'src'),
   generic: path.join(__dirname, '..', '..', '..', 'metro-workspace-generic', 'src'),
   stub: path.join(__dirname, '..', '..', '..', 'metro-workspace-stub', 'src'),
 });
 
 const NPM_PACK_NAMES = Object.freeze({
-  lev: '@metro-dev/metro-workspace',
   generic: '@metronome/metro-workspace-generic',
 });
 
@@ -48,7 +47,6 @@ const PACK_VALUE_KEYS = Object.freeze([
   'PRODUCTION_REFERENCE_CATALOG',
   'INTENTS',
   'GENERIC_WORKSPACE',
-  'LEV_WORKSPACE',
   'STUB_WORKSPACE',
 ]);
 
@@ -71,7 +69,7 @@ function normalizePackId(raw, fallback = null) {
 }
 
 function builtInDefaultPackId() {
-  return normalizePackId(process.env.METRO_DEFAULT_WORKSPACE_PACK, 'lev');
+  return normalizePackId(process.env.METRO_DEFAULT_WORKSPACE_PACK, DEFAULT_PACK_ID);
 }
 
 function readConfigDefaultPack(options = {}) {
@@ -110,13 +108,44 @@ function readProfileWorkspacePack(options = {}) {
 }
 
 /**
+ * workspaceCatalog of the selected (or default) profile in ~/.metro/profiles.json.
+ * Validators use it for tenant ids such as the access creditTypeId, so nothing
+ * tenant-specific is hardcoded in core. Returns null when absent or unreadable.
+ */
+function readProfileWorkspaceCatalog(options = {}) {
+  const dir = options.configDir ? path.resolve(String(options.configDir)) : defaultMetroConfigDir();
+  const filePath = options.profilePath
+    ? path.resolve(String(options.profilePath))
+    : profilesPath(dir);
+  try {
+    if (!fs.existsSync(filePath)) return null;
+    const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const profiles = parsed.profiles && typeof parsed.profiles === 'object' ? parsed.profiles : {};
+    let name = options.profileName || null;
+    if (!name && options.tenant) {
+      name = Object.keys(profiles).find((key) => profiles[key]?.tenant === options.tenant) || null;
+    }
+    name = name || parsed.defaultProfile || Object.keys(profiles)[0] || null;
+    const catalog = name && profiles[name] ? profiles[name].workspaceCatalog : null;
+    return catalog && typeof catalog === 'object' ? catalog : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Options for validateShapeInput built from the active profile config. */
+function defaultValidationOptions(options = {}) {
+  return { workspaceCatalog: readProfileWorkspaceCatalog(options) };
+}
+
+/**
  * Resolution order:
  * 1. options.workspace / --workspace
  * 2. METRO_WORKSPACE_PACK or METRO_WORKSPACE
  * 3. session override (metro workspace use)
  * 4. profiles.<name>.workspacePack
  * 5. ~/.metro/config.json defaultWorkspacePack
- * 6. METRO_DEFAULT_WORKSPACE_PACK or 'lev'
+ * 6. METRO_DEFAULT_WORKSPACE_PACK or 'generic'
  */
 function resolvePackId(options = {}) {
   if (options.workspace) {
@@ -249,6 +278,7 @@ function describeWorkspaceResolution(options = {}) {
 
 const api = {
   PACK_IDS,
+  DEFAULT_PACK_ID,
   resolvePackId,
   loadWorkspacePack,
   getActiveWorkspace,
@@ -259,6 +289,8 @@ const api = {
   describeWorkspaceResolution,
   defaultMetroConfigDir,
   configPath,
+  readProfileWorkspaceCatalog,
+  defaultValidationOptions,
 };
 
 Object.defineProperty(api, 'packId', {

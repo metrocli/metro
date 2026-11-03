@@ -1,14 +1,10 @@
 'use strict';
 
-const { loadLocalEnv } = require('./load-local-env');
-const path = require('path');
-
-// clients/ → src/ → metro-core/ → packages/ → metronome-cli/
-const METRO_REPO_ROOT = path.resolve(__dirname, '../../../..');
+const { loadLocalEnv, ENV_SEARCH_HINT } = require('./load-local-env');
 
 function ensureLocalEnvLoaded() {
   // Idempotent: loadLocalEnv never overrides set vars.
-  return loadLocalEnv({ cwd: process.cwd(), repoRoot: METRO_REPO_ROOT });
+  return loadLocalEnv({ cwd: process.cwd() });
 }
 
 function parseTenantFlags(argv = []) {
@@ -24,15 +20,28 @@ function parseTenantFlags(argv = []) {
   return null;
 }
 
-function resolveTenant(argv = []) {
+/**
+ * Tenant for this run. Never inferred from METRONOME_PROD_KEY being present
+ * (gotcha never-infer-production-from-key-presence):
+ *   --sandbox / --prod  -> that tenant
+ *   no flag             -> sandbox when METRONOME_SANDBOX_KEY is set
+ *   otherwise           -> refuse and ask for an explicit flag
+ */
+function resolveTenant(argv = [], env = process.env) {
   const explicit = parseTenantFlags(argv);
   if (explicit) return explicit;
-  return process.env.METRONOME_PROD_KEY ? 'production' : 'sandbox';
+  if (env.METRONOME_SANDBOX_KEY && String(env.METRONOME_SANDBOX_KEY).trim()) return 'sandbox';
+  const error = new Error(
+    'No tenant selected. Pass --sandbox or --prod. metro never picks production on its own, '
+    + 'and with no sandbox key set there is no safe default. Add one with: metro init',
+  );
+  error.code = 'METRONOME_TENANT_EXPLICIT_REQUIRED';
+  throw error;
 }
 
 function envLoadHint(label, envLoad) {
   if (envLoad && !envLoad.loaded) {
-    return ' No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).';
+    return ` No .env found (tried ${ENV_SEARCH_HINT}).`;
   }
   if (envLoad && envLoad.loaded) {
     return ` Loaded ${envLoad.path} but ${label} still missing/wrong.`;
@@ -80,13 +89,13 @@ function applyMetronomeApiKeyFromEnv({
     const key = process.env.METRONOME_PROD_KEY;
     assertProdKeyShape(key, 'METRONOME_PROD_KEY', envLoad);
     process.env.METRONOME_API_KEY = key;
-    return { tenant, source: explicit ? 'flag:--prod' : 'implicit:METRONOME_PROD_KEY', envLoad };
+    return { tenant, source: 'flag:--prod', envLoad };
   }
 
   const key = process.env.METRONOME_API_KEY || process.env.METRONOME_SANDBOX_KEY;
   if (!key) {
     const hint = envLoad && !envLoad.loaded
-      ? ' No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).'
+      ? ` No .env found (tried ${ENV_SEARCH_HINT}).`
       : '';
     const error = new Error(`Sandbox requires METRONOME_API_KEY or METRONOME_SANDBOX_KEY.${hint}`);
     error.code = 'METRONOME_SANDBOX_KEY_MISSING';

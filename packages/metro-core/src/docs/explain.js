@@ -4,9 +4,9 @@ const { buildApiExportBundle } = require('../api-catalog/export');
 const { buildReleaseArtifactManifest, buildReleaseReadiness } = require('../release/readiness');
 const { buildSetupQuickstart, buildSetupTemplate } = require('../setup/profiles');
 const packageManifest = require('../../../../package.json');
-const { loadLevExplainTopics } = require('./load-lev-explain-topics');
+const { loadPackExplainTopics } = require('./load-pack-explain-topics');
 
-const levExplainTopics = loadLevExplainTopics();
+const packExplainTopics = loadPackExplainTopics();
 
 const DOCS_EXPLAIN_SCHEMA_VERSION = 'metro.docs.explain.v1';
 const DOCS_EXPLAIN_INDEX_SCHEMA_VERSION = 'metro.docs.explain.index.v1';
@@ -41,7 +41,7 @@ function baseResult(bundle, parsed, match) {
   return {
     schemaVersion: DOCS_EXPLAIN_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/docs/explain.js',
+      'packages/metro-core/src/docs/explain.js',
       ...bundle.generatedFrom,
     ],
     apiAccess: 'none',
@@ -103,7 +103,7 @@ function familyMatch(family) {
       commands: ['metro docs api-reference --family <family> --json', 'metro api catalog --family <family> --json'],
     },
     sourceIds: [],
-    sources: ['metronome-cli/src/docs/api-reference.js', 'metronome-cli/src/api-catalog/index.js'],
+    sources: ['packages/metro-core/src/docs/api-reference.js', 'packages/metro-core/src/api-catalog/index.js'],
   };
 }
 
@@ -169,7 +169,7 @@ function ruleMatch(rule, validatorDocs) {
       shapeIds: clone(validatorDocs.shapeIdsByRuleId[rule.id] || []),
     },
     sourceIds: [],
-    sources: ['docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/validators/rules.js'],
+    sources: ['docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/validators/rules.js'],
   };
 }
 
@@ -218,7 +218,7 @@ function scopeMatch(scope, policy) {
       requiredApproverRoles: clone(policy?.requiredApproverRoles || []),
     },
     sourceIds: [],
-    sources: clone(policy?.sources || ['metronome-cli/src/api-catalog/index.js']),
+    sources: clone(policy?.sources || ['packages/metro-core/src/api-catalog/index.js']),
   };
 }
 
@@ -227,19 +227,18 @@ function exampleMatch(example) {
     type: 'example-fixture',
     id: example.id,
     title: example.command,
-    summary: `Checked-in golden fixture: ${example.golden}`,
-    status: 'golden-covered',
+    summary: `Example command covering: ${(example.covers || []).join(', ')}`,
+    status: 'example',
     apiAccess: 'none',
     keyFields: {
       command: example.command,
-      golden: example.golden,
       covers: clone(example.covers || []),
     },
     related: {
       command: example.command,
     },
     sourceIds: [],
-    sources: [example.golden],
+    sources: ['packages/metro-core/src/api-catalog/export.js'],
   };
 }
 
@@ -272,11 +271,6 @@ function inputNormalizeTopic(topic, bundle) {
       validators: ['validateShapeInput', 'validateApiEndpointRequest'],
       secretScanRuleIds: ['MTR-SECRET-001', 'MTR-SECRET-002'],
       commandIds: ['input.normalize', 'docs.input-reference'],
-      goldenFixtures: [
-        'metronome-cli/test/golden/input/normalize.pro-annual-yaml.json',
-        'metronome-cli/test/golden/input/normalize.api-contracts-create-yaml.json',
-        'metronome-cli/test/golden/docs/input-reference.json',
-      ],
     },
     related: {
       commandIds: ['input.normalize', 'docs.input-reference'],
@@ -288,8 +282,8 @@ function inputNormalizeTopic(topic, bundle) {
       ],
       nextLocalEvidence: [
         'metro docs input-reference --json',
-        'metro input normalize --shape pro-annual --file metronome-cli/test/fixtures/pro-annual-valid.yaml --json',
-        'metro input normalize --api contracts.create --file metronome-cli/test/fixtures/api-contracts-create-valid.yaml --json',
+        'metro input normalize --shape pro-annual --file <pro-annual-valid.yaml> --json',
+        'metro input normalize --api contracts.create --file <api-contracts-create-valid.yaml> --json',
       ],
     },
     sourceIds: uniq([
@@ -304,10 +298,7 @@ function inputNormalizeTopic(topic, bundle) {
     sources: uniq([
       ...normalizeCommand.sources,
       ...inputReferenceCommand.sources,
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/golden/input/normalize.pro-annual-yaml.json',
-      'metronome-cli/test/golden/input/normalize.api-contracts-create-yaml.json',
-      'metronome-cli/test/golden/docs/input-reference.json',
+      'packages/metro-core/src/docs/explain.js',
     ]),
   };
 }
@@ -373,8 +364,7 @@ function firstSafePreviewTopic(topic, bundle) {
     sources: uniq([
       ...quickstart.sources,
       'docs/metronome-cli/site/install.html#first-safe-preview',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/golden/docs/explain.first-safe-preview.json',
+      'packages/metro-core/src/docs/explain.js',
     ]),
   };
 }
@@ -432,7 +422,7 @@ function installTroubleshootingTopic(topic, bundle) {
         {
           failureId: 'METRO-INSTALL-002',
           symptom: 'Runtime files are missing from the tarball.',
-          nextSafeStep: 'Inspect metronome-cli/package.json files allowlist and npm pack --dry-run --json output before changing source paths.',
+          nextSafeStep: 'Inspect package.json files allowlist and npm pack --dry-run --json output before changing source paths.',
         },
         {
           failureId: 'METRO-INSTALL-003',
@@ -456,7 +446,7 @@ function installTroubleshootingTopic(topic, bundle) {
         },
       ],
       recoveryOrder: [
-        'Read metronome-cli/package.json for the package name, bin.metro path, and files allowlist.',
+        'Read package.json for the package name, bin.metro path, and files allowlist.',
         'Run npm --prefix metronome-cli run test:package to verify npm pack dry-run contents and executable bin metadata.',
         'Run npm --prefix metronome-cli run test:install to prove a temporary global install exposes the metro binary.',
         'Run metro schema --json or metro shape list --json from the installed binary before using setup or preview commands.',
@@ -472,16 +462,13 @@ function installTroubleshootingTopic(topic, bundle) {
         'npm --prefix metronome-cli run test:package',
         'npm --prefix metronome-cli run test:install',
         'npm --prefix metronome-cli test',
-        'node metronome-cli/bin/metro.js schema --json',
-        'node metronome-cli/bin/metro.js shape list --json',
-        'node metronome-cli/bin/metro.js setup quickstart --json',
+        'node bin/metro.js schema --json',
+        'node bin/metro.js shape list --json',
+        'node bin/metro.js setup quickstart --json',
       ],
       proofFiles: [
-        'metronome-cli/package.json',
-        'metronome-cli/test/package.test.js',
-        'metronome-cli/test/install.test.js',
+        'package.json',
         'docs/metronome-cli/site/install.html',
-        'metronome-cli/test/golden/docs/explain.install-troubleshooting.json',
       ],
     },
     related: {
@@ -496,9 +483,7 @@ function installTroubleshootingTopic(topic, bundle) {
       ],
       commandsById: commandIds.map((commandId) => commandsById[commandId].command),
       sourceFiles: [
-        'metronome-cli/package.json',
-        'metronome-cli/test/package.test.js',
-        'metronome-cli/test/install.test.js',
+        'package.json',
         'docs/metronome-cli/site/install.html',
       ],
     },
@@ -515,10 +500,8 @@ function installTroubleshootingTopic(topic, bundle) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/site/install.html',
-      'metronome-cli/package.json',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
+      'package.json',
+      'packages/metro-core/src/docs/explain.js',
     ]),
   };
 }
@@ -606,7 +589,7 @@ function packagePublishReadinessTopic(topic, bundle) {
         {
           blockerId: 'METRO-PUBLISH-001',
           title: 'Package manifest is private',
-          evidence: 'metronome-cli/package.json has "private": true.',
+          evidence: 'package.json has "private": true.',
           nextSafeStep: 'Do not remove private:true until the registry, owner approval, versioning, provenance, and release-gate evidence are documented and reviewed.',
         },
         {
@@ -630,20 +613,20 @@ function packagePublishReadinessTopic(topic, bundle) {
       ],
       requiredBeforePublish: readiness.requiredEvidenceBeforePublish,
       safeLocalCommands: [
-        'node metronome-cli/bin/metro.js release readiness --json',
-        'node metronome-cli/bin/metro.js release artifact-manifest --json',
+        'node bin/metro.js release readiness --json',
+        'node bin/metro.js release artifact-manifest --json',
         'npm --prefix metronome-cli run test:package',
         'npm --prefix metronome-cli run test:install',
         'npm --prefix metronome-cli test',
-        'node metronome-cli/bin/metro.js release retention-policy template --json',
-        'node metronome-cli/bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
-        'node metronome-cli/bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
-        'node metronome-cli/bin/metro.js release evidence-check --dir <artifact-dir> --json',
+        'node bin/metro.js release retention-policy template --json',
+        'node bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
+        'node bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
+        'node bin/metro.js release evidence-check --dir <artifact-dir> --json',
         'npm run check:syntax',
         'npm run secrets:scan',
         'node docs/metronome-cli/site/verify-site.js',
-        'node metronome-cli/bin/metro.js docs explain package.publish-readiness --json',
-        'node metronome-cli/bin/metro.js docs explain install.troubleshooting --json',
+        'node bin/metro.js docs explain package.publish-readiness --json',
+        'node bin/metro.js docs explain install.troubleshooting --json',
       ],
       refusedAssumptions: [
         'Treating a successful local tarball install as proof of internal publishing.',
@@ -668,9 +651,7 @@ function packagePublishReadinessTopic(topic, bundle) {
       ],
       commandsById: commandIds.map((commandId) => commandsById[commandId].command),
       sourceFiles: [
-        'metronome-cli/package.json',
-        'metronome-cli/test/package.test.js',
-        'metronome-cli/test/install.test.js',
+        'package.json',
         'docs/metronome-cli/site/install.html',
       ],
     },
@@ -689,18 +670,12 @@ function packagePublishReadinessTopic(topic, bundle) {
     ]),
     sources: uniq([
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/site/install.html',
-      'metronome-cli/package.json',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
-      'metronome-cli/test/golden/release/evidence-check.valid.json',
-      'metronome-cli/test/golden/release/retention-policy.template.json',
-      'metronome-cli/test/golden/release/retention-policy.validation.valid.json',
+      'package.json',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/docs/explain.js',
     ]),
   };
 }
@@ -771,26 +746,26 @@ function ciLocalChecksTopic(topic, bundle) {
         },
       ],
       machineReadableDiscovery: [
-        'node metronome-cli/bin/metro.js schema --json',
-        'node metronome-cli/bin/metro.js docs command-reference --json',
-        'node metronome-cli/bin/metro.js docs explain --list --json',
-        'node metronome-cli/bin/metro.js docs input-reference --json',
-        'node metronome-cli/bin/metro.js api readiness --summary --json',
-        'node metronome-cli/bin/metro.js release readiness --json',
-        'node metronome-cli/bin/metro.js release artifact-manifest --json',
-        'node metronome-cli/bin/metro.js release retention-policy template --json',
-        'node metronome-cli/bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
-        'node metronome-cli/bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
-        'node metronome-cli/bin/metro.js release evidence-check --dir <artifact-dir> --json',
+        'node bin/metro.js schema --json',
+        'node bin/metro.js docs command-reference --json',
+        'node bin/metro.js docs explain --list --json',
+        'node bin/metro.js docs input-reference --json',
+        'node bin/metro.js api readiness --summary --json',
+        'node bin/metro.js release readiness --json',
+        'node bin/metro.js release artifact-manifest --json',
+        'node bin/metro.js release retention-policy template --json',
+        'node bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
+        'node bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
+        'node bin/metro.js release evidence-check --dir <artifact-dir> --json',
       ],
       parseRules: [
         'Parse stdout by schemaVersion and command id; do not scrape generated HTML or README prose when the CLI exposes an equivalent JSON contract.',
-        'Treat exit code 0 as local evidence success, exit code 1 as input or validation failure, and exit code 2 as a useful safety refusal.',
+        'Treat exit code 0 as local evidence success, exit code 1 as input or validation failure, exit code 2 as a useful safety refusal, and exit code 3 as a read-back mismatch after a live write (the write happened).',
         'Keep stdout and stderr separate so successful evidence payloads are not conflated with refusal JSON or validation findings.',
         'Store command, exit code, schemaVersion, payload hashes, sourceIds, generatedFrom, and nextSafeStep with any CI artifact.',
       ],
       blockedDoesNotMean: [
-        'Passing CI authorizes live Metronome, Stripe, HubSpot, Hyperline, PostHog, Slack, Zoom, SMTP, npm registry, or customer-impacting work.',
+        'Passing CI authorizes live Metronome, Stripe, CRM, analytics, chat, email, npm registry, or customer-impacting work.',
         'A local apply-gate or readiness payload can replace current-turn authorization.',
         'A present API key or npm token should be loaded, printed, or used by CI checks.',
         'Local tarball install proof is internal npm registry publish proof.',
@@ -810,10 +785,7 @@ function ciLocalChecksTopic(topic, bundle) {
       ],
       commandIds,
       sourceFiles: [
-        'metronome-cli/package.json',
-        'metronome-cli/test/package.test.js',
-        'metronome-cli/test/install.test.js',
-        'metronome-cli/test/golden.test.js',
+        'package.json',
         'docs/metronome-cli/site/verify-site.js',
         'docs/metronome-cli/site/integration.html',
       ],
@@ -834,10 +806,7 @@ function ciLocalChecksTopic(topic, bundle) {
       ],
       commandsById: commandIds.map((commandId) => commandsById[commandId].command),
       sourceFiles: [
-        'metronome-cli/package.json',
-        'metronome-cli/test/package.test.js',
-        'metronome-cli/test/install.test.js',
-        'metronome-cli/test/golden.test.js',
+        'package.json',
         'docs/metronome-cli/site/integration.html',
       ],
     },
@@ -861,16 +830,10 @@ function ciLocalChecksTopic(topic, bundle) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/site/integration.html',
-      'metronome-cli/package.json',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/golden/release/evidence-check.valid.json',
-      'metronome-cli/test/golden/release/retention-policy.template.json',
-      'metronome-cli/test/golden/release/retention-policy.validation.valid.json',
+      'package.json',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/release/readiness.js',
       'docs/metronome-cli/site/verify-site.js',
     ]),
   };
@@ -949,25 +912,16 @@ function setupTroubleshootingTopic(topic, bundle) {
       safeLocalCommands: [
         'metro setup quickstart --json',
         'metro setup template --json',
-        'metro setup doctor --file metronome-cli/test/fixtures/setup/profiles-valid.json --json',
-        'metro setup doctor --file metronome-cli/test/fixtures/setup/profiles-invalid-secret.json --json',
-        'metro setup resolve --file metronome-cli/test/fixtures/setup/profiles-valid.json --profile lev-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
+        'metro setup doctor --file <profiles-valid.json> --json',
+        'metro setup doctor --file <profiles-invalid-secret.json> --json',
+        'metro setup resolve --file <profiles-valid.json> --profile metro-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
       ],
       blockedDoesNotMean: [
         'A missing env var blocks local validation or preview.',
         'A present env var authorizes a live read or write.',
         'A profile-resolution object can replace current-turn authorization, read-gate, preflight, approval, audit, or read-back evidence.',
       ],
-      fixturePaths: [
-        'metronome-cli/test/fixtures/setup/profiles-valid.json',
-        'metronome-cli/test/fixtures/setup/profiles-invalid-secret.json',
-      ],
-      goldenFixtures: [
-        'metronome-cli/test/golden/setup/quickstart.json',
-        'metronome-cli/test/golden/setup/template.json',
-        'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
-        'metronome-cli/test/golden/docs/explain.setup-troubleshooting.json',
-      ],
+      fixturePaths: [],
     },
     related: {
       commands: [
@@ -980,11 +934,7 @@ function setupTroubleshootingTopic(topic, bundle) {
       ],
       commandsById: commandIds.map((commandId) => commandsById[commandId].command),
       sourceFiles: [
-        'metronome-cli/src/setup/profiles.js',
-        'metronome-cli/test/fixtures/setup/profiles-valid.json',
-        'metronome-cli/test/fixtures/setup/profiles-invalid-secret.json',
-        'metronome-cli/test/golden/setup/quickstart.json',
-        'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
+        'packages/metro-core/src/setup/profiles.js',
       ],
     },
     sourceIds: uniq([
@@ -1002,14 +952,9 @@ function setupTroubleshootingTopic(topic, bundle) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/site/install.html',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/setup/profiles.js',
-      'metronome-cli/test/fixtures/setup/profiles-valid.json',
-      'metronome-cli/test/fixtures/setup/profiles-invalid-secret.json',
-      'metronome-cli/test/golden/setup/quickstart.json',
-      'metronome-cli/test/golden/setup/template.json',
-      'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/setup/profiles.js',
     ]),
   };
 }
@@ -1103,16 +1048,15 @@ function outputAnatomyTopic(topic, bundle) {
       commandIds,
       refusalCommandIds,
       exampleFixtureIds: exampleIds,
-      goldenFixtures: exampleIds.map((exampleId) => examplesById[exampleId].golden),
     },
     related: {
       commands: [
         'metro docs explain output.anatomy --json',
         'metro docs explain --list --json',
         'metro docs command-reference --json',
-        'metro input normalize --shape pro-annual --file metronome-cli/test/fixtures/pro-annual-valid.yaml --json',
-        'metro api preview contracts.create --file metronome-cli/test/fixtures/api-contracts-create-valid.json --sandbox --json',
-        'metro api read-pipeline contracts.get.v2 --file metronome-cli/test/fixtures/api-contracts-get-valid.json --read-gate metronome-cli/test/fixtures/api-read-gate-contracts-get-valid.json --mock-response metronome-cli/test/fixtures/api-contracts-get-mock-response.json --out audit-logs/api-read-pipeline-contracts-get.jsonl --actor agent-local-test --dry-run --json',
+        'metro input normalize --shape pro-annual --file <pro-annual-valid.yaml> --json',
+        'metro api preview contracts.create --file <api-contracts-create-valid.json> --sandbox --json',
+        'metro api read-pipeline contracts.get.v2 --file <api-contracts-get-valid.json> --read-gate <api-read-gate-contracts-get-valid.json> --mock-response <api-contracts-get-mock-response.json> --out audit-logs/api-read-pipeline-contracts-get.jsonl --actor agent-local-test --dry-run --json',
       ],
       commandsById: commandIds.map((commandId) => commandsById[commandId].command),
       refusalCommands: refusalCommandIds.map((commandId) => refusalCommandEntry(commandId, commandsById, unsupportedById).command),
@@ -1130,17 +1074,11 @@ function outputAnatomyTopic(topic, bundle) {
     sources: uniq([
       'docs/metronome-cli/README.md',
       'docs/metronome-cli/site/integration.html',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/input/normalize.js',
-      'metronome-cli/src/api-catalog/preview.js',
-      'metronome-cli/src/api-catalog/read-pipeline.js',
-      'metronome-cli/test/golden/docs/command-reference.json',
-      'metronome-cli/test/golden/docs/explain.output-anatomy.json',
-      'metronome-cli/test/golden/input/normalize.pro-annual-yaml.json',
-      'metronome-cli/test/golden/api/preview.contracts-create.sandbox.json',
-      'metronome-cli/test/golden/api/read-pipeline.contracts-get.dry-run.sandbox.json',
-      ...exampleIds.map((exampleId) => examplesById[exampleId].golden),
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/input/normalize.js',
+      'packages/metro-core/src/api-catalog/preview.js',
+      'packages/metro-core/src/api-catalog/read-pipeline.js',
     ]),
   };
 }
@@ -1222,12 +1160,6 @@ function refusalTroubleshootingTopic(topic, bundle) {
         'Broad expert API access must use reviewed endpoint IDs, not raw endpoint paths.',
         'Production writes require preview hash binding plus reviewed preflight, audit, idempotency, rollback/remediation, and read-back evidence.',
       ],
-      goldenFixtures: [
-        'metronome-cli/test/golden/api/read.refusal.contracts-get-v2.sandbox.json',
-        'metronome-cli/test/golden/api/readiness-summary.json',
-        'metronome-cli/test/golden/docs/command-reference.json',
-        ...exampleIds.map((exampleId) => examplesById[exampleId].golden),
-      ],
     },
     related: {
       commands: [
@@ -1254,21 +1186,15 @@ function refusalTroubleshootingTopic(topic, bundle) {
     ]),
     sources: uniq([
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/api-catalog/read-refusal.js',
-      'metronome-cli/src/api-catalog/readiness.js',
-      'metronome-cli/test/golden/api/read.refusal.contracts-get-v2.sandbox.json',
-      'metronome-cli/test/golden/api/readiness-summary.json',
-      'metronome-cli/test/golden/docs/command-reference.json',
-      'metronome-cli/test/golden/docs/explain.output-anatomy.json',
-      ...exampleIds.map((exampleId) => examplesById[exampleId].golden),
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/api-catalog/read-refusal.js',
+      'packages/metro-core/src/api-catalog/readiness.js',
     ]),
   };
 }
@@ -1340,33 +1266,21 @@ function billingProviderAttachmentTopic(topic, bundle) {
         'Wrong Stripe delivery settings can route invoices to the wrong Stripe customer, account, collection method, or draft behavior.',
         'Live reads or writes require explicit current-turn authorization, tenant selection, audit, canary, rollback, and read-back evidence.',
       ],
-      localProof: [
-        'metronome-cli/test/fixtures/stripe-billing-provider-valid.json',
-        'metronome-cli/test/golden/stripe-billing-provider-attachment-preview.sandbox.json',
-        'metronome-cli/test/golden/inspect/billing-provider.plan.production.json',
-        'metronome-cli/test/golden/preflight/billing-provider-attach.stripe-billing-provider-attachment.template.production.json',
-        'metronome-cli/test/golden/audit/billing-provider-attach.stripe-billing-provider-attachment.template.production.json',
-        'metronome-cli/test/golden/proof/billing-provider-attach.stripe-billing-provider-attachment.sandbox-template.json',
-        'metronome-cli/test/golden/apply-gate/billing-provider-attach.stripe-billing-provider-attachment.template.production.json',
-        'metronome-cli/test/golden/api/read-plan.billing-provider-get.production.json',
-        'metronome-cli/test/golden/api/read-plan.billing-provider-list-configured.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.billing-provider-get.dry-run.production.json',
-        'metronome-cli/test/golden/api/read-pipeline.billing-provider-list-configured.dry-run.sandbox.json',
-      ],
+      localProof: [],
     },
     related: {
       commands: [
         'metro docs explain billing-provider.attachment --json',
-        'metro validate --shape stripe-billing-provider-attachment --file metronome-cli/test/fixtures/stripe-billing-provider-valid.json --json',
-        'metro input normalize --shape stripe-billing-provider-attachment --file metronome-cli/test/fixtures/stripe-billing-provider-valid.json --json',
+        'metro validate --shape stripe-billing-provider-attachment --file <stripe-billing-provider-valid.json> --json',
+        'metro input normalize --shape stripe-billing-provider-attachment --file <stripe-billing-provider-valid.json> --json',
         inspectPlanCommand.command,
         previewCommand.command,
         'metro preflight template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json',
         'metro audit template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json',
         'metro proof sandbox-template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --json',
         'metro apply-gate template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --prod --json',
-        'metro api read-plan billingProvider.getCustomerConfigurations --file metronome-cli/test/fixtures/api-billing-provider-get-valid.json --prod --json',
-        'metro api read-plan billingProvider.listConfiguredProviders --file metronome-cli/test/fixtures/api-billing-provider-list-configured-valid.json --sandbox --json',
+        'metro api read-plan billingProvider.getCustomerConfigurations --file <api-billing-provider-get-valid.json> --prod --json',
+        'metro api read-plan billingProvider.listConfiguredProviders --file <api-billing-provider-list-configured-valid.json> --sandbox --json',
       ],
       blockedCommands: blockedInspect ? [blockedInspect.command] : [],
       endpointIds: relatedEndpointIds,
@@ -1391,21 +1305,17 @@ function billingProviderAttachmentTopic(topic, bundle) {
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/shapes/index.js',
-      'metronome-cli/src/validators/index.js',
-      'metronome-cli/src/preview/index.js',
-      'metronome-cli/src/preflight/index.js',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/proof/sandbox-manifest.js',
-      'metronome-cli/src/apply-gate/index.js',
-      'metronome-cli/src/inspect/index.js',
-      'metronome-cli/test/fixtures/stripe-billing-provider-valid.json',
-      'metronome-cli/test/golden/stripe-billing-provider-attachment-preview.sandbox.json',
-      'metronome-cli/test/golden/inspect/billing-provider.plan.production.json',
-      'metronome-cli/test/golden/docs/explain.billing-provider-attachment.json',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/shapes/index.js',
+      'packages/metro-core/src/validators/index.js',
+      'packages/metro-core/src/preview/index.js',
+      'packages/metro-core/src/preflight/index.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/proof/sandbox-manifest.js',
+      'packages/metro-core/src/apply-gate/index.js',
+      'packages/metro-core/src/inspect/index.js',
       ...relatedEndpointIds.flatMap((endpointId) => endpointsById[endpointId].sources || []),
     ]),
   };
@@ -1482,27 +1392,20 @@ function customerSetupTopic(topic, bundle) {
         'Customer create can affect customer access, ingest alias ownership, Stripe delivery posture, and later invoice routing.',
         'Live reads or writes require explicit current-turn authorization, tenant selection, audit, canary, rollback, and read-back evidence.',
       ],
-      localProof: [
-        'metronome-cli/test/fixtures/customer-setup-valid.json',
-        'metronome-cli/test/golden/customer-setup-preview.sandbox.json',
-        'metronome-cli/test/golden/preflight/customer-setup.customer-setup.template.production.json',
-        'metronome-cli/test/golden/audit/customer-setup.customer-setup.template.production.json',
-        'metronome-cli/test/golden/proof/customer-setup.customer-setup.sandbox-template.json',
-        'metronome-cli/test/golden/apply-gate/customer-setup.customer-setup.template.production.json',
-      ],
+      localProof: [],
     },
     related: {
       commands: [
         'metro docs explain customer.setup --json',
-        'metro validate --shape customer-setup --file metronome-cli/test/fixtures/customer-setup-valid.json --json',
-        'metro input normalize --shape customer-setup --file metronome-cli/test/fixtures/customer-setup-valid.json --json',
+        'metro validate --shape customer-setup --file <customer-setup-valid.json> --json',
+        'metro input normalize --shape customer-setup --file <customer-setup-valid.json> --json',
         previewCommand.command,
         'metro preflight template --workflow customer.setup --shape customer-setup --prod --json',
         'metro audit template --workflow customer.setup --shape customer-setup --prod --json',
         'metro proof sandbox-template --workflow customer.setup --shape customer-setup --json',
         'metro apply-gate template --workflow customer.setup --shape customer-setup --prod --json',
-        'metro api read-plan customers.get --file metronome-cli/test/fixtures/api-customers-get-valid.json --sandbox --json',
-        'metro api read-plan customers.list --file metronome-cli/test/fixtures/api-customers-list-valid.json --sandbox --json',
+        'metro api read-plan customers.get --file <api-customers-get-valid.json> --sandbox --json',
+        'metro api read-plan customers.list --file <api-customers-list-valid.json> --sandbox --json',
       ],
       blockedCommands: blockedApply ? [blockedApply.command] : [],
       endpointIds: relatedEndpointIds,
@@ -1527,20 +1430,17 @@ function customerSetupTopic(topic, bundle) {
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/shapes/index.js',
-      'metronome-cli/src/validators/index.js',
-      'metronome-cli/src/preview/index.js',
-      'metronome-cli/src/preflight/index.js',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/proof/sandbox-manifest.js',
-      'metronome-cli/src/apply-gate/index.js',
-      'metronome-cli/test/fixtures/customer-setup-valid.json',
-      'metronome-cli/test/golden/customer-setup-preview.sandbox.json',
-      'metronome-cli/test/golden/docs/explain.customer-setup.json',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/shapes/index.js',
+      'packages/metro-core/src/validators/index.js',
+      'packages/metro-core/src/preview/index.js',
+      'packages/metro-core/src/preflight/index.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/proof/sandbox-manifest.js',
+      'packages/metro-core/src/apply-gate/index.js',
       ...relatedEndpointIds.flatMap((endpointId) => endpointsById[endpointId].sources || []),
     ]),
   };
@@ -1645,7 +1545,7 @@ function workspaceRoutingTopic(topic, bundle) {
     keyFields: {
       commands: [
         'metro workspace explain --json',
-        'metro workspace status --file profiles.json --profile lev-sandbox --check-env --json',
+        'metro workspace status --file profiles.json --profile metro-sandbox --check-env --json',
         'metro plan list --json',
         'metro plan add-action-rate --action-code SP-FIND --display-name "Ideal Sponsor Finder" --price 20 --sandbox --json',
         'metro plan multi-tier-rate-rollout --action-code SP-FIND --sandbox --json',
@@ -1676,20 +1576,20 @@ function workspaceRoutingTopic(topic, bundle) {
       ],
     },
     sourceIds: ['metro-workspace-routing'],
-    sources: levExplainTopics.levWorkspaceRoutingSources(),
+    sources: packExplainTopics.workspaceRoutingSources(),
   };
 }
 
 function dimensionalRateCardTopic(topic, bundle) {
-  return levExplainTopics.buildDimensionalRateCardTopic(topic, bundle);
+  return packExplainTopics.buildDimensionalRateCardTopic(topic, bundle);
 }
 
 function sendInvoiceStripeTopic(topic, bundle) {
-  return levExplainTopics.buildSendInvoiceStripeTopic(topic, bundle);
+  return packExplainTopics.buildSendInvoiceStripeTopic(topic, bundle);
 }
 
 function contractTransitionsRebuyTopic(topic, bundle) {
-  return levExplainTopics.buildContractTransitionsRebuyTopic(topic, bundle);
+  return packExplainTopics.buildContractTransitionsRebuyTopic(topic, bundle);
 }
 
 function contractOverrideInspectionTopic(topic, bundle) {
@@ -1733,14 +1633,7 @@ function contractOverrideInspectionTopic(topic, bundle) {
         'contracts.getRateSchedule': ['rate_card_id', 'product_id', 'product_name', 'product_tags', 'product_custom_fields', 'pricing_group_values', 'entitled', 'list_rate', 'override_rate', 'commit_rate', 'billing_frequency', 'next_page'],
         'rateCards.getRates': ['product_id', 'product_name', 'product_tags', 'product_custom_fields', 'pricing_group_values', 'entitled', 'rate', 'commit_rate', 'billing_frequency', 'next_page'],
       },
-      localProof: [
-        'metronome-cli/test/golden/api/read-plan.contracts-rate-schedule.sandbox.json',
-        'metronome-cli/test/golden/api/read-mock.contracts-rate-schedule.bundle.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.contracts-rate-schedule.dry-run.sandbox.json',
-        'metronome-cli/test/golden/api/read-plan.rate-cards-get-rates.sandbox.json',
-        'metronome-cli/test/golden/api/read-mock.rate-cards-get-rates.bundle.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.rate-cards-get-rates.dry-run.sandbox.json',
-      ],
+      localProof: [],
     },
     related: {
       endpointIds: [contractRateSchedule.id, rateCardGetRates.id],
@@ -1748,9 +1641,9 @@ function contractOverrideInspectionTopic(topic, bundle) {
         'metro docs explain contract-overrides.inspection --json',
         'metro api explain contracts.getRateSchedule --json',
         'metro api explain rateCards.getRates --json',
-        'metro api read-plan contracts.getRateSchedule --file metronome-cli/test/fixtures/api-contracts-rate-schedule-valid.json --sandbox --json',
-        'metro api read-plan rateCards.getRates --file metronome-cli/test/fixtures/api-rate-cards-get-rates-valid.json --sandbox --json',
-        'metro api read-pipeline contracts.getRateSchedule --file metronome-cli/test/fixtures/api-contracts-rate-schedule-valid.json --read-gate metronome-cli/test/fixtures/api-read-gate-contracts-rate-schedule-valid.json --mock-response metronome-cli/test/fixtures/api-contracts-rate-schedule-mock-response.json --out audit-logs/api-read-pipeline-contracts-rate-schedule.jsonl --actor agent-local-test --dry-run --json',
+        'metro api read-plan contracts.getRateSchedule --file <api-contracts-rate-schedule-valid.json> --sandbox --json',
+        'metro api read-plan rateCards.getRates --file <api-rate-cards-get-rates-valid.json> --sandbox --json',
+        'metro api read-pipeline contracts.getRateSchedule --file <api-contracts-rate-schedule-valid.json> --read-gate <api-read-gate-contracts-rate-schedule-valid.json> --mock-response <api-contracts-rate-schedule-mock-response.json> --out audit-logs/api-read-pipeline-contracts-rate-schedule.jsonl --actor agent-local-test --dry-run --json',
       ],
     },
     sourceIds: uniq([
@@ -1766,11 +1659,7 @@ function contractOverrideInspectionTopic(topic, bundle) {
     sources: uniq([
       ...contractRateSchedule.sources,
       ...rateCardGetRates.sources,
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/fixtures/api-contracts-rate-schedule-valid.json',
-      'metronome-cli/test/fixtures/api-contracts-rate-schedule-mock-response.json',
-      'metronome-cli/test/golden/api/read-pipeline.contracts-rate-schedule.dry-run.sandbox.json',
-      'metronome-cli/test/golden/api/read-pipeline.rate-cards-get-rates.dry-run.sandbox.json',
+      'packages/metro-core/src/docs/explain.js',
     ]),
   };
 }
@@ -1823,39 +1712,22 @@ function productRateRetirementReadbackTopic(topic, bundle) {
           query: [],
         },
       },
-      localProof: [
-        'metronome-cli/test/golden/product-rate-retirement-preview.sandbox.json',
-        'metronome-cli/test/golden/preflight/product-rate-retirement.product-rate-retirement.template.production.json',
-        'metronome-cli/test/golden/audit/product-rate-retirement.product-rate-retirement.template.production.json',
-        'metronome-cli/test/golden/proof/product-rate-retirement.product-rate-retirement.sandbox-template.json',
-        'metronome-cli/test/golden/apply-gate/product-rate-retirement.product-rate-retirement.template.production.json',
-        'metronome-cli/test/golden/api/read-plan.products-get.sandbox.json',
-        'metronome-cli/test/golden/api/read-plan.rate-cards-get-rates.sandbox.json',
-        'metronome-cli/test/golden/api/read-plan.rate-card-schedule.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.products-get.dry-run.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.rate-cards-get-rates.dry-run.sandbox.json',
-        'metronome-cli/test/golden/api/read-pipeline.rate-card-schedule.dry-run.sandbox.json',
-        'metronome-cli/test/fixtures/api-read-audit-products-get-valid.jsonl',
-        'metronome-cli/test/golden/api/read-audit.products-get.validation.sandbox.json',
-        'metronome-cli/test/fixtures/api-read-audit-rate-cards-get-rates-valid.jsonl',
-        'metronome-cli/test/golden/api/read-audit.rate-cards-get-rates.validation.sandbox.json',
-        'metronome-cli/test/golden/proof/package-archive.package-alias-archive-handoff.sandbox-template.json',
-      ],
+      localProof: [],
     },
     related: {
       endpointIds: [rateCardAddRates.id, rateCardGetRates.id, rateCardSchedule.id, productsGet.id, productsArchive.id],
       commands: [
         'metro docs explain product-rate-retirement.readback --json',
-        'metro product retire preview --file metronome-cli/test/fixtures/product-rate-retirement-valid.json --sandbox --json',
+        'metro product retire preview --file <product-rate-retirement-valid.json> --sandbox --json',
         'metro api explain rateCards.addRates --json',
         'metro api explain rateCards.getRates --json',
         'metro api explain rateCards.getRateSchedule --json',
         'metro api explain products.get --json',
         'metro api explain products.archive --json',
-        'metro api read-plan rateCards.getRates --file metronome-cli/test/fixtures/api-rate-cards-get-rates-valid.json --sandbox --json',
-        'metro api read-plan rateCards.getRateSchedule --file metronome-cli/test/fixtures/api-rate-card-schedule-valid.json --sandbox --json',
-        'metro api read-plan products.get --file metronome-cli/test/fixtures/api-products-get-valid.json --sandbox --json',
-        'metro api read-audit validate --file metronome-cli/test/fixtures/api-read-audit-products-get-valid.jsonl --json',
+        'metro api read-plan rateCards.getRates --file <api-rate-cards-get-rates-valid.json> --sandbox --json',
+        'metro api read-plan rateCards.getRateSchedule --file <api-rate-card-schedule-valid.json> --sandbox --json',
+        'metro api read-plan products.get --file <api-products-get-valid.json> --sandbox --json',
+        'metro api read-audit validate --file <api-read-audit-products-get-valid.json>l --json',
         'metro preflight template --workflow product.rate-retirement --shape product-rate-retirement --prod --json',
         'metro proof sandbox-template --workflow product.rate-retirement --shape product-rate-retirement --json',
         'metro apply-gate template --workflow product.rate-retirement --shape product-rate-retirement --prod --json',
@@ -1888,13 +1760,9 @@ function productRateRetirementReadbackTopic(topic, bundle) {
       ...productsArchive.sources,
       'docs/metronome-cli/SHAPE_CATALOG.md#product-or-rate-retirement',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md#rate-card-rules',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/shapes/index.js',
-      'metronome-cli/src/validators/index.js',
-      'metronome-cli/test/fixtures/product-rate-retirement-valid.json',
-      'metronome-cli/test/golden/product-rate-retirement-preview.sandbox.json',
-      'metronome-cli/test/fixtures/api-read-audit-products-get-valid.jsonl',
-      'metronome-cli/test/golden/proof/package-archive.package-alias-archive-handoff.sandbox-template.json',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/shapes/index.js',
+      'packages/metro-core/src/validators/index.js',
     ]),
   };
 }
@@ -2032,7 +1900,7 @@ function docsExplainTopicIndex() {
   return {
     schemaVersion: DOCS_EXPLAIN_INDEX_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/docs/explain.js',
+      'packages/metro-core/src/docs/explain.js',
       ...bundle.generatedFrom,
     ],
     apiAccess: 'none',
@@ -2078,7 +1946,7 @@ function docsExplainTopicIndex() {
     sources: uniq([
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/docs/explain.js',
+      'packages/metro-core/src/docs/explain.js',
       ...operatingTopics.flatMap((topic) => topic.sources || []),
     ]),
     nextSafeStep: 'Run metro docs explain <topic> --json for a single topic, or use explicit prefixes such as command:, shape:, gotcha:, rule:, scope:, policy:, and example: to avoid ambiguous IDs. This index does not authorize live reads or writes.',

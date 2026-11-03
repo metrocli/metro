@@ -64,7 +64,7 @@ function markSkippedSteps(steps, fixtureRoot) {
       ...entry,
       status: 'skipped-fixture-missing',
       skipExecution: true,
-      skipReason: 'Set METRO_HARNESS_FIXTURE_ROOT or run from a source checkout with test/fixtures.',
+      skipReason: 'Set METRO_HARNESS_FIXTURE_ROOT (or --fixture-root) to a directory of shape and API fixtures.',
     };
   });
 }
@@ -95,7 +95,7 @@ const HARNESS_SUITES = Object.freeze([
   {
     id: 'local',
     title: 'Local shape and preview proof',
-    description: 'Onboarding steps plus pro-annual validate/preview and API readiness summary. Requires test/fixtures (source checkout or METRO_HARNESS_FIXTURE_ROOT).',
+    description: 'Onboarding steps plus pro-annual validate/preview and API readiness summary. Requires a fixture directory (--fixture-root or METRO_HARNESS_FIXTURE_ROOT).',
     apiAccess: 'none',
     fixtureRequired: true,
     executeSupported: true,
@@ -147,9 +147,9 @@ const HARNESS_SUITES = Object.freeze([
     estimatedMinutes: 1,
   },
   {
-    id: 'lev-pack',
+    id: 'pack-ops',
     title: 'Workspace pack native ops (offline)',
-    description: 'Package plan move dry-run apply, route scoring, and production apply refusal without API keys.',
+    description: 'For packs that export ops: package plan move dry-run apply, route scoring, and production apply refusal without API keys.',
     apiAccess: 'none',
     fixtureRequired: true,
     executeSupported: true,
@@ -160,7 +160,7 @@ const HARNESS_SUITES = Object.freeze([
 function listHarnessSuites() {
   return {
     schemaVersion: HARNESS_LIST_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/harness/index.js',
+    generatedFrom: 'packages/metro-core/src/harness/index.js',
     apiAccess: 'none',
     localOnly: true,
     liveExecution: clone(LOCAL_ONLY),
@@ -168,9 +168,9 @@ function listHarnessSuites() {
     nextCommands: [
       'metro harness run --suite onboard --execute --json',
       'metro harness run --suite agent-literacy --execute --json',
-      'metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json',
-      'metro harness run --suite policy --fixture-root test/fixtures --execute --json',
-      'metro harness run --suite lev-pack --fixture-root test/fixtures --execute --json',
+      'metro harness run --suite api-literacy --fixture-root <fixture-dir> --execute --json',
+      'metro harness run --suite policy --fixture-root <fixture-dir> --execute --json',
+      'metro harness run --suite pack-ops --fixture-root <fixture-dir> --execute --json',
       'metro harness intent annual-self-serve-package --sandbox --json',
     ],
     nextSafeStep: 'Run metro harness run --suite onboard --execute --json after install.',
@@ -235,7 +235,7 @@ function buildLocalSteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !proAnnual,
       status: proAnnual ? 'planned' : 'skipped-fixture-missing',
-      skipReason: proAnnual ? null : 'Requires test/fixtures/pro-annual-valid.json from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
+      skipReason: proAnnual ? null : 'Requires <pro-annual-valid.json> from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
     }),
     step({
       id: 'preview-pro-annual',
@@ -247,7 +247,7 @@ function buildLocalSteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !proAnnual,
       status: proAnnual ? 'planned' : 'skipped-fixture-missing',
-      skipReason: proAnnual ? null : 'Requires test/fixtures/pro-annual-valid.json from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
+      skipReason: proAnnual ? null : 'Requires <pro-annual-valid.json> from a source checkout or METRO_HARNESS_FIXTURE_ROOT.',
     }),
     step({
       id: 'api-readiness-summary',
@@ -426,7 +426,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
     step({
       id: 'api-read-plan-contracts-get',
@@ -438,7 +438,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
     step({
       id: 'harness-read-self-check',
@@ -450,7 +450,7 @@ function buildApiLiteracySteps(fixtureRoot) {
       fixtureRequired: true,
       skipExecution: !contractsGet,
       status: contractsGet ? 'planned' : 'skipped-fixture-missing',
-      skipReason: contractsGet ? null : 'Requires test/fixtures/api-contracts-get-valid.json.',
+      skipReason: contractsGet ? null : 'Requires <api-contracts-get-valid.json>.',
     }),
   ];
   return markSkippedSteps(steps, fixtureRoot);
@@ -530,20 +530,20 @@ function buildPolicySteps(fixtureRoot) {
   return markSkippedSteps(steps, fixtureRoot);
 }
 
-function buildLevPackSteps(fixtureRoot) {
+function buildPackOpsSteps(fixtureRoot) {
   const movePlan = fixtureRoot ? path.join(fixtureRoot, 'contract-move-plan-valid.json') : null;
   const confirmHash = 'sha256:95c1f5fc6f73824d3bc1095b23a317a3a3ea7f4fad682445029b2dc03bfec3f6';
 
   const steps = [
     step({
-      id: 'lev-route-downgrade',
+      id: 'pack-ops-route-downgrade',
       order: 1,
       command: 'metro route --goal "downgrade customer from Pro to Core at end of term" --prod --json',
       proves: 'Natural-language downgrade goals route to package-plan-move intent.',
       expectedExitCode: 0,
     }),
     step({
-      id: 'lev-move-plan-apply-dry-run',
+      id: 'pack-ops-move-plan-apply-dry-run',
       order: 2,
       command: movePlan
         ? `metro contract move-plan apply --file ${movePlan} --prod --confirm-hash ${confirmHash} --json`
@@ -555,7 +555,7 @@ function buildLevPackSteps(fixtureRoot) {
       expectedExitCode: 0,
     }),
     step({
-      id: 'lev-move-plan-apply-prod-refusal',
+      id: 'pack-ops-move-plan-apply-prod-refusal',
       order: 3,
       command: movePlan
         ? `metro contract move-plan apply --file ${movePlan} --prod --confirm-hash ${confirmHash} --apply --json`
@@ -567,11 +567,11 @@ function buildLevPackSteps(fixtureRoot) {
       expectedExitCode: 1,
     }),
     step({
-      id: 'lev-move-plan-pack-missing',
+      id: 'pack-ops-move-plan-pack-missing',
       order: 4,
       command: movePlan
-        ? `METRO_WORKSPACE_PACK=stub metro contract move-plan preflight --to=lev_core --customer-id=test --prod --json`
-        : 'metro contract move-plan preflight --to=lev_core --prod --json',
+        ? `METRO_WORKSPACE_PACK=stub metro contract move-plan preflight --to=core --customer-id=test --prod --json`
+        : 'metro contract move-plan preflight --to=core --prod --json',
       proves: 'Contract move-plan preflight refuses when workspace pack is not loaded.',
       fixtureRequired: false,
       expectedExitCode: 2,
@@ -610,8 +610,8 @@ function buildHarnessPlan(suiteId, options = {}) {
     steps = buildAgentLiteracySteps();
   } else if (suiteId === 'policy') {
     steps = buildPolicySteps(fixtureRoot);
-  } else if (suiteId === 'lev-pack') {
-    steps = buildLevPackSteps(fixtureRoot);
+  } else if (suiteId === 'pack-ops') {
+    steps = buildPackOpsSteps(fixtureRoot);
   } else {
     steps = [];
   }
@@ -637,7 +637,7 @@ function buildHarnessPlan(suiteId, options = {}) {
       'metro status --json',
     ],
     nextSafeStep: summary.skippedFixtureSteps > 0
-      ? 'Export METRO_HARNESS_FIXTURE_ROOT to a checkout test/fixtures directory or run from the source repo before --suite local --execute.'
+      ? 'Export METRO_HARNESS_FIXTURE_ROOT (or pass --fixture-root) to a fixture directory before --suite local --execute.'
       : `Run metro harness run --suite ${suite.id} --execute --json to execute all planned steps locally.`,
   };
 }

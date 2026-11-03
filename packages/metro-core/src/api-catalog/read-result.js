@@ -176,7 +176,7 @@ function buildMockedApiReadResult(options = {}) {
   if (!endpoint || endpoint.operationType !== 'read' || !gateValidation.valid) {
     return {
       schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
       apiAccess: 'none',
       liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
       readEnabledInCurrentCli: false,
@@ -196,7 +196,7 @@ function buildMockedApiReadResult(options = {}) {
   if (!readPlan || readPlan.blocked || readPlan.requestSummary?.requestHash !== readGate.binding.requestHash) {
     return {
       schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
       apiAccess: 'none',
       liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
       readEnabledInCurrentCli: false,
@@ -218,7 +218,7 @@ function buildMockedApiReadResult(options = {}) {
 
   const result = {
     schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
     apiAccess: 'mocked-read',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,
@@ -287,7 +287,7 @@ function buildLiveApiReadResult(options = {}) {
 
   const result = {
     schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
     apiAccess: 'live-read',
     liveExecution: {
       enabledInCurrentCli: true,
@@ -404,7 +404,7 @@ async function runMockedApiRead(options = {}) {
   if (!endpoint || endpoint.operationType !== 'read' || !gateValidation.valid) {
     return {
       schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
       apiAccess: 'none',
       liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
       readEnabledInCurrentCli: false,
@@ -423,7 +423,7 @@ async function runMockedApiRead(options = {}) {
   if (!readClient || readClient.transportMode !== 'mocked' || typeof readClient.request !== 'function') {
     return {
       schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
       apiAccess: 'none',
       liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
       readEnabledInCurrentCli: false,
@@ -443,7 +443,7 @@ async function runMockedApiRead(options = {}) {
   if (!readPlan || readPlan.blocked || readPlan.requestSummary?.requestHash !== readGate.binding.requestHash) {
     return {
       schemaVersion: API_READ_RESULT_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
       apiAccess: 'none',
       liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
       readEnabledInCurrentCli: false,
@@ -574,7 +574,7 @@ function verifyApiReadResult(input) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_READ_RESULT_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-result.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-result.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,

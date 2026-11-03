@@ -199,7 +199,7 @@ async function runLiveApiApply(options = {}) {
 
   return {
     schemaVersion: API_APPLY_RESULT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-live.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-live.js',
     apiAccess: 'live-write',
     liveExecution: {
       enabledInCurrentCli: true,

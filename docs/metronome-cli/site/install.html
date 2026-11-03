@@ -11,7 +11,7 @@
   </head>
   <body class="generated-reference">
     <main class="generated-shell">
-      <header class="generated-header" data-source="one-goal safety architecture metro-input-reference metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-topic-index-golden metro-docs-explain-install-troubleshooting-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden metro-api-catalog metro-api-catalog-golden metro-api-search metro-api-search-golden metro-api-diff metro-api-diff-golden metro-api-export metro-api-export-golden metro-docs-explain metro-docs-explain-golden metro-docs-explain-contract-overrides-golden metro-api-readiness metro-api-readiness-golden metro-api-readiness-summary-golden metro-api-read-plan metro-api-read-plan-golden metro-api-read-preflight metro-api-read-preflight-golden metro-api-read-gate metro-api-read-gate-profile-resolution-fixture metro-api-read-mock metro-api-read-mock-response-fixture metro-api-read-mock-golden metro-api-read-pipeline metro-api-read-pipeline-golden metro-api-read-result metro-api-read-audit metro-api-read-audit-fixture metro-api-approval-policies metro-api-approval-policies-golden metro-install-test metro-package-test metro-setup-profiles metro-setup-fixtures">
+      <header class="generated-header" data-source="one-goal safety architecture metro-input-reference metro-api-catalog metro-api-search metro-api-diff metro-api-export metro-docs-explain metro-api-readiness metro-api-read-plan metro-api-read-preflight metro-api-read-gate metro-api-read-mock metro-api-read-pipeline metro-api-read-result metro-api-read-audit metro-api-approval-policies metro-setup-profiles">
         <div class="generated-brand">
           <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
             <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
@@ -76,7 +76,7 @@
         </nav>
       </header>
 
-      <section class="generated-section" id="first-safe-preview" data-source="one-goal safety metro-safe-preview-quickstart metro-input-files metro-input-normalize metro-input-reference metro-input-reference-html metro-setup-quickstart metro-install-test metro-setup-profiles metro-setup-fixtures metro-setup-resolve-golden metro-golden-tests">
+      <section class="generated-section" id="first-safe-preview" data-source="one-goal safety metro-safe-preview-quickstart metro-input-files metro-input-normalize metro-input-reference metro-input-reference-html metro-setup-profiles">
         <h2>First Safe Preview</h2>
         <div class="minimum-success-path" aria-label="Minimum success path">
           <div class="minimum-success-path-heading">
@@ -319,7 +319,7 @@ metro api apply-gate template --preview api-preview.json --preflight api-preflig
         </div>
       </section>
 
-      <section class="generated-section" id="guarded-live" data-source="metro-command-catalog metro-api-catalog metro-install-test">
+      <section class="generated-section" id="guarded-live" data-source="metro-command-catalog metro-api-catalog">
         <h2>Guarded Live Operations</h2>
         <div class="section-grid">
           <article class="card">
@@ -333,7 +333,7 @@ metro api apply contracts.create --file request.json --sandbox \
   --approval-record api-approval-record.json \
   --confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX --json</code></pre>
             <p>
-              See <code>TEAM-QUICKSTART.md</code> in the installed package for
+              See <code>docs/metronome-cli/QUICKSTART.md</code> in the installed package for
               the full team onboarding path. Live reads are limited to
               <code>contracts.get.v2</code>,
               <code>customers.get</code>, and
@@ -357,7 +357,7 @@ metro api apply contracts.create --file request.json --sandbox \
 
       <section class="generated-section" id="target-install">
         <h2>Npm Registry Status And Maintainer Proof</h2>
-        <div class="minimum-success-path" aria-label="Release decision gate" data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
+        <div class="minimum-success-path" aria-label="Release decision gate">
           <div class="minimum-success-path-heading">
             <span>Release decision gate</span>
             <strong>GitHub install is current; npm registry publishing remains blocked.</strong>
@@ -367,8 +367,8 @@ metro api apply contracts.create --file request.json --sandbox \
               <span>Allowed now</span>
               <code>bash scripts/install-global.sh</code> (or the clear+install+prove block in Terminal guide)<br>
               <code>metro setup quickstart --shell | zsh</code><br>
-              <code>npm run test:package</code><br>
-              <code>npm run test:install</code><br>
+              <code>npm test</code><br>
+              <code>npm run pack:verify</code><br>
               <code>metro release readiness --json</code><br>
               <code>metro release artifact-manifest --json</code><br>
               <code>metro release retention-policy template --json</code><br>
@@ -415,7 +415,7 @@ metro api apply contracts.create --file request.json --sandbox \
                 <td><span class="status-pill local">current</span></td>
                 <td>Users clone into <code>~/.metro/src</code>, <code>npm link</code>, prove <code>metro --help</code>, then run quickstart. Not <code>npm install -g git+</code>.</td>
               </tr>
-              <tr data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
+              <tr>
                 <td>Publish readiness</td>
                 <td><code>metro release readiness --json</code><br><code>metro release artifact-manifest --json</code><br><code>metro release retention-policy template --json</code><br><code>metro release retention-policy validate --file policy.json --json</code><br><code>metro release evidence-plan --policy policy.json --json</code><br><code>metro release evidence-check --dir &lt;artifact-dir&gt; --json</code><br><code>metro docs explain package.publish-readiness --json</code></td>
                 <td><span class="status-pill blocked">blocked</span></td>
@@ -474,7 +474,7 @@ metro api apply contracts.create --file request.json --sandbox \
         </div>
       </section>
 
-      <section class="generated-section" id="troubleshooting" data-source="metro-package-test metro-install-test metro-docs-explain-install-troubleshooting-golden metro-docs-explain-setup-troubleshooting-golden">
+      <section class="generated-section" id="troubleshooting">
         <h2>Setup Troubleshooting</h2>
         <div class="reference-stack">
           <article class="reference-card">
@@ -517,8 +517,8 @@ metro --help
 metro setup quickstart --shell | zsh</code></pre>
             <p>
               Maintainers editing this checkout: <code>npm link</code> from the
-              repo root. Also run <code>npm run test:package</code> and
-              <code>npm run test:install</code> before changing package
+              repo root. Also run <code>npm test</code> and
+              <code>npm run pack:verify</code> before changing package
               metadata or setup instructions.
             </p>
           </article>
