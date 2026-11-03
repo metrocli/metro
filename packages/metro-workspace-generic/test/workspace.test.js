@@ -12,7 +12,7 @@ for (const key of Object.keys(require.cache)) {
   }
 }
 
-const { run } = require('../../../src/cli');
+const { run } = require('../../metro-core/src/cli');
 const { listIntents, getWorkspaceModel } = require('../src');
 
 const packFixtureDir = path.join(__dirname, '..', 'fixtures');
@@ -118,11 +118,11 @@ test('annual-subscription-package validates pack fixture', () => {
   assert.strictEqual(validateResult.code, 0);
 });
 
-test('workspace explain avoids Lev-only profile names', () => {
+test('workspace explain avoids tenant-specific profile names', () => {
   const result = invoke(['workspace', 'explain', '--json']);
   assert.strictEqual(result.code, 0);
   const payload = JSON.parse(result.stdout);
-  assert.ok(!JSON.stringify(payload).includes('lev-sandbox'));
+  assert.ok(!JSON.stringify(payload).includes('acme-sandbox'));
   assert.ok(payload.nextCommands.some((command) => command.includes('metro-sandbox')));
 });
 
@@ -156,7 +156,6 @@ test('onboard-customer input template uses externalCustomerId', () => {
   const payload = JSON.parse(result.stdout);
   const setup = payload.inputTemplate.customerSetup;
   assert.ok('externalCustomerId' in setup);
-  assert.ok(!('levAccountId' in setup));
 });
 
 if (prevPack === undefined) {

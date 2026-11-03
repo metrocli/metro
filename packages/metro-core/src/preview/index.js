@@ -8,9 +8,6 @@ function resolveCustomerExternalId(input) {
   if (input.externalCustomerId !== undefined && input.externalCustomerId !== null && String(input.externalCustomerId).trim() !== '') {
     return String(input.externalCustomerId).trim();
   }
-  if (input.levAccountId !== undefined && input.levAccountId !== null && String(input.levAccountId).trim() !== '') {
-    return String(input.levAccountId).trim();
-  }
   return null;
 }
 
@@ -1238,12 +1235,9 @@ function buildCustomContractCustomerPayload(input) {
   const customFields = {
     customer_type: 'enterprise',
   };
-  if (input.levAccountId) {
-    customFields.lev_id = input.levAccountId;
-  } else if (input.externalCustomerId) {
+  if (input.externalCustomerId) {
     customFields.external_customer_id = input.externalCustomerId;
   }
-  if (input.hubspotId) customFields.hubspot_id = input.hubspotId;
 
   return {
     name: input.companyName,

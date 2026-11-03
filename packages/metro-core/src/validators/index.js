@@ -50,9 +50,6 @@ function resolveCustomerExternalId(input) {
   if (hasValue(input.externalCustomerId)) {
     return { field: 'externalCustomerId', value: String(input.externalCustomerId).trim() };
   }
-  if (hasValue(input.levAccountId)) {
-    return { field: 'levAccountId', value: String(input.levAccountId).trim() };
-  }
   return { field: 'externalCustomerId', value: null };
 }
 
@@ -76,14 +73,6 @@ function validateCustomerExternalId(input, findings, ruleId = 'MTR-CUST-001') {
       identity.field,
       ['validation'],
     );
-    return null;
-  }
-  if (
-    hasValue(input.externalCustomerId)
-    && hasValue(input.levAccountId)
-    && input.externalCustomerId !== input.levAccountId
-  ) {
-    add(findings, ruleId, 'Provide only one of externalCustomerId or levAccountId when they differ.', 'externalCustomerId', ['validation']);
     return null;
   }
   return identity;

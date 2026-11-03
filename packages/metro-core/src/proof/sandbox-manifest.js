@@ -504,7 +504,7 @@ function buildSandboxProofTemplate({ workflow, shape }) {
       endpoints: endpointPlan(workflow, shape),
       targetIds: isCustomerSetup
         ? [
-          { system: 'lev', role: 'account_id', id: '<sandbox-lev-account-id>' },
+          { system: 'external', role: 'external_customer_id', id: '<sandbox-external-customer-id>' },
           { system: 'metronome', role: 'primary_ingest_alias', id: '<sandbox-primary-ingest-alias>' },
           { system: 'metronome', role: 'ingest_alias_set_hash', id: '<sha256-of-reviewed-ingest-aliases>' },
           { system: 'metronome', role: 'customer_id_after_readback', id: '<sandbox-created-or-reused-customer-id>' },
@@ -542,7 +542,7 @@ function buildSandboxProofTemplate({ workflow, shape }) {
             ]
             : isCustomContract
               ? [
-                { system: 'lev', role: 'account_id', id: '<sandbox-lev-account-id>' },
+                { system: 'external', role: 'external_customer_id', id: '<sandbox-external-customer-id>' },
                 { system: 'metronome', role: 'customer_id', id: '<sandbox-existing-or-created-customer-id>' },
                 { system: 'metronome', role: 'rate_card_id', id: '<sandbox-rate-card-id>' },
                 { system: 'metronome', role: 'contract_uniqueness_key', id: '<sandbox-custom-contract-uniqueness-key>' },

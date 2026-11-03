@@ -244,7 +244,7 @@ function endpointPlan(workflow, shape) {
 function identifiersFor(workflow, shape) {
   if (workflow === 'customer.setup') {
     return [
-      { system: 'lev', role: 'account_id', id: '<lev_account_id>' },
+      { system: 'external', role: 'external_customer_id', id: '<external_customer_id>' },
       { system: 'metronome', role: 'primary_ingest_alias', id: '<primary_ingest_alias>' },
       { system: 'metronome', role: 'ingest_alias_set_hash', id: '<sha256_of_reviewed_ingest_aliases>' },
       { system: 'metronome', role: 'customer_id_after_readback', id: '<created_or_reused_customer_id>' },
@@ -300,7 +300,7 @@ function identifiersFor(workflow, shape) {
 
   if (workflow === 'custom-contract.create') {
     return [
-      { system: 'lev', role: 'account_id', id: '<lev_account_id>' },
+      { system: 'external', role: 'external_customer_id', id: '<external_customer_id>' },
       { system: 'metronome', role: 'customer_id', id: '<existing_or_to_be_created_metronome_customer_id>' },
       { system: 'metronome', role: 'rate_card_id', id: '<metronome_rate_card_id>' },
       { system: 'metronome', role: 'contract_uniqueness_key', id: '<custom_contract_uniqueness_key>' },
@@ -1181,7 +1181,7 @@ function validatePreflight(input) {
       'error',
       'at least one concrete identifier is required.',
       'identifiers',
-      'Record relevant customer, contract, package, rate-card, Stripe, HubSpot, or Lev identifiers.',
+      'Record relevant customer, contract, package, rate-card, Stripe, or external system identifiers.',
     ));
   }
 

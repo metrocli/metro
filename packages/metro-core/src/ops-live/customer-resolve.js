@@ -4,8 +4,13 @@
  * Customer lookup for ops.
  *
  * Fast paths (1 API call): --customer-id, --ingest-alias, email-shaped --name.
- * Name / lev_id custom_fields fallbacks page /v1/customers but **stop at the
- * first exact hit** - full-tenant scans were taking ~60-100s in sandbox/prod.
+ * Name / external-id fallbacks page /v1/customers but **stop at the first
+ * exact hit** - full-tenant scans were taking ~60-100s in sandbox/prod.
+ *
+ * External ids are Metronome-native: an ingest alias, the customer
+ * `external_id`, or a custom field. The custom field keys default to
+ * `external_id` and can be overridden with METRO_EXTERNAL_ID_FIELDS
+ * (comma-separated) or options.externalIdFields.
  * ponytail: duplicate display names later in the list won't be detected; pass
  * --customer-id when uniqueness matters.
  */
@@ -54,16 +59,47 @@ async function forEachCustomerPage(client, onPage) {
   return null;
 }
 
-async function findByLevId(client, levId) {
-  const byIngest = await findByIngestAlias(client, levId);
-  if (byIngest?.customer) return { customer: byIngest.customer, method: 'ingest_alias_as_lev_id' };
+const DEFAULT_EXTERNAL_ID_FIELDS = Object.freeze(['external_id']);
+
+function externalIdFields(options = {}) {
+  const raw = options.externalIdFields
+    || process.env.METRO_EXTERNAL_ID_FIELDS
+    || null;
+  if (!raw) return [...DEFAULT_EXTERNAL_ID_FIELDS];
+  const list = Array.isArray(raw) ? raw : String(raw).split(',');
+  const cleaned = list.map((f) => String(f).trim()).filter(Boolean);
+  return cleaned.length ? cleaned : [...DEFAULT_EXTERNAL_ID_FIELDS];
+}
+
+/** First external id found on a customer: custom field keys, then customer.external_id. */
+function customerExternalId(customer, options = {}) {
+  if (!customer) return null;
+  for (const field of externalIdFields(options)) {
+    const value = customer.custom_fields?.[field];
+    if (value !== undefined && value !== null && String(value) !== '') return String(value);
+  }
+  if (customer.external_id !== undefined && customer.external_id !== null && customer.external_id !== '') {
+    return String(customer.external_id);
+  }
+  return null;
+}
+
+function matchesExternalId(customer, needle, fields) {
+  if (String(customer.external_id ?? '') === needle) return true;
+  return fields.some((field) => String(customer.custom_fields?.[field] ?? '') === needle);
+}
+
+async function findByExternalId(client, externalId, options = {}) {
+  const byIngest = await findByIngestAlias(client, externalId);
+  if (byIngest?.customer) return { customer: byIngest.customer, method: 'ingest_alias_as_external_id' };
   if (byIngest?.candidates) return byIngest;
 
-  const needle = String(levId);
+  const needle = String(externalId);
+  const fields = externalIdFields(options);
   const hit = await forEachCustomerPage(client, (rows) => {
-    const matches = rows.filter((c) => String(c.custom_fields?.lev_id ?? '') === needle);
-    if (matches.length === 1) return { customer: matches[0], method: 'custom_fields.lev_id' };
-    if (matches.length > 1) return { candidates: matches, method: 'lev_id_ambiguous' };
+    const matches = rows.filter((c) => matchesExternalId(c, needle, fields));
+    if (matches.length === 1) return { customer: matches[0], method: 'external_id' };
+    if (matches.length > 1) return { candidates: matches, method: 'external_id_ambiguous' };
     return null;
   });
   return hit;
@@ -114,24 +150,19 @@ async function findByName(client, name) {
 }
 
 /**
- * Turn whatever sales pasted (name, UUID, lev id, levos URL) into resolve options.
- * UUID → try customer_id then ingest_alias. Digits /accounts/N → lev_id. Else name.
+ * Turn whatever an operator pasted (name, UUID, external id, email) into resolve options.
+ * UUID -> try customer_id then ingest_alias. Digits -> external id. Else name.
  */
 function guessCustomerLookup(query) {
   const q = String(query || '').trim();
   if (!q) return {};
-
-  const fromUrl = q.match(/\/accounts\/(\d+)\b/i);
-  if (fromUrl) {
-    return { levId: fromUrl[1], ingestAlias: fromUrl[1], query: q, guessedAs: 'levos_account_url' };
-  }
 
   if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q)) {
     return { customerId: q, ingestAlias: q, query: q, guessedAs: 'uuid' };
   }
 
   if (/^\d+$/.test(q)) {
-    return { levId: q, ingestAlias: q, query: q, guessedAs: 'numeric_id' };
+    return { externalId: q, ingestAlias: q, query: q, guessedAs: 'numeric_id' };
   }
 
   if (looksLikeEmail(q)) {
@@ -141,13 +172,13 @@ function guessCustomerLookup(query) {
   return { name: q, query: q, guessedAs: 'name' };
 }
 
-/** Expand --query= / mispasted --name=<uuid|lev-id|url> into fast lookup fields. */
+/** Expand --query= / mispasted --name=<uuid|external-id|email> into fast lookup fields. */
 function expandLookupOptions(options = {}) {
-  const hasStructured = Boolean(options.customerId || options.levId || options.ingestAlias);
+  const hasStructured = Boolean(options.customerId || options.externalId || options.ingestAlias);
   if (options.query && !hasStructured && !options.name) {
     return { ...options, ...guessCustomerLookup(options.query) };
   }
-  // Cookbook still uses --name= for everything sales pastes - route UUID/digits/URL/email to fast paths.
+  // Cookbook still uses --name= for everything operators paste - route UUID/digits/email to fast paths.
   if (options.name && !hasStructured && !options.query) {
     const guessed = guessCustomerLookup(options.name);
     if (guessed.guessedAs && guessed.guessedAs !== 'name') {
@@ -195,22 +226,22 @@ async function resolveCustomer(client, options = {}) {
     attempts.push({ method: 'ingest_alias', hits: 0 });
   }
 
-  if (opts.levId) {
-    const hit = await findByLevId(client, opts.levId);
+  if (opts.externalId) {
+    const hit = await findByExternalId(client, opts.externalId, opts);
     if (hit?.customer) {
       return {
         customer: hit.customer,
-        lookup: { method: hit.method, lev_id: opts.levId, guessedAs: opts.guessedAs || null },
+        lookup: { method: hit.method, external_id: opts.externalId, guessedAs: opts.guessedAs || null },
       };
     }
     if (hit?.candidates) {
       return {
-        error: `lev_id ${opts.levId} matched ${hit.candidates.length} customers`,
-        candidates: hit.candidates.map(summarizeCustomer),
+        error: `external id ${opts.externalId} matched ${hit.candidates.length} customers`,
+        candidates: hit.candidates.map((c) => summarizeCustomer(c, opts)),
         lookup: { method: hit.method, guessedAs: opts.guessedAs || null },
       };
     }
-    attempts.push({ method: 'lev_id', hits: 0 });
+    attempts.push({ method: 'external_id', hits: 0 });
   }
 
   if (opts.name) {
@@ -238,16 +269,16 @@ async function resolveCustomer(client, options = {}) {
   }
 
   return {
-    error: 'Customer not found. Pass a name, UUID, lev id, levos URL, or --customer-id/--lev-id/--ingest-alias/--name. Prefer: metro ops who "<paste>" --prod',
+    error: 'Customer not found. Pass a name, UUID, external id, or --customer-id/--external-id/--ingest-alias/--name. Prefer: metro ops who "<paste>" --prod',
     attempts,
   };
 }
 
-function summarizeCustomer(customer) {
+function summarizeCustomer(customer, options = {}) {
   return {
     id: customer.id,
     name: customer.name,
-    lev_id: customer.custom_fields?.lev_id ?? null,
+    external_id: customerExternalId(customer, options),
     ingest_aliases: customer.ingest_aliases || [],
     archived_at: customer.archived_at || null,
   };
@@ -258,7 +289,9 @@ module.exports = {
   summarizeCustomer,
   getCustomerById,
   findByName,
-  findByLevId,
+  findByExternalId,
+  customerExternalId,
+  externalIdFields,
   findByIngestAlias,
   looksLikeEmail,
   guessCustomerLookup,

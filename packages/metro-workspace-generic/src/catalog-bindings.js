@@ -48,7 +48,7 @@ function resolveWorkspaceCatalog({ tenant, workspaceCatalog } = {}) {
 
   const missingIds = [];
   for (const [key, value] of Object.entries({
-    creditTypeId: catalog.creditTypeId || catalog.levCreditTypeId,
+    creditTypeId: catalog.creditTypeId,
     dimensionalBillableMetricId: catalog.dimensionalBillableMetricId,
     sharedDimensionalProductId: catalog.sharedDimensionalProductId,
   })) {

@@ -217,7 +217,7 @@ function buildInputTemplate(intent, options = {}) {
   if (intent.id === 'package-version-handoff') {
     return {
       packageAlias: options.packageAlias || 'pro_annual',
-      uniquenessKey: options.uniquenessKey || 'pkg:lev-pro-annual-v2:<UTC-date>',
+      uniquenessKey: options.uniquenessKey || 'pkg:pro-annual-v2:<UTC-date>',
       rateCardId: options.catalogResolution?.tiers?.find((entry) => entry.tier === 'pro')?.effectiveRateCardId || '<pro-dimensional-rate-card-id>',
       startingAt: '<UTC-hour-boundary>',
       annualPriceCents: options.annualPriceCents != null ? Number(options.annualPriceCents) : 120000,

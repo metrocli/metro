@@ -19,7 +19,7 @@ function parseArgs(argv = [], flags = {}) {
     argv,
     json: argv.includes('--json') || flags.json === true,
     customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || null,
-    levId: parseArg('--lev-id=', argv) || flags['lev-id'] || null,
+    externalId: parseArg('--external-id=', argv) || flags['external-id'] || null,
     ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || null,
     name: parseArg('--name=', argv) || flags.name || null,
     query: parseArg('--query=', argv) || flags.query || null,

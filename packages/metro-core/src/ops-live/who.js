@@ -60,7 +60,7 @@ function parseWhoArgs(argv = [], flags = {}, positionalQuery = null) {
     json: argv.includes('--json') || flags.json === true,
     query,
     customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || null,
-    levId: parseArg('--lev-id=', argv) || flags['lev-id'] || null,
+    externalId: parseArg('--external-id=', argv) || flags['external-id'] || null,
     ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || null,
     name: parseArg('--name=', argv) || flags.name || null,
   };
@@ -89,7 +89,7 @@ function formatHuman(payload) {
   const c = payload.customer;
   lines.push(c.name);
   lines.push(`  id: ${c.id}`);
-  lines.push(`  lev_id: ${c.lev_id ?? '-'}`);
+  lines.push(`  external_id: ${c.external_id ?? '-'}`);
   lines.push(`  ingest_aliases: ${JSON.stringify(c.ingest_aliases || [])}`);
   if (payload.lookup?.method) lines.push(`  lookup: ${payload.lookup.method}`);
   lines.push('');
@@ -124,8 +124,8 @@ function formatHuman(payload) {
 
 async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: process.stderr }, positionalQuery = null) {
   const args = parseWhoArgs(flags.argv || [], flags, positionalQuery);
-  if (!args.query && !args.customerId && !args.levId && !args.ingestAlias && !args.name) {
-    streams.stderr.write('Usage: metro ops who <name|uuid|lev-id|url> (--sandbox|--prod) [--json]\n');
+  if (!args.query && !args.customerId && !args.externalId && !args.ingestAlias && !args.name) {
+    streams.stderr.write('Usage: metro ops who <name|uuid|external-id|email> (--sandbox|--prod) [--json]\n');
     return { exitCode: 1 };
   }
 
@@ -135,7 +135,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
   const resolved = await resolveCustomer(client, {
     query: args.query,
     customerId: args.customerId,
-    levId: args.levId,
+    externalId: args.externalId,
     ingestAlias: args.ingestAlias,
     name: args.name,
   });
@@ -156,7 +156,7 @@ async function runWho(flags = {}, streams = { stdout: process.stdout, stderr: pr
       streams.stderr.write(`${payload.error}\n`);
       if (payload.candidates?.length) {
         for (const cand of payload.candidates) {
-          streams.stderr.write(`  ${cand.name}  id=${cand.id}  lev_id=${cand.lev_id ?? '-'}\n`);
+          streams.stderr.write(`  ${cand.name}  id=${cand.id}  external_id=${cand.external_id ?? '-'}\n`);
         }
       }
     }

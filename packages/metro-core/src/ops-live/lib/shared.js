@@ -26,7 +26,7 @@ function parseArgs(argv = [], flags = {}) {
     json: argv.includes('--json') || flags.json === true,
     immediate: argv.includes('--immediate') || flags.immediate === true,
     customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || flags.customerId || null,
-    levId: parseArg('--lev-id=', argv) || flags['lev-id'] || flags.levId || null,
+    externalId: parseArg('--external-id=', argv) || flags['external-id'] || flags.externalId || null,
     ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || flags.ingestAlias || null,
     name: parseArg('--name=', argv) || flags.name || null,
     query: parseArg('--query=', argv) || flags.query || null,
@@ -46,7 +46,7 @@ function parseArgs(argv = [], flags = {}) {
 function resolveLookupFromArgs(args = {}) {
   return {
     customerId: args.customerId || null,
-    levId: args.levId || null,
+    externalId: args.externalId || null,
     ingestAlias: args.ingestAlias || null,
     name: args.name || null,
     query: args.query || null,
