@@ -19,7 +19,7 @@
     "packages/metro-workspace-stub/",
     "!packages/**/logs",
     "docs/metronome-cli/",
-    "skills/metro/",
+    "skills/",
     "AGENTS.md",
     "llms.txt",
     "README.md",
