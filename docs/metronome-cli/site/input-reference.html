@@ -20,7 +20,7 @@
           <span>Metronome in your terminal</span>
         </div>
         <a href="index.html">Back to operating manual</a>
-        <p class="eyebrow">Generated from metronome-cli/src/docs/input-reference.js</p>
+        <p class="eyebrow">Generated from packages/metro-core/src/docs/input-reference.js</p>
         <h1>Metronome CLI input reference</h1>
         <p>This page is generated from the local structured input and normalization modules. It documents the JSON/YAML adapters, <code>metro.input.normalize.v1</code> output fields, round-trip guarantees, and secret-scan boundary without loading API clients.</p>
         <nav class="reference-jumps" aria-label="Input reference sections">
@@ -65,7 +65,7 @@
             </section>
             <section>
               <h3>Parser</h3>
-              <p><code>metronome-cli/src/input/files.js parseSimpleYaml</code></p>
+              <p><code>packages/metro-core/src/input/files.js parseSimpleYaml</code></p>
             </section>
             <section>
               <h3>Round-trip output</h3>
@@ -100,7 +100,7 @@
           <h3>Normalized value</h3>
           <p>The original structured input canonicalized with sorted object keys.</p>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/src/validators/index.js</code></li></ul>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/SHAPE_CATALOG.md</code></li><li><code>packages/metro-core/src/input/normalize.js</code></li><li><code>packages/metro-core/src/validators/index.js</code></li></ul>
         </article>
           <article class="reference-card">
           <h2>api-request</h2>
@@ -122,7 +122,7 @@
           <h3>Normalized value</h3>
           <p>The endpoint request envelope with body, query, path, evidence, and metadata keys canonicalized.</p>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>metronome-cli/src/input/normalize.js</code></li><li><code>metronome-cli/src/api-catalog/validation.js</code></li></ul>
+          <ul class="compact-list"><li><code>docs/metronome-cli/one-goal.md</code></li><li><code>docs/metronome-cli/CLI_ARCHITECTURE.md</code></li><li><code>packages/metro-core/src/input/normalize.js</code></li><li><code>packages/metro-core/src/api-catalog/validation.js</code></li></ul>
         </article>
         </div>
         <div class="table-wrap">
@@ -185,7 +185,7 @@
           </section>
         </div>
         <h3>Proof commands</h3>
-        <ul class="compact-list"><li><code>node metronome-cli/bin/metro.js input normalize --shape pro-annual --file metronome-cli/test/fixtures/pro-annual-valid.yaml --json</code></li><li><code>node metronome-cli/bin/metro.js input normalize --api contracts.create --file metronome-cli/test/fixtures/api-contracts-create-valid.yaml --json</code></li><li><code>npm --prefix metronome-cli run test:golden</code></li><li><code>node docs/metronome-cli/site/verify-site.js</code></li></ul>
+        <ul class="compact-list"><li><code>node bin/metro.js input normalize --shape pro-annual --file &lt;pro-annual.yaml&gt; --json</code></li><li><code>node bin/metro.js input normalize --api contracts.create --file &lt;contracts-create.yaml&gt; --json</code></li><li><code>npm --prefix metronome-cli run test:golden</code></li><li><code>node docs/metronome-cli/site/verify-site.js</code></li></ul>
       </section>
     </main>
     <script src="layout.js"></script>

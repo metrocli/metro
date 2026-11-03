@@ -52,7 +52,7 @@
       </aside>
 
       <main>
-        <section id="agent-intro" class="hero hero-prose manual-section" data-source="world-prompt safety architecture metro-command-catalog">
+        <section id="agent-intro" class="hero hero-prose manual-section" data-source="safety architecture metro-command-catalog">
           <div class="hero-copy">
             <p class="eyebrow">Agent harnessing</p>
             <h1>Plain English first. Technical proof second.</h1>
@@ -70,7 +70,7 @@
           </div>
         </section>
 
-        <section id="system-prompt" class="manual-section" data-source="world-prompt safety">
+        <section id="system-prompt" class="manual-section" data-source="safety">
           <div class="section-heading">
             <p class="eyebrow">System prompt</p>
             <h2>Copy into Claude, Cursor, or Codex</h2>
@@ -101,7 +101,7 @@ For every task, respond in TWO layers:
 - Live sandbox write allowlist: contracts.create only (requires apply-gate + approval-record + confirm-live-apply).
 - Before interpreting JSON, run `metro docs explain output.anatomy --json` once per session if needed.
 
-Load `skills/metro/SKILL.md` from the installed package (or run `npm run generate:skill` in the repo) for the full command surface.
+Load `skills/metro/SKILL.md` from the installed package for the full command surface.
 
 Official Metronome API reference: https://docs.metronome.com/
 Upstream product changes metro tracks: docs/metronome-cli/METRONOME_UPSTREAM_CHANGELOG.md
@@ -126,7 +126,7 @@ metro docs explain output.anatomy --json</code></pre>
           </div>
         </section>
 
-        <section id="recipes" class="manual-section" data-source="metro-command-catalog metro-setup-quickstart">
+        <section id="recipes" class="manual-section" data-source="metro-command-catalog">
           <div class="section-heading">
             <p class="eyebrow">Task recipes</p>
             <h2>What happens · Commands · What changes · Where</h2>
@@ -307,7 +307,7 @@ metro input normalize --api contracts.create --file request.yaml --json</code></
           </article>
         </section>
 
-        <section id="promote-codebase" class="manual-section" data-source="world-prompt safety architecture">
+        <section id="promote-codebase" class="manual-section" data-source="safety architecture">
           <div class="section-heading">
             <p class="eyebrow">Always get better</p>
             <h2>When the session is thrashing - draft the fix</h2>

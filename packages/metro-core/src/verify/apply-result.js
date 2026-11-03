@@ -78,7 +78,7 @@ function buildApplyResultTemplate(options = {}) {
 
   return {
     schemaVersion: APPLY_RESULT_TEMPLATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/verify/apply-result.js',
+    generatedFrom: 'packages/metro-core/src/verify/apply-result.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -146,8 +146,8 @@ function buildApplyResultTemplate(options = {}) {
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/SAFETY.md',
-      'metronome-cli/src/evidence-gates/apply-result-contracts.js',
-      'metronome-cli/src/verify/apply-result.js',
+      'packages/metro-core/src/evidence-gates/apply-result-contracts.js',
+      'packages/metro-core/src/verify/apply-result.js',
     ],
   };
 }

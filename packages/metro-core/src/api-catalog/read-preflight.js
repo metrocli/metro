@@ -107,7 +107,7 @@ function buildApiReadPreflight(options = {}) {
 
   return {
     schemaVersion: API_READ_PREFLIGHT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-preflight.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-preflight.js',
     apiAccess: 'none',
     liveExecution: clone(refusal.liveExecution),
     readEnabledInCurrentCli: refusal.readEnabledInCurrentCli === true,

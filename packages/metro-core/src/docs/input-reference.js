@@ -141,11 +141,11 @@ const OUTPUT_FIELDS = [
 function inputReference() {
   return {
     schemaVersion: 'metro.docs.input-reference.v1',
-    generatedFrom: 'metronome-cli/src/docs/input-reference.js',
-    loaderGeneratedFrom: 'metronome-cli/src/input/files.js',
-    normalizerGeneratedFrom: 'metronome-cli/src/input/normalize.js',
-    shapeValidationGeneratedFrom: 'metronome-cli/src/validators/index.js',
-    apiValidationGeneratedFrom: 'metronome-cli/src/api-catalog/validation.js',
+    generatedFrom: 'packages/metro-core/src/docs/input-reference.js',
+    loaderGeneratedFrom: 'packages/metro-core/src/input/files.js',
+    normalizerGeneratedFrom: 'packages/metro-core/src/input/normalize.js',
+    shapeValidationGeneratedFrom: 'packages/metro-core/src/validators/index.js',
+    apiValidationGeneratedFrom: 'packages/metro-core/src/api-catalog/validation.js',
     apiAccess: 'none',
     liveExecution: {
       enabledInCurrentCli: false,
@@ -174,7 +174,7 @@ function inputReference() {
       {
         id: 'yaml',
         extensions: ['.yaml', '.yml'],
-        parser: 'metronome-cli/src/input/files.js parseSimpleYaml',
+        parser: 'packages/metro-core/src/input/files.js parseSimpleYaml',
         status: 'supported-subset',
         roundTripOutput: 'stable-json',
         notes: [
@@ -194,8 +194,8 @@ function inputReference() {
         sources: [
           'docs/metronome-cli/one-goal.md',
           'docs/metronome-cli/SHAPE_CATALOG.md',
-          'metronome-cli/src/input/normalize.js',
-          'metronome-cli/src/validators/index.js',
+          'packages/metro-core/src/input/normalize.js',
+          'packages/metro-core/src/validators/index.js',
         ],
       },
       {
@@ -208,8 +208,8 @@ function inputReference() {
         sources: [
           'docs/metronome-cli/one-goal.md',
           'docs/metronome-cli/CLI_ARCHITECTURE.md',
-          'metronome-cli/src/input/normalize.js',
-          'metronome-cli/src/api-catalog/validation.js',
+          'packages/metro-core/src/input/normalize.js',
+          'packages/metro-core/src/api-catalog/validation.js',
         ],
       },
     ],
@@ -239,8 +239,8 @@ function inputReference() {
       ],
     },
     proofCommands: [
-      'node metronome-cli/bin/metro.js input normalize --shape pro-annual --file metronome-cli/test/fixtures/pro-annual-valid.yaml --json',
-      'node metronome-cli/bin/metro.js input normalize --api contracts.create --file metronome-cli/test/fixtures/api-contracts-create-valid.yaml --json',
+      'node bin/metro.js input normalize --shape pro-annual --file <pro-annual.yaml> --json',
+      'node bin/metro.js input normalize --api contracts.create --file <contracts-create.yaml> --json',
       'npm --prefix metronome-cli run test:golden',
       'node docs/metronome-cli/site/verify-site.js',
     ],
@@ -248,11 +248,9 @@ function inputReference() {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/input/files.js',
-      'metronome-cli/src/input/normalize.js',
-      'metronome-cli/src/api-catalog/validation.js',
-      'metronome-cli/test/golden/input/normalize.pro-annual-yaml.json',
-      'metronome-cli/test/golden/input/normalize.api-contracts-create-yaml.json',
+      'packages/metro-core/src/input/files.js',
+      'packages/metro-core/src/input/normalize.js',
+      'packages/metro-core/src/api-catalog/validation.js',
     ],
   };
 }

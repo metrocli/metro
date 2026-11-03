@@ -128,7 +128,7 @@ function buildApiEndpointPreview(endpointId, input, options = {}) {
   if (!validation.valid) {
     return {
       schemaVersion: API_PREVIEW_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/preview.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/preview.js',
       apiAccess: 'none',
       liveExecution: clone(endpoint.liveExecution),
       tenant,
@@ -177,7 +177,7 @@ function buildApiEndpointPreview(endpointId, input, options = {}) {
 
   return {
     schemaVersion: API_PREVIEW_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/preview.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/preview.js',
     apiAccess: 'none',
     liveExecution: clone(endpoint.liveExecution),
     tenant,

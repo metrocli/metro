@@ -87,9 +87,9 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/input/files.js',
-      'metronome-cli/src/input/normalize.js',
-      'metronome-cli/src/api-catalog/validation.js',
+      'packages/metro-core/src/input/files.js',
+      'packages/metro-core/src/input/normalize.js',
+      'packages/metro-core/src/api-catalog/validation.js',
     ],
   },
   {
@@ -106,8 +106,8 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'metronome-cli/src/workspace/model.js',
-      'metronome-cli/src/workspace/plan.js',
+      'packages/metro-core/src/workspace/model.js',
+      'packages/metro-core/src/workspace/plan.js',
     ],
   },
   {
@@ -122,7 +122,7 @@ const COMMANDS = [
     requiredFlags: ['--file', '--profile'],
     optionalFlags: ['--check-env', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/plan.js', 'metronome-cli/src/setup/profiles.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js', 'packages/metro-core/src/setup/profiles.js'],
   },
   {
     id: 'workspace.list',
@@ -178,7 +178,7 @@ const COMMANDS = [
     requiredFlags: ['<intent>', '--sandbox|--prod'],
     optionalFlags: ['--out', '--token', '--action-code', '--display-name', '--price', '--file', '--profile', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js'],
   },
   {
     id: 'plan.list',
@@ -192,7 +192,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/model.js'],
+    sources: ['packages/metro-core/src/workspace/model.js'],
   },
   {
     id: 'plan.intent',
@@ -206,7 +206,7 @@ const COMMANDS = [
     requiredFlags: ['<intent>', '--sandbox|--prod'],
     optionalFlags: ['--token', '--action-code', '--display-name', '--price', '--file', '--profile', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js'],
   },
   {
     id: 'route.goal',
@@ -220,7 +220,7 @@ const COMMANDS = [
     requiredFlags: ['--goal', '--api', '--sandbox|--prod'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js'],
   },
   {
     id: 'audit.export.classify',
@@ -234,7 +234,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--token', '--sandbox', '--prod', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/audit-export.js'],
+    sources: ['packages/metro-core/src/workspace/audit-export.js'],
   },
   {
     id: 'audit.export.plan',
@@ -248,7 +248,7 @@ const COMMANDS = [
     requiredFlags: ['--token', '--sandbox|--prod'],
     optionalFlags: ['--starting-on', '--ending-before', '--limit', '--sort', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/workspace/audit-export.js', 'metronome-cli/src/api-catalog/index.js'],
+    sources: ['packages/metro-core/src/workspace/audit-export.js', 'packages/metro-core/src/api-catalog/index.js'],
   },
   {
     id: 'package.preview.pro-annual-self-serve-v2',
@@ -262,7 +262,7 @@ const COMMANDS = [
     requiredFlags: ['--shape pro-annual-self-serve-v2', '--file', '--sandbox|--prod'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/preview/index.js', 'metronome-cli/src/shapes/index.js'],
+    sources: ['packages/metro-core/src/preview/index.js', 'packages/metro-core/src/shapes/index.js'],
   },
   {
     id: 'package.preview.free-credit-trial',
@@ -276,7 +276,7 @@ const COMMANDS = [
     requiredFlags: ['--shape free-credit-trial', '--file', '--sandbox|--prod'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/preview/index.js', 'metronome-cli/src/shapes/index.js'],
+    sources: ['packages/metro-core/src/preview/index.js', 'packages/metro-core/src/shapes/index.js'],
   },
   {
     id: 'package.preview.pro-annual',
@@ -293,7 +293,7 @@ const COMMANDS = [
     sources: [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -312,7 +312,7 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -330,7 +330,7 @@ const COMMANDS = [
     sources: [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md',
     ],
   },
   {
@@ -349,10 +349,10 @@ const COMMANDS = [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-commits-credits/SKILL.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-commits-credits/SKILL.md',
+      'skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -370,7 +370,7 @@ const COMMANDS = [
     sources: [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -389,9 +389,9 @@ const COMMANDS = [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-customers-hierarchies/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-customers-hierarchies/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -407,11 +407,10 @@ const COMMANDS = [
     optionalFlags: ['--shape package-plan-move-no-immediate-invoice', '--shape package-plan-move-immediate-invoice', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/TASK_PLAYBOOKS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -428,9 +427,8 @@ const COMMANDS = [
     optionalFlags: ['--from', '--cutover', '--cutover-mode', '--out', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/TASK_PLAYBOOKS.md',
       'packages/metro-core/src/workspace/pack-ops.js',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-packages-contracts/SKILL.md',
     ],
   },
   {
@@ -519,7 +517,7 @@ const COMMANDS = [
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-packages-contracts/SKILL.md',
     ],
   },
   {
@@ -776,8 +774,8 @@ const COMMANDS = [
     sources: [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -797,9 +795,9 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md',
-      '.cursor/skills/metronome-billable-metrics/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-pricing-catalog/SKILL.md',
+      'skills/metronome-billable-metrics/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -818,9 +816,9 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
       'https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date',
     ],
   },
@@ -840,10 +838,9 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-subscriptions-seats/SKILL.md',
-      '.cursor/skills/metronome-pricing-catalog/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      'metronome/custom-contract-creator/payload-builders.js',
+      'skills/metronome-subscriptions-seats/SKILL.md',
+      'skills/metronome-pricing-catalog/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
       'https://docs.metronome.com/api-reference/contracts/create-a-contract.md',
     ],
   },
@@ -860,14 +857,11 @@ const COMMANDS = [
     optionalFlags: ['--shape enterprise-custom-contract', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/TASK_PLAYBOOKS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome/custom-contract-creator/schema.js',
-      'metronome/custom-contract-creator/payload-builders.js',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -886,9 +880,9 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-ingestion-events/SKILL.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-ingestion-events/SKILL.md',
+      'skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
       'https://docs.metronome.com/api-reference/usage/ingest-events.md',
     ],
   },
@@ -906,10 +900,9 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -926,10 +919,9 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -947,7 +939,7 @@ const COMMANDS = [
     sources: [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -966,8 +958,8 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -988,7 +980,7 @@ const COMMANDS = [
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      'metronome-cli/src/api-catalog/export.js',
+      'packages/metro-core/src/api-catalog/export.js',
     ],
   },
   {
@@ -1005,9 +997,8 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -1024,12 +1015,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/index.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   },
   {
@@ -1046,13 +1036,12 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/index.js',
-      'metronome-cli/src/api-catalog/readiness.js',
-      'metronome-cli/src/api-catalog/read-plan.js',
-      'metronome-cli/src/api-catalog/validation.js',
+      'packages/metro-core/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/readiness.js',
+      'packages/metro-core/src/api-catalog/read-plan.js',
+      'packages/metro-core/src/api-catalog/validation.js',
     ],
   },
   {
@@ -1069,11 +1058,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/index.js',
-      'metronome-cli/src/api-catalog/validation.js',
+      'packages/metro-core/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/validation.js',
     ],
   },
   {
@@ -1090,13 +1078,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/index.js',
-      'metronome-cli/src/api-catalog/read-plan.js',
-      'metronome-cli/src/api-catalog/validation.js',
+      'packages/metro-core/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/read-plan.js',
+      'packages/metro-core/src/api-catalog/validation.js',
     ],
   },
   {
@@ -1113,14 +1099,13 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-preflight.js',
-      'metronome-cli/src/api-catalog/read-refusal.js',
-      'metronome-cli/src/api-catalog/read-plan.js',
-      'metronome-cli/src/api-catalog/read-gate.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-preflight.js',
+      'packages/metro-core/src/api-catalog/read-refusal.js',
+      'packages/metro-core/src/api-catalog/read-plan.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1137,12 +1122,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-gate.js',
-      'metronome-cli/src/api-catalog/read-plan.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/api-catalog/read-plan.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1159,11 +1143,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-gate.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1180,13 +1163,12 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-result.js',
-      'metronome-cli/src/api-catalog/read-gate.js',
-      'metronome-cli/src/api-catalog/read-plan.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/api-catalog/read-plan.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1203,13 +1185,12 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-mock.js',
-      'metronome-cli/src/api-catalog/read-result.js',
-      'metronome-cli/src/api-catalog/read-audit.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-mock.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/read-audit.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1226,14 +1207,13 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-pipeline.js',
-      'metronome-cli/src/api-catalog/read-mock.js',
-      'metronome-cli/src/api-catalog/read-result.js',
-      'metronome-cli/src/api-catalog/read-audit.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-pipeline.js',
+      'packages/metro-core/src/api-catalog/read-mock.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/read-audit.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1250,12 +1230,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-audit.js',
-      'metronome-cli/src/api-catalog/read-result.js',
-      'metronome-cli/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/api-catalog/read-audit.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
     ],
   },
   {
@@ -1272,12 +1251,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-audit.js',
-      'metronome-cli/src/api-catalog/read-result.js',
-      'metronome-cli/src/api-catalog/read-gate.js',
+      'packages/metro-core/src/api-catalog/read-audit.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
+      'packages/metro-core/src/api-catalog/read-gate.js',
     ],
   },
   {
@@ -1294,11 +1272,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/api-catalog/read-audit.js',
-      'metronome-cli/src/clients/metronome-read.js',
+      'packages/metro-core/src/api-catalog/read-audit.js',
+      'packages/metro-core/src/clients/metronome-read.js',
     ],
   },
   {
@@ -1317,7 +1294,7 @@ const COMMANDS = [
       'https://docs.metronome.com/api-reference/contracts/get-a-contract-v2',
       'https://docs.metronome.com/api-reference/customers/get-a-customer',
       'https://docs.metronome.com/api-reference/invoices/list-customer-invoices',
-      'metronome-cli/TEAM-QUICKSTART.md',
+      'docs/metronome-cli/QUICKSTART.md',
     ],
   },
   {
@@ -1334,7 +1311,7 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'https://docs.metronome.com/api-reference/contracts/create-a-contract',
-      'metronome-cli/TEAM-QUICKSTART.md',
+      'docs/metronome-cli/QUICKSTART.md',
     ],
   },
   {
@@ -1351,12 +1328,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'docs/metronome-cli/FULL_SCOPE.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/index.js',
-      'metronome-cli/src/api-catalog/validation.js',
-      'metronome-cli/src/api-catalog/preview.js',
+      'packages/metro-core/src/api-catalog/index.js',
+      'packages/metro-core/src/api-catalog/validation.js',
+      'packages/metro-core/src/api-catalog/preview.js',
     ],
   },
   {
@@ -1376,8 +1352,8 @@ const COMMANDS = [
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/preflight.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/preflight.js',
     ],
   },
   {
@@ -1394,11 +1370,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/preflight.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/preflight.js',
     ],
   },
   {
@@ -1415,12 +1390,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-gate.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-gate.js',
     ],
   },
   {
@@ -1437,11 +1411,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-gate.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-gate.js',
     ],
   },
   {
@@ -1458,12 +1431,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-gate.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-gate.js',
     ],
   },
   {
@@ -1480,11 +1452,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-gate.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-gate.js',
     ],
   },
   {
@@ -1501,12 +1472,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/approval-record.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/approval-record.js',
     ],
   },
   {
@@ -1523,11 +1493,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/approval-record.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/approval-record.js',
     ],
   },
   {
@@ -1544,12 +1513,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-audit.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
     ],
   },
   {
@@ -1566,12 +1534,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-audit.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
     ],
   },
   {
@@ -1588,11 +1555,10 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-audit.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
     ],
   },
   {
@@ -1609,14 +1575,13 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      'metronome-cli/src/api-catalog/apply-readback.js',
-      'metronome-cli/src/api-catalog/apply-audit.js',
-      'metronome-cli/src/api-catalog/read-result.js',
+      'skills/metronome-danger-zone/SKILL.md',
+      'packages/metro-core/src/api-catalog/apply-readback.js',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
+      'packages/metro-core/src/api-catalog/read-result.js',
     ],
   },
   {
@@ -1635,7 +1600,7 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/apply-result.js',
+      'packages/metro-core/src/api-catalog/apply-result.js',
     ],
   },
   {
@@ -1654,7 +1619,7 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/apply-result.js',
+      'packages/metro-core/src/api-catalog/apply-result.js',
     ],
   },
   {
@@ -1699,11 +1664,11 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/metronome-cli/one-goal.md',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/src/api-catalog/export.js',
-      'metronome-cli/src/docs/api-reference.js',
-      'metronome-cli/src/docs/shape-validator-reference.js',
-      'metronome-cli/src/docs/gotcha-reference.js',
+      'packages/metro-core/src/docs/explain.js',
+      'packages/metro-core/src/api-catalog/export.js',
+      'packages/metro-core/src/docs/api-reference.js',
+      'packages/metro-core/src/docs/shape-validator-reference.js',
+      'packages/metro-core/src/docs/gotcha-reference.js',
     ],
   },
   {
@@ -1718,7 +1683,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--family', '--json', '--html', '--markdown'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/one-goal.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', 'metronome-cli/src/api-catalog/index.js', 'metronome-cli/src/docs/api-reference.js'],
+    sources: ['docs/metronome-cli/one-goal.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', 'packages/metro-core/src/api-catalog/index.js', 'packages/metro-core/src/docs/api-reference.js'],
   },
   {
     id: 'docs.evidence-gate-reference',
@@ -1736,11 +1701,11 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/docs/evidence-gate-reference.js',
-      'metronome-cli/src/preflight/index.js',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/proof/sandbox-manifest.js',
-      'metronome-cli/src/apply-gate/index.js',
+      'packages/metro-core/src/docs/evidence-gate-reference.js',
+      'packages/metro-core/src/preflight/index.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/proof/sandbox-manifest.js',
+      'packages/metro-core/src/apply-gate/index.js',
     ],
   },
   {
@@ -1759,9 +1724,9 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/input/files.js',
-      'metronome-cli/src/input/normalize.js',
-      'metronome-cli/src/docs/input-reference.js',
+      'packages/metro-core/src/input/files.js',
+      'packages/metro-core/src/input/normalize.js',
+      'packages/metro-core/src/docs/input-reference.js',
     ],
   },
   {
@@ -1776,7 +1741,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json', '--html', '--markdown'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/SHAPE_CATALOG.md', 'metronome-cli/src/shapes/index.js'],
+    sources: ['docs/metronome-cli/SHAPE_CATALOG.md', 'packages/metro-core/src/shapes/index.js'],
   },
   {
     id: 'docs.validator-reference',
@@ -1790,7 +1755,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json', '--html', '--markdown'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/validators/rules.js'],
+    sources: ['docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/validators/rules.js'],
   },
   {
     id: 'docs.gotcha-reference',
@@ -1804,7 +1769,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json', '--html', '--markdown'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/docs/gotcha-reference.js'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/docs/gotcha-reference.js'],
   },
   {
     id: 'setup.quickstart',
@@ -1822,8 +1787,8 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/site/install.html',
       'docs/SAFETY.md',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/setup/profiles.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/setup/profiles.js',
     ],
   },
   {
@@ -1838,7 +1803,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/harness/index.js'],
+    sources: ['packages/metro-core/src/harness/index.js'],
   },
   {
     id: 'harness.run',
@@ -1852,7 +1817,7 @@ const COMMANDS = [
     requiredFlags: ['--suite'],
     optionalFlags: ['--execute', '--fixture-root', '--sandbox', '--prod', '--continue-on-failure', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/harness/index.js', 'metronome-cli/src/harness/execute.js'],
+    sources: ['packages/metro-core/src/harness/index.js', 'packages/metro-core/src/harness/execute.js'],
   },
   {
     id: 'harness.intent',
@@ -1866,7 +1831,7 @@ const COMMANDS = [
     requiredFlags: ['<intent>', '--sandbox|--prod'],
     optionalFlags: ['--out', '--execute', '--fixture-root', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/harness/index.js', 'metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/harness/index.js', 'packages/metro-core/src/workspace/plan.js'],
   },
   {
     id: 'harness.read',
@@ -1880,7 +1845,7 @@ const COMMANDS = [
     requiredFlags: ['<endpoint-id>', '--file', '--sandbox|--prod'],
     optionalFlags: ['--execute', '--fixture-root', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/harness/index.js', 'metronome-cli/src/api-catalog/read-plan.js'],
+    sources: ['packages/metro-core/src/harness/index.js', 'packages/metro-core/src/api-catalog/read-plan.js'],
   },
   {
     id: 'harness.apply',
@@ -1894,7 +1859,7 @@ const COMMANDS = [
     requiredFlags: ['<endpoint-id>', '--file'],
     optionalFlags: ['--execute', '--fixture-root', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/harness/index.js', 'metronome-cli/src/api-catalog/preview.js'],
+    sources: ['packages/metro-core/src/harness/index.js', 'packages/metro-core/src/api-catalog/preview.js'],
   },
   {
     id: 'mode.show',
@@ -1908,7 +1873,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/setup/mode.js', 'TEAM-QUICKSTART.md'],
+    sources: ['packages/metro-core/src/setup/mode.js', 'TEAM-QUICKSTART.md'],
   },
   {
     id: 'mode.set',
@@ -1922,7 +1887,7 @@ const COMMANDS = [
     requiredFlags: ['<local-only|read-only|read-write>'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/setup/mode.js', 'TEAM-QUICKSTART.md'],
+    sources: ['packages/metro-core/src/setup/mode.js', 'TEAM-QUICKSTART.md'],
   },
   {
     id: 'mode.reset',
@@ -1936,7 +1901,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/setup/mode.js'],
+    sources: ['packages/metro-core/src/setup/mode.js'],
   },
   {
     id: 'install.doctor',
@@ -1964,7 +1929,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--file', '--profile', '--check-env', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/src/cli.js', 'metronome-cli/src/setup/mode.js', 'metronome-cli/src/setup/profiles.js', 'metronome-cli/src/api-catalog/readiness.js'],
+    sources: ['packages/metro-core/src/cli.js', 'packages/metro-core/src/setup/mode.js', 'packages/metro-core/src/setup/profiles.js', 'packages/metro-core/src/api-catalog/readiness.js'],
   },
   {
     id: 'setup.init',
@@ -1978,7 +1943,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--dir', '--write', '--force', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['TEAM-QUICKSTART.md', 'metronome-cli/src/setup/profiles.js'],
+    sources: ['TEAM-QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js'],
   },
   {
     id: 'setup.template',
@@ -1992,7 +1957,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', '.cursor/skills/_metronome-shared/conventions.md'],
+    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'skills/_metronome-shared/conventions.md'],
   },
   {
     id: 'setup.doctor',
@@ -2006,7 +1971,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'metronome-cli/src/setup/profiles.js'],
+    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'packages/metro-core/src/setup/profiles.js'],
   },
   {
     id: 'setup.auth',
@@ -2020,7 +1985,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--profile', '--check-env', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['TEAM-QUICKSTART.md', 'metronome-cli/src/setup/profiles.js', 'metronome-cli/src/clients/live-endpoints.js'],
+    sources: ['TEAM-QUICKSTART.md', 'packages/metro-core/src/setup/profiles.js', 'packages/metro-core/src/clients/live-endpoints.js'],
   },
   {
     id: 'setup.resolve',
@@ -2034,7 +1999,7 @@ const COMMANDS = [
     requiredFlags: ['--file', '--profile', '--key-fingerprint'],
     optionalFlags: ['--expect-tenant', '--check-env', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'metronome-cli/src/setup/profiles.js'],
+    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'packages/metro-core/src/setup/profiles.js'],
   },
   {
     id: 'release.readiness',
@@ -2052,10 +2017,8 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/site/install.html',
       'docs/SAFETY.md',
-      'metronome-cli/package.json',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
+      'package.json',
+      'packages/metro-core/src/release/readiness.js',
     ],
   },
   {
@@ -2074,12 +2037,8 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/site/integration.html',
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
-      'metronome-cli/package.json',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
+      'package.json',
+      'packages/metro-core/src/release/readiness.js',
     ],
   },
   {
@@ -2098,13 +2057,9 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/site/integration.html',
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
-      'metronome-cli/package.json',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/unit.test.js',
-      'metronome-cli/test/install.test.js',
+      'package.json',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/cli.js',
     ],
   },
   {
@@ -2123,14 +2078,9 @@ const COMMANDS = [
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/site/integration.html',
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
-      'metronome-cli/package.json',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/unit.test.js',
-      'metronome-cli/test/install.test.js',
-      'metronome-cli/test/fixtures/release-retention-policy-valid.json',
+      'package.json',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/cli.js',
     ],
   },
   {
@@ -2150,12 +2100,8 @@ const COMMANDS = [
       'docs/metronome-cli/site/install.html',
       'docs/metronome-cli/site/integration.html',
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/unit.test.js',
-      'metronome-cli/test/install.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/cli.js',
     ],
   },
   {
@@ -2175,13 +2121,8 @@ const COMMANDS = [
       'docs/metronome-cli/site/install.html',
       'docs/metronome-cli/site/integration.html',
       'docs/SAFETY.md',
-      'docs/SOURCE_BASELINE.md',
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
-      'metronome-cli/test/unit.test.js',
-      'metronome-cli/test/install.test.js',
-      'metronome-cli/test/fixtures/release-retention-policy-valid.json',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/cli.js',
     ],
   },
   {
@@ -2196,7 +2137,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--workflow', '--shape', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SOURCE_BASELINE.md', 'docs/metronome-cli/GOTCHAS.md', 'metronome-cli/src/source-boundary/index.js'],
+    sources: ['docs/SOURCE_BASELINE.md', 'docs/metronome-cli/GOTCHAS.md', 'packages/metro-core/src/source-boundary/index.js'],
   },
   {
     id: 'source-boundary.validate',
@@ -2210,7 +2151,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SOURCE_BASELINE.md', 'docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/source-boundary/index.js'],
+    sources: ['docs/SOURCE_BASELINE.md', 'docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/source-boundary/index.js'],
   },
   {
     id: 'preflight.template',
@@ -2252,7 +2193,7 @@ const COMMANDS = [
     requiredFlags: ['--workflow', '--shape'],
     optionalFlags: ['--sandbox|--prod', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SAFETY.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/apply-gate/index.js'],
+    sources: ['docs/SAFETY.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/apply-gate/index.js'],
   },
   {
     id: 'apply-gate.validate',
@@ -2266,7 +2207,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/apply-gate/index.js'],
+    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/apply-gate/index.js'],
   },
   {
     id: 'approval-record.template',
@@ -2280,7 +2221,7 @@ const COMMANDS = [
     requiredFlags: ['--apply-gate'],
     optionalFlags: ['--approval-id', '--requested-by', '--approved-by', '--owner', '--business-purpose', '--expires-at', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/apply-gate/index.js', 'metronome-cli/src/approval-record/index.js'],
+    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/apply-gate/index.js', 'packages/metro-core/src/approval-record/index.js'],
   },
   {
     id: 'approval-record.validate',
@@ -2294,7 +2235,7 @@ const COMMANDS = [
     requiredFlags: ['--file'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/approval-record/index.js'],
+    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/approval-record/index.js'],
   },
   {
     id: 'apply-readback.verify',
@@ -2308,7 +2249,7 @@ const COMMANDS = [
     requiredFlags: ['--audit', '--inspect-output or --inspect-outputs'],
     optionalFlags: ['--row', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'metronome-cli/src/apply-readback/index.js', 'metronome-cli/src/audit/index.js', 'metronome-cli/src/verify/inspect-output.js'],
+    sources: ['docs/SAFETY.md', 'docs/API_OPERATIONS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'packages/metro-core/src/apply-readback/index.js', 'packages/metro-core/src/audit/index.js', 'packages/metro-core/src/verify/inspect-output.js'],
   },
   {
     id: 'audit.template',
@@ -2350,7 +2291,7 @@ const COMMANDS = [
     requiredFlags: ['--file', '--out', '--dry-run|--write'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'metronome-cli/src/audit/index.js'],
+    sources: ['docs/metronome-cli/CLI_ARCHITECTURE.md', 'docs/SAFETY.md', 'packages/metro-core/src/audit/index.js'],
   },
   {
     id: 'proof.sandbox-template',
@@ -2364,7 +2305,7 @@ const COMMANDS = [
     requiredFlags: ['--workflow', '--shape'],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['docs/metronome-cli/SHAPE_CATALOG.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/SHAPE_CATALOG.md', 'docs/metronome-cli/CLI_ARCHITECTURE.md', 'skills/metronome-danger-zone/SKILL.md'],
   },
   {
     id: 'proof.validate',
@@ -2393,9 +2334,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2411,9 +2351,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2429,9 +2368,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2447,9 +2385,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2465,9 +2402,8 @@ const COMMANDS = [
     optionalFlags: ['--at', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2483,9 +2419,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2501,10 +2436,9 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md',
+      'skills/metronome-danger-zone/references/endpoint-matrix.md',
     ],
   },
   {
@@ -2520,9 +2454,8 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/verify/inspect-output.js',
+      'packages/metro-core/src/verify/inspect-output.js',
     ],
   },
   {
@@ -2539,10 +2472,9 @@ const COMMANDS = [
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
       'docs/SAFETY.md',
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
-      'metronome-cli/src/audit/index.js',
-      'metronome-cli/src/verify/audit-log.js',
+      'packages/metro-core/src/audit/index.js',
+      'packages/metro-core/src/verify/audit-log.js',
     ],
   },
   {
@@ -2558,10 +2490,9 @@ const COMMANDS = [
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'docs/API_OPERATIONS.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/verify/apply-result.js',
+      'packages/metro-core/src/verify/apply-result.js',
     ],
   },
   {
@@ -2580,7 +2511,7 @@ const COMMANDS = [
       'docs/SAFETY.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/verify/apply-result.js',
+      'packages/metro-core/src/verify/apply-result.js',
     ],
   },
   {
@@ -2595,7 +2526,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/packages/metro-core/src/commands/ops.js'],
+    sources: ['packages/metro-core/src/commands/ops.js'],
   },
   {
     id: 'ops.who',
@@ -2611,8 +2542,8 @@ const COMMANDS = [
     optionalFlags: ['--query', '--customer-id', '--external-id', '--ingest-alias', '--name', '--sandbox', '--prod', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
     sources: [
-      'metronome-cli/packages/metro-core/src/commands/ops.js',
-      'metronome-cli/packages/metro-core/src/ops-live/load.js',
+      'packages/metro-core/src/commands/ops.js',
+      'packages/metro-core/src/ops-live/load.js',
       'packages/metro-core/src/ops-live/who.js',
     ],
   },
@@ -2628,7 +2559,7 @@ const COMMANDS = [
     requiredFlags: ['--ask'],
     optionalFlags: ['--source', '--minutes', '--file', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/packages/metro-core/src/commands/ops.js'],
+    sources: ['packages/metro-core/src/commands/ops.js'],
   },
   {
     id: 'ops.top',
@@ -2642,7 +2573,7 @@ const COMMANDS = [
     requiredFlags: [],
     optionalFlags: ['--file', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
-    sources: ['metronome-cli/packages/metro-core/src/commands/ops.js'],
+    sources: ['packages/metro-core/src/commands/ops.js'],
   },
   {
     id: 'customer.create.preflight',
@@ -3087,7 +3018,7 @@ const COMMAND_REFERENCE_SECTION_NAVIGATION = [
 function commandReference() {
   return {
     schemaVersion: 'metro.docs.command-reference.v1',
-    generatedFrom: 'metronome-cli/src/commands/catalog.js',
+    generatedFrom: 'packages/metro-core/src/commands/catalog.js',
     sectionNavigation: COMMAND_REFERENCE_SECTION_NAVIGATION.map((section) => ({ ...section })),
     commands: COMMANDS.map((command) => ({ ...command })),
     unsupportedCommands: UNSUPPORTED_COMMANDS.map((command) => ({ ...command })),

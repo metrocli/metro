@@ -27,8 +27,6 @@ metro rate-card dimensional preview --file <input.json> (--sandbox|--prod) --jso
 - `catalogMode`: `add-rates-only`
 - Evidence flags: `metricGroupKeyVerified`, `invoiceImpactReviewed`, `canaryPlan`, `verificationPlan`, `rollbackPlan`
 
-**Fixture:** `test/fixtures/dimensional-rate-card-valid.json`
-
 ## product-rate-retirement
 
 See `metro docs explain product-rate-retirement.readback --json`. Closes rates with

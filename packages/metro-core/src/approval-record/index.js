@@ -235,7 +235,7 @@ function buildWorkflowApprovalRecordTemplate(options = {}) {
 
   return {
     schemaVersion: WORKFLOW_APPROVAL_RECORD_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/approval-record/index.js',
+    generatedFrom: 'packages/metro-core/src/approval-record/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -309,8 +309,8 @@ function buildWorkflowApprovalRecordTemplate(options = {}) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/apply-gate/index.js',
-      'metronome-cli/src/approval-record/index.js',
+      'packages/metro-core/src/apply-gate/index.js',
+      'packages/metro-core/src/approval-record/index.js',
     ]),
   };
 }
@@ -568,7 +568,7 @@ function validateWorkflowApprovalRecord(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: WORKFLOW_APPROVAL_RECORD_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/approval-record/index.js',
+    generatedFrom: 'packages/metro-core/src/approval-record/index.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,

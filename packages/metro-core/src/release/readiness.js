@@ -16,8 +16,8 @@ const RETAINED_VALIDATION_ARTIFACT_FILENAMES = [
 ];
 
 const REQUIRED_RETENTION_POLICY_CHECKS = [
-  'node metronome-cli/bin/metro.js release artifact-manifest --json',
-  'node metronome-cli/bin/metro.js release evidence-check --dir <artifact-dir> --json',
+  'node bin/metro.js release artifact-manifest --json',
+  'node bin/metro.js release evidence-check --dir <artifact-dir> --json',
   'npm --prefix metronome-cli test',
   'node docs/metronome-cli/site/verify-site.js',
   'npm run check:syntax',
@@ -66,10 +66,8 @@ function buildReleaseReadiness(options = {}) {
   return {
     schemaVersion: RELEASE_READINESS_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/package.json',
-      'metronome-cli/test/package.test.js',
-      'metronome-cli/test/install.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'package.json',
     ],
     apiAccess: 'none',
     localOnly: true,
@@ -167,7 +165,7 @@ function buildReleaseReadiness(options = {}) {
         blockerId: 'METRO-PUBLISH-001',
         title: 'Package manifest is private',
         status: manifestPrivateFlag ? 'blocking' : 'requires-review',
-        evidence: 'metronome-cli/package.json declares "private": true.',
+        evidence: 'package.json declares "private": true.',
         nextSafeStep: 'Keep private:true until registry destination, owner approval, versioning, provenance, integrity, and publish proof are reviewed.',
       },
       {
@@ -202,12 +200,12 @@ function buildReleaseReadiness(options = {}) {
       'Passing syntax, secret scan, package tests, install smoke test, command contract goldens, and docs site verification.',
     ],
     safeLocalCommands: [
-      'node metronome-cli/bin/metro.js release readiness --json',
-      'node metronome-cli/bin/metro.js release artifact-manifest --json',
-      'node metronome-cli/bin/metro.js release retention-policy template --json',
-      'node metronome-cli/bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
-      'node metronome-cli/bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
-      'node metronome-cli/bin/metro.js release evidence-check --dir <artifact-dir> --json',
+      'node bin/metro.js release readiness --json',
+      'node bin/metro.js release artifact-manifest --json',
+      'node bin/metro.js release retention-policy template --json',
+      'node bin/metro.js release retention-policy validate --file <policy.json|yaml> --json',
+      'node bin/metro.js release evidence-plan --policy <policy.json|yaml> --json',
+      'node bin/metro.js release evidence-check --dir <artifact-dir> --json',
       'npm --prefix metronome-cli run test:package',
       'npm --prefix metronome-cli run test:install',
       'npm --prefix metronome-cli run test:golden',
@@ -215,10 +213,10 @@ function buildReleaseReadiness(options = {}) {
       'npm run check:syntax',
       'npm run secrets:scan',
       'node docs/metronome-cli/site/verify-site.js',
-      'node metronome-cli/bin/metro.js docs explain package.publish-readiness --json',
+      'node bin/metro.js docs explain package.publish-readiness --json',
     ],
     refusedActions: [
-      'Remove private:true from metronome-cli/package.json.',
+      'Remove private:true from package.json.',
       'Run npm publish.',
       'Handle npm tokens in the CLI or docs.',
       'Treat local tarball install proof as internal registry proof.',
@@ -243,10 +241,9 @@ function buildReleaseArtifactManifest(options = {}) {
   return {
     schemaVersion: RELEASE_ARTIFACT_MANIFEST_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/docs/explain.js',
-      'metronome-cli/test/golden.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/docs/explain.js',
       'docs/metronome-cli/site/integration.html',
     ],
     apiAccess: 'none',
@@ -259,7 +256,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.schema',
         filename: 'metro.schema.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js schema --json',
+        sourceCommand: 'node bin/metro.js schema --json',
         schemaVersion: 'metro.docs.command-reference.v1',
         required: true,
         proves: [
@@ -272,7 +269,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.command-reference',
         filename: 'metro.command-reference.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js docs command-reference --json',
+        sourceCommand: 'node bin/metro.js docs command-reference --json',
         schemaVersion: 'metro.docs.command-reference.v1',
         required: true,
         proves: [
@@ -285,7 +282,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.docs-explain.topic-index',
         filename: 'metro.docs-explain.topic-index.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js docs explain --list --json',
+        sourceCommand: 'node bin/metro.js docs explain --list --json',
         schemaVersion: 'metro.docs.explain.index.v1',
         required: true,
         proves: [
@@ -298,7 +295,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.api-readiness.summary',
         filename: 'metro.api-readiness.summary.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js api readiness --summary --json',
+        sourceCommand: 'node bin/metro.js api readiness --summary --json',
         schemaVersion: 'metro.api.readiness.summary.v1',
         required: true,
         proves: [
@@ -311,7 +308,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.release-readiness',
         filename: 'metro.release-readiness.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js release readiness --json',
+        sourceCommand: 'node bin/metro.js release readiness --json',
         schemaVersion: RELEASE_READINESS_SCHEMA_VERSION,
         required: true,
         proves: [
@@ -324,7 +321,7 @@ function buildReleaseArtifactManifest(options = {}) {
       {
         artifactId: 'metro.release-artifact-manifest',
         filename: 'metro.release-artifact-manifest.json',
-        sourceCommand: 'node metronome-cli/bin/metro.js release artifact-manifest --json',
+        sourceCommand: 'node bin/metro.js release artifact-manifest --json',
         schemaVersion: RELEASE_ARTIFACT_MANIFEST_SCHEMA_VERSION,
         required: true,
         proves: [
@@ -653,10 +650,9 @@ function checkReleaseEvidenceDirectory(directoryInput, options = {}) {
   return {
     schemaVersion: RELEASE_EVIDENCE_CHECK_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/cli.js',
     ],
     apiAccess: 'none',
     localOnly: true,
@@ -716,9 +712,9 @@ function buildReleaseRetentionPolicyTemplate(options = {}) {
   return {
     schemaVersion: RELEASE_RETENTION_POLICY_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/cli.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/cli.js',
       'docs/metronome-cli/site/install.html',
       'docs/metronome-cli/site/integration.html',
     ],
@@ -985,10 +981,9 @@ function validateReleaseRetentionPolicy(policy, options = {}) {
   return {
     schemaVersion: RELEASE_RETENTION_POLICY_VALIDATION_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/cli.js',
     ],
     apiAccess: 'none',
     localOnly: true,
@@ -1061,7 +1056,7 @@ function buildReleaseEvidencePlan(policy, options = {}) {
   const retainedValidationArtifacts = RETAINED_VALIDATION_ARTIFACT_FILENAMES.map((filename) => ({
     filename,
     path: artifactDirectory ? artifactDisplayPath(artifactDirectory, filename) : filename,
-    sourceCommand: `node metronome-cli/bin/metro.js release evidence-check --dir ${artifactDirectoryForCommand} --json`,
+    sourceCommand: `node bin/metro.js release evidence-check --dir ${artifactDirectoryForCommand} --json`,
     expectedSchemaVersion: RELEASE_EVIDENCE_CHECK_SCHEMA_VERSION,
     allowedByPolicy: allowedFilenames.has(filename),
     writeEnabledInCurrentCli: false,
@@ -1075,10 +1070,9 @@ function buildReleaseEvidencePlan(policy, options = {}) {
   return {
     schemaVersion: RELEASE_EVIDENCE_PLAN_SCHEMA_VERSION,
     generatedFrom: [
-      'metronome-cli/src/release/readiness.js',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/cli.js',
-      'metronome-cli/test/golden.test.js',
+      'packages/metro-core/src/release/readiness.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/cli.js',
       'docs/metronome-cli/site/integration.html',
     ],
     apiAccess: 'none',
@@ -1108,7 +1102,7 @@ function buildReleaseEvidencePlan(policy, options = {}) {
     retainedValidationArtifacts,
     manualRunOrder: [
       ...plannedArtifacts.map((artifact) => artifact.sourceCommand),
-      `node metronome-cli/bin/metro.js release evidence-check --dir ${artifactDirectoryForCommand} --json`,
+      `node bin/metro.js release evidence-check --dir ${artifactDirectoryForCommand} --json`,
     ],
     safetyBoundaries: [
       'This command plans release evidence capture only; it does not create directories, write artifacts, or run artifact commands.',

@@ -3114,7 +3114,7 @@ function validateApiEndpointRequest(endpointId, input) {
   const valid = !findings.some((finding) => finding.severity === 'error');
   return {
     schemaVersion: API_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/validation.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/validation.js',
     apiAccess: 'none',
     liveExecution: clone(endpoint.liveExecution),
     endpoint: {

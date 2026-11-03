@@ -64,7 +64,7 @@
       </aside>
 
       <main>
-        <section id="home" class="hero manual-section" data-source="one-goal full-scope safety metro-setup-quickstart">
+        <section id="home" class="hero manual-section" data-source="one-goal safety">
           <div class="hero-copy">
             <p class="eyebrow">For billing engineers</p>
             <h1><span class="metro-word" data-text="metro">metro</span> - billing without the Metronome maze</h1>
@@ -126,7 +126,7 @@ bash ~/.metro/src/scripts/install-global.sh</code>
           </div>
         </section>
 
-        <section id="try-it" class="manual-section try-it-section" data-source="metro-setup-quickstart metro-command-catalog metro-install-test">
+        <section id="try-it" class="manual-section try-it-section" data-source="metro-command-catalog">
           <div class="section-heading">
             <p class="eyebrow">Try it</p>
             <h2>Four steps most engineers need</h2>
@@ -172,7 +172,7 @@ metro api read contracts.get.v2 --file request.json --sandbox \
           </div>
         </section>
 
-        <section id="live-today" class="manual-section live-today-section" data-source="metro-command-catalog metro-api-catalog metro-install-test">
+        <section id="live-today" class="manual-section live-today-section" data-source="metro-command-catalog metro-api-catalog">
           <div class="section-heading">
             <p class="eyebrow">What's live now</p>
             <h2>You can look up and change billing - with brakes on</h2>
@@ -238,7 +238,7 @@ metro api read contracts.get.v2 --file request.json --sandbox \
           </div>
         </section>
 
-        <section id="quick-paths" class="manual-section pathway-section" data-source="one-goal architecture safety metro-command-catalog metro-install-test">
+        <section id="quick-paths" class="manual-section pathway-section" data-source="one-goal architecture safety metro-command-catalog">
           <div class="section-heading">
             <p class="eyebrow">Quick paths</p>
             <h2>I need to…</h2>
@@ -275,7 +275,7 @@ metro api read contracts.get.v2 --file request.json --sandbox \
               <p>Generated index: modes, support status, schemas, and exit codes.</p>
               <a href="command-reference.html">Open command reference</a>
             </article>
-            <article class="pathway-card" data-source="metro-api-reference metro-api-reference-page metro-api-readiness metro-api-readiness-golden metro-api-readiness-summary-golden metro-api-apply-result metro-api-apply-result-golden">
+            <article class="pathway-card" data-source="metro-api-reference metro-api-reference-page metro-api-readiness metro-api-apply-result">
               <span class="pathway-step">06</span>
               <h3>Expert API write proof ladder</h3>
               <p>For advanced endpoint work: run <code>metro api readiness --summary --json</code>, then follow request validation through apply-result evidence. Sandbox <code>contracts.create</code> uses the guarded apply runner today; other expert API applies remain blocked behind future guarded apply runner work. Prefer workspace pack commands for sales one-offs.</p>
@@ -294,7 +294,7 @@ metro api read contracts.get.v2 --file request.json --sandbox \
           </div>
         </section>
 
-        <section id="setup" class="manual-section" data-source="one-goal roadmap architecture safety conventions metro-input-files metro-input-normalize metro-input-reference metro-input-reference-golden metro-setup-quickstart metro-setup-profiles metro-setup-fixtures metro-setup-resolve-golden metro-install-test">
+        <section id="setup" class="manual-section" data-source="one-goal architecture safety conventions metro-input-files metro-input-normalize metro-input-reference metro-setup-profiles">
           <div class="section-heading">
             <p class="eyebrow">Setup</p>
             <h2>Install path, configuration, and first preview</h2>
@@ -318,22 +318,16 @@ metro schema --json</code></pre>
             </article>
             <article class="card">
               <h3>Maintainer checkout proof</h3>
-              <pre><code data-local-repo-command-block="true">cd /path/to/metronome-cli
-node bin/metro.js setup quickstart --shell
-node bin/metro.js setup quickstart --json
-npm run test:install
+              <pre><code data-local-repo-command-block="true">git clone https://github.com/metrocli/metro.git &amp;&amp; cd metro
+npm ci
+npm test
+npm run pack:verify
+npm run docs:site:verify
 node bin/metro.js schema --json
-node bin/metro.js setup template --json
-node bin/metro.js setup resolve --file test/fixtures/setup/profiles-valid.json --profile my-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json
-node bin/metro.js validate --shape pro-annual --file test/fixtures/pro-annual-valid.json --json
-node bin/metro.js input normalize --shape pro-annual --file test/fixtures/pro-annual-valid.yaml --json
-node bin/metro.js input normalize --api contracts.create --file test/fixtures/api-contracts-create-valid.yaml --json
+node bin/metro.js setup quickstart --json
 node bin/metro.js docs explain --list --json
 node bin/metro.js docs explain first-safe-preview --json
-node bin/metro.js docs explain input.normalize --json
-node bin/metro.js docs explain output.anatomy --json
-node bin/metro.js package preview --shape pro-annual --file test/fixtures/pro-annual-valid.json --sandbox --json
-node bin/metro.js package preview --shape pro-annual --file test/fixtures/pro-annual-valid.yaml --sandbox --json</code></pre>
+node bin/metro.js docs explain output.anatomy --json</code></pre>
               <p>
                 This checkout-relative path is for maintainers and CI only. It
                 proves the same quickstart, generated catalog, secret-free
@@ -376,7 +370,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="safety" class="manual-section safety-section" data-source="safety api-ops danger-zone conventions architecture">
+        <section id="safety" class="manual-section safety-section" data-source="safety danger-zone conventions architecture">
           <div class="section-heading">
             <p class="eyebrow">Safety model</p>
             <h2>Every command must declare its risk boundary</h2>
@@ -399,8 +393,8 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="commands" class="manual-section" data-source="one-goal full-scope architecture source-baseline script-risk packages-contracts danger-zone metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-customer-get official-customer-list official-contract-get-v2 official-contract-list-v2 official-customer-balances-list official-commits-list official-credits-list official-subscription-quantity-history official-subscription-seats-history official-rate-card-add-rates official-rate-card-get-rate-schedule official-product-archive official-product-get official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-api-catalog metro-api-search metro-api-search-golden metro-api-diff metro-api-diff-golden metro-api-export metro-api-export-golden metro-docs-explain metro-docs-explain-golden metro-docs-explain-output-anatomy-golden metro-api-approval-policies metro-api-approval-policies-golden metro-api-readiness metro-api-readiness-golden metro-api-validation metro-api-read-plan metro-api-read-plan-golden metro-api-read-preflight metro-api-read-preflight-golden metro-api-read-gate metro-api-profile-resolution-helper metro-api-read-gate-profile-resolution-fixture metro-api-read-gate-template-golden metro-api-read-gate-validation-fixture metro-api-read-gate-validation-golden metro-api-read-result metro-api-read-result-fixture metro-api-read-result-golden metro-api-read-mock metro-api-read-mock-response-fixture metro-api-read-mock-golden metro-api-read-pipeline metro-api-read-pipeline-golden metro-api-read-pipeline-events-golden metro-api-read-pipeline-packages-golden metro-api-read-pipeline-billing-provider-golden metro-api-read-pipeline-invoices-golden metro-api-read-pipeline-customers-get-golden metro-api-read-pipeline-contracts-list-golden metro-api-read-pipeline-customer-balances-golden metro-api-read-pipeline-commits-list-golden metro-api-read-pipeline-credits-list-golden metro-api-read-pipeline-packages-get-golden metro-api-read-pipeline-products-get-golden metro-api-read-pipeline-rate-card-schedule-golden metro-api-read-pipeline-invoices-get-golden metro-api-read-pipeline-customers-list-golden metro-api-read-pipeline-usage-groups-golden metro-api-read-mock-contracts-list-gate-fixture metro-api-read-mock-contracts-list-response-fixture metro-api-read-mock-contracts-list-golden metro-api-read-mock-customer-balances-gate-fixture metro-api-read-mock-customer-balances-response-fixture metro-api-read-mock-customer-balances-golden metro-api-read-mock-commits-list-gate-fixture metro-api-read-mock-commits-list-response-fixture metro-api-read-mock-commits-list-golden metro-api-read-mock-credits-list-gate-fixture metro-api-read-mock-credits-list-response-fixture metro-api-read-mock-credits-list-golden metro-api-read-mock-invoices-gate-fixture metro-api-read-mock-invoices-response-fixture metro-api-read-mock-invoices-golden metro-api-read-mock-packages-gate-fixture metro-api-read-mock-packages-response-fixture metro-api-read-mock-packages-golden metro-api-read-mock-usage-gate-fixture metro-api-read-mock-usage-response-fixture metro-api-read-mock-usage-golden metro-api-read-mock-events-gate-fixture metro-api-read-mock-events-response-fixture metro-api-read-mock-events-golden metro-api-read-mock-customers-get-gate-fixture metro-api-read-mock-customers-get-response-fixture metro-api-read-mock-customers-get-golden metro-api-read-mock-customers-list-gate-fixture metro-api-read-mock-customers-list-response-fixture metro-api-read-mock-customers-list-golden metro-api-read-audit metro-api-read-audit-write-golden metro-api-read-audit-fixture metro-api-read-audit-golden metro-api-preview metro-api-preflight metro-api-preflight-profile-resolution-fixture metro-api-preflight-fixture metro-api-preflight-golden metro-api-reference metro-api-reference-html metro-api-reference-page metro-api-reference-golden metro-api-catalog-golden metro-api-explain-golden metro-api-validation-fixtures metro-api-validation-golden metro-api-preview-golden metro-preview-builder metro-cli-tests metro-command-catalog metro-command-reference-html metro-command-reference-page metro-command-reference-golden metro-gotcha-reference metro-gotcha-reference-html metro-gotcha-reference-page metro-gotcha-reference-golden metro-billing-provider-preview-golden metro-contract-move-preview-golden metro-product-retirement-preview-golden metro-invoice-issue-date-preview-golden metro-direct-subscription-preview-golden metro-usage-ingest-preview-golden metro-stripe-billing-provider-fixtures metro-contract-move-fixtures metro-product-retirement-fixtures metro-invoice-issue-date-fixtures metro-direct-subscription-fixtures metro-usage-ingest-fixtures metro-setup-profiles metro-setup-fixtures metro-source-boundary metro-source-boundary-fixtures metro-source-boundary-template-golden metro-source-boundary-validation-golden metro-preflight metro-preflight-fixture metro-preflight-golden metro-contract-move-preflight-fixture metro-contract-move-preflight-golden metro-apply-gate metro-apply-gate-fixture metro-apply-gate-golden metro-contract-move-apply-gate-fixture metro-contract-move-apply-gate-golden metro-audit metro-audit-tests metro-audit-fixtures metro-audit-golden metro-contract-move-audit-golden metro-verify-audit-log metro-audit-log-verify-golden metro-proof metro-proof-fixtures metro-proof-golden metro-contract-move-proof-fixture metro-contract-move-proof-golden metro-inspect-plans metro-inspect-golden metro-package-inspect-golden metro-product-inspect-golden metro-billing-provider-inspect-golden metro-contract-inspect-golden metro-invoice-inspect-golden metro-subscription-history-inspect-golden metro-verify-inspect-output metro-verify-apply-result metro-verify-fixtures metro-apply-fixtures">
-          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config metro-customer-setup-fixtures metro-customer-setup-preview-golden"></span>
+        <section id="commands" class="manual-section" data-source="one-goal architecture packages-contracts danger-zone metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-customer-get official-customer-list official-contract-get-v2 official-contract-list-v2 official-customer-balances-list official-commits-list official-credits-list official-subscription-quantity-history official-subscription-seats-history official-rate-card-add-rates official-rate-card-get-rate-schedule official-product-archive official-product-get official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-api-catalog metro-api-search metro-api-diff metro-api-export metro-docs-explain metro-api-approval-policies metro-api-readiness metro-api-validation metro-api-read-plan metro-api-read-preflight metro-api-read-gate metro-api-profile-resolution-helper metro-api-read-result metro-api-read-mock metro-api-read-pipeline metro-api-read-audit metro-api-preview metro-api-preflight metro-api-reference metro-api-reference-html metro-api-reference-page metro-preview-builder metro-command-catalog metro-command-reference-html metro-command-reference-page metro-gotcha-reference metro-gotcha-reference-html metro-gotcha-reference-page metro-setup-profiles metro-source-boundary metro-preflight metro-apply-gate metro-audit metro-verify-audit-log metro-proof metro-inspect-plans metro-verify-inspect-output metro-verify-apply-result">
+          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config"></span>
           <div class="section-heading">
             <p class="eyebrow">Command reference</p>
             <h2>Stable command contracts before endpoint wrappers</h2>
@@ -435,7 +429,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
                   <td><span class="status-pill local">local</span></td>
                   <td>Runs offline schema and rule checks before any API client loads.</td>
                 </tr>
-                <tr data-source="metro-input-files metro-input-normalize metro-input-normalize-shape-golden metro-input-normalize-api-golden">
+                <tr data-source="metro-input-files metro-input-normalize">
                   <td><code>metro input normalize (--shape &lt;shape&gt;|--api &lt;endpoint-id&gt;) --file &lt;input.json|yaml&gt; --json</code></td>
                   <td>validate</td>
                   <td><span class="status-pill local">local</span></td>
@@ -543,103 +537,103 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains one source-linked docs topic across reviewed endpoint IDs, workflow shapes, validator rules, gotchas, permission scopes, command IDs, and examples.</td>
                 </tr>
-                <tr data-source="metro-docs-explain-topic-index-golden metro-docs-explain-reference-html metro-docs-explain-reference-page">
+                <tr data-source="metro-docs-explain-reference-html metro-docs-explain-reference-page">
                   <td><code>metro docs explain --list --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Lists curated operating topics, typed lookup prefixes, example topics, and explainable reference counts without loading API clients.</td>
                 </tr>
-                <tr data-source="metro-safe-preview-quickstart metro-setup-quickstart metro-install-test metro-setup-resolve-golden metro-docs-explain-first-safe-preview-golden">
+                <tr data-source="metro-safe-preview-quickstart">
                   <td><code>metro docs explain first-safe-preview --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains the shortest local operator path from install smoke test through profile binding, validation, and sandbox-labeled preview without touching API keys.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-safe-preview-quickstart metro-docs-explain-install-troubleshooting-golden">
+                <tr data-source="metro-safe-preview-quickstart">
                   <td><code>metro docs explain install.troubleshooting --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains how to recover from npm pack, global install, missing <code>metro</code> binary, runtime allowlist, and unpublished internal-registry blockers using local package and install smoke proof.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-readiness-golden metro-docs-explain-package-publish-readiness-golden">
+                <tr>
                   <td><code>metro release readiness --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill blocked">blocked</span></td>
                   <td>Reports package/install proof, current private package state, publish blockers, refused release assumptions, and required registry/provenance/approval/versioning/integrity evidence without touching npm registry credentials.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-artifact-manifest-golden metro-release-readiness-golden">
+                <tr>
                   <td><code>metro release artifact-manifest --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Lists the local release evidence artifacts, source commands, retention ownership, blocked publish/token/registry actions, and release-policy open questions without writing files.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-artifact-manifest-golden metro-release-retention-policy-golden metro-release-readiness-golden">
+                <tr>
                   <td><code>metro release retention-policy template --json</code></td>
                   <td>template</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Prints a local policy template for the reviewed artifact directory, owner, approver, retention period, allowed filenames, required checks, and blocked publish/live actions before any artifact writer exists.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-artifact-manifest-golden metro-release-retention-policy-golden metro-release-readiness-golden">
+                <tr>
                   <td><code>metro release retention-policy validate --file policy.json --json</code></td>
                   <td>validate</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Validates a reviewed retention policy and rejects source-tree artifact directories, placeholder review fields, missing local checks, and missing blocked-action acknowledgements without creating artifacts.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-retention-policy-golden metro-release-readiness-golden">
+                <tr>
                   <td><code>metro release evidence-plan --policy policy.json --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Plans manual release artifact capture from the reviewed retention policy and artifact manifest without creating directories, writing artifacts, or running capture commands.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-release-readiness-golden">
+                <tr>
                   <td><code>metro release evidence-check --dir &lt;artifact-dir&gt; --json</code></td>
                   <td>validate</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Validates an operator-owned local release artifact directory against the manifest by checking required files, JSON schemaVersion fields, and log file presence without writing artifacts or touching registry state.</td>
                 </tr>
-                <tr data-source="metro-package-test metro-install-test metro-safe-preview-quickstart metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-package-publish-readiness-golden">
+                <tr data-source="metro-safe-preview-quickstart">
                   <td><code>metro docs explain package.publish-readiness --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill blocked">blocked</span></td>
                   <td>Explains why local tarball install proof is not internal npm publish readiness yet, including the private package flag, missing registry destination, release evidence retention policy, provenance, approval, and integrity evidence blockers.</td>
                 </tr>
-                <tr data-source="metro-command-catalog metro-command-reference-golden metro-package-test metro-install-test metro-api-readiness-summary-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-ci-local-checks-golden">
+                <tr data-source="metro-command-catalog">
                   <td><code>metro docs explain ci.local-checks --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains the CI-safe local check sequence, machine-readable discovery commands, parse rules, recommended artifacts, and blocked assumptions without loading API clients or npm registry credentials.</td>
                 </tr>
-                <tr data-source="metro-setup-profiles metro-setup-fixtures metro-setup-resolve-golden metro-setup-quickstart metro-docs-explain-setup-troubleshooting-golden">
+                <tr data-source="metro-setup-profiles">
                   <td><code>metro docs explain setup.troubleshooting --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains how to recover from setup quickstart, profile doctor, and profile-resolution failures using local profile schemas, findings, non-secret fingerprints, and checked setup fixtures without authorizing live API access.</td>
                 </tr>
-                <tr data-source="metro-input-files metro-input-normalize metro-input-reference metro-input-normalize-shape-golden metro-input-normalize-api-golden metro-input-reference-golden metro-docs-explain-input-normalize-golden">
+                <tr data-source="metro-input-files metro-input-normalize metro-input-reference">
                   <td><code>metro docs explain input.normalize --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains the local input normalization contract, including structured input formats, canonical JSON/hash behavior, validators, secret redaction, generated reference docs, and checked golden fixtures.</td>
                 </tr>
-                <tr data-source="metro-command-catalog metro-command-reference-golden metro-docs-explain-output-anatomy-golden metro-api-preview-golden metro-api-read-pipeline-golden">
+                <tr data-source="metro-command-catalog">
                   <td><code>metro docs explain output.anatomy --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains how to read stable JSON output fields, live-execution boundaries, hashes, source links, refusal schemas, exit codes, and next safe steps before treating output as evidence.</td>
                 </tr>
-                <tr data-source="metro-command-catalog metro-api-read-refusal-golden metro-api-readiness-golden metro-docs-explain-refusal-troubleshooting-golden">
+                <tr data-source="metro-command-catalog">
                   <td><code>metro docs explain refusal.troubleshooting --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains how to treat live-read, live-apply, unsupported workflow apply, and unsafe-input refusals as safety signals, then gather the local preview, preflight, gate, audit, read-back, and approval evidence named by the next safe step.</td>
                 </tr>
-                <tr data-source="official-contract-get-rate-schedule official-rate-card-get-rates metro-docs-explain-contract-overrides-golden">
+                <tr data-source="official-contract-get-rate-schedule official-rate-card-get-rates">
                   <td><code>metro docs explain contract-overrides.inspection --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Explains when to use contract rate schedule reads instead of rate-card rate reads for customer-specific override inspection, with local read-plan, mock, and pipeline proof paths.</td>
                 </tr>
-                <tr data-source="official-rate-card-add-rates official-rate-card-get-rates official-rate-card-get-rate-schedule official-product-get official-product-archive metro-product-retirement-preview-golden metro-docs-explain-product-rate-retirement-readback-golden">
+                <tr data-source="official-rate-card-add-rates official-rate-card-get-rates official-rate-card-get-rate-schedule official-product-get official-product-archive">
                   <td><code>metro docs explain product-rate-retirement.readback --json</code></td>
                   <td>explain</td>
                   <td><span class="status-pill local">local</span></td>
@@ -843,13 +837,13 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
                   <td><span class="status-pill local">local</span></td>
                   <td>Checks audit rows for tenant, hashes, endpoint, verification status, and secret-free content.</td>
                 </tr>
-                <tr data-source="metro-audit metro-audit-tests metro-audit-fixtures">
+                <tr data-source="metro-audit">
                   <td><code>metro audit write --file audit-rows.jsonl --out audit.jsonl --dry-run</code></td>
                   <td>audit</td>
                   <td><span class="status-pill local">local</span></td>
                   <td>Validates local workflow audit JSONL and dry-runs or appends normalized append-only evidence while workflow apply remains disabled.</td>
                 </tr>
-                <tr data-source="metro-verify-audit-log metro-audit-log-verify-golden">
+                <tr data-source="metro-verify-audit-log">
                   <td><code>metro verify --audit-log audit.jsonl</code></td>
                   <td>verify</td>
                   <td><span class="status-pill local">local</span></td>
@@ -964,8 +958,8 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="shapes" class="manual-section" data-source="shape-catalog endpoint-matrix packages-contracts danger-zone metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-package-create official-package-archive official-package-get official-package-list official-contracts-on-package official-contract-create official-contract-get-v2 official-contract-update-end-date official-contract-edit official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-billing-provider official-rate-card-add-rates official-rate-card-get-rate-schedule official-product-archive official-product-get official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide custom-contract-payloads metro-shape-reference metro-shape-reference-html metro-shape-reference-page metro-shape-reference-golden metro-preview-builder metro-stripe-billing-provider-fixtures metro-contract-move-fixtures metro-package-archive-handoff-fixtures metro-package-archive-handoff-preview-golden metro-product-retirement-fixtures metro-invoice-issue-date-fixtures metro-invoice-issue-date-preview-golden metro-direct-subscription-fixtures metro-direct-subscription-preview-golden metro-enterprise-custom-contract-fixtures metro-enterprise-custom-contract-preview-golden metro-usage-ingest-fixtures metro-usage-ingest-preview-golden">
-          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config official-customer-get official-customer-list metro-customer-setup-fixtures metro-customer-setup-preview-golden"></span>
+        <section id="shapes" class="manual-section" data-source="shape-catalog endpoint-matrix packages-contracts danger-zone metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-package-create official-package-archive official-package-get official-package-list official-contracts-on-package official-contract-create official-contract-get-v2 official-contract-update-end-date official-contract-edit official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-billing-provider official-rate-card-add-rates official-rate-card-get-rate-schedule official-product-archive official-product-get official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-shape-reference metro-shape-reference-html metro-shape-reference-page metro-preview-builder">
+          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config official-customer-get official-customer-list"></span>
           <div class="section-heading">
             <p class="eyebrow">Shape catalog</p>
             <h2>Approved business workflows, not raw endpoints</h2>
@@ -1036,8 +1030,8 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="validators" class="manual-section" data-source="validation gotchas source-baseline script-risk danger-zone packages-contracts conventions metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide custom-contract-schema custom-contract-tests metro-source-boundary metro-source-boundary-fixtures metro-validator-reference metro-validator-reference-html metro-validator-reference-page metro-validator-reference-golden">
-          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config official-customer-get official-customer-list metro-customer-setup-fixtures"></span>
+        <section id="validators" class="manual-section" data-source="validation gotchas danger-zone packages-contracts conventions metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-source-boundary metro-validator-reference metro-validator-reference-html metro-validator-reference-page">
+          <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config official-customer-get official-customer-list"></span>
           <div class="section-heading">
             <p class="eyebrow">Validator rules</p>
             <h2>Known mistakes become executable refusals</h2>
@@ -1118,7 +1112,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="gotchas" class="manual-section" data-source="gotchas source-baseline script-risk danger-zone packages-contracts endpoint-matrix conventions metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-source-boundary metro-source-boundary-fixtures metro-gotcha-reference metro-gotcha-reference-html metro-gotcha-reference-page metro-gotcha-reference-golden">
+        <section id="gotchas" class="manual-section" data-source="gotchas danger-zone packages-contracts endpoint-matrix conventions metronome-invoicing metronome-ingestion-events metronome-stripe-delivery metronome-subscriptions-seats metronome-pricing-catalog official-invoice-issue-date official-invoice-preview-events official-subscription-quantity-history official-subscription-seats-history official-usage-ingest official-event-search official-usage-groups official-preview-event-cost-guide metro-source-boundary metro-gotcha-reference metro-gotcha-reference-html metro-gotcha-reference-page">
           <span hidden data-source="metronome-customers-hierarchies official-customer-create official-customer-update-config official-customer-get official-customer-list"></span>
           <div class="section-heading">
             <p class="eyebrow">Gotchas</p>
@@ -1146,291 +1140,48 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
           </div>
         </section>
 
-        <section id="proof" class="manual-section" data-source="site-verifier custom-contract-tests metro-cli-tests metro-golden-tests metro-golden-fixtures metro-api-read-plan metro-api-read-plan-golden-post-body metro-api-read-plan-golden-events-search metro-api-read-plan-golden-packages-get metro-api-read-plan-golden-packages-list metro-api-read-plan-golden-billing-provider-get metro-api-read-plan-golden-products-get metro-api-read-plan-golden-rate-card-schedule metro-api-read-plan-golden-invoices-get metro-api-read-plan-golden-get-path-query metro-api-read-plan-golden-customers-get metro-api-read-plan-golden-customers-list metro-api-read-plan-golden-contracts-list metro-api-read-plan-golden-customer-balances metro-api-read-plan-golden-seat-balances metro-api-read-plan-golden-commits-list metro-api-read-plan-golden-credits-list metro-api-read-plan-golden-usage-groups-post-body metro-api-read-plan-golden-usage-batch-post-body metro-api-read-plan-golden-blocked-invalid metro-api-read-plan-golden-usage-batch-blocked-invalid metro-api-read-gate metro-api-profile-resolution-helper metro-api-read-gate-profile-resolution-fixture metro-api-read-gate-template-golden metro-api-read-gate-validation-fixture metro-api-read-gate-validation-golden metro-api-read-result metro-api-read-result-fixture metro-api-read-result-golden metro-api-read-mock metro-api-read-mock-response-fixture metro-api-read-mock-golden metro-api-read-pipeline metro-api-read-pipeline-golden metro-api-read-pipeline-events-golden metro-api-read-pipeline-packages-golden metro-api-read-pipeline-billing-provider-golden metro-api-read-pipeline-invoices-golden metro-api-read-pipeline-customers-get-golden metro-api-read-pipeline-contracts-list-golden metro-api-read-pipeline-customer-balances-golden metro-api-read-pipeline-seat-balances-golden metro-api-read-pipeline-commits-list-golden metro-api-read-pipeline-credits-list-golden metro-api-read-pipeline-packages-get-golden metro-api-read-pipeline-products-get-golden metro-api-read-pipeline-rate-card-schedule-golden metro-api-read-pipeline-invoices-get-golden metro-api-read-pipeline-customers-list-golden metro-api-read-pipeline-usage-groups-golden metro-api-read-pipeline-usage-batch-golden metro-api-read-mock-contracts-list-gate-fixture metro-api-read-mock-contracts-list-response-fixture metro-api-read-mock-contracts-list-golden metro-api-read-mock-customer-balances-gate-fixture metro-api-read-mock-customer-balances-response-fixture metro-api-read-mock-customer-balances-golden metro-api-read-mock-seat-balances-gate-fixture metro-api-read-mock-seat-balances-response-fixture metro-api-read-mock-seat-balances-golden metro-api-read-mock-commits-list-gate-fixture metro-api-read-mock-commits-list-response-fixture metro-api-read-mock-commits-list-golden metro-api-read-mock-credits-list-gate-fixture metro-api-read-mock-credits-list-response-fixture metro-api-read-mock-credits-list-golden metro-api-read-mock-invoices-gate-fixture metro-api-read-mock-invoices-response-fixture metro-api-read-mock-invoices-golden metro-api-read-mock-packages-gate-fixture metro-api-read-mock-packages-response-fixture metro-api-read-mock-packages-golden metro-api-read-mock-usage-gate-fixture metro-api-read-mock-usage-response-fixture metro-api-read-mock-usage-golden metro-api-read-mock-usage-batch-gate-fixture metro-api-read-mock-usage-batch-response-fixture metro-api-read-mock-usage-batch-golden metro-api-read-mock-events-gate-fixture metro-api-read-mock-events-response-fixture metro-api-read-mock-events-golden metro-api-read-mock-customers-get-gate-fixture metro-api-read-mock-customers-get-response-fixture metro-api-read-mock-customers-get-golden metro-api-read-mock-customers-list-gate-fixture metro-api-read-mock-customers-list-response-fixture metro-api-read-mock-customers-list-golden metro-api-read-audit metro-api-read-audit-write-golden metro-api-read-audit-fixture metro-api-read-audit-golden metro-api-read-audit-commits-list-fixture metro-api-read-audit-commits-list-golden metro-api-read-audit-credits-list-fixture metro-api-read-audit-credits-list-golden metro-billing-provider-preview-golden metro-contract-move-preview-golden metro-product-retirement-preview-golden metro-invoice-issue-date-preview-golden metro-direct-subscription-preview-golden metro-usage-ingest-preview-golden metro-stripe-billing-provider-fixtures metro-contract-move-fixtures metro-product-retirement-fixtures metro-invoice-issue-date-fixtures metro-direct-subscription-fixtures metro-usage-ingest-fixtures metro-setup-profiles metro-setup-fixtures metro-setup-resolve-golden metro-source-boundary metro-source-boundary-fixtures metro-source-boundary-template-golden metro-source-boundary-validation-golden metro-preflight-golden metro-contract-move-preflight-fixture metro-contract-move-preflight-golden metro-apply-gate metro-apply-gate-fixture metro-apply-gate-golden metro-contract-move-apply-gate-fixture metro-contract-move-apply-gate-golden metro-audit-tests metro-audit-golden metro-contract-move-audit-golden metro-proof metro-proof-tests metro-proof-fixtures metro-contract-move-proof-fixture metro-proof-golden metro-contract-move-proof-golden metro-inspect-golden metro-package-inspect-golden metro-product-inspect-golden metro-billing-provider-inspect-golden metro-contract-inspect-golden metro-invoice-inspect-golden metro-subscription-history-inspect-golden metro-read-client metro-inspect-runner-tests metro-verify-inspect-output metro-verify-apply-result metro-verify-tests metro-verify-fixtures metro-product-verify-golden metro-contract-verify-golden metro-invoice-verify-golden metro-apply-fixtures metro-package-test metro-install-test roadmap">
-          <span hidden data-source="metro-customer-setup-fixtures metro-customer-setup-preview-golden metro-customer-setup-apply-result-fixture"></span>
+        <section id="proof" class="manual-section" data-source="site-verifier metro-source-boundary">
           <div class="section-heading">
             <p class="eyebrow">Proof</p>
             <h2>Current checks and unsupported areas</h2>
-            <p>The proof section is intentionally dense: it is the quick path from the docs site to local verification evidence.</p>
-          </div>
-          <span hidden data-source="metro-api-read-refusal metro-api-read-refusal-golden"></span>
-          <span hidden data-source="metro-api-read-audit-customers-get-fixture metro-api-read-audit-customers-get-golden"></span>
-          <span hidden data-source="metro-api-read-audit-customers-list-fixture metro-api-read-audit-customers-list-golden metro-api-read-audit-customer-balances-fixture metro-api-read-audit-customer-balances-golden metro-api-read-audit-seat-balances-fixture metro-api-read-audit-seat-balances-golden"></span>
-          <span hidden data-source="metro-api-read-mock-billing-provider-gate-fixture metro-api-read-mock-billing-provider-response-fixture metro-api-read-mock-billing-provider-golden metro-api-read-audit-billing-provider-fixture metro-api-read-audit-billing-provider-golden metro-api-read-audit-invoices-get-fixture metro-api-read-audit-invoices-get-golden metro-api-read-audit-invoices-list-for-customer-fixture metro-api-read-audit-invoices-list-for-customer-golden"></span>
-          <span hidden data-source="metro-api-read-audit-events-search-fixture metro-api-read-audit-events-search-golden metro-api-read-audit-usage-groups-fixture metro-api-read-audit-usage-groups-golden metro-api-read-audit-usage-batch-fixture metro-api-read-audit-usage-batch-golden"></span>
-          <span hidden data-source="metro-api-read-plan-golden-billable-metrics-get metro-api-read-plan-golden-billable-metrics-list metro-api-read-pipeline-billable-metrics-get-golden metro-api-read-pipeline-billable-metrics-list-golden metro-api-read-mock-billable-metrics-get-gate-fixture metro-api-read-mock-billable-metrics-get-response-fixture metro-api-read-mock-billable-metrics-get-golden metro-api-read-mock-billable-metrics-list-gate-fixture metro-api-read-mock-billable-metrics-list-response-fixture metro-api-read-mock-billable-metrics-list-golden metro-api-read-audit-billable-metrics-get-fixture metro-api-read-audit-billable-metrics-get-golden metro-api-read-audit-billable-metrics-list-fixture metro-api-read-audit-billable-metrics-list-golden"></span>
-          <span hidden data-source="metro-api-read-plan-golden-products-list metro-api-read-plan-golden-rate-cards-get metro-api-read-plan-golden-rate-cards-list metro-api-read-plan-golden-rate-cards-get-rates metro-api-read-pipeline-products-list-golden metro-api-read-pipeline-rate-cards-get-golden metro-api-read-pipeline-rate-cards-list-golden metro-api-read-pipeline-rate-cards-get-rates-golden metro-api-read-mock-products-list-gate-fixture metro-api-read-mock-products-list-response-fixture metro-api-read-mock-products-list-golden metro-api-read-mock-rate-cards-get-gate-fixture metro-api-read-mock-rate-cards-get-response-fixture metro-api-read-mock-rate-cards-get-golden metro-api-read-mock-rate-cards-list-gate-fixture metro-api-read-mock-rate-cards-list-response-fixture metro-api-read-mock-rate-cards-list-golden metro-api-read-mock-rate-cards-get-rates-gate-fixture metro-api-read-mock-rate-cards-get-rates-response-fixture metro-api-read-mock-rate-cards-get-rates-golden metro-api-read-audit-products-get-fixture metro-api-read-audit-products-get-golden metro-api-read-audit-products-list-fixture metro-api-read-audit-products-list-golden metro-api-read-audit-packages-get-fixture metro-api-read-audit-packages-get-golden metro-api-read-audit-packages-list-fixture metro-api-read-audit-packages-list-golden metro-api-read-audit-rate-cards-get-fixture metro-api-read-audit-rate-cards-get-golden metro-api-read-audit-rate-cards-list-fixture metro-api-read-audit-rate-cards-list-golden metro-api-read-audit-rate-cards-get-rates-fixture metro-api-read-audit-rate-cards-get-rates-golden metro-api-read-audit-rate-card-schedule-fixture metro-api-read-audit-rate-card-schedule-golden"></span>
-          <span hidden data-source="official-contract-get-rate-schedule metro-api-read-plan-golden-contracts-rate-schedule metro-api-read-pipeline-contracts-rate-schedule-golden metro-api-read-mock-contracts-rate-schedule-gate-fixture metro-api-read-mock-contracts-rate-schedule-response-fixture metro-api-read-mock-contracts-rate-schedule-golden metro-api-read-audit-contracts-list-fixture metro-api-read-audit-contracts-list-golden metro-api-read-audit-contracts-rate-schedule-fixture metro-api-read-audit-contracts-rate-schedule-golden"></span>
-          <span hidden data-source="metro-evidence-gate-reference metro-evidence-gate-reference-html metro-evidence-gate-reference-golden"></span>
-          <span hidden data-source="metro-input-reference metro-input-reference-html metro-input-reference-golden metro-input-normalize-shape-golden metro-input-normalize-api-golden metro-docs-explain-input-normalize-golden metro-docs-explain-topic-index-golden metro-docs-explain-reference-html metro-docs-explain-reference-page"></span>
-          <div class="callout" data-source="metro-preflight metro-audit metro-proof metro-apply-gate metro-usage-ingest-preview-golden metro-usage-ingest-preflight-golden metro-usage-ingest-audit-golden metro-usage-ingest-proof-golden metro-usage-ingest-apply-gate-golden">
-            <strong>Evidence gate path for preview-only writes:</strong>
-            <p>
-              Use this local sequence when a shape has future-apply evidence
-              templates but no enabled apply runner. It binds a reviewed
-              preview to preflight, audit, sandbox proof, and apply-gate
-              evidence without authorizing live ingest or apply. The generated
-              <a href="evidence-gate-reference.html">evidence gate reference</a>
-              lists which shapes have the full local template path and which
-              remain preflight-only.
-            </p>
-            <pre><code>metro usage ingest preview --file test/fixtures/usage-ingest-preview-valid.json --sandbox --json
-metro preflight template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json
-metro audit template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json
-metro proof sandbox-template --workflow usage.ingest-preview --shape usage-ingest-preview --json
-metro apply-gate template --workflow usage.ingest-preview --shape usage-ingest-preview --prod --json
-metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></pre>
-            <p>
-              Customer setup, package archive handoff, invoice issue-date,
-              product retirement, direct subscription, billing-provider
-              attachment, and paid top-up shapes use the same evidence path
-              with their workflow and shape IDs. This is local evidence only; it does not authorize live
-              customer reads, customer creation, ingest, package archive,
-              invoice edits, Stripe delivery, or production apply.
-            </p>
+            <p>Every check below runs from a clone with no API keys and no tenant access.</p>
           </div>
           <div class="proof-grid">
             <article class="card">
-              <h3>Static docs verifier</h3>
-              <pre><code>node docs/metronome-cli/site/verify-site.js</code></pre>
-              <p>Checks required sections, source IDs, source-map links, and local files.</p>
-            </article>
-            <article class="card">
-              <h3>Metro package tests</h3>
+              <h3>Test suite</h3>
               <pre><code>npm test</code></pre>
-              <p>Checks shape commands, validators, local preview output contracts, golden fixtures, and fail-closed write commands.</p>
+              <p>Unit and integration tests for the core CLI and the generic workspace pack, including <code>metro init</code>, customer resolution, validators, operator-mode gates, and the shipped-file leak check. Every Metronome call goes to a mock.</p>
             </article>
             <article class="card">
-              <h3>Golden output fixtures</h3>
-              <pre><code>npm run test:golden</code></pre>
-              <p>Compares supported preview, inspect-plan, verify, audit-template, sandbox-proof-template, command-reference, and preflight-template output against checked-in JSON fixtures.</p>
+              <h3>Package contents</h3>
+              <pre><code>npm run pack:verify</code></pre>
+              <p>Packs the npm tarball and checks that only the allowlisted files ship.</p>
+            </article>
+            <article class="card" data-source="site-verifier">
+              <h3>Docs site</h3>
+              <pre><code>npm run docs:site:refresh
+npm run docs:site:verify</code></pre>
+              <p>Regenerates the command, explain, API, evidence-gate, input, shape, validator, and gotcha reference pages from the CLI catalogs, then runs <code>verify-site.js</code>: generated pages current, local links and anchors resolve, source ids exist, and no internal paths leak into pages.</p>
+            </article>
+            <article class="card" data-source="metro-source-boundary">
+              <h3>Source boundaries</h3>
+              <pre><code>metro source-boundary template --json
+metro source-boundary validate --file source-boundary.json --json</code></pre>
+              <p>Generated artifacts stay evidence-only, one-off scripts stay out of command handlers, and evidence from a previous billing system is historical unless legacy work is explicitly requested.</p>
             </article>
             <article class="card">
-              <h3>Rate-card fixture boundary</h3>
-              <pre><code>ls test/golden/api | rg 'rate-cards'</code></pre>
-              <p>Endpoint-specific proof-ladder fixtures now exist for all four rate-card write endpoints: <code>rateCards.create</code>, <code>rateCards.update</code>, <code>rateCards.archive</code>, and <code>rateCards.setProductOrder</code>. Product-order proof uses mocked <code>rateCards.getRates</code> read-result and apply-readback evidence while live expert API read/apply remains disabled. Use <code>metro api readiness --summary --json</code> for gap counts, then <code>metro api readiness --json</code> plus checked fixture filenames before choosing the next fixture-boundary pass.</p>
-            </article>
-            <article class="card">
-              <h3>Custom-field key fixture boundary</h3>
-              <pre><code>ls test/golden/api | rg 'custom-fields-(add-key|remove-key|set-values|delete-values)|custom-fields-list-keys|commits-list-custom-fields-(set-values|delete-values)'</code></pre>
-              <p>All four custom-field write endpoints, <code>customFields.addKey</code>, <code>customFields.removeKey</code>, <code>customFields.setValues</code>, and <code>customFields.deleteValues</code>, now have endpoint-specific proof-ladder fixtures through preflight, sandbox proof, apply-gate, approval-record, planned apply-audit, read-result, apply-readback, and guarded apply-result validation. The remove-key path uses separate mocked list-key evidence where <code>commit/grant_reason</code> is absent after removal. The set-values path uses <code>customFields.listKeys</code> allowlist evidence for <code>commit/grant_reason</code> and <code>commit/granted_by</code> plus <code>commits.list</code> entity read-back evidence for the target commit values. The delete-values path uses pre-delete <code>commits.list</code> source-value evidence preserving <code>grant_reason</code>, <code>granted_by</code>, and an unrelated field, plus post-delete <code>commits.list</code> evidence showing the deleted keys absent while the unrelated field remains preserved. Live expert API read/apply remains disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read-plan matrix</h3>
-              <pre><code>node docs/metronome-cli/site/verify-site.js</code></pre>
-              <p>Confirms read-plan goldens include all reviewed read endpoint goldens, billable-metric GET path/query coverage, product-list POST body/query placement, rate-card metadata/list/getRates coverage, customer GET path/query, contract-list POST body, contract rate-schedule POST body/query pagination, customer-balance POST body, seat-balance POST body, commit-list POST body, credit-list POST body, GET path/query, usage-groups POST body/query pagination, usage-batch POST body/query pagination, and blocked invalid usage-groups and usage-batch query/body placement, with live reads still disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read gate</h3>
-              <pre><code>node bin/metro.js api read-gate validate --file test/fixtures/api-read-gate-contracts-get-valid.json --json</code></pre>
-              <p>Confirms a reviewed read-plan file hash can be bound to tenant profile, current-turn authorization, audit-safe summary rules, and output verification evidence while live reads remain disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read result</h3>
-              <pre><code>node bin/metro.js api read-result verify --file test/fixtures/api-read-result-contracts-get-valid.json --json</code></pre>
-              <p>Confirms mocked expert API read output is bound to the reviewed read gate, request hash, mocked transport, response hash, and output contract while live reads remain disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read refusal</h3>
-              <pre><code>node bin/metro.js api read contracts.get.v2 --file test/fixtures/api-contracts-get-valid.json --sandbox --read-gate test/fixtures/api-read-gate-contracts-get-valid.json --confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME --json</code></pre>
-              <p>Confirms the live read command returns an endpoint-aware local refusal with tenant selection, request hash, read-gate validation, confirmation-token shape, and live-runner blockers while keeping Metronome API access disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read mock</h3>
-              <pre><code>node bin/metro.js api read-mock contracts.get.v2 --file test/fixtures/api-contracts-get-valid.json --read-gate test/fixtures/api-read-gate-contracts-get-valid.json --mock-response test/fixtures/api-contracts-get-mock-response.json --json</code></pre>
-              <p>Confirms the local mocked expert API read pipeline binds request input, reviewed read-gate evidence, mocked response data, read-result verification, and an audit template across POST body, event-search POST body, billing-provider POST body, billable-metric GET path/query, product catalog POST body/query pagination, rate-card metadata POST body, rate-card list POST query, rate-card getRates POST body/query pagination, customer GET path/query, contract-list POST body, contract rate-schedule POST body/query pagination, customer-balance POST body, seat-balance POST body, commit-list POST body, credit-list POST body, GET path/query, usage-groups POST body/query pagination, usage-batch POST body/query pagination, and paginated list request summaries without live API access.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read pipeline</h3>
-              <pre><code>node bin/metro.js api read-pipeline contracts.get.v2 --file test/fixtures/api-contracts-get-valid.json --read-gate test/fixtures/api-read-gate-contracts-get-valid.json --mock-response test/fixtures/api-contracts-get-mock-response.json --out audit-logs/api-read-pipeline-contracts-get.jsonl --actor agent-local-test --dry-run --json</code></pre>
-              <p>Confirms one local command can bind request input, read-gate evidence, mocked response data, read-result verification, and append-only read-audit row generation while preserving explicit actor and output path requirements. Dry-run goldens cover all reviewed read endpoints across POST body, POST query pagination, billable-metric GET path/query, product catalog POST body/query pagination, rate-card metadata POST body, rate-card list POST query, rate-card getRates POST body/query pagination, contract rate-schedule POST body/query pagination, production tenant evidence, GET path/query, GET path, GET query, usage-groups POST body/query pagination, and usage-batch POST body/query pagination while keeping live API access disabled.</p>
-            </article>
-            <article class="card">
-              <h3>Expert API read audit</h3>
-              <pre><code>node bin/metro.js api read-audit write --read-gate test/fixtures/api-read-gate-contracts-get-valid.json --read-result test/fixtures/api-read-result-contracts-get-valid.json --out audit-logs/api-read-audit-contracts-get.jsonl --actor agent-local-test --dry-run --json</code></pre>
-              <p>Confirms mocked expert API read evidence can be turned into an append-only local JSONL audit row, then validated for read-gate binding, non-secret key fingerprint, request hash, response hash, and verification checks without storing raw request bodies or response data. Persisted audit validation now covers contracts.get.v2, contracts.list.v2 customer contract list, contracts.getRateSchedule, invoices.get invoice readback, invoices.listForCustomer invoice inventory, products.get product state readback, products.list catalog pagination, packages.get package readback, packages.list package catalog pagination, rateCards.get metadata readback, rateCards.list catalog pagination, rateCards.getRates product/rate readback, rateCards.getRateSchedule scheduled rate-card readback, events.search event lookup, usage.groups grouped usage readback, usage.batch usage window readback, billableMetrics.get metric configuration readback, billableMetrics.list metric catalog pagination, customer identity, customer lists, customer balances, billing-provider configuration, commits, and credits while live reads remain disabled. The readiness summary also reports read-plan, read-mock, read-pipeline, and persisted read-audit coverage by endpoint family.</p>
-            </article>
-            <article class="card">
-              <h3>Stripe attach preview</h3>
-              <pre><code>node bin/metro.js billing-provider preview --shape stripe-billing-provider-attachment --file test/fixtures/stripe-billing-provider-valid.json --sandbox --json</code></pre>
-              <p>Checks the local billing-provider configuration payload and Stripe draft-behavior plan without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Contract move preview</h3>
-              <pre><code>node bin/metro.js contract move-plan preview --file test/fixtures/contract-move-plan-valid.json --prod --json</code></pre>
-              <p>Checks the local no-immediate-invoice package transition plan without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Package archive handoff preview</h3>
-              <pre><code>node bin/metro.js package archive preview --file test/fixtures/package-alias-archive-handoff-valid.json --sandbox --json</code></pre>
-              <p>Checks replacement alias-live evidence before planning old package version archive.</p>
-            </article>
-            <article class="card">
-              <h3>Product retire preview</h3>
-              <pre><code>node bin/metro.js product retire preview --file test/fixtures/product-rate-retirement-valid.json --sandbox --json</code></pre>
-              <p>Checks the local rate-close and optional product archive plan without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Invoice issue-date preview</h3>
-              <pre><code>node bin/metro.js invoice issue-date preview --file test/fixtures/invoice-issue-date-update-valid.json --sandbox --json</code></pre>
-              <p>Checks the DRAFT-only issue-date update plan with contract-end evidence and explicit Stripe behavior, without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Direct subscription preview</h3>
-              <pre><code>node bin/metro.js subscription contract preview --file test/fixtures/direct-subscription-contract-valid.json --sandbox --json</code></pre>
-              <p>Checks product and billing-frequency identity, subscription configuration, seat source, billing-provider evidence, and subscription read-back planning without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Custom contract preview</h3>
-              <pre><code>node bin/metro.js custom-contract preview --file test/fixtures/enterprise-custom-contract-valid.json --sandbox --json</code></pre>
-              <p>Checks direct enterprise contract payload drafts, Stripe billing-provider setup, recurring commit terms, optional bonus commits, optional seat assignments, and read-back planning without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Usage ingest preview</h3>
-              <pre><code>node bin/metro.js usage ingest preview --file test/fixtures/usage-ingest-preview-valid.json --sandbox --json</code></pre>
-              <p>Checks invoice-preview, canary ingest, transaction-id, period-target, and event-search read-back planning without reading or writing Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Contract move safety templates</h3>
-              <pre><code>node bin/metro.js preflight template --workflow contract.move-plan.apply --shape package-plan-move-no-immediate-invoice --prod --json</code></pre>
-              <p>Checks local preflight, audit, and sandbox-proof templates for the two-step transition path before any apply execution exists.</p>
-            </article>
-            <article class="card">
-              <h3>Setup profile binding</h3>
-              <pre><code>node bin/metro.js setup resolve --file test/fixtures/setup/profiles-valid.json --profile my-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json</code></pre>
-              <p>Validates local profile files and emits tenant binding evidence without reading `.env`, printing keys, authorizing live access, or calling Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Source-boundary validation</h3>
-              <pre><code>node bin/metro.js source-boundary validate --file test/fixtures/source-boundary-valid.json --json</code></pre>
-              <p>Checks current sources, generated artifacts, one-off scripts, and previous-billing-system boundaries before local evidence is reused.</p>
-            </article>
-            <article class="card">
-              <h3>Node package contents</h3>
-              <pre><code>npm run test:package</code></pre>
-              <p>Runs <code>npm pack --dry-run --json</code>, checks runtime-only package files, and confirms the <code>metro</code> bin packs as executable.</p>
-            </article>
-            <article class="card">
-              <h3>Install smoke</h3>
-              <pre><code>npm run test:install</code></pre>
-              <p>Packs a local tarball, installs it into a temporary npm prefix, runs the installed <code>metro</code> binary, and removes the temp directory.</p>
-            </article>
-            <article class="card">
-              <h3>Preflight validation</h3>
-              <pre><code>node bin/metro.js preflight validate --file test/fixtures/preflight-package-apply-valid.json --json</code></pre>
-              <p>Checks future apply preflight files before apply execution exists, including endpoint-matrix and reviewed source IDs for every write endpoint.</p>
-            </article>
-            <article class="card">
-              <h3>Apply gate validation</h3>
-              <pre><code>node bin/metro.js apply-gate validate --file test/fixtures/apply-gate-package-production-valid.json --json</code></pre>
-              <p>Checks the reviewed preview hash, preflight file hash, sandbox proof hash, owner approval, key fingerprint continuity, audit destination, read-back requirement, rollback, and idempotency review without enabling apply.</p>
-            </article>
-            <article class="card">
-              <h3>Contract move apply gate</h3>
-              <pre><code>node bin/metro.js apply-gate validate --file test/fixtures/apply-gate-contract-move-plan-production-valid.json --json</code></pre>
-              <p>Checks the contract move-plan production gate against the reviewed transition preview, production preflight, sandbox proof, owner approval, audit destination, read-back, rollback, and idempotency evidence.</p>
-            </article>
-            <article class="card" data-source="metro-api-apply-audit metro-api-apply-audit-fixture metro-api-apply-audit-golden">
-              <h3>Expert API apply-audit validation</h3>
-              <pre><code>node bin/metro.js api apply-audit validate --file test/fixtures/api-apply-audit-contracts-create-valid.jsonl --json</code></pre>
-              <p>Checks planned expert API write-audit rows from approval-record evidence without treating them as live execution, live permission, or current-turn authorization.</p>
-            </article>
-            <article class="card" data-source="metro-api-apply-readback metro-api-apply-audit-fixture metro-api-read-result-fixture metro-api-apply-readback-golden">
-              <h3>Expert API apply-readback proof</h3>
-              <pre><code>node bin/metro.js api apply-readback verify --apply-audit test/fixtures/api-apply-audit-contracts-create-valid.jsonl --read-result test/fixtures/api-read-result-contracts-get-valid.json --json</code></pre>
-              <p>Binds planned apply-audit read-back checks to verified mocked read-result evidence without claiming live apply execution, live read execution, or current-turn authorization.</p>
-            </article>
-            <article class="card" data-source="metro-api-apply-result metro-api-apply-result-golden metro-api-apply-audit-fixture metro-api-apply-readback-golden">
-              <h3>Expert API apply-result contract</h3>
-              <pre><code>node bin/metro.js api apply-result template --apply-audit test/fixtures/api-apply-audit-contracts-create-valid.jsonl --apply-readback test/golden/api/apply-readback.contracts-create.verify.sandbox.json --json</code></pre>
-              <p>Defines the local evidence contract a future guarded runner must satisfy after execution, including current-turn authorization at execution time, live audit row hash, response IDs, semantic read-back success, rollback, idempotency, and secret-free proof.</p>
-            </article>
-            <article class="card" data-source="metro-audit metro-audit-tests metro-audit-fixtures">
-              <h3>Audit JSONL validation</h3>
-              <pre><code>npm run test:audit</code></pre>
-              <p>Checks future apply audit rows for required evidence fields, hashes, verification status, and secret-free content.</p>
-            </article>
-            <article class="card" data-source="metro-audit metro-audit-tests metro-audit-fixtures">
-              <h3>Workflow audit writer</h3>
-              <pre><code>node bin/metro.js audit write --file test/fixtures/audit/package-apply-valid.jsonl --out audit-logs/package-apply.jsonl --dry-run --json</code></pre>
-              <p>Builds a local append-only write plan for validated workflow audit JSONL while reporting no API access, no apply enablement, and no live apply authorization.</p>
-            </article>
-            <article class="card" data-source="metro-verify-audit-log metro-audit-log-verify-golden">
-              <h3>Audit-log verifier</h3>
-              <pre><code>node bin/metro.js verify --audit-log test/fixtures/audit/package-apply-valid.jsonl --json</code></pre>
-              <p>Checks local workflow audit JSONL as verifier evidence and reports outcome, endpoint, and read-back status summaries without claiming live execution.</p>
-            </article>
-            <article class="card">
-              <h3>Sandbox proof validation</h3>
-              <pre><code>npm run test:proof</code></pre>
-              <p>Checks sandbox proof manifests for preview, preflight, audit, canary, endpoint-source evidence, read-back, rollback, idempotency, and production-block evidence.</p>
-            </article>
-            <article class="card">
-              <h3>Inspect plan contract</h3>
-              <pre><code>node bin/metro.js customer billing-state --customer-id customer-test --prod --plan --json</code></pre>
-              <p>Prints customer, package, billing-provider, contract, balance, and invoice read plans plus output-contract request summary provenance without executing live reads.</p>
-            </article>
-            <article class="card">
-              <h3>Package inspect plan</h3>
-              <pre><code>node bin/metro.js package inspect --alias pro_annual --sandbox --plan --json</code></pre>
-              <p>Checks the local package alias read plan before any live package lookup exists.</p>
-            </article>
-            <article class="card">
-              <h3>Product inspect plan</h3>
-              <pre><code>node bin/metro.js product inspect --product-id prod_sch052 --sandbox --plan --json</code></pre>
-              <p>Checks the local product version read plan before any live product lookup exists; mocked runner tests now produce the same <code>metro.product.inspect.v1</code> output contract without calling Metronome.</p>
-            </article>
-            <article class="card">
-              <h3>Billing-provider inspect plan</h3>
-              <pre><code>node bin/metro.js billing-provider inspect --customer-id customer-test --prod --plan --json</code></pre>
-              <p>Checks the local customer billing-provider read plan without reading Metronome.</p>
-            </article>
-            <article class="card" data-source="metro-contract-inspect-golden">
-              <h3>Contract inspect plan</h3>
-              <pre><code>node bin/metro.js contract inspect --contract-id contract-test --sandbox --plan --at 2026-07-01T00:00:00.000Z --json</code></pre>
-              <p>Checks the local contract, edit-history, and rate-schedule read plan with canonical <code>at</code> timestamp output-contract evidence.</p>
-            </article>
-            <article class="card" data-source="metro-invoice-inspect-golden">
-              <h3>Invoice inspect plan</h3>
-              <pre><code>node bin/metro.js invoice inspect --invoice-id invoice-test --sandbox --plan --json</code></pre>
-              <p>Checks the local invoice and payment read plan plus Stripe reconciliation warning output-contract fields.</p>
-            </article>
-            <article class="card" data-source="metro-subscription-history-inspect-golden">
-              <h3>Subscription-history inspect plan</h3>
-              <pre><code>node bin/metro.js subscription history inspect --customer-id customer-test --contract-id contract-test --subscription-id subscription-test --sandbox --plan --json</code></pre>
-              <p>Checks the local quantity and seat-history read plan, including quantity-only non-applicability output-contract evidence.</p>
-            </article>
-            <article class="card">
-              <h3>Guarded inspect runner</h3>
-              <pre><code>npm run test:inspect</code></pre>
-              <p>Exercises the read-client guard plus customer, package, product, billing-provider, contract, and invoice inspect outputs with injected mock transport only.</p>
-            </article>
-            <article class="card">
-              <h3>Inspect-output verifier</h3>
-              <pre><code>npm run test:verify</code></pre>
-              <p>Validates local inspect-output fixtures for read-only provenance, identity consistency, package alias resolution, product version evidence, billing-provider delivery evidence, and invoice reconciliation warnings.</p>
-            </article>
-            <article class="card" data-source="metro-verify-apply-result metro-workflow-apply-result-contracts metro-workflow-evidence-validation metro-apply-fixtures metro-billing-provider-apply-result-fixture metro-billing-provider-apply-result-golden metro-billing-provider-apply-result-template-golden">
-              <h3>Apply-result verifier</h3>
-              <pre><code>node bin/metro.js verify apply-result --file test/fixtures/apply/package-apply-result-valid.json --json
-node bin/metro.js verify apply-result --file test/fixtures/apply/customer-setup-apply-result-valid.json --json
-node bin/metro.js verify apply-result --file test/fixtures/apply/billing-provider-apply-result-valid.json --json
-node bin/metro.js verify apply-result-template --workflow billing-provider.attach --shape stripe-billing-provider-attachment --sandbox --json</code></pre>
-              <p>Validates future apply evidence locally. Supported workflow templates also expose approval-record, apply-audit, apply-readback, and guarded apply-result bundles from reusable local contract and validation modules, including billing-provider delivery and invoice-side-effect read-backs, without performing apply execution or live read-back checks.</p>
-            </article>
-            <article class="card">
-              <h3>Existing offline precedent</h3>
-              <pre><code>node metronome/custom-contract-creator/tests/unit.test.js</code></pre>
-              <p>Shows the current custom-contract subsystem already has local validation and safety tests.</p>
+              <h3>Evidence gates</h3>
+              <pre><code>metro docs evidence-gate-reference --markdown</code></pre>
+              <p>Lists which shapes have the full local preflight, audit, sandbox-proof, and apply-gate template path and which remain preflight-only. See the <a href="evidence-gate-reference.html">evidence gate reference</a>.</p>
             </article>
             <article class="card">
               <h3>Live vs local today</h3>
-              <p>GitHub install ships v0.1.0 with guarded live read (3 endpoints) and sandbox <code>contracts.create</code> apply. CI and default installs run without API keys and receive exit-code-2 refusals. Workflow apply and npm registry publish remain blocked.</p>
+              <p>Guarded live reads cover three endpoints, and sandbox <code>contracts.create</code> is the only expert-API apply. Pack operations (customer, rate card, package, contract, subscription) apply only with a typed confirmation token and read back afterwards. CI and default installs run without API keys and receive exit-code-2 refusals.</p>
             </article>
           </div>
         </section>
 
-        <section id="agents" class="manual-section" data-source="world-prompt safety architecture full-scope">
+        <section id="agents" class="manual-section" data-source="safety architecture">
           <div class="section-heading">
             <p class="eyebrow">Use with Claude, Cursor, Codex</p>
             <h2>Describe the goal in English - metro proves the technical path</h2>
@@ -1492,7 +1243,7 @@ metro docs explain refusal.troubleshooting --json</code></pre>
           </div>
           <p>
             The running project log lives at
-            <a href="../notes/CHANGELOG.md">docs/metronome-cli/notes/CHANGELOG.md</a>.
+            <a href="https://github.com/metrocli/metro/releases">GitHub releases</a>.
             Each entry should state goal impact, files changed, proof, and follow-ups.
           </p>
         </section>
@@ -1504,7 +1255,6 @@ metro docs explain refusal.troubleshooting --json</code></pre>
           </div>
           <div class="sources-grid">
             <a href="../one-goal.md">one-goal</a>
-            <a href="../FULL_SCOPE.md">full-scope</a>
             <a href="../CLI_ARCHITECTURE.md">architecture</a>
             <a href="../SHAPE_CATALOG.md">shape-catalog</a>
             <a href="../VALIDATION_AND_GUARDRAILS.md">validation</a>

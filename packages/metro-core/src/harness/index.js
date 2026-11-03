@@ -160,7 +160,7 @@ const HARNESS_SUITES = Object.freeze([
 function listHarnessSuites() {
   return {
     schemaVersion: HARNESS_LIST_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/harness/index.js',
+    generatedFrom: 'packages/metro-core/src/harness/index.js',
     apiAccess: 'none',
     localOnly: true,
     liveExecution: clone(LOCAL_ONLY),

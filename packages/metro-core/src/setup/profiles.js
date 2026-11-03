@@ -194,7 +194,7 @@ function buildSetupQuickstart(options = {}) {
   const profileName = pack.profiles.defaultProfile;
   return clone({
     schemaVersion: 'metro.setup.quickstart.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     workspacePack: packId,
     apiAccess: 'none',
     localOnly: true,
@@ -254,8 +254,8 @@ function buildSetupQuickstart(options = {}) {
       pack.oneGoalDoc,
       pack.quickstartDoc,
       'docs/SAFETY.md',
-      'metronome-cli/src/commands/catalog.js',
-      'metronome-cli/src/setup/profiles.js',
+      'packages/metro-core/src/commands/catalog.js',
+      'packages/metro-core/src/setup/profiles.js',
     ],
   });
 }
@@ -542,7 +542,7 @@ function resolveTenantProfile(config, options = {}) {
 
   return {
     schemaVersion: PROFILE_RESOLUTION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     apiAccess: 'none',
     localOnly: true,
     valid,
@@ -592,7 +592,7 @@ function buildSetupAuthCheck(config, options = {}) {
 
   return {
     schemaVersion: 'metro.setup.auth.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     apiAccess: 'none',
     localOnly: true,
     checkEnv,
@@ -640,7 +640,7 @@ function buildSetupInit(options = {}) {
 
   return {
     schemaVersion: 'metro.setup.init.v1',
-    generatedFrom: 'metronome-cli/src/setup/profiles.js',
+    generatedFrom: 'packages/metro-core/src/setup/profiles.js',
     workspacePack: packId,
     apiAccess: 'none',
     localOnly: true,

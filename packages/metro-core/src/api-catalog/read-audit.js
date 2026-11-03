@@ -212,7 +212,7 @@ function buildApiReadAuditTemplate(options = {}) {
 
   return {
     schemaVersion: API_READ_AUDIT_TEMPLATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,
@@ -233,7 +233,7 @@ function buildApiReadAuditTemplate(options = {}) {
 function readAuditWriteBase(mode, outPath, findings = []) {
   return {
     schemaVersion: API_READ_AUDIT_WRITE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,
@@ -573,7 +573,7 @@ function validateApiReadAuditJsonl(text) {
   const tenants = [...new Set(rows.map((row) => row.tenant).filter(Boolean))].sort();
   return {
     schemaVersion: API_READ_AUDIT_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/read-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/read-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     readEnabledInCurrentCli: false,

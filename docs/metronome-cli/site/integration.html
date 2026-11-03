@@ -11,7 +11,7 @@
   </head>
   <body class="generated-reference">
     <main class="generated-shell">
-      <header class="generated-header" data-source="one-goal safety architecture metro-command-catalog metro-input-reference metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-topic-index-golden metro-api-catalog metro-api-readiness metro-api-readiness-summary-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-setup-quickstart metro-setup-profiles metro-api-approval-policies metro-api-read-gate metro-api-read-pipeline metro-api-read-audit metro-api-apply-gate metro-api-apply-result metro-install-test metro-package-test">
+      <header class="generated-header" data-source="one-goal safety architecture metro-command-catalog metro-input-reference metro-api-catalog metro-api-readiness metro-setup-profiles metro-api-approval-policies metro-api-read-gate metro-api-read-pipeline metro-api-read-audit metro-api-apply-gate metro-api-apply-result">
         <div class="generated-brand">
           <a class="brand-logo-link" href="index.html" aria-label="metro operating manual">
             <img class="brand-logo brand-logo-light-mode" src="assets/favicon-light.png" alt="metro">
@@ -69,7 +69,7 @@
         </nav>
       </header>
 
-      <section class="generated-section" id="contract" data-source="metro-command-catalog metro-api-catalog metro-setup-quickstart safety">
+      <section class="generated-section" id="contract" data-source="metro-command-catalog metro-api-catalog safety">
         <h2>Runtime Contract</h2>
         <div class="reference-stack">
           <article class="reference-card">
@@ -89,7 +89,7 @@ metro api approvals --json</code></pre>
               contract directly.
             </p>
           </article>
-          <article class="reference-card" data-source="metro-input-files metro-input-normalize metro-input-reference metro-input-normalize-shape-golden metro-input-normalize-api-golden metro-input-reference-golden metro-docs-explain-input-normalize-golden metro-docs-explain-output-anatomy-golden metro-docs-explain-first-safe-preview-golden metro-docs-explain-topic-index-golden metro-docs-explain-reference-html metro-docs-explain-reference-page">
+          <article class="reference-card" data-source="metro-input-files metro-input-normalize metro-input-reference metro-docs-explain-reference-html metro-docs-explain-reference-page">
             <h2>Normalize input before evidence work</h2>
             <pre><code>metro docs explain --list --json
 metro docs explain --list --html
@@ -132,7 +132,7 @@ metro input normalize --api contracts.create --file contracts-create.yaml --json
         </div>
       </section>
 
-      <section class="generated-section" id="ci" data-source="metro-install-test metro-package-test metro-api-readiness metro-api-readiness-summary-golden metro-release-readiness-golden metro-release-artifact-manifest-golden metro-release-evidence-plan-golden metro-release-evidence-check-golden metro-release-retention-policy-golden metro-docs-explain-ci-local-checks-golden safety">
+      <section class="generated-section" id="ci" data-source="metro-api-readiness safety">
         <h2>CI Checks</h2>
         <div class="minimum-success-path" aria-label="CI-safe check sequence">
           <div class="minimum-success-path-heading">
@@ -141,27 +141,21 @@ metro input normalize --api contracts.create --file contracts-create.yaml --json
           </div>
           <ol>
             <li>
-              <span>Install</span>
-              <code>npm run test:install</code>
+              <span>Tests</span>
+              <code>npm test</code>
             </li>
             <li>
-              <span>Unit</span>
-              <code>npm run test:unit</code>
-            </li>
-            <li>
-              <span>Golden</span>
-              <code>npm run test:golden</code>
+              <span>Package</span>
+              <code>npm run pack:verify</code>
             </li>
             <li>
               <span>Site</span>
-              <code>node docs/metronome-cli/site/verify-site.js</code>
+              <code>npm run docs:site:verify</code>
             </li>
           </ol>
           <p>
-            Add <code>npm run check:syntax</code> and
-            <code>npm run secrets:scan</code> for repository-level checks after
-            reviewing the root package scripts. These checks are local-only in
-            this workspace, but they still protect a production operations repo.
+            All three are local-only: no API keys, no tenant access, and every
+            Metronome call in the suite goes to a mock.
           </p>
         </div>
         <div class="reference-stack">
@@ -243,7 +237,7 @@ metro release evidence-check --dir &lt;artifact-dir&gt; --json</code></pre>
         </p>
       </section>
 
-      <section class="generated-section" id="boundaries" data-source="safety api-ops metro-api-readiness metro-api-approval-policies">
+      <section class="generated-section" id="boundaries" data-source="safety metro-api-readiness metro-api-approval-policies">
         <h2>Safety Boundaries</h2>
         <div class="reference-stack">
           <article class="reference-card">

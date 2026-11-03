@@ -70,7 +70,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: [],
     commandIds: ['customer.billing-state.plan', 'package.inspect.plan', 'contract.inspect.plan', 'invoice.inspect.plan'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'Inspect plans carry explicit method/path pairs so future reads do not infer method from read/write semantics.',
   },
   {
@@ -80,7 +80,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: [],
     commandIds: ['customer.billing-state.plan', 'package.inspect.plan'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'Generated inspect plans include customer path GETs and package list query forms.',
   },
   {
@@ -90,7 +90,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-ENDPOINT-001'],
     commandIds: ['preflight.validate', 'proof.validate', 'docs.command-reference', 'docs.gotcha-reference'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'Preflight and sandbox-proof validators require endpoint evidence to cite endpoint-matrix plus an official doc or reviewed local endpoint source before future apply runners can rely on the endpoint.',
   },
   {
@@ -100,7 +100,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-ENDPOINT-002'],
     commandIds: ['preflight.validate', 'proof.validate', 'docs.command-reference'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'Write-preflight and sandbox-proof endpoint records must carry reviewed endpoint source IDs instead of passing with method/path strings alone.',
   },
   {
@@ -110,7 +110,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-PKG-003'],
     commandIds: ['contract.move-plan.preview.no-immediate-invoice'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-packages-contracts/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-packages-contracts/SKILL.md'],
     notes: 'The package move validator rejects unsupported transition and predecessor payload shape fields.',
   },
   {
@@ -120,7 +120,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: [],
     commandIds: ['verify.inspect-output'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'metronome-cli/src/verify/inspect-output.js'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'packages/metro-core/src/verify/inspect-output.js'],
     notes: 'Inspect-output verification normalizes package uniqueness keys before package alias evidence is accepted.',
   },
   {
@@ -130,7 +130,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-PKG-004', 'MTR-TIME-001'],
     commandIds: ['contract.move-plan.preview.no-immediate-invoice', 'package.inspect.plan'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-packages-contracts/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-packages-contracts/SKILL.md'],
     notes: 'Package move input must prove alias resolution at the cutover timestamp and use UTC hour-boundary timing.',
   },
   {
@@ -140,7 +140,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-TIME-004', 'MTR-PKG-004', 'MTR-VERIFY-001'],
     commandIds: ['package.archive.preview.alias-handoff'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'The package archive handoff preview refuses archive unless the replacement alias is already live, read back, and paired with old-package contract inventory.',
   },
   {
@@ -150,7 +150,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-PKG-003', 'MTR-INV-003'],
     commandIds: ['contract.move-plan.preview.no-immediate-invoice', 'preflight.template', 'audit.template', 'proof.sandbox-template'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-packages-contracts/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-packages-contracts/SKILL.md'],
     notes: 'The preview and safety templates model the two-step transition and reject SUPERSEDE-shaped inputs. Applies only when the predecessor is active and open-ended.',
   },
   {
@@ -173,7 +173,7 @@ const GOTCHA_COVERAGE = [
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
       'https://docs.metronome.com/guides/pricing-packaging/subscription/manage-subscription-lifecycle',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-packages-contracts/SKILL.md',
     ],
     notes: 'RENEWAL models handoff at predecessor end boundary. Gap between expired ending_before and successor starting_at now is undocumented and suspected root cause of 2026-07-09 trial-upgrade failures.',
   },
@@ -186,7 +186,7 @@ const GOTCHA_COVERAGE = [
     commandIds: ['contract.move-plan.preview.no-immediate-invoice', 'contract.move-plan.apply'],
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
-      '.cursor/skills/metronome-packages-contracts/SKILL.md',
+      'skills/metronome-packages-contracts/SKILL.md',
       'https://docs.metronome.com/manage-product-access/lifecycle-transitions',
       'skills/metronome-danger-zone/references/learnings.md',
     ],
@@ -225,7 +225,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-INV-001', 'MTR-INV-003', 'MTR-PKG-003'],
     commandIds: ['contract.move-plan.preview.immediate-invoice', 'preflight.template', 'audit.template'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-packages-contracts/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-packages-contracts/SKILL.md'],
     notes: 'Past or current UTC hour cutover finalizes SCHEDULED plan fees immediately; pair with explicit paidPeriodOverlapPolicy evidence.',
   },
   {
@@ -255,7 +255,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-BILL-003'],
     commandIds: ['billing-provider.preview.stripe-attachment'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'The current local attachment shape refuses archive or replace requests and requires an existing-config policy.',
   },
   {
@@ -275,7 +275,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-ENDPOINT-002'],
     commandIds: ['customer.setup.preview', 'customer.billing-state.plan'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-customers-hierarchies/SKILL.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-customers-hierarchies/SKILL.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'Customer setup preview plans GET /v1/customers?ingest_alias={alias} before future create, and customer inspect plans use the reviewed GET customer endpoints.',
   },
   {
@@ -295,7 +295,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CUST-002', 'MTR-IDEMP-003'],
     commandIds: ['customer.setup.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-customers-hierarchies/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-customers-hierarchies/SKILL.md'],
     notes: 'The customer setup validator requires ingest alias search planning, archived-customer collision review, and an explicit existing-customer policy before preview succeeds.',
   },
   {
@@ -305,7 +305,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CUST-002'],
     commandIds: ['customer.setup.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-customers-hierarchies/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-customers-hierarchies/SKILL.md'],
     notes: 'The local setup shape plans aliases on customer create and requires explicit alias read-back before any future alias update workflow can exist.',
   },
   {
@@ -315,7 +315,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CUST-003', 'MTR-VERIFY-001'],
     commandIds: ['customer.setup.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-customers-hierarchies/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-customers-hierarchies/SKILL.md'],
     notes: 'Non-standalone customer setup requires contract-level hierarchy review evidence and defers hierarchy read-back to future contract verification.',
   },
   {
@@ -325,7 +325,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CUST-004'],
     commandIds: ['customer.setup.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-customers-hierarchies/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-customers-hierarchies/SKILL.md'],
     notes: 'The customer setup validator requires approved customer custom-field keys and rejects scalar values longer than 200 characters.',
   },
   {
@@ -335,7 +335,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-SUB-001', 'MTR-VERIFY-001'],
     commandIds: ['subscription.contract.preview.direct'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', '.cursor/skills/metronome-subscriptions-seats/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', 'skills/metronome-subscriptions-seats/SKILL.md'],
     notes: 'The direct subscription contract preview requires an explicit subscription_rate, collection schedule, proration, quantity mode, rate-card proof, and read-back plan.',
   },
   {
@@ -345,7 +345,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-002', 'MTR-SUB-002'],
     commandIds: ['package.preview.pro-annual', 'subscription.contract.preview.direct'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', '.cursor/skills/metronome-subscriptions-seats/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'skills/metronome-subscriptions-seats/SKILL.md'],
     notes: 'Package frequency is covered for Pro Annual; direct subscription contract preview also requires subscriptionBillingFrequency to match rateCardBillingFrequency.',
   },
   {
@@ -355,7 +355,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-SUB-003', 'MTR-VERIFY-001'],
     commandIds: ['subscription.contract.preview.direct'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', '.cursor/skills/metronome-subscriptions-seats/SKILL.md', '.cursor/skills/metronome-pricing-catalog/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', 'skills/metronome-subscriptions-seats/SKILL.md', 'skills/metronome-pricing-catalog/SKILL.md'],
     notes: 'The direct subscription contract preview requires rateCardProductId, productId, and billing frequency to agree before building subscription_rate.',
   },
   {
@@ -365,7 +365,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-SUB-004'],
     commandIds: ['subscription.contract.preview.direct'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', '.cursor/skills/metronome-subscriptions-seats/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/SHAPE_CATALOG.md', 'skills/metronome-subscriptions-seats/SKILL.md'],
     notes: 'The direct subscription contract preview requires initialQuantity for QUANTITY_ONLY or seatConfig.initialSeatIds for SEAT_BASED direct contracts, and refuses mixed modes.',
   },
   {
@@ -375,7 +375,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-003'],
     commandIds: ['product.retire.preview.product-rate-retirement'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'The product retirement validator refuses archive-only plans and requires affected rate-card close entries before optional product archive.',
   },
   {
@@ -385,7 +385,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-001', 'MTR-RATE-003'],
     commandIds: ['product.retire.preview.product-rate-retirement'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'The local preview shape requires current entitlement evidence and emits addRates close actions with entitled:false and price:0 before archive.',
   },
   {
@@ -395,7 +395,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: [],
     commandIds: ['product.inspect.plan'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/references/endpoint-matrix.md'],
     notes: 'The product inspect plan routes scheduled product update read-back to products/get, which the endpoint matrix identifies as exposing version history, instead of relying on getRates display names.',
   },
   {
@@ -405,7 +405,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-005'],
     commandIds: ['rate-card.dimensional.preview'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-pricing-catalog/SKILL.md', '.cursor/skills/metronome-billable-metrics/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-pricing-catalog/SKILL.md', 'skills/metronome-billable-metrics/SKILL.md'],
     notes: 'The dimensional rate-card validator rejects separate action_code and action_display_name group_keys and requires usage events to expose both properties.',
   },
   {
@@ -425,7 +425,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-RATE-004'],
     commandIds: ['plan.multi-tier-rate-rollout', 'route.goal'],
-    sources: [DIMENSIONAL_RUNBOOK, 'metronome-cli/src/workspace/model.js'],
+    sources: [DIMENSIONAL_RUNBOOK, 'packages/metro-core/src/workspace/model.js'],
     notes: 'Use metro plan multi-tier-rate-rollout for ordered tier steps and read-back between tiers.',
   },
   {
@@ -445,7 +445,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-TIME-001', 'MTR-RATE-004'],
     commandIds: ['validate.shape'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/_metronome-shared/conventions.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/_metronome-shared/conventions.md'],
     notes: 'Shape validators enforce UTC hour-boundary timestamps for package and contract timing fields.',
   },
   {
@@ -455,7 +455,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CREDIT-001'],
     commandIds: ['credit.preview.complimentary-credit-grant'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/_metronome-shared/conventions.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/_metronome-shared/conventions.md'],
     notes: 'Complimentary credit validation requires accessCreditTypeId before preview.',
   },
   {
@@ -465,7 +465,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-CREDIT-002'],
     commandIds: ['credit.preview.complimentary-credit-grant'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/_metronome-shared/conventions.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/_metronome-shared/conventions.md'],
     notes: 'The complimentary credit validator rejects non-fiat credit types in invoiceSchedule.creditTypeId and allowlists USD cents for zero-dollar audit lines.',
   },
   {
@@ -488,9 +488,9 @@ const GOTCHA_COVERAGE = [
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-commits-credits/SKILL.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-commits-credits/SKILL.md',
+      'skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
     ],
     notes: 'The paid credit top-up shape requires a fiat invoice schedule, STRIPE payment gate, duplicate commit-name review, explicit Stripe behavior, and balance/invoice/billing-provider read-backs before local preview.',
   },
@@ -511,7 +511,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-TIME-002', 'MTR-INV-001'],
     commandIds: ['package.preview.pro-annual', 'contract.move-plan.preview.no-immediate-invoice'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'Current paid and no-immediate-invoice workflows warn or refuse past-dated timing.',
   },
   {
@@ -521,7 +521,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: [],
     commandIds: ['invoice.inspect.plan', 'verify.inspect-output'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'Invoice inspect output verification requires finalized-invoice Stripe reconciliation warnings.',
   },
   {
@@ -531,7 +531,7 @@ const GOTCHA_COVERAGE = [
     coverageStatus: 'covered',
     ruleIds: ['MTR-INV-003'],
     commandIds: ['contract.move-plan.preview.no-immediate-invoice', 'preflight.validate'],
-    sources: ['docs/metronome-cli/GOTCHAS.md', '.cursor/skills/metronome-danger-zone/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'skills/metronome-danger-zone/SKILL.md'],
     notes: 'The current contract move shape forbids predecessor archive and invoice voiding.',
   },
   {
@@ -544,8 +544,8 @@ const GOTCHA_COVERAGE = [
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
       'docs/metronome-cli/SHAPE_CATALOG.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
-      '.cursor/skills/metronome-stripe-delivery/SKILL.md',
+      'skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-stripe-delivery/SKILL.md',
       'https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date',
     ],
     notes: 'The invoice issue-date preview refuses non-DRAFT invoices, wrong endpoint paths, missing contract-end proof, missing billing-provider read-back, and unspecified Stripe behavior.',
@@ -560,10 +560,9 @@ const GOTCHA_COVERAGE = [
     plannedRuleIds: [],
     sources: [
       'docs/metronome-cli/GOTCHAS.md',
-      'docs/API_OPERATIONS.md',
-      '.cursor/skills/metronome-danger-zone/SKILL.md',
-      '.cursor/skills/metronome-ingestion-events/SKILL.md',
-      '.cursor/skills/metronome-invoicing/SKILL.md',
+      'skills/metronome-danger-zone/SKILL.md',
+      'skills/metronome-ingestion-events/SKILL.md',
+      'skills/metronome-invoicing/SKILL.md',
     ],
     notes: 'The usage ingest preview requires invoice-period targeting, finalized-period review, preview-events evidence, read-back planning, and remediation before any ingest execution.',
   },
@@ -575,7 +574,7 @@ const GOTCHA_COVERAGE = [
     ruleIds: ['MTR-IDEMP-002', 'MTR-USAGE-002'],
     commandIds: ['usage.ingest.preview'],
     plannedRuleIds: [],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', '.cursor/skills/metronome-ingestion-events/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md', 'skills/metronome-ingestion-events/SKILL.md'],
     notes: 'The usage ingest preview requires one stable, unique transaction_id per event and validates event shape before planning ingest.',
   },
   {
@@ -586,7 +585,7 @@ const GOTCHA_COVERAGE = [
     ruleIds: ['MTR-USAGE-003', 'MTR-VERIFY-003'],
     commandIds: ['usage.ingest.preview', 'preflight.validate', 'proof.validate'],
     plannedRuleIds: [],
-    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/API_OPERATIONS.md', '.cursor/skills/metronome-ingestion-events/SKILL.md'],
+    sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/API_OPERATIONS.md', 'skills/metronome-ingestion-events/SKILL.md'],
     notes: 'The usage ingest preview requires invoicePeriodTarget, canaryEventCount, canary read-back before bulk, and stop criteria.',
   },
   {
@@ -687,9 +686,9 @@ function gotchaReference() {
 
   return {
     schemaVersion: 'metro.docs.gotcha-reference.v1',
-    generatedFrom: 'metronome-cli/src/docs/gotcha-reference.js',
+    generatedFrom: 'packages/metro-core/src/docs/gotcha-reference.js',
     sourceRegister: 'docs/metronome-cli/GOTCHAS.md',
-    rulesGeneratedFrom: 'metronome-cli/src/validators/rules.js',
+    rulesGeneratedFrom: 'packages/metro-core/src/validators/rules.js',
     sectionNavigation: GOTCHA_REFERENCE_SECTION_NAVIGATION.map((section) => ({ ...section })),
     summary: {
       gotchaCount: gotchas.length,

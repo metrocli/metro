@@ -20,7 +20,7 @@
           <span>Metronome in your terminal</span>
         </div>
         <a href="index.html">Back to operating manual</a>
-        <p class="eyebrow">Generated from <code>metronome-cli/src/api-catalog/index.js</code>, <code>metronome-cli/src/api-catalog/apply-gate.js</code>, <code>metronome-cli/src/api-catalog/apply-audit.js</code>, <code>metronome-cli/src/api-catalog/apply-result.js</code>, <code>metronome-cli/src/api-catalog/apply-readback.js</code>, <code>metronome-cli/src/api-catalog/approval-record.js</code>, <code>metronome-cli/src/api-catalog/preflight.js</code>, <code>metronome-cli/src/api-catalog/preview.js</code>, <code>metronome-cli/src/api-catalog/read-audit.js</code>, <code>metronome-cli/src/api-catalog/read-gate.js</code>, <code>metronome-cli/src/api-catalog/read-mock.js</code>, <code>metronome-cli/src/api-catalog/read-plan.js</code>, <code>metronome-cli/src/api-catalog/read-pipeline.js</code>, <code>metronome-cli/src/api-catalog/read-result.js</code>, <code>metronome-cli/src/api-catalog/readiness.js</code>, <code>metronome-cli/src/api-catalog/validation.js</code></p>
+        <p class="eyebrow">Generated from <code>packages/metro-core/src/api-catalog/index.js</code>, <code>packages/metro-core/src/api-catalog/apply-gate.js</code>, <code>packages/metro-core/src/api-catalog/apply-audit.js</code>, <code>packages/metro-core/src/api-catalog/apply-result.js</code>, <code>packages/metro-core/src/api-catalog/apply-readback.js</code>, <code>packages/metro-core/src/api-catalog/approval-record.js</code>, <code>packages/metro-core/src/api-catalog/preflight.js</code>, <code>packages/metro-core/src/api-catalog/preview.js</code>, <code>packages/metro-core/src/api-catalog/read-audit.js</code>, <code>packages/metro-core/src/api-catalog/read-gate.js</code>, <code>packages/metro-core/src/api-catalog/read-mock.js</code>, <code>packages/metro-core/src/api-catalog/read-plan.js</code>, <code>packages/metro-core/src/api-catalog/read-pipeline.js</code>, <code>packages/metro-core/src/api-catalog/read-result.js</code>, <code>packages/metro-core/src/api-catalog/readiness.js</code>, <code>packages/metro-core/src/api-catalog/validation.js</code></p>
         <h1>Metronome CLI API reference</h1>
         <p>This page is generated from the reviewed endpoint catalog used by <code>metro api catalog --json</code>, the local validator used by <code>metro api validate &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt;</code>, the compact local readiness summary used by <code>metro api readiness --summary --json</code>, the full readiness report used by <code>metro api readiness --json</code>, the local read-plan builder used by <code>metro api read-plan &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; (--sandbox|--prod)</code>, the local read-gate binder used by <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt;</code>, the local mocked read pipeline used by <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt;</code>, the local read-pipeline audit shortcut used by <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write)</code>, the local mocked read-result verifier used by <code>metro api read-result verify --file &lt;api-read-result.json&gt;</code>, the local read-audit validator used by <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt;</code>, the local preview builder used by <code>metro api preview &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; (--sandbox|--prod)</code>, the local preflight binder used by <code>metro api preflight template --preview &lt;api-preview.json&gt;</code>, the local apply-gate manifest used by <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt;</code>, the local approval-record validator used by <code>metro api approval-record validate --file &lt;api-approval-record.json&gt;</code>, the local planned apply-audit writer used by <code>metro api apply-audit write --approval-record &lt;api-approval-record.json&gt; --out &lt;api-apply-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write)</code>, the local apply read-back verifier used by <code>metro api apply-readback verify --apply-audit &lt;api-apply-audit.jsonl&gt; --read-result &lt;api-read-result.json&gt;</code>, and the local apply-result contract used by <code>metro api apply-result template --apply-audit &lt;api-apply-audit.jsonl&gt; --apply-readback &lt;api-apply-readback.json&gt;</code> and <code>metro api apply-result validate --file &lt;api-apply-result.json&gt; --apply-audit &lt;api-apply-audit.jsonl&gt; --apply-readback &lt;api-apply-readback.json&gt;</code>. It documents endpoint IDs, request validators, read readiness, read-plan hashes, read-gate file hashes, read-mock bundles, read-pipeline audit rows, read-result hashes, read-audit rows, preview hashes, preflight evidence, apply-gate file hashes, approval-record file hashes, planned apply-audit rows, apply read-back evidence binding, apply-result evidence contracts, sandbox-proof request-hash binding, and gates only; live API execution is disabled in the current CLI and durable approval/audit/result records still require current-turn authorization before any future live operation.</p>
         <nav class="reference-jumps" aria-label="API reference sections">
@@ -468,7 +468,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-ingestion-events/SKILL.md#past-dated-ingest--retroactive-invoice-inflation</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#14-past-dated-usage-ingest-can-change-finalized-period-economics</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-ingestion-events/SKILL.md#past-dated-ingest--retroactive-invoice-inflation</code></li><li><code>skills/metronome-danger-zone/SKILL.md#14-past-dated-usage-ingest-can-change-finalized-period-economics</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -535,7 +535,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>.cursor/skills/metronome-ingestion-events/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/ingest-events.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>skills/metronome-ingestion-events/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/usage/ingest-events.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Read grouped usage data</h2>
@@ -673,7 +673,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Read batched usage data</h2>
@@ -811,7 +811,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-batched-usage-data.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/get-batched-usage-data.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Search usage events</h2>
@@ -949,7 +949,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/search-events.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#1-usage--ingest</code></li><li><code>https://docs.metronome.com/api-reference/usage/search-events.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get billable metric</h2>
@@ -1087,7 +1087,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List billable metrics</h2>
@@ -1225,7 +1225,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create billable metric</h2>
@@ -1316,7 +1316,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -1383,7 +1383,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-billable-metrics/SKILL.md#create-payload--field-reference</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update billable metric display name</h2>
@@ -1474,7 +1474,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -1541,7 +1541,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Archive billable metric</h2>
@@ -1632,7 +1632,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -1699,7 +1699,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#2-billable-metrics</code></li><li><code>https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create a reusable package</h2>
@@ -1790,7 +1790,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#packages--contracts-mental-model</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#packages--contracts-mental-model</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -1857,7 +1857,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-package.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get package state</h2>
@@ -1995,7 +1995,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/packages/get-a-package.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/packages/get-a-package.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List packages</h2>
@@ -2133,7 +2133,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/list-all-packages.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/list-all-packages.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List contracts on package</h2>
@@ -2271,7 +2271,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>skills/metronome-packages-contracts/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Archive package</h2>
@@ -2362,7 +2362,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#package-archive-vs-rate-card-archive-field-names</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#package-archive-vs-rate-card-archive-field-names</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -2429,7 +2429,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/packages/archive-a-package.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#5-packages</code></li><li><code>https://docs.metronome.com/api-reference/packages/archive-a-package.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create contract</h2>
@@ -2520,7 +2520,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#transitions-renewal-supersede--package-based-plan-changes</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md#working-payloads</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#transitions-renewal-supersede--package-based-plan-changes</code></li><li><code>skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md#working-payloads</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -2587,7 +2587,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/create-a-contract.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update contract end date</h2>
@@ -2678,7 +2678,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#updateenddate--shorten-or-extend-a-contract-cleanly</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#updateenddate--shorten-or-extend-a-contract-cleanly</code></li><li><code>skills/metronome-packages-contracts/SKILL.md#validate-all-successor-create-fields-before-updateenddate</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -2745,7 +2745,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get contract v2</h2>
@@ -2883,7 +2883,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List customer contracts v2</h2>
@@ -3021,7 +3021,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get contract rate schedule</h2>
@@ -3159,7 +3159,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>skills/metronome-packages-contracts/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get contract edit history</h2>
@@ -3297,7 +3297,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-contract-edit-history.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>skills/metronome-packages-contracts/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-contract-edit-history.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get subscription quantity history</h2>
@@ -3435,7 +3435,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-subscriptions-seats/SKILL.md#read-quantity-history-any-mode</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-subscriptions-seats/SKILL.md#read-quantity-history-any-mode</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get subscription seats history</h2>
@@ -3573,7 +3573,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-subscriptions-seats/SKILL.md#read-seat-assignment-history-seat_based-only</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-subscriptions-seats/SKILL.md#read-seat-assignment-history-seat_based-only</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Edit contract v2</h2>
@@ -3664,7 +3664,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#editcontract-vs-a-dedicated-endpoint</code></li><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#past-dated-add_scheduled_charges-finalize-immediately</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#editcontract-vs-a-dedicated-endpoint</code></li><li><code>skills/metronome-packages-contracts/SKILL.md#past-dated-add_scheduled_charges-finalize-immediately</code></li><li><code>skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -3731,7 +3731,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>https://docs.metronome.com/api-reference/contracts/edit-a-contract.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update invoice issue date</h2>
@@ -3822,7 +3822,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-packages-contracts/SKILL.md#updateinvoiceissuedate--push-a-draft-invoice-forward</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-packages-contracts/SKILL.md#updateinvoiceissuedate--push-a-draft-invoice-forward</code></li><li><code>skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -3889,7 +3889,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#9-contracts</code></li><li><code>skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List customer commits</h2>
@@ -4027,7 +4027,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-commits</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-commits</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List customer credits</h2>
@@ -4165,7 +4165,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-credits</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#7-pre-flight-reconciliation-checklist</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-credits</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List customer balances</h2>
@@ -4303,7 +4303,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#8-customer-lookup--what-actually-works</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#8-customer-lookup--what-actually-works</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List seat balances</h2>
@@ -4441,7 +4441,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-subscriptions-seats/SKILL.md#list-seat-balances</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-subscriptions-seats/SKILL.md#list-seat-balances</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#10-credits--commits</code></li><li><code>https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Preview event invoice impact</h2>
@@ -4532,7 +4532,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-ingestion-events/SKILL.md#did-the-event-land</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-ingestion-events/SKILL.md#did-the-event-land</code></li><li><code>skills/metronome-invoicing/SKILL.md#mental-model</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -4599,7 +4599,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/preview-events.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/preview-events.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get customer</h2>
@@ -4737,7 +4737,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>https://docs.metronome.com/api-reference/customers/get-a-customer.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List or search customers</h2>
@@ -4875,7 +4875,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>https://docs.metronome.com/api-reference/customers/list-customers.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>https://docs.metronome.com/api-reference/customers/list-customers.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create customer</h2>
@@ -4966,7 +4966,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -5033,7 +5033,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-a-customer.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Archive customer</h2>
@@ -5124,7 +5124,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -5191,7 +5191,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/archive-a-customer.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/archive-a-customer.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update customer configuration</h2>
@@ -5282,7 +5282,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -5349,7 +5349,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update customer name</h2>
@@ -5440,7 +5440,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -5507,7 +5507,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-name.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/update-a-customer-name.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create or update customer ingest aliases</h2>
@@ -5598,7 +5598,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-ingestion-events/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-ingestion-events/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -5665,7 +5665,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>.cursor/skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>.cursor/skills/metronome-ingestion-events/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#6-customers</code></li><li><code>skills/metronome-customers-hierarchies/SKILL.md</code></li><li><code>skills/metronome-ingestion-events/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List invoices for customer</h2>
@@ -5803,7 +5803,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoices.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List invoice breakdowns</h2>
@@ -5941,7 +5941,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>skills/metronome-invoicing/SKILL.md#endpoint-inventory</code></li><li><code>https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get invoice</h2>
@@ -6079,7 +6079,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/get-an-invoice.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/get-an-invoice.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Void invoice</h2>
@@ -6170,7 +6170,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/void-an-invoice.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/void-an-invoice.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -6237,7 +6237,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/void-an-invoice.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#12-v1invoicesvoid-on-a-finalized-paid-invoice</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/void-an-invoice.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Regenerate invoice</h2>
@@ -6328,7 +6328,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -6395,7 +6395,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>.cursor/skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#2c-side-discovered-useful-endpoints</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#11-invoices</code></li><li><code>skills/metronome-invoicing/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List payments for invoice</h2>
@@ -6533,7 +6533,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Attempt payment for invoice</h2>
@@ -6624,7 +6624,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -6691,7 +6691,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/attempt-payment-for-an-invoice.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Cancel invoice payment</h2>
@@ -6782,7 +6782,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -6849,7 +6849,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#12-payments</code></li><li><code>https://docs.metronome.com/api-reference/payments/cancel-a-payment-for-an-invoice.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Set customer billing provider configuration</h2>
@@ -6940,7 +6940,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md#working-payloads</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-stripe-delivery/SKILL.md#working-payloads</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -7007,7 +7007,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get customer billing provider configurations</h2>
@@ -7145,7 +7145,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#7-billing-provider-configs-stripe</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List account-level billing providers</h2>
@@ -7283,7 +7283,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>.cursor/skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>skills/metronome-stripe-delivery/SKILL.md</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create custom field key</h2>
@@ -7374,7 +7374,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -7441,7 +7441,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Delete custom field key</h2>
@@ -7532,7 +7532,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -7599,7 +7599,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Set custom field values</h2>
@@ -7690,7 +7690,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -7757,7 +7757,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Delete custom field values</h2>
@@ -7848,7 +7848,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -7915,7 +7915,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List custom field keys</h2>
@@ -8053,7 +8053,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#8-custom-fields</code></li><li><code>skills/metronome-danger-zone/SKILL.md#16-custom-field-writes-on-contractscommits</code></li><li><code>https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List pricing units</h2>
@@ -8191,7 +8191,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-pricing-units.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/settings/list-pricing-units.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get service registry</h2>
@@ -8329,7 +8329,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/security/get-services.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/security/get-services.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get audit logs</h2>
@@ -8467,7 +8467,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>.cursor/skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/security/get-audit-logs.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#15-settings--security</code></li><li><code>skills/_metronome-shared/conventions.md#method-gotcha</code></li><li><code>https://docs.metronome.com/api-reference/security/get-audit-logs.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get product state</h2>
@@ -8605,7 +8605,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/get-a-product.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/get-a-product.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List products</h2>
@@ -8743,7 +8743,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/list-products.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/list-products.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create usage product</h2>
@@ -8834,7 +8834,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product</code></li><li><code>skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -8901,7 +8901,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#create-a-usage-product</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/create-a-product.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Schedule usage product update</h2>
@@ -8992,7 +8992,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/update-a-product.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change</code></li><li><code>skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/update-a-product.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9059,7 +9059,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/update-a-product.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#update-a-product-scheduled-change</code></li><li><code>skills/metronome-pricing-catalog/SKILL.md#scheduled-renames--getrates-display-name-caching</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/update-a-product.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Archive product</h2>
@@ -9150,7 +9150,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#retiring-a-product--archive--remove-from-rate-card</code></li><li><code>.cursor/skills/metronome-danger-zone/SKILL.md#19-product-archive-does-not-remove-rate-entries-from-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#retiring-a-product--archive--remove-from-rate-card</code></li><li><code>skills/metronome-danger-zone/SKILL.md#19-product-archive-does-not-remove-rate-entries-from-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9217,7 +9217,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#3-products</code></li><li><code>https://docs.metronome.com/api-reference/products/archive-a-product.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Create rate card</h2>
@@ -9308,7 +9308,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9375,7 +9375,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#create-a-rate-card-with-custom-credit-conversion</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Update rate card metadata</h2>
@@ -9466,7 +9466,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9533,7 +9533,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Archive rate card</h2>
@@ -9624,7 +9624,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9691,7 +9691,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Set rate-card product invoice order</h2>
@@ -9782,7 +9782,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -9849,7 +9849,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#rate-cards</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get rate card metadata</h2>
@@ -9987,7 +9987,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>List rate cards</h2>
@@ -10125,7 +10125,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/list-rate-cards.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/list-rate-cards.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get rate-card rates at timestamp</h2>
@@ -10263,7 +10263,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-rates.md</code></li><li><code>metronome/probe-prod-all-rates.js</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-rates.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Add scheduled rate-card changes</h2>
@@ -10354,7 +10354,7 @@
             </section>
             <section>
               <h3>Side-effect sources</h3>
-              <ul class="compact-list"><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#add-rates-always-plural</code></li><li><code>.cursor/skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes</code></li></ul>
+              <ul class="compact-list"><li><code>skills/metronome-pricing-catalog/SKILL.md#add-rates-always-plural</code></li><li><code>skills/metronome-pricing-catalog/SKILL.md#one-product-per-billable-metric-per-rate-card--a-you-invariant-not-metronomes</code></li></ul>
             </section>
           </div>
           <h3>API preflight</h3>
@@ -10421,7 +10421,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>local validation</code></li><li><code>preview payload hash</code></li><li><code>preflight evidence</code></li><li><code>sandbox proof</code></li><li><code>canary plan</code></li><li><code>audit row</code></li><li><code>read-back verification</code></li><li><code>rollback or remediation plan</code></li><li><code>owner approval</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/SKILL.md</code></li><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/SKILL.md</code></li><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/add-rates.md</code></li></ul>
         </article>
         <article class="reference-card">
           <h2>Get rate-card schedule</h2>
@@ -10559,7 +10559,7 @@
           <h3>Policy gates</h3>
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
-          <ul class="compact-list"><li><code>.cursor/skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li></ul>
+          <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li></ul>
         </article>
       </section>
     </main>

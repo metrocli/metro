@@ -63,8 +63,8 @@ function shapeReference() {
   const shapes = SHAPES.map(cloneShape);
   return {
     schemaVersion: 'metro.docs.shape-reference.v1',
-    generatedFrom: 'metronome-cli/src/shapes/index.js',
-    rulesGeneratedFrom: 'metronome-cli/src/validators/rules.js',
+    generatedFrom: 'packages/metro-core/src/shapes/index.js',
+    rulesGeneratedFrom: 'packages/metro-core/src/validators/rules.js',
     sectionNavigation: SHAPE_REFERENCE_SECTION_NAVIGATION.map((section) => ({ ...section })),
     shapes,
     rulesById: rulesById(),
@@ -76,8 +76,8 @@ function validatorReference() {
   const byRule = shapeIdsByRuleId(shapes);
   return {
     schemaVersion: 'metro.docs.validator-reference.v1',
-    generatedFrom: 'metronome-cli/src/validators/rules.js',
-    shapesGeneratedFrom: 'metronome-cli/src/shapes/index.js',
+    generatedFrom: 'packages/metro-core/src/validators/rules.js',
+    shapesGeneratedFrom: 'packages/metro-core/src/shapes/index.js',
     sectionNavigation: VALIDATOR_REFERENCE_SECTION_NAVIGATION.map((section) => ({ ...section })),
     rules: Object.entries(RULES).map(([id, rule]) => ({ id, ...rule })),
     shapeIdsByRuleId: byRule,

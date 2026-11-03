@@ -220,7 +220,7 @@ function buildApiPreflightTemplate(preview, options = {}) {
 
   return {
     schemaVersion: API_PREFLIGHT_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/preflight.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/preflight.js',
     apiAccess: 'none',
     liveExecution: clone(preview.liveExecution || LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -527,7 +527,7 @@ function validateApiPreflight(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_PREFLIGHT_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/preflight.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/preflight.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,

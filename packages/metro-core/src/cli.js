@@ -1182,7 +1182,7 @@ function runStatusCommand(flags, streams) {
   const keysReady = auth?.summary?.allKeysConfigured === true;
   const payload = {
     schemaVersion: 'metro.status.v1',
-    generatedFrom: 'metronome-cli/src/cli.js',
+    generatedFrom: 'packages/metro-core/src/cli.js',
     apiAccess: 'none',
     localOnly: true,
     operatorMode: {

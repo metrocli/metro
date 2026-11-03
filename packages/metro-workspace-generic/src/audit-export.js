@@ -110,8 +110,8 @@ function buildAuditExportClassify(input, options = {}) {
       ? `metro plan ${topIntents[0]}${options.tenant === 'sandbox' ? ' --sandbox' : options.tenant === 'production' ? ' --prod' : ''} --json`
       : 'metro plan list --json',
     sources: [
-      'metronome-cli/src/workspace/audit-export.js',
-      'metronome-cli/src/workspace/model.js',
+      'packages/metro-core/src/workspace/audit-export.js',
+      'packages/metro-core/src/workspace/model.js',
     ],
   };
 }
@@ -160,8 +160,8 @@ function buildAuditExportPlan(options = {}) {
       : 'metro audit export classify --file <export.json> --token <name> (--sandbox|--prod) --json',
     nextSafeStep: 'metro audit export classify --file <local-export.json> --json (no live API required)',
     sources: [
-      'metronome-cli/src/workspace/audit-export.js',
-      'metronome-cli/src/api-catalog/index.js',
+      'packages/metro-core/src/workspace/audit-export.js',
+      'packages/metro-core/src/api-catalog/index.js',
     ],
   };
 }

@@ -682,9 +682,9 @@ function buildWorkspacePlan(intentId, options = {}) {
 
 
   plan.sources = [
-    'metronome-cli/src/workspace/model.js',
-    'metronome-cli/src/workspace/plan.js',
-    '.cursor/skills/metronome-pricing-catalog/SKILL.md',
+    'packages/metro-core/src/workspace/model.js',
+    'packages/metro-core/src/workspace/plan.js',
+    'skills/metronome-pricing-catalog/SKILL.md',
     'docs/metronome-cli/one-goal.md',
   ];
 
@@ -767,7 +767,7 @@ function buildRouteRefusal(intent, rejected, endpointId, tenant) {
       `metro plan ${intent.id} ${tenant === 'sandbox' ? '--sandbox' : tenant === 'production' ? '--prod' : ''} --json`.trim(),
       'metro workspace explain --json',
     ],
-    sources: ['metronome-cli/src/workspace/plan.js'],
+    sources: ['packages/metro-core/src/workspace/plan.js'],
   };
 }
 

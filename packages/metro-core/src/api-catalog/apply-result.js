@@ -321,7 +321,7 @@ function buildApiApplyResultTemplate(options = {}) {
   const endpoint = audit.endpoint;
   return {
     schemaVersion: API_APPLY_RESULT_TEMPLATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-result.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-result.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -410,8 +410,8 @@ function buildApiApplyResultTemplate(options = {}) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/apply-audit.js',
-      'metronome-cli/src/api-catalog/apply-readback.js',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
+      'packages/metro-core/src/api-catalog/apply-readback.js',
       ...list(row?.endpoint?.sourceIds),
       ...list(applyReadbackReport?.sources),
     ]),
@@ -458,7 +458,7 @@ function validateApiApplyResult(input, options = {}) {
   if (!isObject(input)) {
     return {
       schemaVersion: API_APPLY_RESULT_VALIDATION_SCHEMA_VERSION,
-      generatedFrom: 'metronome-cli/src/api-catalog/apply-result.js',
+      generatedFrom: 'packages/metro-core/src/api-catalog/apply-result.js',
       apiAccess: 'none',
       applyEnabledInCurrentCli: false,
       liveApplyAuthorizedByThisRecord: false,
@@ -624,7 +624,7 @@ function validateApiApplyResult(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_APPLY_RESULT_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-result.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-result.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -650,9 +650,9 @@ function validateApiApplyResult(input, options = {}) {
       'docs/metronome-cli/one-goal.md',
       'docs/metronome-cli/CLI_ARCHITECTURE.md',
       'docs/metronome-cli/VALIDATION_AND_GUARDRAILS.md',
-      'metronome-cli/src/api-catalog/apply-result.js',
-      'metronome-cli/src/api-catalog/apply-audit.js',
-      'metronome-cli/src/api-catalog/apply-readback.js',
+      'packages/metro-core/src/api-catalog/apply-result.js',
+      'packages/metro-core/src/api-catalog/apply-audit.js',
+      'packages/metro-core/src/api-catalog/apply-readback.js',
       ...list(input.endpoint?.sourceIds),
       ...list(applyReadbackReport?.sources),
     ]),

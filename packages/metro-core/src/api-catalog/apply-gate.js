@@ -344,7 +344,7 @@ function buildApiSandboxProofTemplate(options = {}) {
 
   return {
     schemaVersion: API_SANDBOX_PROOF_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-gate.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -461,7 +461,7 @@ function buildApiApplyGateTemplate(options = {}) {
 
   return {
     schemaVersion: API_APPLY_GATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-gate.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -647,7 +647,7 @@ function validateApiSandboxProof(input, expected = {}) {
 
   return {
     schemaVersion: API_SANDBOX_PROOF_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-gate.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -1011,7 +1011,7 @@ function validateApiApplyGate(input, options = {}) {
   const valid = !findings.some((item) => item.severity === 'error');
   return {
     schemaVersion: API_APPLY_GATE_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-gate.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-gate.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,

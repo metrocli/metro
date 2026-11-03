@@ -304,7 +304,7 @@ function buildApiApplyAuditTemplate(options = {}) {
 
   return {
     schemaVersion: API_APPLY_AUDIT_TEMPLATE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -327,7 +327,7 @@ function buildApiApplyAuditTemplate(options = {}) {
 function applyAuditWriteBase(mode, outPath, findings = []) {
   return {
     schemaVersion: API_APPLY_AUDIT_WRITE_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
@@ -725,7 +725,7 @@ function validateApiApplyAuditJsonl(text) {
   const tenants = [...new Set(rows.map((row) => row.tenant).filter(Boolean))].sort();
   return {
     schemaVersion: API_APPLY_AUDIT_VALIDATION_SCHEMA_VERSION,
-    generatedFrom: 'metronome-cli/src/api-catalog/apply-audit.js',
+    generatedFrom: 'packages/metro-core/src/api-catalog/apply-audit.js',
     apiAccess: 'none',
     liveExecution: clone(LOCAL_ONLY_LIVE_EXECUTION),
     applyEnabledInCurrentCli: false,
