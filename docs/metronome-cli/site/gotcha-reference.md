@@ -51,14 +51,14 @@
 | expired-contract-rebuy-no-transition | Contracts | open | Expired contracts (ending_before in the past) must rebuy via fresh contracts/create without a transition block; do not pass RENEWAL from_contract_id on lapsed predecessors. |
 | renewal-transition-active-handoff-only | Contracts | covered | RENEWAL transitions are for active predecessor handoffs where successor starting_at aligns with predecessor ending_before; not for rebuy after lapse. |
 | free-trial-package-duration-expiry | Packages | covered | Package duration (DAYS) generates contract ending_before at provision; trial expiry is not a separate job. |
-| free-trial-zero-rollover-on-rebuy | Contracts | covered | Free trial contracts use rollover_fraction 0; RENEWAL on rebuy carries no useful credits - prefer fresh create when predecessor is expired. |
+| free-zero-rollover-on-rebuy | Contracts | covered | Free trials use rollover_fraction 0; RENEWAL on rebuy carries no useful credits - prefer fresh create when predecessor is expired. |
 | package-plan-move-billing-day-realignment | Packages | covered | Billing-day realignment with charge today uses package-plan-move-immediate-invoice: review paid-period overlap (refund vs no refund) before current-hour cutover. |
 | billable-workflow-requires-billing-provider | Billing Provider And Stripe | covered | Billable customer or contract workflows must prove billing provider config. |
 | stripe-delivery-behavior-explicit | Billing Provider And Stripe | covered | Stripe delivery behavior must be explicit: push to Stripe, keep draft, or no Stripe side effect expected. |
 | billing-provider-archive-replace-risk | Billing Provider And Stripe | covered | Archiving or replacing billing provider configs can affect invoice delivery. |
 | multi-entity-stripe-fields-not-guessed | Billing Provider And Stripe | covered | Multi-entity Stripe delivery needs endpoint-specific fields and should not be guessed. |
 | customer-lookup-is-get | Customers | covered | Customer lookup and search use GET paths with query parameters, not POST customer list payloads. |
-| customer-resolve-name-must-not-full-scan | Customers | covered | Name/lev_id customer resolve must not paginate the entire /v1/customers list; stop at first exact hit and route email-shaped names through ingest_alias. |
+| customer-resolve-name-must-not-full-scan | Customers | covered | Name/external-id customer resolve must not paginate the entire /v1/customers list; stop at first exact hit and route email-shaped names through ingest_alias. |
 | customer-ingest-alias-collisions | Customers | covered | ingest_aliases are globally unique per tenant, and archived customers can keep aliases pinned. |
 | customer-set-ingest-aliases-replaces | Customers | covered | setIngestAliases replaces the full alias list; it is not additive. |
 | customer-hierarchy-lives-on-contracts | Customers | covered | Hierarchy is not a customer field; parent/child links live on contracts via hierarchy_configuration. |
@@ -75,7 +75,7 @@
 | dimensional-scope-four-tier-cards | Rate Cards And Products | covered | Multi-tier dimensional rollout means four tier cards (payg, core, select, pro) - not every rate card in the tenant. |
 | dimensional-metro-route-first | Rate Cards And Products | covered | For new action codes, run metro route and metro docs explain rate-cards.dimensional, then metro dimensional new-code for production apply. |
 | starting-at-hour-boundary | Rate Cards And Products | covered | starting_at values must be hour-boundary timestamps. |
-| access-schedule-credit-type-is-access-credit | Credits And Commits | covered | access_schedule.credit_type_id is the product/access credit type, usually the tenant access credit type. |
+| access-schedule-credit-type-is-access-credit | Credits And Commits | covered | access_schedule.credit_type_id is the product/access credit type for usage. |
 | invoice-schedule-fiat-credit-type | Credits And Commits | covered | invoice_schedule.credit_type_id must be a fiat currency when present. |
 | complimentary-grant-omit-invoice-schedule | Credits And Commits | covered | Complimentary grants should omit invoice_schedule unless a deliberate zero-dollar audit line is required. |
 | paid-topup-invoice-stripe-behavior | Credits And Commits | covered | Paid top-ups must state invoice and Stripe behavior before preview or apply. |
@@ -98,6 +98,6 @@
 ## Agent notes
 
 - Prefer `--json` when scripting parsers; use `--markdown` when loading context into an agent.
-- Never treat HTML as the source of truth — regenerate from `metro docs <ref> --markdown`.
+- Never treat HTML as the source of truth, regenerate from `metro docs <ref> --markdown`.
 - Live reads/writes still require tenant flags + confirmation tokens.
 

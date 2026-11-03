@@ -654,7 +654,7 @@ function assertFirstSafePreviewPathCoverage(installHtml, readme) {
     'parent billing-operations monorepo',
     'metro schema --json',
     'metro setup template --json',
-    'metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile lev-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
+    'metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile metro-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
     'metro validate --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --json',
     'metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --sandbox --json',
     '"schemaVersion": "metro.preview.v1"',
@@ -682,7 +682,7 @@ function assertFirstSafePreviewPathCoverage(installHtml, readme) {
     'parent billing-operations monorepo',
     'Maintainer checkout proof:',
     'node bin/metro.js setup template --json',
-    'node bin/metro.js setup resolve --file test/fixtures/setup/profiles-valid.json --profile lev-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
+    'node bin/metro.js setup resolve --file test/fixtures/setup/profiles-valid.json --profile metro-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
     'node bin/metro.js validate --shape pro-annual --file test/fixtures/pro-annual-valid.json --json',
     'node bin/metro.js input normalize --shape pro-annual --file test/fixtures/pro-annual-valid.yaml --json',
     'node bin/metro.js input normalize --api contracts.create --file test/fixtures/api-contracts-create-valid.yaml --json',
@@ -1890,10 +1890,10 @@ function assertReadMockGoldenCoverage() {
       endpointId: 'billableMetrics.get',
       tenant: 'sandbox',
       method: 'GET',
-      path: '/v1/billable-metrics/13117714-3f05-48e5-a6e9-a66093f13b4d',
+      path: '/v1/billable-metrics/00000000-0000-4000-8000-000000000001',
       pathKeys: ['billable_metric_id'],
       responsePath: ['data', 'id'],
-      responseValue: '13117714-3f05-48e5-a6e9-a66093f13b4d',
+      responseValue: '00000000-0000-4000-8000-000000000001',
     },
     {
       label: 'billableMetrics.list GET query',
@@ -2455,14 +2455,14 @@ function assertReadMockGoldenCoverage() {
   assert(billableMetricsGet.tenant === 'sandbox', 'billableMetrics.get read-mock golden tenant mismatch');
   assert(billableMetricsGet.readResult.requestSummary.method === 'GET', 'billableMetrics.get read-mock request must use GET');
   assert(
-    billableMetricsGet.readResult.requestSummary.path === '/v1/billable-metrics/13117714-3f05-48e5-a6e9-a66093f13b4d',
+    billableMetricsGet.readResult.requestSummary.path === '/v1/billable-metrics/00000000-0000-4000-8000-000000000001',
     'billableMetrics.get read-mock path mismatch',
   );
   assert(billableMetricsGet.readResult.requestSummary.bodyKeys.length === 0, 'billableMetrics.get read-mock must not use body keys');
   assertIncludes(billableMetricsGet.readResult.requestSummary.pathKeys, 'billable_metric_id', 'billableMetrics.get read-mock missing path billable_metric_id');
   assert(billableMetricsGet.readResult.requestSummary.queryKeys.length === 0, 'billableMetrics.get read-mock must not use query keys');
   assert(
-    billableMetricsGet.readResult.responseData.data.id === '13117714-3f05-48e5-a6e9-a66093f13b4d',
+    billableMetricsGet.readResult.responseData.data.id === '00000000-0000-4000-8000-000000000001',
     'billableMetrics.get read-mock response must include billable metric id',
   );
 
@@ -2962,7 +2962,7 @@ function assertReadinessGoldenCoverage() {
 }
 
 function assertSetupResolveGoldenCoverage() {
-  const setupResolve = readJson(path.join(packageRoot, 'test', 'golden', 'setup', 'resolve.lev-sandbox.json'));
+  const setupResolve = readJson(path.join(packageRoot, 'test', 'golden', 'setup', 'resolve.metro-sandbox.json'));
   const serialized = JSON.stringify(setupResolve);
 
   assert(setupResolve.schemaVersion === 'metro.profile.resolve.v1', 'setup resolve golden schema mismatch');
@@ -2971,13 +2971,13 @@ function assertSetupResolveGoldenCoverage() {
   assert(setupResolve.localOnly === true, 'setup resolve golden must remain local-only');
   assert(setupResolve.valid === true, 'setup resolve golden must remain valid');
   assert(setupResolve.blocked === false, 'setup resolve golden must not be blocked');
-  assert(setupResolve.profileName === 'lev-sandbox', 'setup resolve golden profile name mismatch');
+  assert(setupResolve.profileName === 'metro-sandbox', 'setup resolve golden profile name mismatch');
   assert(setupResolve.expectedTenant === 'sandbox', 'setup resolve golden expected tenant mismatch');
   assert(
     setupResolve.liveExecution && setupResolve.liveExecution.enabledInCurrentCli === false,
     'setup resolve golden must keep live execution disabled',
   );
-  assert(setupResolve.profile && setupResolve.profile.name === 'lev-sandbox', 'setup resolve golden selected profile mismatch');
+  assert(setupResolve.profile && setupResolve.profile.name === 'metro-sandbox', 'setup resolve golden selected profile mismatch');
   assert(setupResolve.profile.tenant === 'sandbox', 'setup resolve golden selected profile tenant mismatch');
   assert(setupResolve.profile.metronomeKeyEnv === 'METRONOME_SANDBOX_KEY', 'setup resolve golden selected profile key env mismatch');
   assert(
@@ -2987,7 +2987,7 @@ function assertSetupResolveGoldenCoverage() {
     'setup resolve golden must avoid env-value inspection by default',
   );
   assert(setupResolve.profile.readyForLiveApi === false, 'setup resolve golden must not imply live API readiness');
-  assert(setupResolve.tenantProfile && setupResolve.tenantProfile.profileName === 'lev-sandbox', 'setup resolve golden tenant profile mismatch');
+  assert(setupResolve.tenantProfile && setupResolve.tenantProfile.profileName === 'metro-sandbox', 'setup resolve golden tenant profile mismatch');
   assert(setupResolve.tenantProfile.tenant === 'sandbox', 'setup resolve golden tenant profile tenant mismatch');
   assert(setupResolve.tenantProfile.keyEnv === 'METRONOME_SANDBOX_KEY', 'setup resolve golden tenant profile key env mismatch');
   assert(
@@ -3020,7 +3020,7 @@ function assertSetupQuickstartGoldenCoverage() {
     'METRO_QUICKSTART_DIR="${TMPDIR:-/tmp}/metro-quickstart"\nmkdir -p "$METRO_QUICKSTART_DIR"',
     'metro schema --json',
     'metro setup template --json',
-    'metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile lev-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
+    'metro setup resolve --file "$METRO_QUICKSTART_DIR/profiles.json" --profile metro-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
     'metro validate --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --json',
     'metro package preview --shape pro-annual --file "$METRO_QUICKSTART_DIR/pro-annual.json" --sandbox --json',
   ]) {

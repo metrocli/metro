@@ -4,9 +4,9 @@ const { buildApiExportBundle } = require('../api-catalog/export');
 const { buildReleaseArtifactManifest, buildReleaseReadiness } = require('../release/readiness');
 const { buildSetupQuickstart, buildSetupTemplate } = require('../setup/profiles');
 const packageManifest = require('../../../../package.json');
-const { loadLevExplainTopics } = require('./load-lev-explain-topics');
+const { loadPackExplainTopics } = require('./load-pack-explain-topics');
 
-const levExplainTopics = loadLevExplainTopics();
+const packExplainTopics = loadPackExplainTopics();
 
 const DOCS_EXPLAIN_SCHEMA_VERSION = 'metro.docs.explain.v1';
 const DOCS_EXPLAIN_INDEX_SCHEMA_VERSION = 'metro.docs.explain.index.v1';
@@ -790,7 +790,7 @@ function ciLocalChecksTopic(topic, bundle) {
         'Store command, exit code, schemaVersion, payload hashes, sourceIds, generatedFrom, and nextSafeStep with any CI artifact.',
       ],
       blockedDoesNotMean: [
-        'Passing CI authorizes live Metronome, Stripe, HubSpot, Hyperline, PostHog, Slack, Zoom, SMTP, npm registry, or customer-impacting work.',
+        'Passing CI authorizes live Metronome, Stripe, CRM, analytics, chat, email, npm registry, or customer-impacting work.',
         'A local apply-gate or readiness payload can replace current-turn authorization.',
         'A present API key or npm token should be loaded, printed, or used by CI checks.',
         'Local tarball install proof is internal npm registry publish proof.',
@@ -951,7 +951,7 @@ function setupTroubleshootingTopic(topic, bundle) {
         'metro setup template --json',
         'metro setup doctor --file metronome-cli/test/fixtures/setup/profiles-valid.json --json',
         'metro setup doctor --file metronome-cli/test/fixtures/setup/profiles-invalid-secret.json --json',
-        'metro setup resolve --file metronome-cli/test/fixtures/setup/profiles-valid.json --profile lev-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
+        'metro setup resolve --file metronome-cli/test/fixtures/setup/profiles-valid.json --profile metro-sandbox --expect-tenant sandbox --key-fingerprint fp_sandbox_setup_resolve_reviewed --json',
       ],
       blockedDoesNotMean: [
         'A missing env var blocks local validation or preview.',
@@ -965,7 +965,7 @@ function setupTroubleshootingTopic(topic, bundle) {
       goldenFixtures: [
         'metronome-cli/test/golden/setup/quickstart.json',
         'metronome-cli/test/golden/setup/template.json',
-        'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
+        'metronome-cli/test/golden/setup/resolve.metro-sandbox.json',
         'metronome-cli/test/golden/docs/explain.setup-troubleshooting.json',
       ],
     },
@@ -984,7 +984,7 @@ function setupTroubleshootingTopic(topic, bundle) {
         'metronome-cli/test/fixtures/setup/profiles-valid.json',
         'metronome-cli/test/fixtures/setup/profiles-invalid-secret.json',
         'metronome-cli/test/golden/setup/quickstart.json',
-        'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
+        'metronome-cli/test/golden/setup/resolve.metro-sandbox.json',
       ],
     },
     sourceIds: uniq([
@@ -1009,7 +1009,7 @@ function setupTroubleshootingTopic(topic, bundle) {
       'metronome-cli/test/fixtures/setup/profiles-invalid-secret.json',
       'metronome-cli/test/golden/setup/quickstart.json',
       'metronome-cli/test/golden/setup/template.json',
-      'metronome-cli/test/golden/setup/resolve.lev-sandbox.json',
+      'metronome-cli/test/golden/setup/resolve.metro-sandbox.json',
     ]),
   };
 }
@@ -1645,7 +1645,7 @@ function workspaceRoutingTopic(topic, bundle) {
     keyFields: {
       commands: [
         'metro workspace explain --json',
-        'metro workspace status --file profiles.json --profile lev-sandbox --check-env --json',
+        'metro workspace status --file profiles.json --profile metro-sandbox --check-env --json',
         'metro plan list --json',
         'metro plan add-action-rate --action-code SP-FIND --display-name "Ideal Sponsor Finder" --price 20 --sandbox --json',
         'metro plan multi-tier-rate-rollout --action-code SP-FIND --sandbox --json',
@@ -1676,20 +1676,20 @@ function workspaceRoutingTopic(topic, bundle) {
       ],
     },
     sourceIds: ['metro-workspace-routing'],
-    sources: levExplainTopics.levWorkspaceRoutingSources(),
+    sources: packExplainTopics.workspaceRoutingSources(),
   };
 }
 
 function dimensionalRateCardTopic(topic, bundle) {
-  return levExplainTopics.buildDimensionalRateCardTopic(topic, bundle);
+  return packExplainTopics.buildDimensionalRateCardTopic(topic, bundle);
 }
 
 function sendInvoiceStripeTopic(topic, bundle) {
-  return levExplainTopics.buildSendInvoiceStripeTopic(topic, bundle);
+  return packExplainTopics.buildSendInvoiceStripeTopic(topic, bundle);
 }
 
 function contractTransitionsRebuyTopic(topic, bundle) {
-  return levExplainTopics.buildContractTransitionsRebuyTopic(topic, bundle);
+  return packExplainTopics.buildContractTransitionsRebuyTopic(topic, bundle);
 }
 
 function contractOverrideInspectionTopic(topic, bundle) {

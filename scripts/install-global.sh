@@ -13,7 +13,7 @@
 # Usage (only command you need):
 #   bash ~/.metro/src/scripts/install-global.sh
 #
-# First time (no checkout yet), run from any directory — not inside ~/.metro/src:
+# First time (no checkout yet), run from any directory, not inside ~/.metro/src:
 #   git clone --depth 1 https://github.com/metrocli/metro.git ~/.metro/src 2>/dev/null || true
 #   bash ~/.metro/src/scripts/install-global.sh
 #
@@ -22,7 +22,7 @@ set -euo pipefail
 REPO_URL="${METRO_REPO_URL:-https://github.com/metrocli/metro.git}"
 INSTALL_DIR="${METRO_INSTALL_DIR:-$HOME/.metro/src}"
 
-# Never run git from inside INSTALL_DIR — a repair must not delete our cwd.
+# Never run git from inside INSTALL_DIR, a repair must not delete our cwd.
 if [[ -n "${PWD:-}" ]] && [[ "${PWD}" == "${INSTALL_DIR}"* ]]; then
   echo "NOTE: leaving ${PWD} before install (do not run this script from inside ~/.metro/src)." >&2
   cd "${HOME}"
@@ -45,10 +45,10 @@ rm -f "$(npm prefix -g)/bin/metro"
 
 echo "2/4  Ensuring source checkout at ${INSTALL_DIR}..."
 if is_valid_checkout; then
-  echo "       Existing checkout found — pulling latest..."
+  echo "       Existing checkout found, pulling latest..."
   git -C "${INSTALL_DIR}" pull --ff-only
 elif has_git_checkout; then
-  echo "       Incomplete checkout — pulling and repairing..."
+  echo "       Incomplete checkout, pulling and repairing..."
   git -C "${INSTALL_DIR}" pull --ff-only
 elif [[ -d "${INSTALL_DIR}" ]]; then
   echo "ERROR: ${INSTALL_DIR} exists but is not a git checkout." >&2
@@ -57,7 +57,7 @@ elif [[ -d "${INSTALL_DIR}" ]]; then
   echo "         bash -c 'git clone --depth 1 \"${REPO_URL}\" \"${INSTALL_DIR}\" && bash \"${INSTALL_DIR}/scripts/install-global.sh\"'" >&2
   exit 1
 else
-  echo "       No checkout yet — cloning..."
+  echo "       No checkout yet, cloning..."
   mkdir -p "$(dirname "${INSTALL_DIR}")"
   git clone --depth 1 "${REPO_URL}" "${INSTALL_DIR}"
 fi

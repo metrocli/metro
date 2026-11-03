@@ -77,7 +77,7 @@ function buildReleaseReadiness(options = {}) {
       enabledInCurrentCli: false,
       metronome: false,
       stripe: false,
-      hubspot: false,
+      crm: false,
       hyperline: false,
       posthog: false,
       slack: false,
@@ -407,7 +407,7 @@ function buildReleaseArtifactManifest(options = {}) {
       'Load, validate, print, or store npm tokens.',
       'Read .env files or live API credentials.',
       'Treat artifact presence as approval to remove private:true or publish.',
-      'Treat local CI artifacts as live Metronome, Stripe, HubSpot, Hyperline, PostHog, Slack, Zoom, SMTP, or npm-registry authorization.',
+      'Treat local CI artifacts as live Metronome, Stripe, CRM, analytics, chat, email, or npm-registry authorization.',
     ],
     openQuestions: [
       'Reviewed output directory and retention policy for release evidence artifacts, represented by a valid metro.release.retention-policy.v1 file.',

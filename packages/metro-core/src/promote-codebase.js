@@ -34,7 +34,7 @@ function buildPromoteCodebaseHint(options = {}) {
     docs: [
       'metro docs explain --list --markdown',
       'See docs/metronome-cli/site/agents.md#promote-the-codebase',
-      'https://github.com/samhadar/metro (public) or open a PR on the metro monorepo',
+      'https://github.com/metrocli/metro (open a PR)',
     ],
   };
 }

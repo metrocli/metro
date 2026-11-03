@@ -73,7 +73,7 @@
       "title": "API Operations Guide",
       "href": "../../API_OPERATIONS.md",
       "supports": [
-        "Metronome, Stripe, HubSpot, PostHog, Slack, and legacy Hyperline work all have distinct safety routing.",
+        "Metronome, Stripe, CRM, analytics, chat, and legacy billing-system work all have distinct safety routing.",
         "New API scripts should default to preview or dry-run, use explicit tenants, write audit logs, and support read-back verification."
       ]
     },
@@ -2974,7 +2974,7 @@
     "metro-setup-resolve-golden": {
       "type": "local-fixture",
       "title": "Metro Setup Resolve Golden Fixture",
-      "href": "../../../test/golden/setup/resolve.lev-sandbox.json",
+      "href": "../../../test/golden/setup/resolve.metro-sandbox.json",
       "supports": [
         "The setup resolve command emits stable secret-free tenant profile binding evidence while live execution remains disabled."
       ]

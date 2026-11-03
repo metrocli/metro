@@ -284,7 +284,7 @@ function validateHyperline(input, findings) {
       'error',
       'Hyperline evidence must not be used as a current billing integration.',
       'hyperlineEvidence.usedAsCurrentIntegration',
-      'Use current Metronome/Stripe/HubSpot evidence for current workflows; keep Hyperline historical unless explicitly requested.',
+      'Use current Metronome/Stripe/CRM evidence for current workflows; keep Hyperline historical unless explicitly requested.',
     ));
   }
   if (evidence.used === true && evidence.explicitlyRequested !== true && evidence.usagePurpose !== 'historical-evidence') {

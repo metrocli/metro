@@ -6,9 +6,9 @@
 
 ```json
 {
-  "operatingTopicCount": 17,
+  "operatingTopicCount": 14,
   "lookupKindCount": 8,
-  "genericExplainableCount": 403,
+  "genericExplainableCount": 405,
   "liveApiAccess": "none"
 }
 ```
@@ -26,11 +26,8 @@
 | output.anatomy | local-proof-backed | none | Use this topic to read metro JSON output consistently: identify the schema version first, check live-execution flags and API access, inspect status/refusal fields, then follow generatedFrom, sourceIds, sources, payload hashes, and nextSafeStep before using the output as local evidence. | metro docs explain output.anatomy --json |
 | refusal.troubleshooting | local-proof-backed | none | Use this topic when metro refuses a live read, live apply, unsupported workflow apply, or unsafe input: keep the refusal as a safety signal, identify the schema and blocked command, then gather the local preview, preflight, gate, audit, read-back, and approval evidence named by nextSafeStep before retrying any narrower local command. | metro docs explain refusal.troubleshooting --json |
 | billing-provider.attachment | local-preview-backed | none | Use the local Stripe billing-provider attachment shape to validate delivery method scope, existing configuration policy, Stripe draft behavior, and read-back evidence before any future customer billing-provider write is considered. | metro docs explain billing-provider.attachment --json |
-| send-invoice.stripe | local-preview-backed | none | Accounts that receive invoices via Stripe (send_invoice / wire-pay) need a Stripe billing-provider configuration on the Metronome customer before paid contracts, plan moves, or top-ups. Collection method must be send_invoice, delivery_method_id must be reviewed for multi-entity delivery, and billingProvider.get read-back must pass before contracts.create. | metro docs explain send-invoice.stripe --json |
-| contract-transitions.rebuy | local-preview-backed | none | RENEWAL transitions are for active predecessor handoffs (metro contract move-plan). Expired free trials and other lapsed contracts must use fresh contracts/create without transition. Active trials are not move-plan eligible; use extend-trial or truncate-then-create. | metro docs explain contract-transitions.rebuy --json |
 | customer.setup | local-preview-backed | none | Use the local customer-setup shape to validate customer identity, ingest alias collision review, optional Stripe billing-provider configuration, customer configuration, read-back checks, and rollback planning before any customer create workflow is considered. | metro docs explain customer.setup --json |
 | credits.product.decision | local-preview-backed | none | When someone says "add a credits product", stop and classify before creating Metronome objects. Most asks are (A) a new pricing dimension on an existing USAGE product, (B) a credit grant on an existing contract, (C) credits inside a package commit schedule, or rarely (D) a greenfield USAGE product + billable metric. Do not create products or billable metrics for new action codes. | metro docs explain credits.product.decision --json |
-| rate-cards.dimensional | local-preview-backed | none | One command for new codes: metro dimensional new-code --all discovers every live dimensional rate card (sandbox + prod), dry-runs addRates, prints the exact --apply line. For bulk legacy-matrix cutover only, use metro dimensional cutover plan\|apply. Do not create products or billable metrics per action code. | metro docs explain rate-cards.dimensional --json |
 | workspace.routing | local-preview-backed | none | Use metro workspace explain, metro plan <intent>, and metro route --goal to pick optimal shapes, refuse suboptimal API paths (e.g. products.create for a new action code), and bind sandbox/production via tenant profiles. For ambiguous "credits product" asks start with metro docs explain credits.product.decision --markdown. | metro docs explain workspace.routing --json |
 | contract-overrides.inspection | local-proof-backed | none | Use contracts.getRateSchedule for customer-specific contract prices that must include contract-level overrides; use rateCards.getRates for rate-card source prices before customer contract overrides. | metro docs explain contract-overrides.inspection --json |
 | product-rate-retirement.readback | local-proof-backed | none | Use rateCards.addRates only as a reviewed future write for closing rates; verify product retirement with rateCards.getRates, rateCards.getRateSchedule, products.get, and invoice-impact evidence before any product archive is considered. | metro docs explain product-rate-retirement.readback --json |
@@ -42,7 +39,7 @@
 | --- | --- | --- | --- |
 | api-endpoint | 69 | Reviewed Metronome endpoint IDs from the local expert API catalog. | usage.ingest, usage.groups, usage.batch, events.search |
 | api-family | 14 | Endpoint-family summaries derived from the reviewed API catalog. | billable-metrics, billing-provider, contracts, credits |
-| command | 144 | Supported local command metadata from the command catalog. | command:input.normalize, command:docs.explain, command:api.read-plan |
+| command | 146 | Supported local command metadata from the command catalog. | command:input.normalize, command:docs.explain, command:api.read-plan |
 | shape | 16 | Workflow shape summaries and validator links from the shape catalog. | shape:customer-setup, shape:pro-annual, shape:pro-annual-self-serve-v2, shape:free-credit-trial |
 | validator-rule | 68 | Validator rules, severities, and remediation guidance. | MTR-TENANT-001, MTR-TENANT-002, MTR-TENANT-003, MTR-TENANT-004 |
 | gotcha | 59 | Known failure modes from the gotcha register. | gotcha:tenant-selected-by-key, gotcha:env-file-not-authorization, gotcha:never-infer-production-from-key-presence, gotcha:fingerprints-not-key-values |
@@ -52,21 +49,14 @@
 
 ## sourceIds
 
-- `billable-metrics`
 - `credits-product-decision`
 - `danger-zone`
-- `docs/metronome-cli/GOTCHAS.md`
 - `endpoint-matrix`
 - `example:api.catalog.contracts`
 - `example:api.explain.contracts-create`
 - `example:api.preflight.contracts-create`
 - `example:api.preview.contracts-create`
 - `example:api.readiness`
-- `https://docs.metronome.com/api-reference/contracts/create-a-contract.md`
-- `https://docs.metronome.com/api-reference/contracts/create-a-package.md`
-- `https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md`
-- `https://docs.metronome.com/guides/pricing-packaging/subscription/manage-subscription-lifecycle`
-- `https://docs.metronome.com/manage-product-access/lifecycle-transitions`
 - `local-probe-prod-all-rates`
 - `metro-api-preview-golden`
 - `metro-api-read-audit-products-get-fixture`
@@ -94,8 +84,6 @@
 - `metro-command-reference-golden`
 - `metro-customer-setup-fixtures`
 - `metro-customer-setup-preview-golden`
-- `metro-dimensional-rate-card-runbook`
-- `metro-dimensional-rate-card-shape`
 - `metro-docs-explain-billing-provider-attachment-golden`
 - `metro-docs-explain-ci-local-checks-golden`
 - `metro-docs-explain-customer-setup-golden`
@@ -128,8 +116,6 @@
 - `metro-setup-quickstart`
 - `metro-setup-resolve-golden`
 - `metro-workspace-routing`
-- `metronome-cli/src/shapes/index.js`
-- `metronome-cli/src/validators/index.js`
 - `metronome-customers-hierarchies`
 - `metronome-stripe-delivery`
 - `official-billing-provider`
@@ -142,18 +128,14 @@
 - `official-invoice-list`
 - `official-list-configured-billing-providers`
 - `official-product-archive`
-- `official-product-create`
 - `official-product-get`
 - `official-rate-card-add-rates`
 - `official-rate-card-get-rate-schedule`
 - `official-rate-card-get-rates`
-- `official-usage-groups`
 - `packages-contracts`
-- `pricing-catalog`
 - `rate-cards-dimensional`
 - `shape-complimentary-credit-grant`
 - `shape-dimensional-rate-card`
-- `skills/metronome-packages-contracts/SKILL.md`
 
 
 ## sources
@@ -176,6 +158,7 @@
 - `docs/metronome-cli/CLI_ARCHITECTURE.md`
 - `docs/metronome-cli/COOKBOOK.md`
 - `docs/metronome-cli/GOTCHAS.md`
+- `docs/metronome-cli/QUICKSTART.md`
 - `docs/metronome-cli/README.md`
 - `docs/metronome-cli/SHAPE_CATALOG.md`
 - `docs/metronome-cli/SHAPE_CATALOG.md#product-or-rate-retirement`
@@ -224,8 +207,6 @@
 - `metronome-cli/src/setup/profiles.js`
 - `metronome-cli/src/shapes/index.js`
 - `metronome-cli/src/validators/index.js`
-- `metronome-cli/src/workspace/model.js`
-- `metronome-cli/src/workspace/plan.js`
 - `metronome-cli/test/fixtures/api-contracts-rate-schedule-mock-response.json`
 - `metronome-cli/test/fixtures/api-contracts-rate-schedule-valid.json`
 - `metronome-cli/test/fixtures/api-read-audit-products-get-valid.jsonl`
@@ -261,19 +242,17 @@
 - `metronome-cli/test/golden/release/retention-policy.template.json`
 - `metronome-cli/test/golden/release/retention-policy.validation.valid.json`
 - `metronome-cli/test/golden/setup/quickstart.json`
-- `metronome-cli/test/golden/setup/resolve.lev-sandbox.json`
+- `metronome-cli/test/golden/setup/resolve.metro-sandbox.json`
 - `metronome-cli/test/golden/setup/template.json`
 - `metronome-cli/test/golden/stripe-billing-provider-attachment-preview.sandbox.json`
 - `metronome-cli/test/install.test.js`
 - `metronome-cli/test/package.test.js`
 - `metronome/probe-prod-all-rates.js`
-- `skills/metronome-danger-zone/references/learnings.md`
-- `skills/metronome-danger-zone/references/strato-incident.md`
 
 
 ## Agent notes
 
 - Prefer `--json` when scripting parsers; use `--markdown` when loading context into an agent.
-- Never treat HTML as the source of truth — regenerate from `metro docs <ref> --markdown`.
+- Never treat HTML as the source of truth, regenerate from `metro docs <ref> --markdown`.
 - Live reads/writes still require tenant flags + confirmation tokens.
 
