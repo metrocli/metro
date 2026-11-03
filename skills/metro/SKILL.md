@@ -1,12 +1,86 @@
-# metro CLI agent skill
+---
+name: metro
+description: >-
+  Entry skill for the metro CLI, a safe terminal tool for any Metronome
+  usage-billing tenant. Use first for any Metronome task: "set up metro",
+  "connect my Metronome sandbox", "create a contract", "grant credits",
+  "check a customer's invoices", "is this safe to run in production".
+  Explains the safety model (read-only by default, sandbox first, typed
+  confirm tokens, preview then apply then GET readback proof), key setup in
+  ~/.metro/.env, and routes to the metronome-* specialist skills.
+---
 
-Generated from `metro schema --json` and the live endpoint allowlist. Re-run `node scripts/generate-agent-skill.js` after CLI changes.
+# metro - entry skill
 
-## When to use
+`metro` is a terminal tool for operating a Metronome (metronome.com) billing
+tenant safely. Load this skill first, then the specialist skill for the
+task (routing table below). Official API docs: https://docs.metronome.com/
 
-Use `metro` for Metronome billing operations: validate inputs, preview changes, guarded sandbox reads/writes, API catalog literacy, and evidence-gate workflows. Official API docs: https://docs.metronome.com/
+## Safety model (read this before any command)
 
-**Public / generic installs:** default pack is `generic` (`metro workspace use generic --write`). Start with `metro catalog bind --sandbox --write`, then `metro ops` / `metro ops who`.
+1. **Read-only and local by default.** `validate`, `preview`, `plan`,
+   `api explain`, `api validate` never call Metronome. Nothing reaches a
+   tenant unless you add explicit gates.
+2. **Sandbox first.** Every new shape, payload, or workflow runs against the
+   sandbox tenant before production. Pass `--sandbox` or `--prod` on every
+   command; never infer the tenant from which env vars are set.
+3. **Typed confirm tokens.** Live actions require a literal token the human
+   has seen, for example:
+   - live read: `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`
+   - sandbox write: `--confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX`
+   - production write: `--confirm-prod-apply=I_UNDERSTAND_BILLING_SIDE_EFFECTS`
+   An agent must not supply a production token on its own initiative. Show
+   the user the preview and get an explicit yes in the current turn first.
+4. **Preview, then apply, then GET readback proof.** Every write follows:
+   - `preview` - shows the exact payload, side effects, and a canonical hash.
+   - `apply` - sends exactly that payload (hash-bound; a changed input is refused).
+   - readback - a GET of the object just written, compared field by field
+     against the preview (expected vs actual). A write without readback is
+     not done.
+5. **Refusals are features.** Exit code `2` means a safety refusal. Read
+   `summary` and `nextCommands` on stderr instead of working around it.
+
+## Key setup (humans paste keys, agents never see them)
+
+Keys live in `~/.metro/.env`:
+
+```bash
+METRONOME_SANDBOX_KEY=
+METRONOME_PROD_KEY=
+```
+
+- Sandbox token: https://app.metronome.com/sandbox/developer/api-tokens
+- Production token: https://app.metronome.com/developer/api-tokens
+- `metro init` walks a human through creating the file and checking the
+  keys. Until it ships in your version, the human edits the file directly.
+
+Agent rules for keys:
+
+- **Never print, echo, cat, log, or commit a key**, and never put one in a
+  command line or URL.
+- **Never ask the user to paste a key into chat.** Tell them: "Open
+  `~/.metro/.env` and paste your sandbox token after
+  `METRONOME_SANDBOX_KEY=`, then tell me when it is saved."
+- Check presence only (`metro doctor`, `metro status --check-env --json`),
+  which report the env var name, never the secret.
+- Start with only the sandbox key. Add the production key when there is a
+  sandbox-proven workflow to run.
+
+## Route to a specialist skill
+
+| Task | Skill |
+|---|---|
+| Before writing any Metronome API call; destructive side effects; past incidents | `metronome-danger-zone` |
+| Shared facts: base URL, USD credit type, timestamps, pagination, errors | `_metronome-shared/conventions.md` |
+| Usage events, `transaction_id`, back-dating, billable metrics | `metronome-ingestion-events` |
+| Products, rate cards, rates, overrides | `metronome-pricing-catalog` |
+| Packages, contracts, editContract, transitions, commits and credits | `metronome-packages-contracts` |
+| Invoices: void, regenerate, issue date, watcher pattern | `metronome-invoicing` |
+| Stripe and other billing providers, reconciliation | `metronome-stripe-delivery` |
+| Customers, ingest aliases, custom fields, hierarchies | `metronome-customers-hierarchies` |
+| Subscriptions and seats | `metronome-subscriptions-seats` |
+
+Full routing table: `skills/_metronome-shared/INDEX.md`.
 
 ## Install
 
@@ -14,35 +88,42 @@ Use `metro` for Metronome billing operations: validate inputs, preview changes, 
 npm install -g @metrocli/metro
 metro workspace use generic --write
 metro setup init --workspace generic --write
+metro doctor
 ```
+
+Public installs use the `generic` workspace pack. After the sandbox key is
+in place: `metro catalog bind --sandbox --write`, then `metro ops` /
+`metro ops who`.
 
 ## Agent rules
 
-**Response format (required every turn):**
+**Response format (every turn):**
 
-1. **Plain English first** - billing goal, what will/will not change in Metronome, approval needed before live commands.
-2. **Technical second** - exact `metro … --json` commands, `schemaVersion`, stdout vs stderr, hashes, evidence files.
+1. **Plain English first** - billing goal, what will and will not change in
+   Metronome, what approval is needed before any live command.
+2. **Technical second** - exact `metro ... --json` commands, `schemaVersion`,
+   stdout vs stderr, hashes, evidence files.
 
 **Execution rules:**
 
 1. Run `metro schema --json` first for command discovery and exit codes.
 2. Prefer `--json` on every command; parse **stdout** for success payloads only.
 3. Treat **stderr** as human progress and refusals (`metro.refusal.v1`, `metro.api.read.refusal.v1`).
-4. Exit codes: `0` success · `1` validation · `2` safety refusal.
-5. Never infer tenant from env keys - pass `--sandbox` or `--prod` explicitly.
-6. Live reads require `--read-gate` + `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`.
+4. Exit codes: `0` success, `1` validation, `2` safety refusal.
+5. Pass `--sandbox` or `--prod` explicitly. Never infer the tenant from env keys.
+6. Live reads require `--read-gate` plus `--confirm-live-read I_UNDERSTAND_THIS_WILL_READ_LIVE_METRONOME`.
 7. Live sandbox apply requires `--apply-gate`, `--approval-record`, and `--confirm-live-apply I_UNDERSTAND_THIS_WILL_WRITE_LIVE_METRONOME_SANDBOX`.
 8. Read `metro docs explain output.anatomy --json` before interpreting output.
-9. Run `metro harness run --suite agent-literacy --execute --json` then `metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json` from a checkout to prove agent Markdown + API catalog literacy.
+9. From a checkout, `metro harness run --suite agent-literacy --execute --json` and `metro harness run --suite api-literacy --fixture-root test/fixtures --execute --json` prove agent and API catalog literacy.
 10. Prefer Markdown for context: `metro docs <ref> --markdown`, index at `docs/metronome-cli/site/agents.md`. HTML is for humans.
-11. Vague “credits product” / new metric / aggregation asks: `metro docs explain credits.product.decision --markdown` before any `products.create`.
-12. After sandbox keys: `metro catalog bind --sandbox --write` then `metro tenant snapshot show --markdown`. Prefer snapshot `accountPattern` over guessing catalog shape.
-13. If pattern is `greenfield-needed`: `metro plan greenfield-credits-product --sandbox --json` → api validate/preview. Sandbox create apply needs `--confirm-greenfield-create=I_UNDERSTAND_SANDBOX_CATALOG_CREATE` in addition to the live-apply token.
+11. Vague "credits product" / new metric / aggregation asks: `metro docs explain credits.product.decision --markdown` before any `products.create`.
+12. After sandbox keys: `metro catalog bind --sandbox --write` then `metro tenant snapshot show --markdown`. Prefer the snapshot `accountPattern` over guessing catalog shape.
+13. If the pattern is `greenfield-needed`: `metro plan greenfield-credits-product --sandbox --json`, then api validate / preview. Sandbox create apply also needs `--confirm-greenfield-create=I_UNDERSTAND_SANDBOX_CATALOG_CREATE`.
 14. Keep shapes honest vs Metronome: `docs/metronome-cli/METRONOME_UPSTREAM_CHANGELOG.md` and `npm run docs:upstream:check`.
 
 **Promote the codebase (when work is thrashing):**
 
-If a request takes many tool runs, greps, doc hops, or long discovery chains - do not hide it. Say: "This can be faster. I can draft a PR that adds a metro command / shape / validator / cookbook line so the next person does not repeat this." Offer to draft the PR; the human runs and merges. Prefer one lasting shortcut rooted in truth (catalog + official sources + offline test) over another heroic archaeology session. See `docs/metronome-cli/site/agents.html#promote-codebase`.
+If a request takes many tool runs, greps, doc hops, or long discovery chains, say so: "This can be faster. I can draft a PR that adds a metro command / shape / validator / cookbook line so the next person does not repeat this." Offer to draft the PR; the human runs and merges. Prefer one lasting shortcut rooted in truth (catalog plus official sources plus an offline test) over another long discovery session. See `docs/metronome-cli/site/agents.html#promote-codebase`.
 
 ## Live read endpoints (current release)
 
