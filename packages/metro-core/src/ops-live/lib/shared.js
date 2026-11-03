@@ -19,30 +19,6 @@ function parseArg(prefix, argv = []) {
   return raw.slice(prefix.length);
 }
 
-function parseArgs(argv = [], flags = {}) {
-  return {
-    argv,
-    apply: argv.includes('--apply') || flags.apply === true,
-    json: argv.includes('--json') || flags.json === true,
-    immediate: argv.includes('--immediate') || flags.immediate === true,
-    customerId: parseArg('--customer-id=', argv) || flags['customer-id'] || flags.customerId || null,
-    externalId: parseArg('--external-id=', argv) || flags['external-id'] || flags.externalId || null,
-    ingestAlias: parseArg('--ingest-alias=', argv) || flags['ingest-alias'] || flags.ingestAlias || null,
-    name: parseArg('--name=', argv) || flags.name || null,
-    query: parseArg('--query=', argv) || flags.query || null,
-    fromAlias: parseArg('--from=', argv) || parseArg('--from-alias=', argv) || flags.from || flags['from-alias'] || null,
-    toAlias: parseArg('--to=', argv) || parseArg('--to-alias=', argv) || flags.to || flags['to-alias'] || null,
-    cutover: parseArg('--cutover=', argv) || flags.cutover || null,
-    cutoverMode: parseArg('--cutover-mode=', argv) || flags['cutover-mode'] || 'renewal-boundary',
-    shape: parseArg('--shape=', argv) || flags.shape || null,
-    file: parseArg('--file=', argv) || flags.file || null,
-    out: parseArg('--out=', argv) || flags.out || null,
-    confirmHash: parseArg('--confirm-hash=', argv) || flags['confirm-hash'] || null,
-    confirmProdApply: parseArg('--confirm-prod-apply=', argv) || flags['confirm-prod-apply'] || null,
-    targetCredits: parseArg('--target-credits=', argv) || flags['target-credits'] || flags.targetCredits || null,
-  };
-}
-
 function resolveLookupFromArgs(args = {}) {
   return {
     customerId: args.customerId || null,
@@ -181,7 +157,6 @@ function sleep(ms) {
 module.exports = {
   PRODUCTION_CATALOG_PATH,
   parseArg,
-  parseArgs,
   resolveLookupFromArgs,
   prodApplyFlag,
   LIVE_PROD_APPLY_CONFIRMATION,

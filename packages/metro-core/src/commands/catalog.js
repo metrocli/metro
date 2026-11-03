@@ -59,7 +59,7 @@ const COMMANDS = [
   },
   {
     id: 'validate.shape',
-    command: 'metro validate --shape <shape> --file <input.json|yaml> [--json]',
+    command: 'metro validate --shape <shape> --file <input.json|yaml> [--sandbox|--prod] [--profile <name>] [--json]',
     group: 'validate',
     mode: 'validate',
     status: 'local',
@@ -154,7 +154,7 @@ const COMMANDS = [
   },
   {
     id: 'workspace.use',
-    command: 'metro workspace use <pack> [--write] [--json]',
+    command: 'metro workspace use <pack> [--write [--dir <config-dir>]] [--json]',
     group: 'workspace',
     mode: 'explain',
     status: 'local',
@@ -168,7 +168,7 @@ const COMMANDS = [
   },
   {
     id: 'plan.template',
-    command: 'metro plan template <intent> (--sandbox|--prod) [--out <out.json>] [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--json]',
+    command: 'metro plan template <intent> (--sandbox|--prod) [--out <out.json>] [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--credit-grant-mode <mode>] [--annual-credits-total <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--json]',
     group: 'plan',
     mode: 'explain',
     status: 'local',
@@ -196,7 +196,7 @@ const COMMANDS = [
   },
   {
     id: 'plan.intent',
-    command: 'metro plan <intent> (--sandbox|--prod) [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--json]',
+    command: 'metro plan <intent> (--sandbox|--prod) [--goal "<text>"] [--token <name>] [--action-code <code>] [--display-name <text>] [--name <text>] [--aggregation <type>] [--event-type <type>] [--dimension-key <key>] [--price <n>] [--credit-grant-mode <mode>] [--annual-credits-total <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--dir <snapshot-dir>] [--json]',
     group: 'plan',
     mode: 'preview',
     status: 'local',
@@ -210,7 +210,7 @@ const COMMANDS = [
   },
   {
     id: 'route.goal',
-    command: 'metro route --goal "<billing goal>" [--api <endpoint-id>] (--sandbox|--prod) [--json]',
+    command: 'metro route --goal "<billing goal>" [--api <endpoint-id>] (--sandbox|--prod) [--token <name>] [--action-code <code>] [--display-name <text>] [--price <n>] [--file <profiles.json>] [--profile <name>] [--check-env] [--dir <snapshot-dir>] [--json]',
     group: 'route',
     mode: 'validate',
     status: 'local',
@@ -238,7 +238,7 @@ const COMMANDS = [
   },
   {
     id: 'audit.export.plan',
-    command: 'metro audit export plan --token <name> (--sandbox|--prod) [--json]',
+    command: 'metro audit export plan --token <name> (--sandbox|--prod) [--starting-on <ISO>] [--ending-before <ISO>] [--limit <n>] [--sort <order>] [--json]',
     group: 'audit',
     mode: 'explain',
     status: 'local',
@@ -415,7 +415,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.move-plan.preflight',
-    command: 'metro contract move-plan preflight --to=<alias> (--customer-id=|--external-id=|--ingest-alias=|--name=) [--from=<alias>] (--sandbox|--prod) [--cutover=ISO|--cutover-mode=renewal-boundary|current-hour|next-hour] [--out=move.json] [--json]',
+    command: 'metro contract move-plan preflight --to=<alias> (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--from=<alias>] (--sandbox|--prod) [--cutover=ISO|--cutover-mode=renewal-boundary|current-hour|next-hour] [--out=move.json] [--json]',
     group: 'contract',
     mode: 'preflight',
     status: 'live',
@@ -433,7 +433,7 @@ const COMMANDS = [
   },
   {
     id: 'customer.resolve',
-    command: 'metro customer resolve (--customer-id=|--external-id=|--ingest-alias=|--name=) (--sandbox|--prod) [--json]',
+    command: 'metro customer resolve (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) (--sandbox|--prod) [--json]',
     group: 'customer',
     mode: 'read',
     status: 'live',
@@ -451,7 +451,7 @@ const COMMANDS = [
   },
   {
     id: 'customer.balances',
-    command: 'metro customer balances (--customer-id=|--external-id=|--ingest-alias=|--name=) (--sandbox|--prod) [--contract-id=] [--min-balance=<n>] [--only-active] [--only-nonzero] [--out=<file.json>] [--json]',
+    command: 'metro customer balances (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) (--sandbox|--prod) [--contract-id=] [--min-balance=<n>] [--credit-type-id=<id>] [--only-active] [--only-nonzero] [--out=<file.json>] [--json]',
     group: 'customer',
     mode: 'read',
     status: 'live',
@@ -487,7 +487,7 @@ const COMMANDS = [
   },
   {
     id: 'catalog.bind',
-    command: 'metro catalog bind (--sandbox|--prod) [--write] [--file <profiles.json>] [--profile <name>] [--json]',
+    command: 'metro catalog bind (--sandbox|--prod) [--write] [--file <profiles.json>] [--profile <name>] [--dir <config-dir>] [--json]',
     group: 'catalog',
     mode: 'read',
     status: 'live',
@@ -502,8 +502,24 @@ const COMMANDS = [
     ],
   },
   {
+    id: 'catalog.bind.show',
+    command: 'metro catalog bind --show [--sandbox|--prod] [--file <profiles.json>] [--profile <name>] [--dir <config-dir>] [--json]',
+    group: 'catalog',
+    mode: 'explain',
+    status: 'local',
+    schemaVersion: 'metro.catalog.bind.v1',
+    apiAccess: 'none',
+    description: 'Print the workspaceCatalog currently bound in profiles.json for the tenant profile, without calling Metronome.',
+    requiredFlags: ['--show'],
+    optionalFlags: ['--sandbox', '--prod', '--file', '--profile', '--dir', '--json'],
+    exitCodes: { success: 0, validationFailure: 1 },
+    sources: [
+      'packages/metro-core/src/commands/catalog-bind.js',
+    ],
+  },
+  {
     id: 'contract.move-plan.apply',
-    command: 'metro contract move-plan apply --file <move.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro contract move-plan apply --file <move.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'contract',
     mode: 'apply',
     status: 'pack-op',
@@ -513,7 +529,7 @@ const COMMANDS = [
     description: 'Dry-run validates move.json offline; live --apply runs updateEndDate + RENEWAL successor with post-apply read-back. Production requires ALLOW_DANGEROUS_SCRIPT or --confirm-prod-apply.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--shape package-plan-move-no-immediate-invoice', '--shape package-plan-move-immediate-invoice', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
       'docs/metronome-cli/GOTCHAS.md',
@@ -539,7 +555,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.move-plan.bulk-apply',
-    command: 'metro contract move-plan bulk-apply --file <manifest.json> (--sandbox|--prod) [--apply] [--limit=N] [--delay-ms=300] [--confirm-prod-apply=<token>] [--json]',
+    command: 'metro contract move-plan bulk-apply --file <manifest.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--limit=N] [--delay-ms=300] [--json]',
     group: 'contract',
     mode: 'apply',
     status: 'pack-op',
@@ -549,14 +565,14 @@ const COMMANDS = [
     description: 'Replays contract move-plan apply for every preflight-ok entry in a bulk manifest, continuing on per-customer failure. Use --limit=N to canary before the full roster; each entry still requires its own preflight confirm hash.',
     requiredFlags: ['--file', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--limit', '--delay-ms', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'contract.extend-trial.preflight',
-    command: 'metro contract extend-trial preflight --extend-to=<ISO>|--extend-by-days=<N> (--customer-id=|--external-id=|--ingest-alias=|--name=) [--contract-id=] (--sandbox|--prod) [--out=extend.json] [--json]',
+    command: 'metro contract extend-trial preflight --extend-to=<ISO>|--extend-by-days=<N> (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] (--sandbox|--prod) [--out=extend.json] [--json]',
     group: 'contract',
     mode: 'preflight',
     status: 'live',
@@ -573,7 +589,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.extend-trial.apply',
-    command: 'metro contract extend-trial apply --file <extend.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro contract extend-trial apply --file <extend.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'contract',
     mode: 'apply',
     status: 'pack-op',
@@ -583,14 +599,14 @@ const COMMANDS = [
     description: 'Dry-run validates the extend.json payload offline; live --apply runs a single updateEndDate call with post-apply read-back. Production requires ALLOW_DANGEROUS_SCRIPT or --confirm-prod-apply.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'contract.expire.preflight',
-    command: 'metro contract expire preflight (--customer-id=|--external-id=|--ingest-alias=|--name=) [--contract-id=] [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] (--sandbox|--prod) [--out=expire.json] [--json]',
+    command: 'metro contract expire preflight (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] [--cutover-mode=current-hour|next-hour|--ending-before=<ISO>] [--allow-ending-before-finalized-invoice] (--sandbox|--prod) [--out=expire.json] [--json]',
     group: 'contract',
     mode: 'preflight',
     status: 'live',
@@ -607,7 +623,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.expire.apply',
-    command: 'metro contract expire apply --file <expire.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro contract expire apply --file <expire.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'contract',
     mode: 'apply',
     status: 'pack-op',
@@ -617,14 +633,14 @@ const COMMANDS = [
     description: 'Dry-run validates expire.json offline; live --apply runs updateEndDate with post-apply read-back proving ending_before.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'ledger-adjustment.preflight',
-    command: 'metro ledger-adjustment preflight (--amount=<signed-int>|--archive-balance-id=<balance-id>) --reason="<reason>" (--customer-id=|--external-id=|--ingest-alias=|--name=) [--contract-id=] [--balance-id=] (--sandbox|--prod) [--out=ledger.json] [--json]',
+    command: 'metro ledger-adjustment preflight (--amount=<signed-int> [--balance-id=]|--archive-balance-id=<balance-id>|--grant=credit|commit --amount=<n> --product-id=<id> --starting-at=<UTC hour> --ending-before=<UTC hour> [--credit-type-id=<id>] [--grant-name=<name>] [--priority=<n>]) --reason="<reason>" (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] [--acknowledge-net-divergence=<token>] (--sandbox|--prod) [--out=ledger.json] [--json]',
     group: 'ledger-adjustment',
     mode: 'preflight',
     status: 'live',
@@ -641,7 +657,7 @@ const COMMANDS = [
   },
   {
     id: 'ledger-adjustment.apply',
-    command: 'metro ledger-adjustment apply --file <ledger.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro ledger-adjustment apply --file <ledger.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'ledger-adjustment',
     mode: 'apply',
     status: 'pack-op',
@@ -651,14 +667,14 @@ const COMMANDS = [
     description: 'Dry-run validates the ledger.json payload offline; live --apply detects the payload shape and runs either addManualBalanceLedgerEntry (partial amount) or contracts.edit archive_credits/archive_commits (full grant archive), with post-apply balance read-back. Production requires ALLOW_DANGEROUS_SCRIPT or --confirm-prod-apply. Highest-risk write - requires owner-approved business reason.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'contract.repair-accidental.preflight',
-    command: 'metro contract repair-accidental preflight --archive-contract-id=<id> --keep-contract-id=<id> --reason="<why accidental>" (--customer-id=|--external-id=|--ingest-alias=|--name=) [--restore-ending-before=<ISO>] (--sandbox|--prod) [--out=repair.json] [--json]',
+    command: 'metro contract repair-accidental preflight --archive-contract-id=<id> --keep-contract-id=<id> --reason="<why accidental>" (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--restore-ending-before=<ISO>] (--sandbox|--prod) [--out=repair.json] [--json]',
     group: 'contract',
     mode: 'preflight',
     status: 'live',
@@ -675,7 +691,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.repair-accidental.apply',
-    command: 'metro contract repair-accidental apply --file <repair.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro contract repair-accidental apply --file <repair.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'contract',
     mode: 'apply',
     status: 'pack-op',
@@ -685,14 +701,14 @@ const COMMANDS = [
     description: 'Dry-run validates the repair.json payload offline; live --apply archives the accidental contract with void_invoices:true, optionally restores the kept contract\'s ending_before, then reads both back. Production requires ALLOW_DANGEROUS_SCRIPT or --confirm-prod-apply.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'billing-provider.cutover.preflight',
-    command: 'metro billing-provider cutover preflight --collection-method=send_invoice|charge_automatically --reason="<why>" (--customer-id=|--external-id=|--ingest-alias=|--name=) [--old-config-id=] [--stripe-customer-id=] [--delivery-method-id=] [--leave-stripe-invoices-in-draft] (--sandbox|--prod) [--out=cutover.json] [--json]',
+    command: 'metro billing-provider cutover preflight --collection-method=send_invoice|charge_automatically --reason="<why>" (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--old-config-id=] [--stripe-customer-id=] [--delivery-method-id=] [--leave-stripe-invoices-in-draft|--no-leave-stripe-invoices-in-draft] (--sandbox|--prod) [--out=cutover.json] [--json]',
     group: 'billing-provider',
     mode: 'preflight',
     status: 'live',
@@ -709,7 +725,7 @@ const COMMANDS = [
   },
   {
     id: 'billing-provider.cutover.apply',
-    command: 'metro billing-provider cutover apply --file <cutover.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>]',
+    command: 'metro billing-provider cutover apply --file <cutover.json> (--sandbox|--prod) --confirm-hash <hash> [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
     group: 'billing-provider',
     mode: 'apply',
     status: 'pack-op',
@@ -719,14 +735,14 @@ const COMMANDS = [
     description: 'Dry-run validates the cutover.json payload offline; live --apply optionally sets leave_stripe_invoices_in_draft, archives the old billing-provider configuration, sets the new one, then reads both back. Production requires ALLOW_DANGEROUS_SCRIPT or --confirm-prod-apply.',
     requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
     optionalFlags: ['--apply', '--confirm-prod-apply', '--json'],
-    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
     sources: [
       'packages/metro-core/src/workspace/pack-ops.js',
     ],
   },
   {
     id: 'package.customers',
-    command: 'metro package customers --package-id=<id>|--alias=<alias> (--sandbox|--prod) [--json]',
+    command: 'metro package customers --package-id=<id>|--alias=<alias> (--sandbox|--prod) [--out=<file.json>] [--json]',
     group: 'package',
     mode: 'read',
     status: 'live',
@@ -808,7 +824,7 @@ const COMMANDS = [
     status: 'local',
     schemaVersion: 'metro.preview.v1',
     apiAccess: 'none',
-    description: 'Build a local DRAFT invoice issue-date update plan with explicit Stripe behavior, contract-end evidence, and read-back checks, without calling Metronome.',
+    description: 'Preview only: build a local DRAFT invoice issue-date update plan with explicit Stripe behavior, contract-end evidence, and read-back checks, without calling Metronome. There is no apply path: invoice issue-date apply refuses, and the update endpoint is not on the sandbox write allowlist.',
     requiredFlags: ['--file', '--sandbox|--prod'],
     optionalFlags: ['--shape invoice-issue-date-update', '--json'],
     exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2 },
@@ -1299,7 +1315,7 @@ const COMMANDS = [
   },
   {
     id: 'api.apply',
-    command: 'metro api apply <endpoint-id> --file <request.json|yaml> --sandbox --apply-gate <api-apply-gate.json> --approval-record <api-approval-record.json> --confirm-live-apply <token> [--json]',
+    command: 'metro api apply <endpoint-id> --file <request.json|yaml> --sandbox --apply-gate <api-apply-gate.json> --approval-record <api-approval-record.json> --confirm-live-apply <token> [--confirm-greenfield-create <token>] [--json]',
     group: 'api',
     mode: 'apply',
     status: 'live-guarded',
@@ -1638,7 +1654,7 @@ const COMMANDS = [
   },
   {
     id: 'docs.schema',
-    command: 'metro schema [--json]',
+    command: 'metro schema [--json|--html|--markdown]',
     group: 'docs',
     mode: 'explain',
     status: 'local',
@@ -1807,7 +1823,7 @@ const COMMANDS = [
   },
   {
     id: 'harness.run',
-    command: 'metro harness run --suite <onboard|local|workspace|live-allowlist> [--execute] [--fixture-root <path>] [--json]',
+    command: 'metro harness run --suite <onboard|local|workspace|live-allowlist> [--execute [--continue-on-failure]] [--fixture-root <path>] [--sandbox|--prod] [--json]',
     group: 'harness',
     mode: 'validate',
     status: 'local',
@@ -2530,7 +2546,7 @@ const COMMANDS = [
   },
   {
     id: 'ops.list',
-    command: 'metro ops [--json]',
+    command: 'metro ops [--sandbox|--prod] [--dir <snapshot-dir>] [--json]',
     group: 'ops',
     mode: 'explain',
     status: 'local',
@@ -2544,7 +2560,7 @@ const COMMANDS = [
   },
   {
     id: 'ops.who',
-    command: 'metro ops who <name|uuid|email|external-id|url> (--sandbox|--prod) [--json]',
+    command: 'metro ops who (<name|uuid|email|external-id|url>|--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) (--sandbox|--prod) [--json]',
     group: 'ops',
     mode: 'read',
     status: 'live-read',
@@ -2590,8 +2606,38 @@ const COMMANDS = [
     sources: ['packages/metro-core/src/commands/ops.js'],
   },
   {
+    id: 'dimensional.new-code.preflight',
+    command: 'metro dimensional new-code preflight --product-id=<id> --rate-card-ids=<id>[,<id>] (--code=<CODE> [--display-name=<label>]|--group-values=<json>) --price=<n> [--credit-type-id=<id>] --starting-at=<UTC hour> (--sandbox|--prod) [--out=<plan.json>] [--json]',
+    group: 'dimensional',
+    mode: 'preflight',
+    status: 'pack-op',
+    schemaVersion: 'metro.op-plan.v1',
+    apiAccess: 'read',
+    packRequired: 'pack-op',
+    description: 'Plan one addRates call per rate card that adds a new pricing-dimension value (action code) to a USAGE product. Refuses duplicate rates.',
+    requiredFlags: ['--product-id', '--rate-card-ids', '--price', '--starting-at', '--sandbox|--prod'],
+    optionalFlags: ['--code', '--display-name', '--group-values', '--credit-type-id', '--out', '--json'],
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
+    sources: ['docs/metronome-cli/PROVISIONING.md', 'packages/metro-workspace-generic/src/ops/dimensional.js'],
+  },
+  {
+    id: 'dimensional.new-code.apply',
+    command: 'metro dimensional new-code apply --file <plan.json> --confirm-hash <sha256:...> (--sandbox|--prod) [--apply --confirm-live-apply=<token>|--confirm-prod-apply=<token>] [--json]',
+    group: 'dimensional',
+    mode: 'apply',
+    status: 'pack-op',
+    schemaVersion: 'metro.op-apply.v1',
+    apiAccess: 'write',
+    packRequired: 'pack-op',
+    description: 'Dry run by default; --apply writes with the tenant typed token, then reads back and exits 3 on any expected-vs-actual mismatch.',
+    requiredFlags: ['--file', '--confirm-hash', '--sandbox|--prod'],
+    optionalFlags: ['--apply', '--confirm-live-apply', '--confirm-prod-apply', '--json'],
+    exitCodes: { success: 0, validationFailure: 1, safetyRefusal: 2, readbackMismatch: 3 },
+    sources: ['docs/metronome-cli/PROVISIONING.md', 'packages/metro-workspace-generic/src/ops/dimensional.js'],
+  },
+  {
     id: 'customer.create.preflight',
-    command: 'metro customer create preflight --name=<name> --ingest-alias=<alias>[,<alias>] [--external-id=<id> [--external-id-field=<key>]] [--custom-fields=<json>] [--stripe-customer-id=cus_... --stripe-collection-method=charge_automatically|send_invoice] [--file=<spec>] (--sandbox|--prod) [--json]',
+    command: 'metro customer create preflight --name=<name> --ingest-alias=<alias>[,<alias>] [--external-id=<id> [--external-id-field=<key>]] [--custom-fields=<json>] [--stripe-customer-id=cus_... --stripe-collection-method=charge_automatically|send_invoice] [--file=<spec>] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'customer',
     mode: 'preflight',
     status: 'pack-op',
@@ -2621,7 +2667,7 @@ const COMMANDS = [
   },
   {
     id: 'ratecard.create.preflight',
-    command: 'metro ratecard create preflight --file=<ratecard.json|yaml> [--allow-alias-move] (--sandbox|--prod) [--json]',
+    command: 'metro ratecard create preflight --file=<ratecard.json|yaml> [--allow-alias-move] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'ratecard',
     mode: 'preflight',
     status: 'pack-op',
@@ -2651,7 +2697,7 @@ const COMMANDS = [
   },
   {
     id: 'ratecard.add-rates.preflight',
-    command: 'metro ratecard add-rates preflight --rate-card-id=<id> --file=<rates.json|yaml> (--sandbox|--prod) [--json]',
+    command: 'metro ratecard add-rates preflight --rate-card-id=<id> --file=<rates.json|yaml> (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'ratecard',
     mode: 'preflight',
     status: 'pack-op',
@@ -2681,7 +2727,7 @@ const COMMANDS = [
   },
   {
     id: 'package.create.preflight',
-    command: 'metro package create preflight --file=<package.json|yaml> [--allow-alias-takeover] (--sandbox|--prod) [--json]',
+    command: 'metro package create preflight --file=<package.json|yaml> [--allow-alias-takeover] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'package',
     mode: 'preflight',
     status: 'pack-op',
@@ -2711,7 +2757,7 @@ const COMMANDS = [
   },
   {
     id: 'package.clone-version.preflight',
-    command: 'metro package clone-version preflight --aliases=<alias>[,<alias>] --handoff-at=<future UTC hour> [--usage-day=CONTRACT_START|FIRST_OF_MONTH] (--sandbox|--prod) [--json]',
+    command: 'metro package clone-version preflight --aliases=<alias>[,<alias>] --handoff-at=<future UTC hour> [--usage-day=CONTRACT_START|FIRST_OF_MONTH] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'package',
     mode: 'preflight',
     status: 'pack-op',
@@ -2741,7 +2787,7 @@ const COMMANDS = [
   },
   {
     id: 'contract.create.preflight',
-    command: 'metro contract create preflight ((--package-alias=<alias>|--package-id=<id>) --starting-at=<UTC hour>|--file=<contract.json|yaml>) (--customer-id=|--external-id=|--ingest-alias=|--name=) [--allow-concurrent] (--sandbox|--prod) [--json]',
+    command: 'metro contract create preflight ((--package-alias=<alias>|--package-id=<id>) --starting-at=<UTC hour>|--file=<contract.json|yaml>) (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--custom-fields=<json>] [--uniqueness-key=<key>] [--allow-concurrent] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'contract',
     mode: 'preflight',
     status: 'pack-op',
@@ -2771,7 +2817,7 @@ const COMMANDS = [
   },
   {
     id: 'subscription.add.preflight',
-    command: 'metro subscription add preflight (--file=<subscription.json|yaml>|--product-id=<id> --billing-frequency=<freq> --quantity=<n>) [--starting-at=<UTC hour>] (--customer-id=|...) [--contract-id=] (--sandbox|--prod) [--json]',
+    command: 'metro subscription add preflight (--file=<subscription.json|yaml>|--product-id=<id> --billing-frequency=<freq> --quantity=<n>) [--starting-at=<UTC hour>] [--collection-schedule=ADVANCE|ARREARS] [--invoice-behavior=<behavior>] [--no-proration] [--allow-duplicate] (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'subscription',
     mode: 'preflight',
     status: 'pack-op',
@@ -2801,7 +2847,7 @@ const COMMANDS = [
   },
   {
     id: 'subscription.set-quantity.preflight',
-    command: 'metro subscription set-quantity preflight --subscription-id=<id> (--quantity=<n>|--delta=<n>) --starting-at=<UTC hour> (--customer-id=|...) (--sandbox|--prod) [--json]',
+    command: 'metro subscription set-quantity preflight --subscription-id=<id> (--quantity=<n>|--delta=<n>) --starting-at=<UTC hour> (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'subscription',
     mode: 'preflight',
     status: 'pack-op',
@@ -2831,7 +2877,7 @@ const COMMANDS = [
   },
   {
     id: 'subscription.seats.preflight',
-    command: 'metro subscription seats preflight --subscription-id=<id> --starting-at=<UTC hour> [--add-seat-ids=] [--remove-seat-ids=] [--add-unassigned=<n>] [--remove-unassigned=<n>] (--customer-id=|...) (--sandbox|--prod) [--json]',
+    command: 'metro subscription seats preflight --subscription-id=<id> --starting-at=<UTC hour> [--add-seat-ids=] [--remove-seat-ids=] [--add-unassigned=<n>] [--remove-unassigned=<n>] (--customer-id=|--external-id=|--ingest-alias=|--name=|--query=) [--contract-id=] (--sandbox|--prod) [--out=<plan.json>] [--json]',
     group: 'subscription',
     mode: 'preflight',
     status: 'pack-op',
@@ -3029,12 +3075,20 @@ const COMMAND_REFERENCE_SECTION_NAVIGATION = [
   },
 ];
 
+/** Every flag in a command line is listed in requiredFlags or optionalFlags. */
+function withListedFlags(command) {
+  const listed = new Set([...(command.requiredFlags || []), ...(command.optionalFlags || [])]
+    .flatMap((f) => f.match(/--[a-z][a-z0-9-]*/g) || []));
+  const missing = [...new Set(command.command.match(/--[a-z][a-z0-9-]*/g) || [])].filter((f) => !listed.has(f));
+  return missing.length ? { ...command, optionalFlags: [...(command.optionalFlags || []), ...missing] } : { ...command };
+}
+
 function commandReference() {
   return {
     schemaVersion: 'metro.docs.command-reference.v1',
     generatedFrom: 'packages/metro-core/src/commands/catalog.js',
     sectionNavigation: COMMAND_REFERENCE_SECTION_NAVIGATION.map((section) => ({ ...section })),
-    commands: COMMANDS.map((command) => ({ ...command })),
+    commands: COMMANDS.map(withListedFlags),
     unsupportedCommands: UNSUPPORTED_COMMANDS.map((command) => ({ ...command })),
   };
 }
