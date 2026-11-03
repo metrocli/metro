@@ -16,15 +16,44 @@ function finding(id, severity, message, path, remediation) {
   return { id, severity, message, path, remediation };
 }
 
+// Evidence from a previous (external) billing system is historical context
+// only: it can explain a migration, but it must never back a current workflow.
+const EXTERNAL_BILLING_EVIDENCE_KEY = 'externalBillingEvidence';
+const EXTERNAL_BILLING_ASSERTION_KEY = 'noExternalBillingCurrentIntegration';
+// Deprecated input names, accepted for one release (0.2.x) with a warning, then removed.
+const DEPRECATED_KEYS = { evidence: 'hyperlineEvidence', assertion: 'noHyperlineCurrentIntegration' }; // leak-allow: deprecated alias, remove after 0.2.x
+const EXTERNAL_BILLING_SOURCE_TYPES = ['external-billing-evidence', 'legacy-billing-evidence'];
+const EXTERNAL_BILLING_PATH = /(^|[/_.-])(legacy|previous|external|old)[-_]billing([/_.-]|$)/i;
+
+function deprecationWarning(oldKey, newKey) {
+  return {
+    id: 'MTR-REPO-003',
+    severity: 'warning',
+    message: `${oldKey} is deprecated; rename it to ${newKey}. The old name is accepted until the next minor release.`,
+    path: oldKey,
+    remediation: `Rename ${oldKey} to ${newKey} in the source-boundary manifest.`,
+  };
+}
+
+function externalBillingEvidence(input, warnings) {
+  if (input[EXTERNAL_BILLING_EVIDENCE_KEY] && typeof input[EXTERNAL_BILLING_EVIDENCE_KEY] === 'object') {
+    return { evidence: input[EXTERNAL_BILLING_EVIDENCE_KEY], label: EXTERNAL_BILLING_EVIDENCE_KEY };
+  }
+  if (input[DEPRECATED_KEYS.evidence] && typeof input[DEPRECATED_KEYS.evidence] === 'object') {
+    warnings.push(deprecationWarning(DEPRECATED_KEYS.evidence, EXTERNAL_BILLING_EVIDENCE_KEY));
+    return { evidence: input[DEPRECATED_KEYS.evidence], label: DEPRECATED_KEYS.evidence };
+  }
+  return { evidence: {}, label: EXTERNAL_BILLING_EVIDENCE_KEY };
+}
+
 function isGeneratedArtifactPath(filePath) {
   const normalized = normalizePath(filePath);
   return (
     /^(output|outputs|reports)\//.test(normalized)
     || /^absolute-historical-financial-data/.test(normalized)
     || /^arr-historicals-/.test(normalized)
-    || /^hyperline-export\//.test(normalized)
-    || /^hyperline-live-snapshot/.test(normalized)
-    || /^hyperline-historical-export\.json$/.test(normalized)
+    || /^(legacy|previous|external)-billing-export\//.test(normalized)
+    || /^(legacy|previous|external)-billing-(live-)?snapshot/.test(normalized)
     || /^metronome\/logs\//.test(normalized)
     || /^metronome\/[^/]+\/results\//.test(normalized)
   );
@@ -44,8 +73,12 @@ function isOneOffScriptPath(filePath) {
   );
 }
 
-function isHistoricalHyperlinePath(filePath) {
-  return /hyperline/i.test(normalizePath(filePath));
+function isExternalBillingSource(source) {
+  return (
+    EXTERNAL_BILLING_SOURCE_TYPES.includes(String(source.sourceType || ''))
+    || source.externalBilling === true
+    || EXTERNAL_BILLING_PATH.test(normalizePath(source.path))
+  );
 }
 
 function isHistoricalOrGeneratedType(sourceType) {
@@ -61,9 +94,8 @@ function isHistoricalOrGeneratedType(sourceType) {
 
 const REQUIRED_REVIEWED_DOCS = [
   'docs/SAFETY.md',
-  'docs/REPO_MAP.md',
-  'docs/SOURCE_BASELINE.md',
   'docs/metronome-cli/one-goal.md',
+  'docs/metronome-cli/CLI_ARCHITECTURE.md',
 ];
 
 function buildSourceBoundaryTemplate({ workflow = '<workflow>', shape = '<shape>' } = {}) {
@@ -81,7 +113,7 @@ function buildSourceBoundaryTemplate({ workflow = '<workflow>', shape = '<shape>
         reviewed: true,
       },
       {
-        path: 'metronome-cli/src/cli.js',
+        path: 'packages/metro-core/src/cli.js',
         sourceType: 'current-source',
         role: 'command-handler',
         reviewed: true,
@@ -93,13 +125,13 @@ function buildSourceBoundaryTemplate({ workflow = '<workflow>', shape = '<shape>
         sourceType: 'generated-evidence',
         role: 'proof-only',
         usedAsCanonicalSource: false,
-        boundaryDoc: 'docs/cleanup/artifact-boundaries.generated.md',
+        boundaryDoc: '<boundary-doc-or-test>',
         reviewed: true,
       },
     ],
     entryPoints: [
       {
-        path: 'metronome-cli/src/cli.js',
+        path: 'packages/metro-core/src/cli.js',
         sourceType: 'current-source',
         role: 'command-handler',
         importedAsCommandHandler: true,
@@ -112,10 +144,10 @@ function buildSourceBoundaryTemplate({ workflow = '<workflow>', shape = '<shape>
         role: 'historical-reference-only',
         importedAsCommandHandler: false,
         oneOffScript: true,
-        reviewedAgainst: 'tools/script-policy.json',
+        reviewedAgainst: '<script-review-note>',
       },
     ],
-    hyperlineEvidence: {
+    externalBillingEvidence: {
       used: false,
       usedAsCurrentIntegration: false,
       explicitlyRequested: false,
@@ -124,7 +156,7 @@ function buildSourceBoundaryTemplate({ workflow = '<workflow>', shape = '<shape>
     assertions: {
       noOneOffScriptCommandHandlers: true,
       noGeneratedArtifactAsCanonicalSource: true,
-      noHyperlineCurrentIntegration: true,
+      noExternalBillingCurrentIntegration: true,
     },
   };
 }
@@ -185,13 +217,13 @@ function validateCurrentSources(input, findings) {
         'Move this entry to generatedArtifacts or entryPoints and cite a current source for the workflow logic.',
       ));
     }
-    if (isHistoricalHyperlinePath(sourcePath) && source.usedAsCurrentIntegration === true) {
+    if (isExternalBillingSource(source) && source.usedAsCurrentIntegration === true) {
       findings.push(finding(
         'MTR-REPO-003',
         'error',
-        `${sourcePath} is Hyperline-named evidence and cannot support a current billing integration.`,
+        `${sourcePath} is evidence from a previous billing system and cannot support a current billing integration.`,
         pathLabel,
-        'Use Hyperline evidence only for historical migration context unless the user explicitly asks for legacy work.',
+        'Use previous-billing-system evidence only for historical migration context unless the user explicitly asks for legacy work.',
       ));
     }
   });
@@ -220,7 +252,7 @@ function validateGeneratedArtifacts(input, findings) {
         'error',
         `${artifactPath} needs a boundary document or test that explains how the artifact may be used.`,
         `${pathLabel}.boundaryDoc`,
-        'Cite docs/cleanup/artifact-boundaries.generated.md, a golden test, or another reviewed boundary source.',
+        'Cite a boundary document, a test, or another reviewed source that explains how the artifact may be used.',
       ));
     }
     if (artifact.reviewed !== true) {
@@ -261,7 +293,7 @@ function validateEntryPoints(input, findings) {
         'error',
         `${entryPath} is a one-off or quarantined script and must not be promoted as a CLI command handler.`,
         pathLabel,
-        'Extract reusable logic into metronome-cli/src with tests; leave the runnable one-off quarantined as evidence only.',
+        'Extract reusable logic into packages/metro-core/src with tests; leave the runnable one-off quarantined as evidence only.',
       ));
     }
     if (oneOff && !nonEmpty(entry.reviewedAgainst)) {
@@ -270,36 +302,42 @@ function validateEntryPoints(input, findings) {
         'error',
         `${entryPath} is one-off or quarantined evidence and needs a reviewed policy/source-baseline reference.`,
         `${pathLabel}.reviewedAgainst`,
-        'Cite tools/script-policy.json, docs/SCRIPT_RISK.generated.md, or docs/SOURCE_BASELINE.generated.md before using it as evidence.',
+        'Cite a reviewed script policy or review note before using it as evidence.',
       ));
     }
   });
 }
 
-function validateHyperline(input, findings) {
-  const evidence = input.hyperlineEvidence || {};
+function validateExternalBilling(input, findings, warnings) {
+  const { evidence, label } = externalBillingEvidence(input, warnings);
   if (evidence.usedAsCurrentIntegration === true) {
     findings.push(finding(
       'MTR-REPO-003',
       'error',
-      'Hyperline evidence must not be used as a current billing integration.',
-      'hyperlineEvidence.usedAsCurrentIntegration',
-      'Use current Metronome/Stripe/CRM evidence for current workflows; keep Hyperline historical unless explicitly requested.',
+      'Evidence from a previous billing system must not be used as a current billing integration.',
+      `${label}.usedAsCurrentIntegration`,
+      'Use current Metronome, payment-provider, or CRM evidence for current workflows; keep the previous billing system historical unless explicitly requested.',
     ));
   }
   if (evidence.used === true && evidence.explicitlyRequested !== true && evidence.usagePurpose !== 'historical-evidence') {
     findings.push(finding(
       'MTR-REPO-003',
       'error',
-      'Hyperline evidence is used without an explicit legacy request or historical-evidence purpose.',
-      'hyperlineEvidence',
-      'Set usagePurpose:"historical-evidence" for old migration context or remove Hyperline evidence from the current workflow.',
+      'Previous-billing-system evidence is used without an explicit legacy request or historical-evidence purpose.',
+      label,
+      'Set usagePurpose:"historical-evidence" for old migration context or remove the previous billing system evidence from the current workflow.',
     ));
   }
+  return evidence;
 }
 
-function validateAssertions(input, findings) {
+function validateAssertions(input, findings, warnings) {
   const assertions = input.assertions || {};
+  let externalBillingAssertion = assertions[EXTERNAL_BILLING_ASSERTION_KEY];
+  if (externalBillingAssertion === undefined && assertions[DEPRECATED_KEYS.assertion] !== undefined) {
+    warnings.push(deprecationWarning(`assertions.${DEPRECATED_KEYS.assertion}`, `assertions.${EXTERNAL_BILLING_ASSERTION_KEY}`));
+    externalBillingAssertion = assertions[DEPRECATED_KEYS.assertion];
+  }
   if (assertions.noOneOffScriptCommandHandlers !== true) {
     findings.push(finding(
       'MTR-REPO-001',
@@ -318,13 +356,13 @@ function validateAssertions(input, findings) {
       'Set the assertion only after current source files support the workflow and generated artifacts are evidence-only.',
     ));
   }
-  if (assertions.noHyperlineCurrentIntegration !== true) {
+  if (externalBillingAssertion !== true) {
     findings.push(finding(
       'MTR-REPO-003',
       'error',
-      'source-boundary assertions must confirm Hyperline is not a current integration.',
-      'assertions.noHyperlineCurrentIntegration',
-      'Set the assertion only after removing Hyperline from current workflow dependencies.',
+      'source-boundary assertions must confirm the previous billing system is not a current integration.',
+      `assertions.${EXTERNAL_BILLING_ASSERTION_KEY}`,
+      'Set the assertion only after removing the previous billing system from current workflow dependencies.',
     ));
   }
 }
@@ -338,6 +376,7 @@ function validateSourceBoundary(input) {
       apiAccess: 'none',
       valid: false,
       findings,
+      warnings: [],
       summary: {
         currentSourceCount: 0,
         generatedArtifactCount: 0,
@@ -360,8 +399,9 @@ function validateSourceBoundary(input) {
   validateCurrentSources(input, findings);
   validateGeneratedArtifacts(input, findings);
   validateEntryPoints(input, findings);
-  validateHyperline(input, findings);
-  validateAssertions(input, findings);
+  const warnings = [];
+  const evidence = validateExternalBilling(input, findings, warnings);
+  validateAssertions(input, findings, warnings);
 
   return {
     schemaVersion: 'metro.source-boundary.validation.v1',
@@ -370,11 +410,12 @@ function validateSourceBoundary(input) {
     shape: input.shape || null,
     valid: findings.length === 0,
     findings,
+    warnings,
     summary: {
       currentSourceCount: list(input.currentSources).length,
       generatedArtifactCount: list(input.generatedArtifacts).length,
       entryPointCount: list(input.entryPoints).length,
-      hyperlineUsed: input.hyperlineEvidence?.used === true,
+      externalBillingUsed: evidence.used === true,
     },
   };
 }

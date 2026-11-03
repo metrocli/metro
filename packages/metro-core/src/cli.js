@@ -1734,6 +1734,9 @@ function runSourceBoundaryCommand(positional, flags, streams) {
     }
 
     const result = validateSourceBoundary(input);
+    for (const warning of result.warnings || []) {
+      write(streams.stderr, `warning: ${warning.message}`);
+    }
     if (flags.json) {
       renderJson(streams.stdout, result);
     } else if (result.valid) {

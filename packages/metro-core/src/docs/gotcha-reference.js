@@ -640,14 +640,14 @@ const GOTCHA_COVERAGE = [
     notes: 'The source-boundary validator requires current sources and forces generated artifacts to be evidence-only with a reviewed boundary source.',
   },
   {
-    id: 'hyperline-evidence-historical',
+    id: 'external-billing-evidence-historical',
     category: 'Repo Hygiene',
-    gotcha: 'Hyperline evidence is historical unless a task explicitly asks for legacy migration context.',
+    gotcha: 'Evidence from a previous billing system is historical unless a task explicitly asks for legacy migration context.',
     coverageStatus: 'covered',
     ruleIds: ['MTR-REPO-003'],
     commandIds: ['source-boundary.validate', 'docs.command-reference'],
     sources: ['docs/metronome-cli/GOTCHAS.md', 'docs/API_OPERATIONS.md'],
-    notes: 'The CLI docs and command catalog do not expose new Hyperline workflows, and source-boundary validation rejects Hyperline as a current integration.',
+    notes: 'The CLI docs and command catalog do not expose workflows for a previous billing system, and source-boundary validation rejects it as a current integration.',
   },
 ];
 

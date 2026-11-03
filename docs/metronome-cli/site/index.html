@@ -799,7 +799,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
                   <td><code>metro source-boundary validate --file source-boundary.json</code></td>
                   <td>validate</td>
                   <td><span class="status-pill local">local</span></td>
-                  <td>Validates current-source, generated-artifact, one-off script, and Hyperline evidence boundaries before workflow inputs rely on local files.</td>
+                  <td>Validates current-source, generated-artifact, one-off script, and previous-billing-system evidence boundaries before workflow inputs rely on local files.</td>
                 </tr>
                 <tr>
                   <td><code>metro preflight template --workflow package.apply --shape pro-annual --prod</code></td>
@@ -1135,7 +1135,7 @@ metro setup resolve --file profiles.json --profile my-sandbox --expect-tenant sa
             <li>Customer create and search have distinct shapes: create uses `POST /v1/customers`, lookup/search use `GET`, ingest aliases are globally unique, and hierarchy belongs on contracts.</li>
             <li>Subscription contract previews must prove product ID, billing frequency, and quantity or seat source before building `subscription_rate`.</li>
             <li>Usage ingest needs stable transaction IDs, preview-events review, period targeting, and a canary read-back before bulk batches.</li>
-            <li>Generated artifacts are evidence-only, one-off scripts must stay out of command handlers, and Hyperline is historical unless legacy work is explicitly requested.</li>
+            <li>Generated artifacts are evidence-only, one-off scripts must stay out of command handlers, and evidence from a previous billing system is historical unless legacy work is explicitly requested.</li>
           </ul>
           <div class="callout">
             <strong>Generated detail:</strong>
@@ -1303,7 +1303,7 @@ metro apply-gate validate --file &lt;apply-gate.json&gt; --json</code></pre>
             <article class="card">
               <h3>Source-boundary validation</h3>
               <pre><code>node bin/metro.js source-boundary validate --file test/fixtures/source-boundary-valid.json --json</code></pre>
-              <p>Checks current sources, generated artifacts, one-off scripts, and Hyperline boundaries before local evidence is reused.</p>
+              <p>Checks current sources, generated artifacts, one-off scripts, and previous-billing-system boundaries before local evidence is reused.</p>
             </article>
             <article class="card">
               <h3>Node package contents</h3>

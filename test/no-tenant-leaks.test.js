@@ -9,10 +9,17 @@ const fs = require('fs');
 const path = require('path');
 const { REPO_ROOT } = require('./helpers');
 
-const LEAK_PATTERN = /\blev\b|\blevos\b|hubspot|6b0b44be|13117714|\bstrato\b|lev_id|levAccountId|metro-workspace-lev|levco|samhadar/i;
+const LEAK_PATTERN = /\blev\b|\blevos\b|hubspot|hyperline|6b0b44be|13117714|\bstrato\b|lev_id|levAccountId|metro-workspace-lev|levco|samhadar/i;
 const TEXT_EXTENSIONS = new Set(['.js', '.json', '.md', '.html', '.css', '.sh', '.txt', '.yml', '.yaml', '']);
 // Paths (relative to the repo root) allowed to match. Keep empty unless truly needed.
 const ALLOWLIST = new Set([]);
+// Single lines allowed to match: "<path>" -> substring the line must contain.
+// source-boundary keeps the pre-0.2 input field names as deprecated aliases for
+// one release so existing manifests keep validating (with a warning). Remove
+// this entry together with the alias.
+const LINE_ALLOWLIST = new Map([
+  ['packages/metro-core/src/source-boundary/index.js', 'const DEPRECATED_KEYS = {'],
+]);
 
 function walk(target, out) {
   if (!fs.existsSync(target)) return;
@@ -48,6 +55,7 @@ test('no tenant-specific strings in shipped files', () => {
     if (ALLOWLIST.has(rel)) continue;
     const lines = fs.readFileSync(file, 'utf8').split('\n');
     lines.forEach((line, index) => {
+      if (LINE_ALLOWLIST.has(rel) && line.includes(LINE_ALLOWLIST.get(rel))) return;
       if (LEAK_PATTERN.test(line)) hits.push(`${rel}:${index + 1}: ${line.trim().slice(0, 160)}`);
     });
   }

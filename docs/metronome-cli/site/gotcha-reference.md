@@ -92,7 +92,7 @@
 | partial-failure-resume-evidence | Bulk Workflows | covered | A partial failure must not leave the next run guessing what already happened. |
 | do-not-promote-one-off-scripts | Repo Hygiene | covered | Do not promote old one-off scripts into CLI commands. |
 | do-not-depend-on-generated-artifacts | Repo Hygiene | covered | Do not depend on ignored generated artifacts as current source. |
-| hyperline-evidence-historical | Repo Hygiene | covered | Hyperline evidence is historical unless a task explicitly asks for legacy migration context. |
+| external-billing-evidence-historical | Repo Hygiene | covered | Evidence from a previous billing system is historical unless a task explicitly asks for legacy migration context. |
 
 
 ## Agent notes

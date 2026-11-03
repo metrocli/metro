@@ -40,6 +40,8 @@
     "docs:upstream:check": "node scripts/metronome-upstream-check.js",
     "docs:upstream:generate": "node scripts/generate-metronome-upstream.js --fetch",
     "pack:verify": "node scripts/verify-pack.js",
+    "docs:site:refresh": "node scripts/docs-site-refresh.js",
+    "docs:site:verify": "node scripts/docs-site-refresh.js --check",
     "prepublishOnly": "node -e \"const p=require('./package.json'); if(!String((p.repository||{}).url||'').includes('metrocli/metro')){console.error('repository.url must point at metrocli/metro'); process.exit(1)}\""
   },
   "publishConfig": {

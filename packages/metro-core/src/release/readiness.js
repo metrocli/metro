@@ -78,7 +78,7 @@ function buildReleaseReadiness(options = {}) {
       metronome: false,
       stripe: false,
       crm: false,
-      hyperline: false,
+      externalBilling: false,
       posthog: false,
       slack: false,
       npmRegistry: false,

@@ -69,9 +69,9 @@
 | MTR-CREDIT-004 | error | For paid credit workflows, provide a positive fiat amount in cents. Complimentary grants must use 0 when an audit line is intended. |
 | MTR-CREDIT-005 | error | Approve every custom field key for the target Metronome object type before including custom_fields in a preview payload. |
 | MTR-CREDIT-006 | error | State paid_topup_invoice_expected, paymentGateType STRIPE, explicit stripeBehavior, duplicate-name review, read-back checks, and rollback/remediation before preview. |
-| MTR-REPO-001 | error | Extract reusable logic into tested metronome-cli modules and leave old one-off or quarantined scripts as evidence only. |
+| MTR-REPO-001 | error | Extract reusable logic into tested packages/metro-core modules and leave old one-off or quarantined scripts as evidence only. |
 | MTR-REPO-002 | error | Use generated artifacts only as evidence with a boundary document; cite current source files for workflow behavior. |
-| MTR-REPO-003 | error | Keep Hyperline evidence historical unless the user explicitly asks for legacy migration work. |
+| MTR-REPO-003 | error | Keep evidence from a previous (external) billing system historical unless the user explicitly asks for legacy migration work. |
 
 
 ## Agent notes

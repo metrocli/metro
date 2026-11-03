@@ -2984,7 +2984,7 @@
       "title": "Metro Source Boundary Validator",
       "href": "../../../packages/metro-core/src/source-boundary/index.js",
       "supports": [
-        "The CLI validates local source-boundary manifests so generated artifacts stay evidence-only, old one-off scripts are not command handlers, and Hyperline remains historical."
+        "The CLI validates local source-boundary manifests so generated artifacts stay evidence-only, old one-off scripts are not command handlers, and evidence from a previous billing system remains historical."
       ]
     },
     "metro-source-boundary-fixtures": {
@@ -2992,7 +2992,7 @@
       "title": "Metro Source Boundary Fixtures",
       "href": "../../../test/fixtures/source-boundary-valid.json",
       "supports": [
-        "Checked-in source-boundary fixtures cover valid current-source evidence and invalid generated, one-off, and Hyperline current-integration dependencies."
+        "Checked-in source-boundary fixtures cover valid current-source evidence and invalid generated, one-off, and previous-billing-system current-integration dependencies."
       ]
     },
     "metro-source-boundary-template-golden": {
