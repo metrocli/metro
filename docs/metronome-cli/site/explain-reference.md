@@ -8,7 +8,7 @@
 {
   "operatingTopicCount": 14,
   "lookupKindCount": 8,
-  "genericExplainableCount": 426,
+  "genericExplainableCount": 429,
   "liveApiAccess": "none"
 }
 ```
@@ -39,7 +39,7 @@
 | --- | --- | --- | --- |
 | api-endpoint | 69 | Reviewed Metronome endpoint IDs from the local expert API catalog. | usage.ingest, usage.groups, usage.batch, events.search |
 | api-family | 14 | Endpoint-family summaries derived from the reviewed API catalog. | billable-metrics, billing-provider, contracts, credits |
-| command | 167 | Supported local command metadata from the command catalog. | command:input.normalize, command:docs.explain, command:api.read-plan |
+| command | 170 | Supported local command metadata from the command catalog. | command:input.normalize, command:docs.explain, command:api.read-plan |
 | shape | 16 | Workflow shape summaries and validator links from the shape catalog. | shape:customer-setup, shape:pro-annual, shape:pro-annual-self-serve-v2, shape:free-credit-trial |
 | validator-rule | 68 | Validator rules, severities, and remediation guidance. | MTR-TENANT-001, MTR-TENANT-002, MTR-TENANT-003, MTR-TENANT-004 |
 | gotcha | 59 | Known failure modes from the gotcha register. | gotcha:tenant-selected-by-key, gotcha:env-file-not-authorization, gotcha:never-infer-production-from-key-presence, gotcha:fingerprints-not-key-values |
