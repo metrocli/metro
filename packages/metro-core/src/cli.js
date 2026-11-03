@@ -1205,8 +1205,8 @@ function runStatusCommand(flags, streams) {
     },
     connected: keysReady,
     nextCommands: [
-      'metro mode set read-only',
       'metro ops who <customer> --prod',
+      'metro mode set read-write',
       'metro setup quickstart --shell | zsh',
     ],
     nextSafeStep: !operatorMode.allows.liveRead

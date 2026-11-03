@@ -5,7 +5,8 @@ const os = require('os');
 const path = require('path');
 
 const MODE_SCHEMA_VERSION = 'metro.operator-mode.v1';
-const DEFAULT_MODE = 'read-write';
+// Writes are opt-in: run `metro mode set read-write` to raise the ceiling.
+const DEFAULT_MODE = 'read-only';
 const MODES = ['local-only', 'read-only', 'read-write'];
 
 const MODE_ALIASES = {
@@ -151,7 +152,7 @@ function resetOperatorMode(options = {}) {
     ...loadOperatorMode({ dir }),
     written: false,
     reset: true,
-    nextSafeStep: `Mode reset to default (${DEFAULT_MODE}). Set a ceiling with metro mode set read-only.`,
+    nextSafeStep: `Mode reset to default (${DEFAULT_MODE}). Writes need metro mode set read-write.`,
   };
 }
 

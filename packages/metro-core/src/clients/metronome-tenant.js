@@ -1,14 +1,10 @@
 'use strict';
 
-const { loadLocalEnv } = require('./load-local-env');
-const path = require('path');
-
-// clients/ → src/ → metro-core/ → packages/ → metronome-cli/
-const METRO_REPO_ROOT = path.resolve(__dirname, '../../../..');
+const { loadLocalEnv, ENV_SEARCH_HINT } = require('./load-local-env');
 
 function ensureLocalEnvLoaded() {
   // Idempotent: loadLocalEnv never overrides set vars.
-  return loadLocalEnv({ cwd: process.cwd(), repoRoot: METRO_REPO_ROOT });
+  return loadLocalEnv({ cwd: process.cwd() });
 }
 
 function parseTenantFlags(argv = []) {
@@ -32,7 +28,7 @@ function resolveTenant(argv = []) {
 
 function envLoadHint(label, envLoad) {
   if (envLoad && !envLoad.loaded) {
-    return ' No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).';
+    return ` No .env found (tried ${ENV_SEARCH_HINT}).`;
   }
   if (envLoad && envLoad.loaded) {
     return ` Loaded ${envLoad.path} but ${label} still missing/wrong.`;
@@ -86,7 +82,7 @@ function applyMetronomeApiKeyFromEnv({
   const key = process.env.METRONOME_API_KEY || process.env.METRONOME_SANDBOX_KEY;
   if (!key) {
     const hint = envLoad && !envLoad.loaded
-      ? ' No .env found (tried METRO_ENV_FILE, .env, metronome/.env, ../metronome/.env).'
+      ? ` No .env found (tried ${ENV_SEARCH_HINT}).`
       : '';
     const error = new Error(`Sandbox requires METRONOME_API_KEY or METRONOME_SANDBOX_KEY.${hint}`);
     error.code = 'METRONOME_SANDBOX_KEY_MISSING';

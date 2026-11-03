@@ -9,6 +9,14 @@ const INSTALL_DOCTOR_SCHEMA_VERSION = 'metro.install.doctor.v1';
 const DEFAULT_REPO_URL = 'https://github.com/metrocli/metro.git';
 const DEFAULT_INSTALL_DIR = path.join(os.homedir(), '.metro', 'src');
 const BROKEN_GIT_INSTALL_CMD = 'npm install -g git+https://github.com/metrocli/metro.git';
+// Must match "name" in the root package.json; npm links the global install here.
+const GLOBAL_PACKAGE_NAME = '@metrocli/metro';
+
+/** <npm root -g>/@metrocli/metro, or null when the npm root is unknown. */
+function globalPackagePathFor(npmRoot, packageName = GLOBAL_PACKAGE_NAME) {
+  if (!npmRoot) return null;
+  return path.join(npmRoot, ...packageName.split('/'));
+}
 
 function installOneLiner(installDir = DEFAULT_INSTALL_DIR) {
   return `git clone --depth 1 ${DEFAULT_REPO_URL} ${installDir} 2>/dev/null || true; bash ${installDir}/scripts/install-global.sh`;
@@ -92,9 +100,9 @@ function buildInstallDoctor(options = {}) {
   });
   if (!metroBin) healthy = false;
 
-  const npmRoot = npmGlobalPath('root');
-  const npmPrefix = npmGlobalPath('prefix');
-  const globalPackagePath = npmRoot ? path.join(npmRoot, '@lev', 'metronome-cli') : null;
+  const npmRoot = options.npmRoot !== undefined ? options.npmRoot : npmGlobalPath('root');
+  const npmPrefix = options.npmPrefix !== undefined ? options.npmPrefix : npmGlobalPath('prefix');
+  const globalPackagePath = globalPackagePathFor(npmRoot);
   let globalTarget = globalPackagePath ? readSymlinkTarget(globalPackagePath) : null;
   if (!globalTarget && globalPackagePath && fs.existsSync(globalPackagePath)) {
     globalTarget = globalPackagePath;
@@ -111,7 +119,7 @@ function buildInstallDoctor(options = {}) {
     checks.push({
       checkId: 'INSTALL-NPM-002',
       status: 'fail',
-      title: 'Global @metrocli/metro link',
+      title: `Global ${GLOBAL_PACKAGE_NAME} link`,
       detail: `Missing ${globalPackagePath}.`,
     });
     healthy = false;
@@ -230,6 +238,8 @@ module.exports = {
   INSTALL_DOCTOR_SCHEMA_VERSION,
   DEFAULT_INSTALL_DIR,
   DEFAULT_REPO_URL,
+  GLOBAL_PACKAGE_NAME,
+  globalPackagePathFor,
   installOneLiner,
   installSteps,
   buildInstallDoctor,
