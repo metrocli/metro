@@ -34,7 +34,7 @@
           <a href="#write-endpoint-coverage"><span>Write endpoint coverage</span><small>Per-endpoint write proof coverage, side-effect risk, and readiness status.</small></a>
           <a href="#endpoint-contracts"><span>Endpoint contracts</span><small>Reviewed endpoint contracts, gates, sources, and side-effect profiles.</small></a>
         </nav>
-        <div class="summary-grid"><article><span>Reviewed endpoints</span><strong>69</strong></article><article><span>Families</span><strong>14</strong></article><article><span>Operation types</span><strong>preview: 1, read: 36, write: 32</strong></article><article><span>Request validators</span><strong>endpoint-specific: 69</strong></article><article><span>API read plans</span><strong>local-read-plan: 36, not-read-endpoint: 33</strong></article><article><span>API read gates</span><strong>local-read-gate-manifest: 36, not-read-endpoint: 33</strong></article><article><span>API read mocks</span><strong>local-mocked-read-runner: 36, not-read-endpoint: 33</strong></article><article><span>API read pipelines</span><strong>local-mocked-read-audit-pipeline: 36, not-read-endpoint: 33</strong></article><article><span>API read results</span><strong>mocked-read-result-contract: 36, not-read-endpoint: 33</strong></article><article><span>API read audits</span><strong>mocked-read-audit-contract: 36, not-read-endpoint: 33</strong></article><article><span>Read readiness</span><strong>needs-local-read-evidence: 36</strong></article><article><span>Write readiness</span><strong>local-write-proof-ladder-mapped: 32</strong></article><article><span>Local previews</span><strong>local-preview-contract: 69</strong></article><article><span>API preflights</span><strong>local-preflight-contract: 69</strong></article><article><span>API sandbox proofs</span><strong>local-sandbox-proof-template: 32, not-required: 37</strong></article><article><span>API apply gates</span><strong>local-apply-gate-manifest: 69</strong></article><article><span>API approval records</span><strong>local-approval-record: 32, not-write-endpoint: 37</strong></article><article><span>API apply audits</span><strong>local-planned-apply-audit: 32, not-write-endpoint: 37</strong></article><article><span>API apply read-backs</span><strong>local-apply-readback-verifier: 32, not-write-endpoint: 37</strong></article><article><span>API apply results</span><strong>local-apply-result-contract: 32, not-write-endpoint: 37</strong></article><article><span>Permission scopes</span><strong>25</strong></article><article><span>Approval policies</span><strong>25</strong></article><article><span>Live API access</span><strong>none</strong></article></div>
+        <div class="summary-grid"><article><span>Reviewed endpoints</span><strong>82</strong></article><article><span>Families</span><strong>17</strong></article><article><span>Operation types</span><strong>preview: 1, read: 49, write: 32</strong></article><article><span>Request validators</span><strong>endpoint-specific: 69, not-implemented: 13</strong></article><article><span>API read plans</span><strong>local-read-plan: 49, not-read-endpoint: 33</strong></article><article><span>API read gates</span><strong>local-read-gate-manifest: 49, not-read-endpoint: 33</strong></article><article><span>API read mocks</span><strong>local-mocked-read-runner: 49, not-read-endpoint: 33</strong></article><article><span>API read pipelines</span><strong>local-mocked-read-audit-pipeline: 49, not-read-endpoint: 33</strong></article><article><span>API read results</span><strong>mocked-read-result-contract: 49, not-read-endpoint: 33</strong></article><article><span>API read audits</span><strong>mocked-read-audit-contract: 49, not-read-endpoint: 33</strong></article><article><span>Read readiness</span><strong>needs-local-read-evidence: 49</strong></article><article><span>Write readiness</span><strong>local-write-proof-ladder-mapped: 32</strong></article><article><span>Local previews</span><strong>local-preview-contract: 82</strong></article><article><span>API preflights</span><strong>local-preflight-contract: 82</strong></article><article><span>API sandbox proofs</span><strong>local-sandbox-proof-template: 32, not-required: 50</strong></article><article><span>API apply gates</span><strong>local-apply-gate-manifest: 82</strong></article><article><span>API approval records</span><strong>local-approval-record: 32, not-write-endpoint: 50</strong></article><article><span>API apply audits</span><strong>local-planned-apply-audit: 32, not-write-endpoint: 50</strong></article><article><span>API apply read-backs</span><strong>local-apply-readback-verifier: 32, not-write-endpoint: 50</strong></article><article><span>API apply results</span><strong>local-apply-result-contract: 32, not-write-endpoint: 50</strong></article><article><span>Permission scopes</span><strong>28</strong></article><article><span>Approval policies</span><strong>28</strong></article><article><span>Live API access</span><strong>none</strong></article></div>
       </header>
 
       <section id="families" class="generated-section">
@@ -50,13 +50,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>billable-metrics</code></td><td>5</td><td>read: 2, write: 3</td><td>cataloged-local-only: 5</td></tr>
+              <tr><td><code>alerts</code></td><td>2</td><td>read: 2</td><td>cataloged-local-only: 2</td></tr>
+              <tr><td><code>billable-metrics</code></td><td>6</td><td>read: 3, write: 3</td><td>cataloged-local-only: 6</td></tr>
               <tr><td><code>billing-provider</code></td><td>3</td><td>read: 2, write: 1</td><td>cataloged-local-only: 1, inspect-plan-supported: 1, workflow-preview-supported: 1</td></tr>
-              <tr><td><code>contracts</code></td><td>10</td><td>read: 6, write: 4</td><td>cataloged-local-only: 4, inspect-plan-supported: 2, workflow-preview-supported: 4</td></tr>
-              <tr><td><code>credits</code></td><td>4</td><td>read: 4</td><td>cataloged-local-only: 1, inspect-plan-supported: 3</td></tr>
+              <tr><td><code>contracts</code></td><td>12</td><td>read: 8, write: 4</td><td>cataloged-local-only: 6, inspect-plan-supported: 2, workflow-preview-supported: 4</td></tr>
+              <tr><td><code>credits</code></td><td>5</td><td>read: 5</td><td>cataloged-local-only: 2, inspect-plan-supported: 3</td></tr>
               <tr><td><code>custom-fields</code></td><td>5</td><td>read: 1, write: 4</td><td>cataloged-local-only: 5</td></tr>
               <tr><td><code>customers</code></td><td>7</td><td>read: 2, write: 5</td><td>cataloged-local-only: 3, inspect-plan-supported: 1, local-read-plan-supported: 1, workflow-preview-supported: 2</td></tr>
-              <tr><td><code>invoices</code></td><td>6</td><td>preview: 1, read: 3, write: 2</td><td>cataloged-local-only: 3, inspect-plan-supported: 2, workflow-preview-supported: 1</td></tr>
+              <tr><td><code>invoices</code></td><td>8</td><td>preview: 1, read: 5, write: 2</td><td>cataloged-local-only: 5, inspect-plan-supported: 2, workflow-preview-supported: 1</td></tr>
+              <tr><td><code>notifications</code></td><td>3</td><td>read: 3</td><td>cataloged-local-only: 3</td></tr>
               <tr><td><code>packages</code></td><td>5</td><td>read: 3, write: 2</td><td>cataloged-local-only: 1, inspect-plan-supported: 2, workflow-preview-supported: 2</td></tr>
               <tr><td><code>payments</code></td><td>3</td><td>read: 1, write: 2</td><td>cataloged-local-only: 3</td></tr>
               <tr><td><code>products</code></td><td>5</td><td>read: 2, write: 3</td><td>cataloged-local-only: 1, inspect-plan-supported: 1, workflow-preview-supported: 3</td></tr>
@@ -64,6 +66,7 @@
               <tr><td><code>security</code></td><td>2</td><td>read: 2</td><td>cataloged-local-only: 2</td></tr>
               <tr><td><code>settings</code></td><td>1</td><td>read: 1</td><td>cataloged-local-only: 1</td></tr>
               <tr><td><code>usage</code></td><td>4</td><td>read: 3, write: 1</td><td>cataloged-local-only: 3, workflow-preview-supported: 1</td></tr>
+              <tr><td><code>webhooks</code></td><td>2</td><td>read: 2</td><td>cataloged-local-only: 2</td></tr>
             </tbody>
           </table>
         </div>
@@ -84,19 +87,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>metronome:billable-metrics:read</code></td><td>read</td><td>2</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
+              <tr><td><code>metronome:alerts:read</code></td><td>read</td><td>2</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
+              <tr><td><code>metronome:billable-metrics:read</code></td><td>read</td><td>3</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:billable-metrics:write</code></td><td>write</td><td>3</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:billing-provider:read</code></td><td>read</td><td>2</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:billing-provider:write</code></td><td>write</td><td>1</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
-              <tr><td><code>metronome:contracts:read</code></td><td>read</td><td>6</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
+              <tr><td><code>metronome:contracts:read</code></td><td>read</td><td>8</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:contracts:write</code></td><td>write</td><td>4</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
-              <tr><td><code>metronome:credits:read</code></td><td>read</td><td>4</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
+              <tr><td><code>metronome:credits:read</code></td><td>read</td><td>5</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:custom-fields:read</code></td><td>read</td><td>1</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:custom-fields:write</code></td><td>write</td><td>4</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:customers:read</code></td><td>read</td><td>2</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:customers:write</code></td><td>write</td><td>5</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
-              <tr><td><code>metronome:invoices:read</code></td><td>read</td><td>4</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
+              <tr><td><code>metronome:invoices:read</code></td><td>read</td><td>6</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:invoices:write</code></td><td>write</td><td>2</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
+              <tr><td><code>metronome:notifications:read</code></td><td>read</td><td>3</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:packages:read</code></td><td>read</td><td>3</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:packages:write</code></td><td>write</td><td>2</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:payments:read</code></td><td>read</td><td>1</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
@@ -109,6 +114,7 @@
               <tr><td><code>metronome:settings:read</code></td><td>read</td><td>1</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:usage:read</code></td><td>read</td><td>3</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:usage:write</code></td><td>write</td><td>1</td><td>owner approval bound to reviewed preview and preflight hashes</td><td>blocked-until-apply-runner</td></tr>
+              <tr><td><code>metronome:webhooks:read</code></td><td>read</td><td>2</td><td>current-turn live-read authorization with tenant-scoped profile</td><td>blocked-until-guarded-read-runner</td></tr>
             </tbody>
           </table>
         </div>
@@ -129,6 +135,7 @@
               </tr>
             </thead>
             <tbody>
+              <tr><td><code>metronome:alerts:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:billable-metrics:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:billable-metrics:write</code></td><td>generic-write</td><td>billing-ops-owner</td><td><ul class="compact-list"><li><code>billing-ops-owner</code></li></ul></td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:billing-provider:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
@@ -142,6 +149,7 @@
               <tr><td><code>metronome:customers:write</code></td><td>customer-lifecycle-write</td><td>billing-ops-owner</td><td><ul class="compact-list"><li><code>billing-ops-owner</code></li><li><code>customer-operations-reviewer</code></li></ul></td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:invoices:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:invoices:write</code></td><td>invoice-lifecycle-write</td><td>billing-ops-owner</td><td><ul class="compact-list"><li><code>billing-ops-owner</code></li><li><code>finance-operations-reviewer</code></li></ul></td><td>blocked-until-apply-runner</td></tr>
+              <tr><td><code>metronome:notifications:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:packages:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:packages:write</code></td><td>package-write</td><td>billing-ops-owner</td><td><ul class="compact-list"><li><code>billing-ops-owner</code></li><li><code>pricing-catalog-owner</code></li></ul></td><td>blocked-until-apply-runner</td></tr>
               <tr><td><code>metronome:payments:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
@@ -154,6 +162,7 @@
               <tr><td><code>metronome:settings:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:usage:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
               <tr><td><code>metronome:usage:write</code></td><td>usage-write</td><td>billing-ops-owner</td><td><ul class="compact-list"><li><code>billing-ops-owner</code></li><li><code>data-engineering-reviewer</code></li></ul></td><td>blocked-until-apply-runner</td></tr>
+              <tr><td><code>metronome:webhooks:read</code></td><td>current-turn-live-read</td><td>requesting-operator</td><td><ul class="compact-list"><li><code>current-turn-user-authorization</code></li></ul></td><td>blocked-until-guarded-read-runner</td></tr>
             </tbody>
           </table>
         </div>
@@ -178,13 +187,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>billable-metrics</code></td><td>2</td><td>2/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>billableMetrics.get: read mock</li><li>billableMetrics.list: read mock</li><li>billableMetrics.get: read pipeline</li><li>billableMetrics.list: read pipeline</li><li>billableMetrics.get: persisted read audit</li><li>billableMetrics.list: persisted read audit</li></ul></td></tr>
+              <tr><td><code>alerts</code></td><td>2</td><td>0/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>alerts.getForCustomer: validator</li><li>alerts.listForCustomer: validator</li><li>alerts.getForCustomer: read mock</li><li>alerts.listForCustomer: read mock</li><li>alerts.getForCustomer: read pipeline</li><li>alerts.listForCustomer: read pipeline</li><li>alerts.getForCustomer: persisted read audit</li><li>alerts.listForCustomer: persisted read audit</li></ul></td></tr>
+              <tr><td><code>billable-metrics</code></td><td>3</td><td>2/3</td><td>3/3</td><td>0/3</td><td>0/3</td><td>0/3</td><td><ul class="compact-list"><li>billableMetrics.listForCustomer: validator</li><li>billableMetrics.get: read mock</li><li>billableMetrics.list: read mock</li><li>billableMetrics.listForCustomer: read mock</li><li>billableMetrics.get: read pipeline</li><li>billableMetrics.list: read pipeline</li><li>billableMetrics.listForCustomer: read pipeline</li><li>billableMetrics.get: persisted read audit</li><li>billableMetrics.list: persisted read audit</li><li>billableMetrics.listForCustomer: persisted read audit</li></ul></td></tr>
               <tr><td><code>billing-provider</code></td><td>2</td><td>2/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>billingProvider.getCustomerConfigurations: read mock</li><li>billingProvider.listConfiguredProviders: read mock</li><li>billingProvider.getCustomerConfigurations: read pipeline</li><li>billingProvider.listConfiguredProviders: read pipeline</li><li>billingProvider.getCustomerConfigurations: persisted read audit</li><li>billingProvider.listConfiguredProviders: persisted read audit</li></ul></td></tr>
-              <tr><td><code>contracts</code></td><td>6</td><td>6/6</td><td>6/6</td><td>0/6</td><td>0/6</td><td>0/6</td><td><ul class="compact-list"><li>contracts.get.v2: read mock</li><li>contracts.getEditHistory: read mock</li><li>contracts.getRateSchedule: read mock</li><li>contracts.getSubscriptionQuantityHistory: read mock</li><li>contracts.getSubscriptionSeatsHistory: read mock</li><li>contracts.list.v2: read mock</li><li>contracts.get.v2: read pipeline</li><li>contracts.getEditHistory: read pipeline</li><li>contracts.getRateSchedule: read pipeline</li><li>contracts.getSubscriptionQuantityHistory: read pipeline</li><li>contracts.getSubscriptionSeatsHistory: read pipeline</li><li>contracts.list.v2: read pipeline</li><li>contracts.get.v2: persisted read audit</li><li>contracts.getEditHistory: persisted read audit</li><li>contracts.getRateSchedule: persisted read audit</li><li>contracts.getSubscriptionQuantityHistory: persisted read audit</li><li>contracts.getSubscriptionSeatsHistory: persisted read audit</li><li>contracts.list.v2: persisted read audit</li></ul></td></tr>
-              <tr><td><code>credits</code></td><td>4</td><td>4/4</td><td>4/4</td><td>0/4</td><td>0/4</td><td>0/4</td><td><ul class="compact-list"><li>commits.list: read mock</li><li>credits.list: read mock</li><li>customerBalances.list: read mock</li><li>seatBalances.list: read mock</li><li>commits.list: read pipeline</li><li>credits.list: read pipeline</li><li>customerBalances.list: read pipeline</li><li>seatBalances.list: read pipeline</li><li>commits.list: persisted read audit</li><li>credits.list: persisted read audit</li><li>customerBalances.list: persisted read audit</li><li>seatBalances.list: persisted read audit</li></ul></td></tr>
+              <tr><td><code>contracts</code></td><td>8</td><td>6/8</td><td>8/8</td><td>0/8</td><td>0/8</td><td>0/8</td><td><ul class="compact-list"><li>contracts.get.v1: validator</li><li>contracts.list.v1: validator</li><li>contracts.get.v1: read mock</li><li>contracts.get.v2: read mock</li><li>contracts.getEditHistory: read mock</li><li>contracts.getRateSchedule: read mock</li><li>contracts.getSubscriptionQuantityHistory: read mock</li><li>contracts.getSubscriptionSeatsHistory: read mock</li><li>contracts.list.v1: read mock</li><li>contracts.list.v2: read mock</li><li>contracts.get.v1: read pipeline</li><li>contracts.get.v2: read pipeline</li><li>contracts.getEditHistory: read pipeline</li><li>contracts.getRateSchedule: read pipeline</li><li>contracts.getSubscriptionQuantityHistory: read pipeline</li><li>contracts.getSubscriptionSeatsHistory: read pipeline</li><li>contracts.list.v1: read pipeline</li><li>contracts.list.v2: read pipeline</li><li>contracts.get.v1: persisted read audit</li><li>contracts.get.v2: persisted read audit</li><li>contracts.getEditHistory: persisted read audit</li><li>contracts.getRateSchedule: persisted read audit</li><li>contracts.getSubscriptionQuantityHistory: persisted read audit</li><li>contracts.getSubscriptionSeatsHistory: persisted read audit</li><li>contracts.list.v1: persisted read audit</li><li>contracts.list.v2: persisted read audit</li></ul></td></tr>
+              <tr><td><code>credits</code></td><td>5</td><td>4/5</td><td>5/5</td><td>0/5</td><td>0/5</td><td>0/5</td><td><ul class="compact-list"><li>customerBalances.getNetBalance: validator</li><li>commits.list: read mock</li><li>credits.list: read mock</li><li>customerBalances.getNetBalance: read mock</li><li>customerBalances.list: read mock</li><li>seatBalances.list: read mock</li><li>commits.list: read pipeline</li><li>credits.list: read pipeline</li><li>customerBalances.getNetBalance: read pipeline</li><li>customerBalances.list: read pipeline</li><li>seatBalances.list: read pipeline</li><li>commits.list: persisted read audit</li><li>credits.list: persisted read audit</li><li>customerBalances.getNetBalance: persisted read audit</li><li>customerBalances.list: persisted read audit</li><li>seatBalances.list: persisted read audit</li></ul></td></tr>
               <tr><td><code>custom-fields</code></td><td>1</td><td>1/1</td><td>1/1</td><td>0/1</td><td>0/1</td><td>0/1</td><td><ul class="compact-list"><li>customFields.listKeys: read mock</li><li>customFields.listKeys: read pipeline</li><li>customFields.listKeys: persisted read audit</li></ul></td></tr>
               <tr><td><code>customers</code></td><td>2</td><td>2/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>customers.get: read mock</li><li>customers.list: read mock</li><li>customers.get: read pipeline</li><li>customers.list: read pipeline</li><li>customers.get: persisted read audit</li><li>customers.list: persisted read audit</li></ul></td></tr>
-              <tr><td><code>invoices</code></td><td>3</td><td>3/3</td><td>3/3</td><td>0/3</td><td>0/3</td><td>0/3</td><td><ul class="compact-list"><li>invoices.get: read mock</li><li>invoices.listBreakdowns: read mock</li><li>invoices.listForCustomer: read mock</li><li>invoices.get: read pipeline</li><li>invoices.listBreakdowns: read pipeline</li><li>invoices.listForCustomer: read pipeline</li><li>invoices.get: persisted read audit</li><li>invoices.listBreakdowns: persisted read audit</li><li>invoices.listForCustomer: persisted read audit</li></ul></td></tr>
+              <tr><td><code>invoices</code></td><td>5</td><td>3/5</td><td>5/5</td><td>0/5</td><td>0/5</td><td>0/5</td><td><ul class="compact-list"><li>invoices.getForCustomer: validator</li><li>invoices.getPdf: validator</li><li>invoices.get: read mock</li><li>invoices.getForCustomer: read mock</li><li>invoices.getPdf: read mock</li><li>invoices.listBreakdowns: read mock</li><li>invoices.listForCustomer: read mock</li><li>invoices.get: read pipeline</li><li>invoices.getForCustomer: read pipeline</li><li>invoices.getPdf: read pipeline</li><li>invoices.listBreakdowns: read pipeline</li><li>invoices.listForCustomer: read pipeline</li><li>invoices.get: persisted read audit</li><li>invoices.getForCustomer: persisted read audit</li><li>invoices.getPdf: persisted read audit</li><li>invoices.listBreakdowns: persisted read audit</li><li>invoices.listForCustomer: persisted read audit</li></ul></td></tr>
+              <tr><td><code>notifications</code></td><td>3</td><td>0/3</td><td>3/3</td><td>0/3</td><td>0/3</td><td>0/3</td><td><ul class="compact-list"><li>notifications.get: validator</li><li>notifications.listOffset: validator</li><li>notifications.listSystem: validator</li><li>notifications.get: read mock</li><li>notifications.listOffset: read mock</li><li>notifications.listSystem: read mock</li><li>notifications.get: read pipeline</li><li>notifications.listOffset: read pipeline</li><li>notifications.listSystem: read pipeline</li><li>notifications.get: persisted read audit</li><li>notifications.listOffset: persisted read audit</li><li>notifications.listSystem: persisted read audit</li></ul></td></tr>
               <tr><td><code>packages</code></td><td>3</td><td>3/3</td><td>3/3</td><td>0/3</td><td>0/3</td><td>0/3</td><td><ul class="compact-list"><li>packages.get: read mock</li><li>packages.list: read mock</li><li>packages.listContractsOnPackage: read mock</li><li>packages.get: read pipeline</li><li>packages.list: read pipeline</li><li>packages.listContractsOnPackage: read pipeline</li><li>packages.get: persisted read audit</li><li>packages.list: persisted read audit</li><li>packages.listContractsOnPackage: persisted read audit</li></ul></td></tr>
               <tr><td><code>payments</code></td><td>1</td><td>1/1</td><td>1/1</td><td>0/1</td><td>0/1</td><td>0/1</td><td><ul class="compact-list"><li>payments.listForInvoice: read mock</li><li>payments.listForInvoice: read pipeline</li><li>payments.listForInvoice: persisted read audit</li></ul></td></tr>
               <tr><td><code>products</code></td><td>2</td><td>2/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>products.get: read mock</li><li>products.list: read mock</li><li>products.get: read pipeline</li><li>products.list: read pipeline</li><li>products.get: persisted read audit</li><li>products.list: persisted read audit</li></ul></td></tr>
@@ -192,6 +203,7 @@
               <tr><td><code>security</code></td><td>2</td><td>2/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>security.getAuditLogs: read mock</li><li>security.getServices: read mock</li><li>security.getAuditLogs: read pipeline</li><li>security.getServices: read pipeline</li><li>security.getAuditLogs: persisted read audit</li><li>security.getServices: persisted read audit</li></ul></td></tr>
               <tr><td><code>settings</code></td><td>1</td><td>1/1</td><td>1/1</td><td>0/1</td><td>0/1</td><td>0/1</td><td><ul class="compact-list"><li>settings.listPricingUnits: read mock</li><li>settings.listPricingUnits: read pipeline</li><li>settings.listPricingUnits: persisted read audit</li></ul></td></tr>
               <tr><td><code>usage</code></td><td>3</td><td>3/3</td><td>3/3</td><td>0/3</td><td>0/3</td><td>0/3</td><td><ul class="compact-list"><li>events.search: read mock</li><li>usage.batch: read mock</li><li>usage.groups: read mock</li><li>events.search: read pipeline</li><li>usage.batch: read pipeline</li><li>usage.groups: read pipeline</li><li>events.search: persisted read audit</li><li>usage.batch: persisted read audit</li><li>usage.groups: persisted read audit</li></ul></td></tr>
+              <tr><td><code>webhooks</code></td><td>2</td><td>0/2</td><td>2/2</td><td>0/2</td><td>0/2</td><td>0/2</td><td><ul class="compact-list"><li>webhooks.getTriggeredNotification: validator</li><li>webhooks.listTriggeredNotifications: validator</li><li>webhooks.getTriggeredNotification: read mock</li><li>webhooks.listTriggeredNotifications: read mock</li><li>webhooks.getTriggeredNotification: read pipeline</li><li>webhooks.listTriggeredNotifications: read pipeline</li><li>webhooks.getTriggeredNotification: persisted read audit</li><li>webhooks.listTriggeredNotifications: persisted read audit</li></ul></td></tr>
             </tbody>
           </table>
         </div>
@@ -247,6 +259,19 @@
               <tr><td><code>rateCards.list</code></td><td>rate-cards</td><td><code>POST /v1/contract-pricing/rate-cards/list</code></td><td>endpoint-specific</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
               <tr><td><code>rateCards.getRates</code></td><td>rate-cards</td><td><code>POST /v1/contract-pricing/rate-cards/getRates</code></td><td>endpoint-specific</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
               <tr><td><code>rateCards.getRateSchedule</code></td><td>rate-cards</td><td><code>POST /v1/contract-pricing/rate-cards/getRateSchedule</code></td><td>endpoint-specific</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>billableMetrics.listForCustomer</code></td><td>billable-metrics</td><td><code>GET /v1/customers/{customer_id}/billable-metrics</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>invoices.getForCustomer</code></td><td>invoices</td><td><code>GET /v1/customers/{customer_id}/invoices/{invoice_id}</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>invoices.getPdf</code></td><td>invoices</td><td><code>GET /v1/customers/{customer_id}/invoices/{invoice_id}/pdf</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>contracts.get.v1</code></td><td>contracts</td><td><code>POST /v1/contracts/get</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>contracts.list.v1</code></td><td>contracts</td><td><code>POST /v1/contracts/list</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>customerBalances.getNetBalance</code></td><td>credits</td><td><code>POST /v1/contracts/customerBalances/getNetBalance</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>alerts.getForCustomer</code></td><td>alerts</td><td><code>POST /v1/customer-alerts/get</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>alerts.listForCustomer</code></td><td>alerts</td><td><code>POST /v1/customer-alerts/list</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>notifications.get</code></td><td>notifications</td><td><code>POST /v2/notifications/get</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>notifications.listOffset</code></td><td>notifications</td><td><code>POST /v2/notifications/offset/list</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>notifications.listSystem</code></td><td>notifications</td><td><code>POST /v2/notifications/system/list</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>webhooks.listTriggeredNotifications</code></td><td>webhooks</td><td><code>POST /v1/webhooks/{webhook_id}/triggered_notifications</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
+              <tr><td><code>webhooks.getTriggeredNotification</code></td><td>webhooks</td><td><code>GET /v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id}</code></td><td>not-implemented</td><td>local-read-plan</td><td>no</td><td><span class="muted">none</span></td><td>needs-local-read-evidence</td></tr>
             </tbody>
           </table>
         </div>
@@ -10560,6 +10585,1800 @@
           <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
           <h3>Sources</h3>
           <ul class="compact-list"><li><code>skills/metronome-danger-zone/references/endpoint-matrix.md#4-rate-cards</code></li><li><code>https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List billable metrics for a customer</h2>
+          <p><code>billableMetrics.listForCustomer</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>GET /v1/customers/{customer_id}/billable-metrics</code></p>
+              <p>read · billable-metrics</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:billable-metrics:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Future read runner must GET with customer_id as the path parameter; pagination and filters stay in query parameters; no request body.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview billableMetrics.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-billableMetrics.listForCustomer.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>path.customer_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li><li><code>query.customer_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include billable metric rows, pagination state, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/billable-metrics/get-billable-metrics-for-a-customer.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get a customer invoice</h2>
+          <p><code>invoices.getForCustomer</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>GET /v1/customers/{customer_id}/invoices/{invoice_id}</code></p>
+              <p>read · invoices</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:invoices:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read invoices.getForCustomer --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Future read runner must GET with customer_id and invoice_id as path parameters; no request body.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate invoices.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan invoices.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate invoices.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan invoices.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview invoices.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate invoices.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview invoices.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-invoices.getForCustomer.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>path.customer_id</code></li><li><code>path.invoice_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li><li><code>body.invoice_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include invoice status, period, totals, line items, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/invoices/get-an-invoice.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get a customer invoice PDF</h2>
+          <p><code>invoices.getPdf</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>GET /v1/customers/{customer_id}/invoices/{invoice_id}/pdf</code></p>
+              <p>read · invoices</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:invoices:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read invoices.getPdf --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Future read runner must GET with customer_id and invoice_id as path parameters and write the PDF bytes to a local file, never to stdout or chat.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate invoices.getPdf --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan invoices.getPdf --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate invoices.getPdf --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan invoices.getPdf --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview invoices.getPdf --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate invoices.getPdf --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview invoices.getPdf --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-invoices.getPdf.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>path.customer_id</code></li><li><code>path.invoice_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li><li><code>body.invoice_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must record the local file path, byte length, sha256, tenant, and request summary; the PDF itself is not printed.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/invoices/get-an-invoice-pdf.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get contract (v1)</h2>
+          <p><code>contracts.get.v1</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/contracts/get</code></p>
+              <p>read · contracts</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:contracts:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read contracts.get.v1 --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>v1 contract get; Metronome recommends /v2/contracts/get (contracts.get.v2) for new clients. Body carries customer_id and contract_id.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate contracts.get.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan contracts.get.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate contracts.get.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan contracts.get.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview contracts.get.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate contracts.get.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview contracts.get.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-contracts.get.v1.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li><li><code>body.contract_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.customer_id</code></li><li><code>query.contract_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include the contract, tenant, and request summary. Prefer contracts.get.v2 for new reads.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/contracts/get-a-contract-v1.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List customer contracts (v1)</h2>
+          <p><code>contracts.list.v1</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/contracts/list</code></p>
+              <p>read · contracts</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:contracts:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read contracts.list.v1 --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>v1 contract list; Metronome recommends /v2/contracts/list (contracts.list.v2) for new clients. Body carries customer_id and optional filters.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate contracts.list.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan contracts.list.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate contracts.list.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan contracts.list.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview contracts.list.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate contracts.list.v1 --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview contracts.list.v1 --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-contracts.list.v1.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.customer_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include contract rows, cursor, tenant, and request summary. Prefer contracts.list.v2 for new reads.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v1.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get net balance of a customer</h2>
+          <p><code>customerBalances.getNetBalance</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/contracts/customerBalances/getNetBalance</code></p>
+              <p>read · credits</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:credits:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <ul class="compact-list"><li><code>metro customer balances --customer-id=&lt;id&gt; (--sandbox|--prod) [--json]</code></li></ul>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read customerBalances.getNetBalance --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Net balance read across credits and commits for one customer, optionally narrowed by credit_type_id and filters.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate customerBalances.getNetBalance --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan customerBalances.getNetBalance --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate customerBalances.getNetBalance --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan customerBalances.getNetBalance --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview customerBalances.getNetBalance --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate customerBalances.getNetBalance --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview customerBalances.getNetBalance --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-customerBalances.getNetBalance.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.customer_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include the net balance, credit type, tenant, and request summary. metro customer balances already calls it live and compares it with the balance list.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get a threshold notification for a customer</h2>
+          <p><code>alerts.getForCustomer</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/customer-alerts/get</code></p>
+              <p>read · alerts</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:alerts:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read alerts.getForCustomer --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Threshold notification status for one customer and alert pair.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate alerts.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan alerts.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate alerts.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan alerts.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview alerts.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate alerts.getForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview alerts.getForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-alerts.getForCustomer.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li><li><code>body.alert_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.customer_id</code></li><li><code>query.alert_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include customer_status, the alert configuration, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/alerts/get-a-threshold-notification.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List threshold notifications for a customer</h2>
+          <p><code>alerts.listForCustomer</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/customer-alerts/list</code></p>
+              <p>read · alerts</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:alerts:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read alerts.listForCustomer --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Threshold notifications and their status for one customer; next_page stays in query parameters.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate alerts.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan alerts.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate alerts.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan alerts.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview alerts.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate alerts.listForCustomer --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview alerts.listForCustomer --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-alerts.listForCustomer.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.customer_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.customer_id</code></li><li><code>body.next_page</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include alert rows with customer_status, pagination state, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/alerts/get-all-threshold-notifications.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get an offset notification configuration</h2>
+          <p><code>notifications.get</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v2/notifications/get</code></p>
+              <p>read · notifications</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:notifications:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read notifications.get --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Offset lifecycle event notification configuration by id.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate notifications.get --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan notifications.get --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate notifications.get --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan notifications.get --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.get.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.get.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.get.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.get.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-notifications.get.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview notifications.get --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate notifications.get --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview notifications.get --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-notifications.get.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>body.id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>query.id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include the notification configuration, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/notifications/get-an-offset-lifecycle-event-notification-configuration.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List offset notification configurations</h2>
+          <p><code>notifications.listOffset</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v2/notifications/offset/list</code></p>
+              <p>read · notifications</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:notifications:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read notifications.listOffset --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Offset lifecycle event notification configurations; the request body is optional.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate notifications.listOffset --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan notifications.listOffset --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate notifications.listOffset --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan notifications.listOffset --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview notifications.listOffset --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate notifications.listOffset --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview notifications.listOffset --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-notifications.listOffset.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <span class="muted">none</span>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include configuration rows, cursor, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/notifications/list-offset-lifecycle-event-notification-configurations.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List system notification types</h2>
+          <p><code>notifications.listSystem</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v2/notifications/system/list</code></p>
+              <p>read · notifications</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:notifications:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read notifications.listSystem --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>System notification types available to enable or to base offset notifications on; no request fields.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate notifications.listSystem --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan notifications.listSystem --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate notifications.listSystem --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan notifications.listSystem --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview notifications.listSystem --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate notifications.listSystem --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview notifications.listSystem --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-notifications.listSystem.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <span class="muted">none</span>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include notification type rows, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/notifications/list-system-notification-types.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>List triggered notifications by webhook</h2>
+          <p><code>webhooks.listTriggeredNotifications</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>POST /v1/webhooks/{webhook_id}/triggered_notifications</code></p>
+              <p>read · webhooks</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:webhooks:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Triggered notifications with delivery attempts for one webhook destination over a time window; webhook_id is the path parameter.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview webhooks.listTriggeredNotifications --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-webhooks.listTriggeredNotifications.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>path.webhook_id</code></li><li><code>body.start_date</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>body.webhook_id</code></li><li><code>query.webhook_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include triggered notification rows, delivery attempt status, pagination state, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/webhooks/list-triggered-notifications-by-webhook.md</code></li></ul>
+        </article>
+        <article class="reference-card">
+          <h2>Get a triggered notification and delivery attempts</h2>
+          <p><code>webhooks.getTriggeredNotification</code> <span class="status-pill local">cataloged-local-only</span></p>
+          <div class="reference-columns">
+            <section>
+              <h3>Endpoint</h3>
+              <p><code>GET /v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id}</code></p>
+              <p>read · webhooks</p>
+            </section>
+            <section>
+              <h3>Access</h3>
+              <p>Current CLI API access: <code>none</code></p>
+              <p>Permission scope: <code>metronome:webhooks:read</code></p>
+              <p>Tenant: --sandbox|--prod or a single-tenant profile</p>
+            </section>
+            <section>
+              <h3>Current commands</h3>
+              <span class="muted">none</span>
+            </section>
+            <section>
+              <h3>Future commands</h3>
+              <ul class="compact-list"><li><code>metro api read webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; --sandbox --confirm-live-read &lt;token&gt;</code></li></ul>
+            </section>
+          </div>
+          <h3>Request contract</h3>
+          <p>Delivery attempts for one triggered notification; webhook_id and triggered_notification_id are path parameters; no request body.</p>
+          <h3>Request validation</h3>
+          <p>Command: <code>metro api validate webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Status: <code>not-implemented</code></p>
+          <span class="muted">none</span>
+          <h3>API read plan</h3>
+          <p>Command: <code>metro api read-plan webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-read-plan</code></p>
+          <p>Requires: <code>metro api validate webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <p>Live read enabled in current CLI: <code>false</code></p>
+          <h3>API read gate</h3>
+          <p>Command: <code>metro api read-gate template --read-plan &lt;api-read-plan.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--profile &lt;profile&gt;] [--key-env &lt;env&gt;] [--key-fingerprint &lt;fingerprint&gt;] [--authorization-id &lt;id&gt;] [--approved-by &lt;name&gt;] [--audit-log &lt;path&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-gate validate --file &lt;api-read-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-read-gate-manifest</code></p>
+          <p>Requires: <code>metro api read-plan webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <ul class="compact-list"><li><code>reviewed-read-plan-file-hash</code></li><li><code>tenant-profile-binding</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>current-turn-authorization</code></li><li><code>audit-safe-request-summary</code></li><li><code>stable-output-verification</code></li></ul>
+          <h3>API read mock</h3>
+          <p>Command: <code>metro api read-mock &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-runner</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit template: <code>metro.api.read-audit.template.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read pipeline</h3>
+          <p>Command: <code>metro api read-pipeline &lt;endpoint-id&gt; --file &lt;request.json|yaml&gt; --read-gate &lt;api-read-gate.json&gt; --mock-response &lt;response-data.json&gt; --out &lt;api-read-audit.jsonl&gt; --actor &lt;id&gt; (--dry-run|--write) [--timestamp &lt;ISO&gt;] [--json]</code></p>
+          <p>Status: <code>local-mocked-read-audit-pipeline</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <p>Produces read result: <code>metro.api.read-result.v1</code></p>
+          <p>Produces read audit writer output: <code>metro.api.read-audit.write.v1</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read result</h3>
+          <p>Validate: <code>metro api read-result verify --file &lt;api-read-result.json&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-result-contract</code></p>
+          <p>Requires: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>API read audit</h3>
+          <p>Template: <code>metro api read-audit template --read-gate &lt;api-read-gate.json&gt; --read-result &lt;api-read-result.json&gt; [--actor &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api read-audit validate --file &lt;api-read-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>mocked-read-audit-contract</code></p>
+          <p>Requires read gate: <code>metro api read-gate validate --file &lt;api-read-gate-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <p>Requires read result: <code>metro api read-result verify --file &lt;api-read-result-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <h3>Local preview</h3>
+          <p>Command: <code>metro api preview webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <p>Status: <code>local-preview-contract</code></p>
+          <p>Requires: <code>metro api validate webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; [--json]</code></p>
+          <h3>API preflight</h3>
+          <p>Command: <code>metro api preflight template --preview &lt;api-preview.json&gt; [--profile-resolution &lt;profile-resolution.json&gt;] [--approval-id &lt;id&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api preflight validate --file &lt;api-preflight.json&gt; [--json]</code></p>
+          <p>Status: <code>local-preflight-contract</code></p>
+          <p>Requires: <code>metro api preview webhooks.getTriggeredNotification --file &lt;request.json|yaml&gt; (--sandbox|--prod) [--json]</code></p>
+          <ul class="compact-list"><li><code>preview-reviewed</code></li><li><code>audit-plan</code></li><li><code>tenant-profile-resolution</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API sandbox proof</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api sandbox-proof validate --file &lt;api-sandbox-proof.json&gt; [--json]</code></p>
+          <p>Status: <code>not-required</code></p>
+          <span class="muted">none</span>
+          <h3>API apply gate</h3>
+          <p>Command: <code>metro api apply-gate template --preview &lt;api-preview.json&gt; --preflight &lt;api-preflight.json&gt; [--sandbox-proof &lt;sandbox-proof.json&gt;] [--profile-resolution &lt;profile-resolution.json&gt;] [--json]</code></p>
+          <p>Validate: <code>metro api apply-gate validate --file &lt;api-apply-gate.json&gt; [--json]</code></p>
+          <p>Status: <code>local-apply-gate-manifest</code></p>
+          <p>Requires: <code>metro api preflight validate --file &lt;api-preflight-for-webhooks.getTriggeredNotification.json&gt; [--json]</code></p>
+          <ul class="compact-list"><li><code>reviewed-preview-file-hash</code></li><li><code>reviewed-preflight-file-hash</code></li><li><code>tenant-profile-resolution-file-hash</code></li><li><code>key-fingerprint</code></li><li><code>audit-destination</code></li><li><code>read-back-plan</code></li></ul>
+          <h3>API approval record</h3>
+          <p>Command: <code>not required</code></p>
+          <p>Validate: <code>metro api approval-record validate --file &lt;api-approval-record.json&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply audit</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Write: <code>not required</code></p>
+          <p>Validate: <code>metro api apply-audit validate --file &lt;api-apply-audit.jsonl&gt; [--json]</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <span class="muted">none</span>
+          <h3>API apply read-back</h3>
+          <p>Verify: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Requires apply audit: <code>not required</code></p>
+          <p>Requires read result: <code>not required</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Read enabled in current CLI: <code>false</code></p>
+          <p>Allowed read-back endpoints:</p>
+          <span class="muted">none</span>
+          <span class="muted">none</span>
+          <h3>API apply result</h3>
+          <p>Template: <code>not required</code></p>
+          <p>Validate: <code>not required</code></p>
+          <p>Status: <code>not-write-endpoint</code></p>
+          <p>Apply enabled in current CLI: <code>false</code></p>
+          <p>Live apply authorized by this record: <code>false</code></p>
+          <span class="muted">none</span>
+          <div class="reference-columns">
+            <section>
+              <h3>Required fields</h3>
+              <ul class="compact-list"><li><code>path.webhook_id</code></li><li><code>path.triggered_notification_id</code></li></ul>
+            </section>
+            <section>
+              <h3>Forbidden fields</h3>
+              <ul class="compact-list"><li><code>body.webhook_id</code></li><li><code>body.triggered_notification_id</code></li></ul>
+            </section>
+          </div>
+          <h3>Response contract</h3>
+          <p>Future output must include delivery attempts with status codes and timestamps, tenant, and request summary.</p>
+          <h3>Policy gates</h3>
+          <ul class="compact-list"><li><code>explicit tenant</code></li><li><code>reviewed endpoint id</code></li><li><code>tenant-scoped profile</code></li><li><code>guarded read client</code></li><li><code>stable output contract</code></li><li><code>secret-free logging</code></li></ul>
+          <h3>Sources</h3>
+          <ul class="compact-list"><li><code>https://docs.metronome.com/api-reference/webhooks/get-triggered-notification-and-delivery-attempts.md</code></li></ul>
         </article>
       </section>
     </main>

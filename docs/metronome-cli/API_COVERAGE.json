@@ -1,0 +1,2141 @@
+{
+  "schemaVersion": "metro.api-coverage.v1",
+  "checkedAt": "2026-11-03",
+  "sources": {
+    "llmsTxt": "https://docs.metronome.com/llms.txt",
+    "llmsFullTxt": "https://docs.metronome.com/llms-full.txt",
+    "perPageMarkdown": "Append .md to any docUrl for the page as markdown.",
+    "extraction": "\"/openapi.json <method> <path>\" lines under each \"Source:\" page in llms-full.txt; endpoint list only, no prose copied."
+  },
+  "upstream": {
+    "endpointCount": 108,
+    "legacyPlansEndpointPagesExcluded": 15,
+    "note": "Contracts API endpoints from llms-full.txt. Legacy Plans (deprecated) endpoints listed in llms.txt are out of scope."
+  },
+  "summary": {
+    "total": 108,
+    "covered": 80,
+    "inCatalog": 77,
+    "usedByOps": 27,
+    "byStatus": {
+      "op": 27,
+      "catalog-read": 31,
+      "catalog-write": 22,
+      "not-yet": 28
+    },
+    "metroOnly": 5
+  },
+  "statusMeaning": {
+    "op": "Called live by a metro op (reads directly; writes only through preflight, confirm hash, sandbox-first apply and read-back).",
+    "catalog-read": "Reviewed read contract in `metro api catalog` (request shape, scope, docs link); no dedicated live command yet unless one is listed.",
+    "catalog-write": "Reviewed write contract in `metro api catalog`; local preview and validation only, live apply blocked unless an op covers it.",
+    "not-yet": "Documented by Metronome; metro has no catalog entry or op for it yet. Read the Metronome page directly."
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/v1/alerts/archive",
+      "title": "Archive a threshold notification",
+      "family": "alerts",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/archive-a-threshold-notification",
+      "docMarkdown": "https://docs.metronome.com/api-reference/alerts/archive-a-threshold-notification.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/alerts/create",
+      "title": "Create a threshold notification",
+      "family": "alerts",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/create-a-threshold-notification",
+      "docMarkdown": "https://docs.metronome.com/api-reference/alerts/create-a-threshold-notification.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/get",
+      "title": "Get a threshold notification",
+      "family": "alerts",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/get-a-threshold-notification",
+      "docMarkdown": "https://docs.metronome.com/api-reference/alerts/get-a-threshold-notification.md",
+      "status": "catalog-read",
+      "catalogId": "alerts.getForCustomer",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain alerts.getForCustomer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/list",
+      "title": "Get all threshold notifications",
+      "family": "alerts",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/get-all-threshold-notifications",
+      "docMarkdown": "https://docs.metronome.com/api-reference/alerts/get-all-threshold-notifications.md",
+      "status": "catalog-read",
+      "catalogId": "alerts.listForCustomer",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain alerts.listForCustomer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customer-alerts/reset",
+      "title": "Reset a threshold notification",
+      "family": "alerts",
+      "docUrl": "https://docs.metronome.com/api-reference/alerts/reset-a-threshold-notification",
+      "docMarkdown": "https://docs.metronome.com/api-reference/alerts/reset-a-threshold-notification.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "GET",
+      "path": "/v1/billable-metrics",
+      "title": "List all billable metrics",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/list-all-billable-metrics.md",
+      "status": "catalog-read",
+      "catalogId": "billableMetrics.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.list"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/billable-metrics/{billable_metric_id}",
+      "title": "Get a billable metric",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/get-a-billable-metric.md",
+      "status": "catalog-read",
+      "catalogId": "billableMetrics.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.get"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/billable-metrics/{billable_metric_id}",
+      "title": "Update a billable metric",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/update-a-billable-metric.md",
+      "status": "catalog-write",
+      "catalogId": "billableMetrics.update",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.update"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/billable-metrics/archive",
+      "title": "Archive a billable metric",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/archive-a-billable-metric.md",
+      "status": "catalog-write",
+      "catalogId": "billableMetrics.archive",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.archive"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/billable-metrics/create",
+      "title": "Create a billable metric",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/create-a-billable-metric.md",
+      "status": "catalog-write",
+      "catalogId": "billableMetrics.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.create"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/billable-metrics",
+      "title": "Get billable metrics for a customer",
+      "family": "billable-metrics",
+      "docUrl": "https://docs.metronome.com/api-reference/billable-metrics/get-billable-metrics-for-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/billable-metrics/get-billable-metrics-for-a-customer.md",
+      "status": "catalog-read",
+      "catalogId": "billableMetrics.listForCustomer",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billableMetrics.listForCustomer"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/amend",
+      "title": "Amend a contract",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/amend-a-contract",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/amend-a-contract.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/archive",
+      "title": "Archive a contract",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/archive-a-contract",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/archive-a-contract.md",
+      "status": "op",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [
+        {
+          "command": "metro contract repair-accidental",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro contract repair-accidental"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/create",
+      "title": "Create a contract",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-a-contract",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/create-a-contract.md",
+      "status": "op",
+      "catalogId": "contracts.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "write"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro contract move-plan",
+        "metro contract move-plan preview",
+        "metro subscription contract preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/createHistoricalInvoices",
+      "title": "Create historical invoices",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-historical-invoices",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/create-historical-invoices.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/get",
+      "title": "Get a contract (v1)",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v1",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v1.md",
+      "status": "catalog-read",
+      "catalogId": "contracts.get.v1",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain contracts.get.v1"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getContractRateSchedule",
+      "title": "Get the rate schedule for a contract",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-the-rate-schedule-for-a-contract.md",
+      "status": "catalog-read",
+      "catalogId": "contracts.getRateSchedule",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain contracts.getRateSchedule"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getSubscriptionQuantityHistory",
+      "title": "Get subscription quantity history",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-subscription-quantity-history.md",
+      "status": "catalog-read",
+      "catalogId": "contracts.getSubscriptionQuantityHistory",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api read-plan contracts.getSubscriptionQuantityHistory"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/getSubscriptionSeatsHistory",
+      "title": "Get subscription seats history",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-subscription-seats-history.md",
+      "status": "op",
+      "catalogId": "contracts.getSubscriptionSeatsHistory",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro subscription seats",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro subscription seats",
+        "metro api read-plan contracts.getSubscriptionSeatsHistory"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/list",
+      "title": "List customer contracts (v1)",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v1",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v1.md",
+      "status": "catalog-read",
+      "catalogId": "contracts.list.v1",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain contracts.list.v1"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/setUsageFilter",
+      "title": "Set a contract usage filter",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/set-a-contract-usage-filter",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/set-a-contract-usage-filter.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/updateEndDate",
+      "title": "Update the contract end date",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/update-the-contract-end-date.md",
+      "status": "op",
+      "catalogId": "contracts.updateEndDate",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro contract expire",
+          "kind": "write"
+        },
+        {
+          "command": "metro contract extend-trial",
+          "kind": "write"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "write"
+        },
+        {
+          "command": "metro contract repair-accidental",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro contract expire",
+        "metro contract extend-trial",
+        "metro contract move-plan",
+        "metro contract repair-accidental",
+        "metro contract move-plan preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/updateInvoiceIssueDate",
+      "title": "Update invoice issue date",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/update-invoice-issue-date.md",
+      "status": "catalog-write",
+      "catalogId": "contracts.updateInvoiceIssueDate",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro invoice issue-date preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/create",
+      "title": "Create a package",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/create-a-package",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/create-a-package.md",
+      "status": "op",
+      "catalogId": "packages.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro package clone-version",
+          "kind": "write"
+        },
+        {
+          "command": "metro package create",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro package clone-version",
+        "metro package create",
+        "metro package preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/listContractsOnPackage",
+      "title": "List contracts associated with a package",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/list-contracts-associated-with-a-package.md",
+      "status": "op",
+      "catalogId": "packages.listContractsOnPackage",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro package customers",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro package customers",
+        "metro api read-plan packages.listContractsOnPackage"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/edit",
+      "title": "Edit a contract",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/edit-a-contract",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/edit-a-contract.md",
+      "status": "op",
+      "catalogId": "contracts.edit.v2",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "write"
+        },
+        {
+          "command": "metro subscription add",
+          "kind": "write"
+        },
+        {
+          "command": "metro subscription seats",
+          "kind": "write"
+        },
+        {
+          "command": "metro subscription set-quantity",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro ledger-adjustment",
+        "metro subscription add",
+        "metro subscription seats",
+        "metro subscription set-quantity",
+        "metro credit preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/get",
+      "title": "Get a contract (v2)",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v2",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-a-contract-v2.md",
+      "status": "op",
+      "catalogId": "contracts.get.v2",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract expire",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract extend-trial",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription add",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription seats",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription set-quantity",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro contract expire",
+        "metro contract extend-trial",
+        "metro contract move-plan",
+        "metro ledger-adjustment",
+        "metro subscription add",
+        "metro subscription seats",
+        "metro subscription set-quantity",
+        "metro contract inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/getEditHistory",
+      "title": "Get contract edit history",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/get-contract-edit-history",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/get-contract-edit-history.md",
+      "status": "catalog-read",
+      "catalogId": "contracts.getEditHistory",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api read-plan contracts.getEditHistory"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/list",
+      "title": "List customer contracts (v2)",
+      "family": "contracts",
+      "docUrl": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2",
+      "docMarkdown": "https://docs.metronome.com/api-reference/contracts/list-customer-contracts-v2.md",
+      "status": "op",
+      "catalogId": "contracts.list.v2",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract expire",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract extend-trial",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract repair-accidental",
+          "kind": "read"
+        },
+        {
+          "command": "metro customer balances",
+          "kind": "read"
+        },
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription add",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription seats",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription set-quantity",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro contract expire",
+        "metro contract extend-trial",
+        "metro contract move-plan",
+        "metro contract repair-accidental",
+        "metro customer balances",
+        "metro ledger-adjustment",
+        "metro subscription add",
+        "metro subscription seats",
+        "metro subscription set-quantity",
+        "metro customer billing-state"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/addManualBalanceLedgerEntry",
+      "title": "Add a manual balance entry",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/add-a-manual-balance-entry",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/add-a-manual-balance-entry.md",
+      "status": "op",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro ledger-adjustment"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/commits/disableTrueup",
+      "title": "Disable trueup for commit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/disable-trueup-for-commit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/disable-trueup-for-commit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/commits/threshold-billing/release",
+      "title": "Release external payment gate threshold commit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/release-external-payment-gate-threshold-commit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/release-external-payment-gate-threshold-commit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerBalances/getNetBalance",
+      "title": "Get the net balance of a customer",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/get-the-net-balance-of-a-customer.md",
+      "status": "op",
+      "catalogId": "customerBalances.getNetBalance",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro customer balances",
+          "kind": "read"
+        },
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro customer balances",
+        "metro ledger-adjustment"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerBalances/list",
+      "title": "List balances",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-balances",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/list-balances.md",
+      "status": "op",
+      "catalogId": "customerBalances.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro customer balances",
+          "kind": "read"
+        },
+        {
+          "command": "metro ledger-adjustment",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract move-plan",
+        "metro customer balances",
+        "metro ledger-adjustment",
+        "metro customer billing-state"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/create",
+      "title": "Create a commit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-commit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-commit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/list",
+      "title": "List commits",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-commits",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/list-commits.md",
+      "status": "catalog-read",
+      "catalogId": "commits.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro customer billing-state"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCommits/updateEndDate",
+      "title": "Update the commit end date",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-commit-end-date",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-commit-end-date.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/create",
+      "title": "Create a credit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-credit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/create-a-credit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/list",
+      "title": "List credits",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-credits",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/list-credits.md",
+      "status": "catalog-read",
+      "catalogId": "credits.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro customer billing-state"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/customerCredits/updateEndDate",
+      "title": "Update the credit end date",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-credit-end-date",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/update-the-credit-end-date.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contracts/seatBalances/list",
+      "title": "List seat balances",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/list-seat-balances.md",
+      "status": "catalog-read",
+      "catalogId": "seatBalances.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api read-plan seatBalances.list"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/commits/archive",
+      "title": "Archive a commit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-commit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-commit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/commits/edit",
+      "title": "Edit a commit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-commit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/credits/archive",
+      "title": "Archive a credit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-credit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/archive-a-credit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/contracts/credits/edit",
+      "title": "Edit a credit",
+      "family": "credits-and-commits",
+      "docUrl": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-credit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/credits-and-commits/edit-a-credit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/addKey",
+      "title": "Create a custom field key",
+      "family": "custom-fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key",
+      "docMarkdown": "https://docs.metronome.com/api-reference/custom-fields/create-a-custom-field-key.md",
+      "status": "catalog-write",
+      "catalogId": "customFields.addKey",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customFields.addKey"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/deleteValues",
+      "title": "Delete custom fields",
+      "family": "custom-fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields",
+      "docMarkdown": "https://docs.metronome.com/api-reference/custom-fields/delete-custom-fields.md",
+      "status": "catalog-write",
+      "catalogId": "customFields.deleteValues",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customFields.deleteValues"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/listKeys",
+      "title": "List custom field keys",
+      "family": "custom-fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys",
+      "docMarkdown": "https://docs.metronome.com/api-reference/custom-fields/list-custom-field-keys.md",
+      "status": "op",
+      "catalogId": "customFields.listKeys",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro customer create",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro customer create"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/removeKey",
+      "title": "Delete a custom field key",
+      "family": "custom-fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key",
+      "docMarkdown": "https://docs.metronome.com/api-reference/custom-fields/delete-a-custom-field-key.md",
+      "status": "catalog-write",
+      "catalogId": "customFields.removeKey",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customFields.removeKey"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customFields/setValues",
+      "title": "Set custom field values",
+      "family": "custom-fields",
+      "docUrl": "https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values",
+      "docMarkdown": "https://docs.metronome.com/api-reference/custom-fields/set-custom-field-values.md",
+      "status": "catalog-write",
+      "catalogId": "customFields.setValues",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customFields.setValues"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/archiveCustomerBillingProviderConfigurations",
+      "title": "Archive billing provider configurations for a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/archive-billing-provider-configurations-for-a-customer.md",
+      "status": "op",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [
+        {
+          "command": "metro billing-provider cutover",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro billing-provider cutover"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers",
+      "title": "List customers",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/list-customers",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/list-customers.md",
+      "status": "op",
+      "catalogId": "customers.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "local-read-plan-supported",
+      "ops": [
+        {
+          "command": "metro customer create",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro customer create",
+        "metro api read-plan customers.list"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers",
+      "title": "Create a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/create-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/create-a-customer.md",
+      "status": "op",
+      "catalogId": "customers.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro customer create",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro customer create",
+        "metro customer setup preview"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}",
+      "title": "Get a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/get-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/get-a-customer.md",
+      "status": "catalog-read",
+      "catalogId": "customers.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro customer billing-state"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/setIngestAliases",
+      "title": "Create or update customer ingest aliases",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/create-or-update-customer-ingest-aliases.md",
+      "status": "catalog-write",
+      "catalogId": "customers.setIngestAliases",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customers.setIngestAliases"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/setName",
+      "title": "Update a customer name",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/update-a-customer-name",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/update-a-customer-name.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/updateConfig",
+      "title": "Update a customer configuration",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/update-a-customer-configuration",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/update-a-customer-configuration.md",
+      "status": "catalog-write",
+      "catalogId": "customers.updateConfig",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro customer setup preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/archive",
+      "title": "Archive a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/archive-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/archive-a-customer.md",
+      "status": "catalog-write",
+      "catalogId": "customers.archive",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain customers.archive"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/dashboards/getEmbeddableUrl",
+      "title": "Get an embeddable customer dashboard",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/get-an-embeddable-customer-dashboard",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/get-an-embeddable-customer-dashboard.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/getCustomerBillingProviderConfigurations",
+      "title": "Fetch billing provider configurations for a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/fetch-billing-provider-configurations-for-a-customer.md",
+      "status": "op",
+      "catalogId": "billingProvider.getCustomerConfigurations",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro billing-provider cutover",
+          "kind": "read"
+        },
+        {
+          "command": "metro customer create",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro billing-provider cutover",
+        "metro customer create",
+        "metro billing-provider inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/setCustomerBillingProviderConfigurations",
+      "title": "Set billing provider configurations for a customer",
+      "family": "customers",
+      "docUrl": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer",
+      "docMarkdown": "https://docs.metronome.com/api-reference/customers/set-billing-provider-configurations-for-a-customer.md",
+      "status": "op",
+      "catalogId": "billingProvider.setCustomerConfigurations",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro billing-provider cutover",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro billing-provider cutover",
+        "metro billing-provider preview"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices",
+      "title": "List invoices",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/list-invoices",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/list-invoices.md",
+      "status": "op",
+      "catalogId": "invoices.listForCustomer",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract repair-accidental",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract move-plan",
+        "metro contract repair-accidental",
+        "metro customer billing-state",
+        "metro invoice inspect"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/{invoice_id}",
+      "title": "Get an invoice",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/get-an-invoice",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/get-an-invoice.md",
+      "status": "catalog-read",
+      "catalogId": "invoices.getForCustomer",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain invoices.getForCustomer"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/{invoice_id}/pdf",
+      "title": "Get an invoice PDF",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/get-an-invoice-pdf",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/get-an-invoice-pdf.md",
+      "status": "catalog-read",
+      "catalogId": "invoices.getPdf",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain invoices.getPdf"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customer_id}/invoices/breakdowns",
+      "title": "List invoice breakdowns",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/list-invoice-breakdowns.md",
+      "status": "catalog-read",
+      "catalogId": "invoices.listBreakdowns",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api read-plan invoices.listBreakdowns"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/previewEvents",
+      "title": "Preview events",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/preview-events",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/preview-events.md",
+      "status": "catalog-write",
+      "catalogId": "invoices.preview",
+      "catalogOperation": "preview",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro usage ingest preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/invoices/regenerate",
+      "title": "Regenerate an invoice",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/regenerate-an-invoice.md",
+      "status": "catalog-write",
+      "catalogId": "invoices.regenerate",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain invoices.regenerate"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/invoices/void",
+      "title": "Void an invoice",
+      "family": "invoices",
+      "docUrl": "https://docs.metronome.com/api-reference/invoices/void-an-invoice",
+      "docMarkdown": "https://docs.metronome.com/api-reference/invoices/void-an-invoice.md",
+      "status": "catalog-write",
+      "catalogId": "invoices.void",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain invoices.void"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/archive",
+      "title": "Archive an offset lifecycle event notification configuration",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/archive-an-offset-lifecycle-event-notification-configuration",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/archive-an-offset-lifecycle-event-notification-configuration.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/create",
+      "title": "Create an offset lifecycle event notification configuration",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/create-an-offset-lifecycle-event-notification-configuration",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/create-an-offset-lifecycle-event-notification-configuration.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/edit",
+      "title": "Edit an offset or system notification",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/edit-an-offset-or-system-notification",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/edit-an-offset-or-system-notification.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/get",
+      "title": "Get an offset lifecycle event notification configuration",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/get-an-offset-lifecycle-event-notification-configuration",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/get-an-offset-lifecycle-event-notification-configuration.md",
+      "status": "catalog-read",
+      "catalogId": "notifications.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain notifications.get"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/offset/list",
+      "title": "List offset lifecycle event notification configurations",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/list-offset-lifecycle-event-notification-configurations",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/list-offset-lifecycle-event-notification-configurations.md",
+      "status": "catalog-read",
+      "catalogId": "notifications.listOffset",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain notifications.listOffset"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/notifications/system/list",
+      "title": "List system notification types",
+      "family": "notifications",
+      "docUrl": "https://docs.metronome.com/api-reference/notifications/list-system-notification-types",
+      "docMarkdown": "https://docs.metronome.com/api-reference/notifications/list-system-notification-types.md",
+      "status": "catalog-read",
+      "catalogId": "notifications.listSystem",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain notifications.listSystem"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/list",
+      "title": "List all packages",
+      "family": "other",
+      "docUrl": "https://docs.metronome.com/api-reference/list-all-packages",
+      "docMarkdown": "https://docs.metronome.com/api-reference/list-all-packages.md",
+      "status": "op",
+      "catalogId": "packages.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro package clone-version",
+          "kind": "read"
+        },
+        {
+          "command": "metro package create",
+          "kind": "read"
+        },
+        {
+          "command": "metro package customers",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro contract move-plan",
+        "metro package clone-version",
+        "metro package create",
+        "metro package customers",
+        "metro package inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/archive",
+      "title": "Archive a package",
+      "family": "packages",
+      "docUrl": "https://docs.metronome.com/api-reference/packages/archive-a-package",
+      "docMarkdown": "https://docs.metronome.com/api-reference/packages/archive-a-package.md",
+      "status": "catalog-write",
+      "catalogId": "packages.archive",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro package archive preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/packages/get",
+      "title": "Get a package",
+      "family": "packages",
+      "docUrl": "https://docs.metronome.com/api-reference/packages/get-a-package",
+      "docMarkdown": "https://docs.metronome.com/api-reference/packages/get-a-package.md",
+      "status": "op",
+      "catalogId": "packages.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "read"
+        },
+        {
+          "command": "metro contract move-plan",
+          "kind": "read"
+        },
+        {
+          "command": "metro package clone-version",
+          "kind": "read"
+        },
+        {
+          "command": "metro package create",
+          "kind": "read"
+        },
+        {
+          "command": "metro package customers",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro contract move-plan",
+        "metro package clone-version",
+        "metro package create",
+        "metro package customers",
+        "metro package inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/archive",
+      "title": "Archive a product",
+      "family": "products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/archive-a-product",
+      "docMarkdown": "https://docs.metronome.com/api-reference/products/archive-a-product.md",
+      "status": "catalog-write",
+      "catalogId": "products.archive",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro product retire preview",
+        "metro rate-card dimensional preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/create",
+      "title": "Create a product",
+      "family": "products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/create-a-product",
+      "docMarkdown": "https://docs.metronome.com/api-reference/products/create-a-product.md",
+      "status": "catalog-write",
+      "catalogId": "products.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro rate-card dimensional preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/get",
+      "title": "Get a product",
+      "family": "products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/get-a-product",
+      "docMarkdown": "https://docs.metronome.com/api-reference/products/get-a-product.md",
+      "status": "op",
+      "catalogId": "products.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [
+        {
+          "command": "metro dimensional new-code",
+          "kind": "read"
+        },
+        {
+          "command": "metro ratecard add-rates",
+          "kind": "read"
+        },
+        {
+          "command": "metro ratecard create",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription add",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro dimensional new-code",
+        "metro ratecard add-rates",
+        "metro ratecard create",
+        "metro subscription add",
+        "metro product inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/list",
+      "title": "List products",
+      "family": "products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/list-products",
+      "docMarkdown": "https://docs.metronome.com/api-reference/products/list-products.md",
+      "status": "catalog-read",
+      "catalogId": "products.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain products.list"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/products/update",
+      "title": "Update a product",
+      "family": "products",
+      "docUrl": "https://docs.metronome.com/api-reference/products/update-a-product",
+      "docMarkdown": "https://docs.metronome.com/api-reference/products/update-a-product.md",
+      "status": "catalog-write",
+      "catalogId": "products.update",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain products.update"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/addRate",
+      "title": "Add a rate",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/add-a-rate",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/add-a-rate.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/addRates",
+      "title": "Add rates",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/add-rates",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/add-rates.md",
+      "status": "op",
+      "catalogId": "rateCards.addRates",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro dimensional new-code",
+          "kind": "write"
+        },
+        {
+          "command": "metro ratecard add-rates",
+          "kind": "write"
+        },
+        {
+          "command": "metro ratecard create",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro dimensional new-code",
+        "metro ratecard add-rates",
+        "metro ratecard create",
+        "metro product retire preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/archive",
+      "title": "Archive a rate card",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/archive-a-rate-card.md",
+      "status": "catalog-write",
+      "catalogId": "rateCards.archive",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain rateCards.archive"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/create",
+      "title": "Create a rate card",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/create-a-rate-card.md",
+      "status": "op",
+      "catalogId": "rateCards.create",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [
+        {
+          "command": "metro ratecard create",
+          "kind": "write"
+        }
+      ],
+      "metroCommands": [
+        "metro ratecard create"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/get",
+      "title": "Get a rate card",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-card.md",
+      "status": "op",
+      "catalogId": "rateCards.get",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro contract create",
+          "kind": "read"
+        },
+        {
+          "command": "metro dimensional new-code",
+          "kind": "read"
+        },
+        {
+          "command": "metro package create",
+          "kind": "read"
+        },
+        {
+          "command": "metro ratecard add-rates",
+          "kind": "read"
+        },
+        {
+          "command": "metro ratecard create",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro contract create",
+        "metro dimensional new-code",
+        "metro package create",
+        "metro ratecard add-rates",
+        "metro ratecard create"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/getRates",
+      "title": "Get rates",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-rates",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/get-rates.md",
+      "status": "op",
+      "catalogId": "rateCards.getRates",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro ratecard add-rates",
+          "kind": "read"
+        },
+        {
+          "command": "metro ratecard create",
+          "kind": "read"
+        },
+        {
+          "command": "metro subscription add",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro ratecard add-rates",
+        "metro ratecard create",
+        "metro subscription add"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/getRateSchedule",
+      "title": "Get a rate schedule",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/get-a-rate-schedule.md",
+      "status": "catalog-read",
+      "catalogId": "rateCards.getRateSchedule",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "inspect-plan-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro product inspect"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/list",
+      "title": "List rate cards",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/list-rate-cards",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/list-rate-cards.md",
+      "status": "op",
+      "catalogId": "rateCards.list",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [
+        {
+          "command": "metro ratecard create",
+          "kind": "read"
+        }
+      ],
+      "metroCommands": [
+        "metro ratecard create"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/moveRateCardProducts",
+      "title": "Update the rate card products order",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/update-the-rate-card-products-order",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/update-the-rate-card-products-order.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/setRateCardProductsOrder",
+      "title": "Set the rate card products order",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/set-the-rate-card-products-order.md",
+      "status": "catalog-write",
+      "catalogId": "rateCards.setProductOrder",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain rateCards.setProductOrder"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/contract-pricing/rate-cards/update",
+      "title": "Update a rate card",
+      "family": "rate-cards",
+      "docUrl": "https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card",
+      "docMarkdown": "https://docs.metronome.com/api-reference/rate-cards/update-a-rate-card.md",
+      "status": "catalog-write",
+      "catalogId": "rateCards.update",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain rateCards.update"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auditLogs",
+      "title": "Get audit logs",
+      "family": "security",
+      "docUrl": "https://docs.metronome.com/api-reference/security/get-audit-logs",
+      "docMarkdown": "https://docs.metronome.com/api-reference/security/get-audit-logs.md",
+      "status": "catalog-read",
+      "catalogId": "security.getAuditLogs",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain security.getAuditLogs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/services",
+      "title": "Get services",
+      "family": "security",
+      "docUrl": "https://docs.metronome.com/api-reference/security/get-services",
+      "docMarkdown": "https://docs.metronome.com/api-reference/security/get-services.md",
+      "status": "catalog-read",
+      "catalogId": "security.getServices",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain security.getServices"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/credit-types/archive",
+      "title": "Archive a pricing unit",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/archive-a-pricing-unit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/archive-a-pricing-unit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/credit-types/create",
+      "title": "Create a pricing unit",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/create-a-pricing-unit",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/create-a-pricing-unit.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "GET",
+      "path": "/v1/credit-types/list",
+      "title": "List pricing units",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/list-pricing-units",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/list-pricing-units.md",
+      "status": "catalog-read",
+      "catalogId": "settings.listPricingUnits",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain settings.listPricingUnits"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/listConfiguredBillingProviders",
+      "title": "List account-level billing providers",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/list-account-level-billing-providers.md",
+      "status": "catalog-read",
+      "catalogId": "billingProvider.listConfiguredProviders",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain billingProvider.listConfiguredProviders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/setUpBillingProvider",
+      "title": "Set up account-level billing provider",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/set-up-account-level-billing-provider",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/set-up-account-level-billing-provider.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/upsertAnrokApiToken",
+      "title": "Upsert Anrok API token",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/upsert-anrok-api-token",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/upsert-anrok-api-token.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/upsertAvalaraCredentials",
+      "title": "Upsert Avalara credentials",
+      "family": "settings",
+      "docUrl": "https://docs.metronome.com/api-reference/settings/upsert-avalara-credentials",
+      "docMarkdown": "https://docs.metronome.com/api-reference/settings/upsert-avalara-credentials.md",
+      "status": "not-yet",
+      "catalogId": null,
+      "catalogOperation": null,
+      "catalogSupportStatus": null,
+      "ops": [],
+      "metroCommands": []
+    },
+    {
+      "method": "POST",
+      "path": "/v1/events/search",
+      "title": "Search events",
+      "family": "usage",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/search-events",
+      "docMarkdown": "https://docs.metronome.com/api-reference/usage/search-events.md",
+      "status": "catalog-read",
+      "catalogId": "events.search",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain events.search"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/ingest",
+      "title": "Ingest events",
+      "family": "usage",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/ingest-events",
+      "docMarkdown": "https://docs.metronome.com/api-reference/usage/ingest-events.md",
+      "status": "catalog-write",
+      "catalogId": "usage.ingest",
+      "catalogOperation": "write",
+      "catalogSupportStatus": "workflow-preview-supported",
+      "ops": [],
+      "metroCommands": [
+        "metro usage ingest preview"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/usage",
+      "title": "Get batched usage data",
+      "family": "usage",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/get-batched-usage-data",
+      "docMarkdown": "https://docs.metronome.com/api-reference/usage/get-batched-usage-data.md",
+      "status": "catalog-read",
+      "catalogId": "usage.batch",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain usage.batch"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/usage/groups",
+      "title": "Get usage data with paginated groupings",
+      "family": "usage",
+      "docUrl": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings",
+      "docMarkdown": "https://docs.metronome.com/api-reference/usage/get-usage-data-with-paginated-groupings.md",
+      "status": "catalog-read",
+      "catalogId": "usage.groups",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain usage.groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/webhooks/{webhook_id}/triggered_notifications",
+      "title": "List triggered notifications by webhook",
+      "family": "webhooks",
+      "docUrl": "https://docs.metronome.com/api-reference/webhooks/list-triggered-notifications-by-webhook",
+      "docMarkdown": "https://docs.metronome.com/api-reference/webhooks/list-triggered-notifications-by-webhook.md",
+      "status": "catalog-read",
+      "catalogId": "webhooks.listTriggeredNotifications",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain webhooks.listTriggeredNotifications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/webhooks/{webhook_id}/triggered_notifications/{triggered_notification_id}",
+      "title": "Get Triggered Notification and Delivery Attempts",
+      "family": "webhooks",
+      "docUrl": "https://docs.metronome.com/api-reference/webhooks/get-triggered-notification-and-delivery-attempts",
+      "docMarkdown": "https://docs.metronome.com/api-reference/webhooks/get-triggered-notification-and-delivery-attempts.md",
+      "status": "catalog-read",
+      "catalogId": "webhooks.getTriggeredNotification",
+      "catalogOperation": "read",
+      "catalogSupportStatus": "cataloged-local-only",
+      "ops": [],
+      "metroCommands": [
+        "metro api explain webhooks.getTriggeredNotification"
+      ]
+    }
+  ],
+  "metroOnly": [
+    {
+      "source": "catalog",
+      "id": "customers.updateName",
+      "method": "POST",
+      "path": "/v1/customers/{customer_id}/updateName",
+      "note": "In metro catalog but not documented in llms-full.txt; re-check the Metronome page before use."
+    },
+    {
+      "source": "catalog",
+      "id": "invoices.get",
+      "method": "POST",
+      "path": "/v1/invoices/get",
+      "note": "In metro catalog but not documented in llms-full.txt; re-check the Metronome page before use."
+    },
+    {
+      "source": "catalog",
+      "id": "payments.listForInvoice",
+      "method": "POST",
+      "path": "/v1/invoices/payments/list",
+      "note": "In metro catalog but not documented in llms-full.txt; re-check the Metronome page before use."
+    },
+    {
+      "source": "catalog",
+      "id": "payments.attempt",
+      "method": "POST",
+      "path": "/v1/invoices/payments/attempt",
+      "note": "In metro catalog but not documented in llms-full.txt; re-check the Metronome page before use."
+    },
+    {
+      "source": "catalog",
+      "id": "payments.cancel",
+      "method": "POST",
+      "path": "/v1/invoices/payments/cancel",
+      "note": "In metro catalog but not documented in llms-full.txt; re-check the Metronome page before use."
+    }
+  ]
+}
