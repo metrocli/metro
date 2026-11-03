@@ -55,13 +55,24 @@ test('every shipped pack exports an ops map', () => {
 });
 
 test('write ops refuse with a clear message when the pack lacks them', () => {
-  const result = runMetro(['contract', 'expire', 'preflight', '--customer-id=00000000-0000-4000-8000-000000000001', '--sandbox']);
+  const result = runMetro(
+    ['contract', 'expire', 'preflight', '--customer-id=00000000-0000-4000-8000-000000000001', '--sandbox'],
+    { env: { METRO_WORKSPACE_PACK: 'stub' } },
+  );
   assert.equal(result.code, 2);
   const payload = JSON.parse(result.stderr);
   assert.equal(payload.refused, true);
   assert.equal(payload.op, 'contract-expire');
-  assert.equal(payload.workspacePack, 'generic');
+  assert.equal(payload.workspacePack, 'stub');
   assert.match(payload.reason, /does not provide the "contract-expire" operation/);
+});
+
+test('the generic pack provides write ops and refuses a live op without an explicit tenant', () => {
+  const result = runMetro(['contract', 'expire', 'preflight', '--customer-id=00000000-0000-4000-8000-000000000001', '--json']);
+  assert.equal(result.code, 2);
+  const payload = JSON.parse(result.stdout);
+  assert.equal(payload.refused, true);
+  assert.equal(payload.code, 'MTR-TENANT-001');
 });
 
 test('loadPackOp resolves module and lazy-loader entries from pack.ops', () => {
