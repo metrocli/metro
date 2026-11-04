@@ -2,7 +2,7 @@
 
 // SPDX-License-Identifier: Apache-2.0
 //
-// `metro init`: the first-run contract (metrocli.dev docs, init-flow).
+// `metro init`: the first-run contract (metrocli.com docs, init-flow).
 //  - Keys never pass through chat or terminal history. metro creates ~/.metro/.env
 //    (mode 600) and the human pastes keys into it, or into a hidden TTY prompt.
 //  - Sandbox first. Production is optional, asked last, and skippable.

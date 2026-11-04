@@ -11,7 +11,7 @@
 
 class Metrocli < Formula
   desc "Metronome in your terminal: safe previews, typed confirms and read-back proof"
-  homepage "https://metrocli.dev"
+  homepage "https://metrocli.com"
   url "https://registry.npmjs.org/@metrocli/metro/-/metro-0.1.1.tgz"
   # Set at release time: curl -sL <url> | shasum -a 256
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
