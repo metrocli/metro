@@ -13,7 +13,7 @@ Built for people and for their agents.
 ## Give this to your agent
 
 ```text
-set up metro - https://metrocli.dev/llms.txt
+set up metro - https://metrocli.com/llms.txt
 ```
 
 Your agent installs metro, runs `metro init --agent`, and asks you to paste your

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 // Terminal styling for metro's own output. Values mirror the site's brand/ansi.json
-// so a real session and a screenshot on metrocli.dev look the same.
+// so a real session and a screenshot on metrocli.com look the same.
 // Rules: colour only the label or glyph, never the value. Honor NO_COLOR, non-TTY
 // output and TERM=dumb. --plain also switches glyphs to ASCII.
 

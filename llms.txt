@@ -1,6 +1,6 @@
 # metro
 
-> metro is an open-source CLI for Metronome billing, for any Metronome tenant. It is read-only by default. Every write goes preview, typed confirm hash, apply, then a read-back that compares expected and actual. Canonical copy: https://metrocli.dev/llms.txt
+> metro is an open-source CLI for Metronome billing, for any Metronome tenant. It is read-only by default. Every write goes preview, typed confirm hash, apply, then a read-back that compares expected and actual. Canonical copy: https://metrocli.com/llms.txt
 
 ## Set up metro (do these in order)
 
